@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&display=swap");
+
+/* common */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #fff;
+    font-family: "Nanum Gothic", sans-serif;
+    font-size: 12px;
+}
+
+h1 {
+    font-weight: bold;
+    margin: 0;
+}
+
+h2 {
+    text-align: center;
+}
+
+a {
+    color: #333;
+    font-size: 12px;
+    text-decoration: none;
+    /* background-color: rgba(255, 0, 0, 0.7); */
+}
+
+button {
+    border: 0;
+    outline: none;
+    background-color: #367fa9;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 12px;
+    letter-spacing: 1px;
+    font-family: "Nanum Gothic", sans-serif;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+form {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 20px;
+    height: 100%;
+    text-align: left;
+}
+
+input {
+    background-color: #eee;
+    border: none;
+    outline: none;
+    padding: 12px 15px;
+    width: 100%;
+    font-family: "Nanum Gothic", sans-serif;
+}
+
+input:active,
+input:focus {
+    border: none;
+    outline: none;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+    border: 0;
+    width: 100%;
+}
+
+section {
+    display: inline-block;
+}
+
+.wrap {
+    position: relative;
+    background: #fff;
+    margin: 0 auto;
+    /* padding: 0 20px; */
+    width: 1024px;
+    max-width: 1024px;
+}
+
+/* Header */
+
+header {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.top {
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    height: 110px;
+}
+
+.topLeft {
+    width: 20%;
+}
+
+.topRight {
+    width: 35%;
+    color: #222;
+    display: flex;
+    flex-wrap: nowrap;
+    /* align-content: center; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topRight > a {
+    padding: 10px 10px;
+    font-size: 12px;
+}
+
+.createAccount {
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+}
+
+.logo02 {
+    width: 30%;
+}
+
+/* MENU */
+
+.menuBox {
+    width: 100%;
+    border-bottom: 1px solid #8e8e8e;
+}
+
+ul.menu {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+ul.menu > li {
+    padding: 10px 0;
+    width: 16.5%;
+    height: 40px;
+    text-align: center;
+}
+
+ul.menu li a {
+    display: inline-block;
+    width: 100%;
+}
+
+ul.menu > li.on {
+    background: #e5e5e5;
+}
+
+ul.menu > li:has(> ul.subMenu):hover {
+    background: #e5e5e5;
+}
+
+ul.menu > li > p::after {
+    padding: 0 5px;
+    font-family: FontAwesome;
+    content: "\f107";
+}
+
+ul.menu > li.on > p::after {
+    padding: 0 5px;
+    font-family: FontAwesome;
+    content: "\f106";
+}
+
+ul.menu > li.active {
+    border-top: 3px solid #001965;
+}
+
+ul.subMenu {
+    margin-top: 13px;
+    padding: 10px;
+    background: #e5e5e5;
+    display: none;
+}
+
+ul.subMenu > li {
+    padding: 10px 5px;
+    border-bottom: 1px solid #8e8e8e;
+    text-align: left;
+}
+
+ul.subMenu > li:has(> a) a {
+    font-weight: bold;
+    color: #1fadff;
+}
+
+/* Content */
+
+.contentBox {
+    width: 100%;
+}
+
+.contentBox div {
+    margin: 20px 0;
+}
+
+.contentBox h2 {
+    width: 350px;
+    margin: 0 auto;
+    padding: 15px 0;
+    border-bottom: 1px solid #001965;
+}
+
+/* bannerTop */
+
+.bannerTop {
+    width: 100%;
+    height: 185px;
+}
+
+/* Kakao */
+
+#kakao {
+    position: absolute;
+    top: 750px;
+    right: 5px;
+    width: 70px;
+    /* height: 73px; */
+    z-index: 99;
+}
+
+#kakao div {
+    margin: 10px 0;
+}
+
+/* Footer */
+
+footer {
+    background-color: #001965;
+    width: 100%;
+    height: 110px;
+    display: flex;
+    align-items: center;
+}
+
+footer p {
+    color: #fff;
+    font-size: 11px;
+    text-align: left;
+    line-height: 1.2;
+    padding: 0 20px;
+}
+
+footer a {
+    font-size: 11px;
+    color: #fff;
+    text-decoration: underline;
+}
