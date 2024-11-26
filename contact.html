@@ -3,10 +3,22 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>list</title>
+        <title>contact</title>
         <link rel="stylesheet" href="./style/local.css" />
-        <link rel="stylesheet" href="./style/list.css" />
+        <link rel="stylesheet" href="./style/contact.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
         <script defer src="./script/local.js"></script>
+
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Initialize the map
+                const map = L.map("map").setView([37.5665, 126.978], 13); // 서울
+                L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                }).addTo(map);
+            });
+        </script>
     </head>
     <body>
         <header>
@@ -41,45 +53,27 @@
             </div>
         </header>
 
-        <section id="work">
-            <h3>WORKS</h3>
-            <h2>Sed ut perspiciatis</h2>
+        <section id="contact" class="contact-container">
+            <h2>contact me</h2>
             <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p>
-            <div id="work-each">
-                <div class="work-each">
-                    <a href="./sign.html" target="_blank">
-                        <img src="./images/work_sign_thumb.png" alt="work 1" class="work-pic" />
-                        <p class="name">Login</p>
-                    </a>
-                </div>
 
-                <div class="work-each">
-                    <a href="./contact.html" target="_blank">
-                        <img src="./images/work_contact.png" alt="work 2" class="work-pic" />
-                        <p class="name">Contact</p>
-                    </a>
-                </div>
-                <div class="work-each">
-                    <a href="./create_account.html" target="_blank">
-                        <img src="./images/work_account.png" alt="work 3" class="work-pic" />
-                        <p class="name">Create Account</p>
-                    </a>
-                </div>
-                <div class="work-each">
-                    <img src="./images/work3.png" alt="work 4" class="work-pic" />
-                    <p class="name" style="color: #777">voluptatem</p>
-                </div>
+            <div class="contact">
+                <div class="contact-form contact-each">
+                    <form>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required />
 
-                <div class="work-each">
-                    <img src="./images/work1.png" alt="work 4" class="work-pic" />
-                    <p class="name" style="color: #777">voluptatem</p>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required />
+
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+
+                        <button type="submit">Submit</button>
+                    </form>
                 </div>
-                <div class="work-each">
-                    <img src="./images/work2.png" alt="work 4" class="work-pic" />
-                    <p class="name" style="color: #777">voluptatem</p>
-                </div>
+                <div class="contact-map contact-each" id="map"></div>
             </div>
-            <button class="btn">View more</button>
         </section>
 
         <footer>

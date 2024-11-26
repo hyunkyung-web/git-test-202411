@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>index</title>
-        <!-- Google tag (gtag.js) -->
+        <title>main</title>
+        <link rel="stylesheet" href="./style/local.css" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-SSX4ZXEDEM"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -16,10 +16,91 @@
             gtag("config", "G-SSX4ZXEDEM");
         </script>
     </head>
-
     <body>
-        <header>git pages</header>
+        <header>
+            <div class="container">
+                <h1>MY WEB</h1>
 
-        <footer></footer>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="./list.html">Portfolio</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- mobile -->
+                <div class="menu-toggle">
+                    <input type="checkbox" />
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="hamburger-menu">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <section id="main-banner">
+            <div class="container">
+                <h2>Main banner</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </section>
+
+        <section id="content">
+            <div class="content-section">
+                <div class="image-container">
+                    <img src="./images/content.png" alt="Example images" />
+                </div>
+                <div class="text-container">
+                    <h1>Welcome to My Website</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a href="./list.html"><button class="cta-button">Learn More</button></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="team">
+            <h3>TEAM</h3>
+            <h2>Lorem ipsum dolor</h2>
+            <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p>
+            <div id="team-member">
+                <div class="team-member">
+                    <img src="./images/profile1.png" alt="Member 1" class="profile-pic" />
+                    <p class="name">Alice</p>
+                </div>
+                <div class="team-member">
+                    <img src="./images/profile2.png" alt="Member 2" class="profile-pic" />
+                    <p class="name">Bob</p>
+                </div>
+                <div class="team-member">
+                    <img src="./images/profile1.png" alt="Member 3" class="profile-pic" />
+                    <p class="name">Charlie</p>
+                </div>
+                <div class="team-member">
+                    <img src="./images/profile2.png" alt="Member 4" class="profile-pic" />
+                    <p class="name">Diana</p>
+                </div>
+            </div>
+            <button class="btn">Contact Team</button>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>&copy; hyunkyung 2024 Website. All rights reserved.</p>
+            </div>
+        </footer>
     </body>
+    <script src="./script/local.js"></script>
 </html>
