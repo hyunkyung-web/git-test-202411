@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/*@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);*/
+
+
+/*reset*/
+/**{margin: 0; padding: 0;}*/
+*:focus{outline: none}
+/* Chrome , Safari , Opera */
+/*
+::-webkit-scrollbar {
+	display:none 
+}
+*/
+
+html, body {
+	width:100%; height:100%;
+	margin:0 auto; padding: 0;
+	vertical-align: baseline;		
+	font-family: sans-serif, 'Nanum Gothic'; 
+	font-size: 0.9em; color: #333;
+	box-sizing: border-box;
+}
+
+table, th, td, div{border-spacing: 0px; border-collapse: collapse; box-sizing: border-box; }
+table{width: 100%; }
+button{border: 1px solid #555; font-size: inherit; padding: 0.3em 0.8em; vertical-align: middle; cursor: pointer;}
+
+select {color: #333; padding: 0.2em;}
+input{box-sizing: border-box}
+input[type=text]{color: #333;}
+input[type=password]{color: #333;}
+input[type=radio]{width: 1.1em; vertical-align: middle; margin: 0; margin-right: 0.2em;}
+input[type=checkbox]{width: 1.1em; vertical-align: middle; margin-right: 0.2em;}
+label {margin-right: 0.3em; vertical-align: middle}
+label > span{vertical-align: middle}
+
+a{text-decoration: none; cursor: pointer; color: unset;}
+a:hover{color: red}
+ul, li{list-style:none; padding: 0; margin: 0}
+li{margin:0px; margin-bottom: 0.5em; cursor: pointer;}
+li:hover{color: red}
+li.click{color: red; font-weight: bold;}
+
+.blind{width: 100%; height: 100%; position: fixed; top: 0; background: rgba(0, 0, 0, 0.7); z-index: 90; display: none;}
+.popup{position: absolute; top: 40%; left: 40%; transform: translate(-50%, -50%); width: 60%; padding-bottom: 2em; background: #fff; z-index: 99; display: none;}
+.popup h2{background: #12242B; color: #ffff00; margin: 0; margin-bottom: 1em; padding: 0.5em; text-align: center;}
+.popup > div{width: 95%; border: 0px solid #ddd; margin: auto; padding: 2%; box-sizing: border-box}
+.popup table{width: 100%; border: none; margin: auto; box-sizing: border-box}
+.popup p{width: 100%; margin: 0; padding: 0; margin-top: 1em;}
+.btn_close{width: 1.5em; height: 1.5em; background: none; color: #fff; font-size: 1.3em; font-weight: bold; border:0px; position:absolute; top: 0; right: 0; cursor:pointer; padding: 0.3em;}
+
+.popup.report{top: 0; left: -5%; width: 90%; transform: translate(0, 0);}
+
+
+#emailSendList{overflow: overlay; max-height: 40vh}
+
+

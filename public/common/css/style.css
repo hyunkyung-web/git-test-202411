@@ -1,0 +1,73 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+
+/*reset*/
+*{margin: 0; padding: 0;}
+*:focus{outline: none}
+
+html, body {
+	width:100%;
+	height:100%;
+	margin:0 auto;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;		
+	font-family:sans-serif, 'Nanum Gothic';
+}
+
+li{list-style:none;  margin:0px;}
+.guide{
+	max-width:1400px; height:100%;
+	overflow: hidden; margin: 0 auto; background: url(./images/pc_guide.jpg) no-repeat; 
+	background-size:100%; opacity:0.7; z-index:999; display:none;
+}
+.wrap {
+	width:100vw; height:100vh;
+	max-width:1400px; margin: 0 auto; 
+} 
+.main{
+	width:100vw; height:100vh;
+	max-width:1400px;	
+	background:url(./images/pc_bg.jpg) no-repeat;
+	background-size:100%;
+}
+
+/* 화면 너비 0 ~ 640px */
+@media (max-width: 640px){
+	.wrap {
+		width: 100%;
+		max-width:640px;
+		margin:0 auto;
+	}
+	.main{
+		width:100%;
+		margin:0 auto;
+		padding:0;
+		max-width:640px;
+		background:#fff;
+	}
+	#main_img{width:100%; position:relative; top:0; left:0; }
+	#main_img img{content:url(./images/m_main.jpg); width:100%;}
+	#main_txt{width:100%; top:0;}
+	#main_txt p{width:90%; text-align:center;  font-size:1em; line-height:1.5em; color:#378ecd; margin:0 auto;}
+	#main_txt b{color:#2e89cb; font-size:1.3em;}
+	#main_frm{width:100%; min-height:20vh; top:0; margin-top:1vh; text-align:center; padding:1vh 0;}
+	#main_frm #input{content:url(./images/m_input.png); margin:0; width:90%;}
+	#main_frm #button{content:url(./images/m_btn.png); margin-top:0.5vh; width:90%;}
+	
+	#main_footer{width:100%; top:0; margin-top:2vh; text-align:center; font-size:0.9em; color:#6c6c6c;}
+	
+}
+
+@media (max-width: 380px){
+	#main_txt p{width:80%; text-align:center;  font-size:0.8em; line-height:1.5em; color:#378ecd; margin:0 auto;}
+	#main_txt b{color:#2e89cb; font-size:1.2em;}
+	#main_footer{width:100%; top:0; margin-top:0; text-align:center; font-size:0.9em; color:#6c6c6c;}
+	/***************	iPhone X (height:812)	*******************/
+	@media (max-height: 667px){
+		#main_footer{width:100%; top:0; margin-top:2vh; text-align:center; font-size:0.9em; color:#6c6c6c;}
+	}
+}

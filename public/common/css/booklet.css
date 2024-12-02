@@ -1,0 +1,271 @@
+/* common */
+body,
+html {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    color: #444;
+}
+.wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+a {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+}
+a:hover {
+    background: #367ee2;
+}
+table {
+}
+ul,
+li {
+    list-style: none;
+}
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+h1 {
+    font-size: 35px;
+    color: #444;
+    padding: 30px;
+}
+h2 {
+    font-size: 30px;
+    color: #444;
+    font-weight: normal;
+}
+/* //common */
+
+/* header */
+/* header {
+    width: 100%;
+    max-width: 1200px;
+    height: 10%;
+    padding: 20px;
+}
+header img {
+    width: 130px;
+} */
+header {
+    width: 100%;
+    height: 10%;
+    background: #fff;
+}
+.header-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+header img {
+    width: 130px;
+    padding: 20px;
+}
+
+/* container */
+.container {
+    width: 100%;
+}
+.main-banner {
+    width: 100%;
+    min-height: 500px;
+    background: #f94a4a;
+}
+.banner-wrap {
+    width: 100%;
+    max-width: 630px;
+}
+.banner-wrap img {
+    width: 100%;
+}
+
+/* nav */
+.main-content-wrap {
+    width: 100%;
+}
+.content-nav-wrap {
+    width: 100%;
+    background: #585858;
+    flex-direction: row;
+}
+.content-nav {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    min-height: 80px;
+    display: flex;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.content-nav div {
+    display: table-cell;
+    margin: 0;
+    width: 33.333%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.content-nav div a {
+    height: 100%;
+    color: #fff;
+    text-decoration: none;
+}
+.content-nav div a.active {
+    color: #222;
+    background: #fff;
+}
+/* content-area */
+.tab-content {
+    display: none;
+}
+#tab1 {
+    display: block;
+}
+.content-area {
+    padding: 60px 0;
+    width: 100%;
+    max-width: 1000px;
+}
+.content-area p {
+    font-size: 18px;
+    line-height: 25px;
+    color: #444;
+    margin: 20px;
+    font-weight: 300;
+    text-align: center;
+}
+
+/* content-overview */
+.content-overview {
+}
+.content-overview .video-wrap {
+    padding-top: 50px;
+}
+.content-overview .video {
+    width: 100%;
+    background-color: #cecece;
+}
+/* content-agenda */
+.content-agenda,
+.content-speakers {
+}
+.content-agenda table {
+    width: 100%;
+    font-size: 2em;
+}
+table caption {
+    text-align: left;
+    font-weight: bolder;
+    font-size: 1.1em;
+    padding: 30px 30px;
+}
+table tr {
+}
+.content-agenda table td {
+    display: block;
+    padding: 30px 0px;
+    margin: 0 30px;
+    text-align: left;
+}
+.content-agenda table .time {
+    display: inline-block;
+    padding-bottom: 30px;
+}
+.content-agenda table .detail {
+    padding: 20px 0;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #585858;
+}
+/* content-speakers */
+.content-speakers {
+}
+.speakers {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 50px 30px;
+    /* common  -> flex 속성에서 변화 */
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+.speakers div {
+    width: 50%;
+    box-sizing: border-box;
+    /* common  -> flex 속성에서 변화 */
+    flex-direction: row;
+    justify-content: left;
+    margin: 15px 0;
+}
+.speakers div img {
+    width: 140px;
+    border-radius: 100px;
+}
+.speakers div p {
+    text-align: left;
+    margin-left: 10px;
+}
+
+/* footer */
+footer {
+    width: 100%;
+    height: 10%;
+    background: #585858;
+    color: #fefefe;
+}
+.footer-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+footer img {
+    width: 130px;
+    padding: 20px;
+}
+footer p {
+    padding: 20px;
+}
+
+/* 모바일 */
+@media screen and (max-width: 768px) {
+    .banner-wrap {
+        width: 85%;
+    }
+    .main-banner {
+        min-height: 400px;
+    }
+    /* nav - 1단 */
+    .content-nav {
+        flex-direction: column;
+    }
+    .content-nav div {
+        width: 100%;
+        height: 100%;
+        min-height: 50px;
+    }
+    .content-nav div a {
+        min-height: 50px;
+    }
+    /* speker - 1단 */
+    .speakers {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .speakers div {
+        width: 100%;
+    }
+
+    .content-agenda table .detail {
+        font-size: 1.1rem;
+    }
+}

@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none 0;
+}
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+div{box-sizing: border-box}
+
+ul,li,ol {list-style: none;
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+legend,
+caption {
+    display: none;
+}
+hr {
+    border-collapse: collapse;
+}
+a {
+    text-decoration: none;
+    color: #222;
+}
+button {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+/* form */
+input {
+    border: none;
+    background: none;
+}
+input:focus {
+    outline: none;
+}
+table {
+    border-spacing: 0px;
+}
+/* display */
+/* align */
+
+/* padding */
+.padd5 {
+    padding: 5px;
+}
+.padd10 {
+    padding: 10px;
+}
+.padd15 {
+    padding: 15px;
+}
+.padd20 {
+    padding: 20px;
+}
+.padd25 {
+    padding: 25px;
+}
+.padd30 {
+    padding: 30px;
+}
+.padd35 {
+    padding: 35px;
+}
+.padd40 {
+    padding: 40px;
+}
+.padd50 {
+    padding: 50px;
+}
+
+/* margin*/
+.margin5 {
+    margin: 5px;
+}
+.margin10 {
+    margin: 10px;
+}
+.margin15 {
+    margin: 15px;
+}
+.margin20 {
+    margin: 20px;
+}
+.margin25 {
+    margin: 25px;
+}
+.margin30 {
+    margin: 30px;
+}
+.margin35 {
+    margin: 35px;
+}
+.margin40 {
+    margin: 40px;
+}
+.margin50 {
+    margin: 50px;
+}

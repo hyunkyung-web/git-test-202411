@@ -1,0 +1,179 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+*{box-sizing: border-box}
+
+ul, li{list-style: none; margin: 0; padding: 0; box-sizing: border-box;}
+
+.wrap{
+    position: relative;
+    margin: 0;
+    width: 100%;
+    max-width: 860px;    
+    margin: 0 auto;    
+    box-sizing: border-box;
+}
+
+.wrap_result{
+    position: relative;
+    margin: 0;
+    width: 100%;
+    max-width: 1280px;    
+    margin: 0 auto;    
+    box-sizing: border-box;
+}
+
+.main{
+    position: relative; 
+    width: 100%; 
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    overflow-y: auto;
+}
+
+.main_result{
+    position: relative; 
+    width: 100%; 
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    overflow-y: auto;
+    display: flex;
+}
+/*
+.main::-webkit-scrollbar {
+	display:none /* Chrome , Safari , Opera */
+}
+*/
+
+/**********************	설문화면	**************************/
+.header{position: relative; width: 100%; display: flex;}
+.header .thumb{width: 100%;}
+.header .logo{width: 40%;}
+.header .title{width: 60%; display: flex; justify-content: center; align-items: center; font-size: 1em; font-weight: 900}
+.logo img{width: 100%;} 
+.question{position: relative; width: 100%; margin-top: 1em; padding: 0 1em; font-size: 1.5em; color: #555555; word-break: keep-all; line-height: 1.5; font-weight: 900}
+.answer{position: relative; width: 100%; margin: 0.5em 0 2em; padding: 0 1em; word-break: keep-all; line-height: 1.8; font-weight: 900}
+.answer li{margin-top: 0.5em; padding: 0.5em 1em; background: #d7d7d7; font-size: 1em; color: #555555; border-radius: 20px;}
+.answer li.click{background: #4AA877; color: #fff;}
+.footer{position: relative; width: 100%; padding: 1em; margin-top: 1em;}
+.btn_save{width: 100%; background: #044D54; padding: 0.5em; font-size: 1.5em; color: #fff; font-weight: 600; border: none; }
+
+
+/**********************	결과화면	**************************/
+.question_list{position: relative; width: 35%; margin-top: 1em; padding: 0 1em; word-break: keep-all; line-height: 1.8; font-weight: 900}
+.question_list li{margin-top: 0.5em; padding: 0.5em 1em; background: #d7d7d7; font-size: 1em; color: #555555; border-radius: 20px;}
+.chart{position: relative; width: 65%; padding: 1em;}
+.chart canvas{position: relative; width: 80%; margin: 0 auto;}
+
+video{width: 100%;}
+
+.blind{position: fixed; top:0; left: 0; background: rgba(0, 0, 0, 0.7); width: 100%; height: 100%; display: none; z-index: 99}
+.blind .btnClose{position: absolute; top: 0; right: 0; font-size: 2.2em; font-weight: 600; background: transparent; color: #fff; cursor: pointer; border: none; z-index: 101;}
+
+.popup{
+    position: absolute; 
+    top: 0; left: 50%; transform: translate(-50%, 0);
+    width: 90%;
+    display: none;
+    z-index: 100;
+    margin-top: 3.5em;
+}
+
+.popup > h3 {
+	width: 90%;
+    padding: 2% 5%; margin: 0 auto;
+    /* background: rgb(18, 36, 43); */
+    background: #eeeeee;
+    letter-spacing: 1px;
+    font-size: 1.5em; color: #4d5766;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box
+}
+.popup .data_form{
+	width: 90%;
+	font-family: "Noto Sans KR", sans-serif;
+	font-size: 1.1em;
+	color: #4d5766; margin: 0 auto;
+	background: #fff;
+	padding: 1em 0 1.5em; 
+	box-sizing: border-box;
+}
+
+.popup table{width: 90%; margin: 0 auto; box-sizing: border-box;}
+.popup table th{text-align: left;}
+.popup table input[type=text]{
+	width: 95%; padding: 5px; 
+	font-size: 1.1em; font-family: "Noto Sans KR", sans-serif; 
+	border: 1px solid #d0d1d1; border-radius: 5px;
+}
+.popup table input[type=tel]{
+	width: 95%; padding: 5px; 
+	font-size: 1.1em; font-family: "Noto Sans KR", sans-serif; 
+	border: 1px solid #d0d1d1; border-radius: 5px;
+}
+.popup select{
+	width: 95%; padding: 5px; 
+	font-size: 1.1em; font-family: "Noto Sans KR", sans-serif; 
+	border: 1px solid #d0d1d1; border-radius: 5px;
+}
+.popup table input[type=checkbox]{margin: 0; margin-right: 5px;}
+.popup table label{font-size: 1em;}
+.popup table textarea{
+	width: 95%; padding: 5px; 
+	font-size: 1.1em; font-family: "Noto Sans KR", sans-serif; 
+	border: 1px solid #d0d1d1; border-radius: 5px;
+}
+.popup table p{font-size: 0.8em; color: rgb(115 115 115); margin: 0 0 0.5em}
+.popup .btn_save {
+    background: #eeeeee;
+    color: #38b1f0;
+    position: relative;
+    left: 50%;
+    bottom: 1%;
+    transform: translateX(-50%);
+    font-size: 1.5em;
+    width: 90%;
+    padding: 10px 20px;
+    margin-top: 1em;
+    border: none;
+    cursor: pointer;
+}
+
+.result_msg{
+	position: absolute; background: rgba(0,0,0,0.6);
+	top: 50%; left: 50%; transform: translate(-50%, -50%);
+	color: #ffff00; font-size: 1.3em; font-weight: 600; 
+	padding: 3em; text-align: center; word-break: keep-all;
+	z-index: 110;
+	display: none;
+	
+}
+
+
+@media (max-width: 400px){
+	
+	.chart canvas{position: relative; width: 100%; margin: 0 auto;}
+	
+	.main_result{
+	    position: relative; 
+	    width: 100%; 
+	    height: 100%;
+	    box-sizing: border-box;
+	    border: 1px solid #ddd;
+	    overflow-y: auto;
+	    display: block;
+	}
+	
+	.question_list{position: relative; width: 100%; margin-top: 1em; padding: 0 1em; word-break: keep-all; line-height: 1.8; font-weight: 900}	
+	.chart{position: relative; width: 100%; padding: 1em;}
+
+}
