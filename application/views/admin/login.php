@@ -16,14 +16,15 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/public/common/css/reset.css?ver=2205031100" />
-    <link rel="stylesheet" href="/public/common/css/local.css" />    
+    <!-- <link rel="stylesheet" href="/public/common/css/local.css" /> -->
+    <link rel="stylesheet" href="/public/common/css/login.css" />
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>    
+    <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
-    <script type="text/javascript" src="/public/common/local.js"></script>                 
+    <script type="text/javascript" src="/public/common/local.js"></script>
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -37,34 +38,47 @@
 <script>
 	window.dataLayer = window.dataLayer || [];
   	function gtag(){dataLayer.push(arguments);}
-  	gtag('js', new Date());	
+  	gtag('js', new Date());
   	gtag('config', 'G-NMXDBRXH4Y');
-  
+
 	gtag('event', 'screen_view', {
 		'app_name': 'dr-wave.co.kr',
 		'screen_name': 'Home'
 	});
-	
-	
+
+
 // 	$(function(){
 // 		$("#btnGtag").click(function(){
 // 			gtag('event', 'click_GTAG_BTN');
 // 		});
 // 	});
-	
-  
+
+
 </script>
 
-<body>    
+<body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5Z935QD"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
-    
-    
-    
-    
-       
-</body>   
+
+
+    <div class="container">
+        <div class="logo">
+            <img src="/public/common/images/novo_logo.png" alt="novo_logo">
+        </div>
+        <form class="login-form">
+            <input type="text" placeholder="아이디" required>
+            <input type="password" placeholder="비밀번호" required>
+            <div class="remember-me">
+                <input type="checkbox" id="remember">
+                <label for="remember">로그인 저장</label>
+            </div>
+            <button type="submit">로그인</button>
+        </form>
+    </div>
+
+
+
+</body>
 </html>
