@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>닥터웨이브</title>
+	<title>Dr-wave</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="닥터웨이브" />
