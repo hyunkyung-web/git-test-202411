@@ -20,6 +20,9 @@ class Home extends CI_Controller {
 	public function index()
 	{	    
 	    
+	    echo 'aaa';
+	    exit;
+	    
 	    $this->load->view('main');
 	}
 	
