@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>관리자 컨텐트 상세</title>
+	<title>관리자 콘텐츠 상세</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="닥터웨이브" />
@@ -16,14 +16,23 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/public/common/css/reset.css?ver=2205031100" />
-    <link rel="stylesheet" href="/public/common/css/local.css" />    
+    <link rel="stylesheet" href="/public/common/css/local_new.css" />
+    <link rel="stylesheet" href="/public/common/css/contents_form.css" />
+
+    <!-- Froala Editor CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.11/css/froala_editor.pkgd.min.css">
+
+<!-- Froala Editor JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.11/js/froala_editor.pkgd.min.js"></script>
+
+
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>    
+    <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
-    <script type="text/javascript" src="/public/common/local.js"></script>                 
+    <script type="text/javascript" src="/public/common/local.js"></script>
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -37,34 +46,106 @@
 <script>
 	window.dataLayer = window.dataLayer || [];
   	function gtag(){dataLayer.push(arguments);}
-  	gtag('js', new Date());	
+  	gtag('js', new Date());
   	gtag('config', 'G-NMXDBRXH4Y');
-  
+
 	gtag('event', 'screen_view', {
 		'app_name': 'dr-wave.co.kr',
 		'screen_name': 'Home'
 	});
-	
-	
+
+
 // 	$(function(){
 // 		$("#btnGtag").click(function(){
 // 			gtag('event', 'click_GTAG_BTN');
 // 		});
 // 	});
-	
-  
+
+
 </script>
 
-<body>    
+<body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5Z935QD"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
-    
-    contents_form
-    
-    
-       
-</body>   
+
+    <header class="header">
+        <!-- <h1></h1> -->
+        <div class="logo"><img src="/public/common/images/dwave_pro_logo.png" alt=""></div>
+
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li>콘텐츠 관리</li>
+                <li>사용자 관리</li>
+                <li>설정</li>
+                <li>로그아웃</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <form>
+                <table>
+                    <colgroup>
+                        <col style="width: 30%;">
+                        <col style="width: 70%;">
+                    </colgroup>
+                    <!-- <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>내용</th>
+                        </tr>
+                    </thead> -->
+                    <tbody>
+                        <tr>
+                            <th>제목</th>
+                            <td>예시 제목</td>
+                        </tr>
+                        <tr>
+                            <th>게시 구분</th>
+                            <td>일반</td>
+                        </tr>
+                        <tr>
+                            <th>첨부 파일</th>
+                            <td><input type="file" /></td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">
+                                <div id="editor" style="border: 1px solid #ccc; padding: 10px; min-height: 100px;">
+                                froala 에디터 내용추가
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </form>
+
+        </main>
+    </div>
+    <footer class="footer">
+        <p>© 2025 관리자</p>
+    </footer>
+
+        <!-- froala editor -->
+    <script>
+
+
+    new FroalaEditor('#editor', {
+    toolbarInline: false,
+    charCounterCount: false,
+    placeholderText: '내용을 입력하세요...',
+
+});
+
+    </script>
+
+
+
+
+</body>
 </html>
