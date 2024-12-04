@@ -1,3 +1,18 @@
+:root {
+	--background-color: #e2f0fa;
+	--text-color: #333333;
+	/* --primary-color: #007bff; */
+	--primary-color: #181c32;
+	--success-color: #28a745;
+	--secondary-color: #6c757d;
+}
+
+.main-content {
+	flex-grow: 1;
+	padding: 20px;
+	overflow-y: auto;
+}
+
 table {
 	width: 100%;
 	border-collapse: collapse;
