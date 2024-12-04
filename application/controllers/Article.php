@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Article extends CI_Controller {
     
     public function __construct(){
         parent::__construct();
@@ -20,20 +20,20 @@ class Home extends CI_Controller {
 	public function index()
 	{
 	    
-	    $this->main();
-	}
-	
-	public function main(){
-	    $this->load->view('/main');
+	    $this->list();
+// 	    $this->load->view('/admin/login');
 	}
 	
 	
+	public function list()
+	{
+	    $this->load->view('/article/list');
+	}
 	
-	
-	
-	
-	
-	
+	public function node()
+	{
+	    $this->load->view('/article/node');
+	}
 	
 	
 	

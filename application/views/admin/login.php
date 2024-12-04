@@ -63,7 +63,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
 
-    <div class="container">
+    <div class="container-login">
         <div class="logo">
             <img src="/public/common/images/dwave_pro_logo.png" alt="dwave_kakao">
         </div>

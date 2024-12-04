@@ -2,9 +2,8 @@
 	--background-color: #e2f0fa;
 	--text-color: #333333;
 	/* --primary-color: #007bff; */
-	--primary-color: #001965;
+	--primary-color: #181c32;
 	--success-color: #28a745;
-	--danger-color: #dc3545;
 	--secondary-color: #6c757d;
 }
 
@@ -89,6 +88,51 @@ button {
 button {
 	border-radius: 20px;
 	padding: 10px;
+}
+
+#item-list {
+	margin-bottom: 20px;
+}
+
+.item {
+	padding: 10px;
+	border: 1px solid #ccc;
+	margin-bottom: 5px;
+}
+
+#pagination {
+	text-align: center;
+	margin: 50px 0;
+}
+
+#pagination ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+#pagination ul li {
+	display: inline;
+	margin: 0 5px;
+	padding: 10px 15px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	background-color: #f0f0f0;
+}
+
+#pagination ul li:hover {
+	background-color: var(--primary-color);
+}
+#pagination ul li:hover a {
+	color: #fff;
+}
+
+#pagination ul li:nth-of-type(1),
+#pagination ul li:nth-of-type(2),
+#pagination ul li:nth-of-type(5),
+#pagination ul li:nth-of-type(6) {
+	display: none;
 }
 
 @media (max-width: 1024px) {

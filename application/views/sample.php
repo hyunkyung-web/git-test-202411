@@ -22,7 +22,7 @@
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>    
-    <script type="text/javascript" src="/public/common/script/common.js?ver=2205031000"></script>
+    <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
     <script type="text/javascript" src="/public/common/local.js"></script>                 
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -61,7 +61,7 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    fregregr
+    Dev Main
        
 </body>   
 </html>

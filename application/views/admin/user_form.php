@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>관리자 콘텐츠 상세</title>
+	<title>사용자 추가</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="닥터웨이브" />
@@ -88,42 +88,76 @@
                         <col style="width: 30%;">
                         <col style="width: 70%;">
                     </colgroup>
-                    <!-- <thead>
-                        <tr>
-                            <th>항목</th>
-                            <th>내용</th>
-                        </tr>
-                    </thead> -->
+
                     <tbody>
                         <tr>
-                            <th>제목</th>
+                            <th>아이디</th>
+                            <td>
+                                <input type="text" name="userId" id="userId" style="max-width: 25%;" value="" placeholder="아이디">
+                                <button id="btnChkUse" onclick="admChkUserId();return(false);">중복확인</button>
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th>비밀번호</th>
+                            <td><input type="password" /></td>
+                        </tr>
+                        <tr>
+                            <th>비밀번호 확인</th>
+                            <td><input type="password" /></td>
+                        </tr>
+                        <tr>
+                            <th>성명</th>
                             <td><input type="text" /></td>
                         </tr>
                         <tr>
-                            <th>게시 구분</th>
+                            <th>이메일</th>
+                            <td><input type="email" /></td>
+                        </tr>
+                        <tr>
+                            <th>성명</th>
+                            <td><input type="text" /></td>
+                        </tr>
+                        <tr>
+                            <th>부서</th>
+                            <td><input type="text" /></td>
+                        </tr>
+
+                        <tr>
+                            <th>권한분류</th>
+
                             <td>
-                                <select class="classify-contents">
-                                    <option value="">선택</option>
-                                    <option value="type1">일반</option>
-                                    <option value="type2">공지</option>
+                                <input type="radio" id="userType_1" name="userType" value="userType" checked>
+                                <label for="userType_1">일반</label>
 
-                                </select>
+                                <input type="radio" id="userType_2" name="userType" value="userType" checked>
+                                <label for="userType_2">관리자</label>
                             </td>
+
                         </tr>
                         <tr>
-                            <th>첨부 파일</th>
-                            <td><input type="file" /></td>
-                        </tr>
+                            <th>정보수신</th>
+                            <td>
+                                <input type="radio" name="optin" id="optin_2" value="N" checked>
+                                <label for="optin_2">동의안함</label>
+                                <input type="radio" name="optin" id="optin_1" value="Y">
+                                <label for="optin_1">동의함</label>
+				            </td>
 
+                        </tr>
+                        <tr>
+                            <th>사용여부</th>
+                            <td>
+                                <input type="radio" name="useYn" id="useYn_1" value="Y" checked>
+                                <label for="useYn_1">사용</label>
+                                <input type="radio" name="useYn" id="useYn_2" value="N">
+                                <label for="useYn_2">사용안함</label>
+				            </td>
+                        </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2">
-                                  <!-- froala 에디터 내용추가 -->
-                                <div id="editor"> </div>
-                            </td>
-                        </tr>
-                    </tfoot>
+
                 </table>
             </form>
             <div class="btn-wrap">

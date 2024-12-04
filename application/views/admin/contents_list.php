@@ -17,12 +17,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/public/common/css/reset.css?ver=2205031100" />
     <link rel="stylesheet" href="/public/common/css/local_new.css" />
-    <link rel="stylesheet" href="/public/common/css/contents_list.css" />
+    <link rel="stylesheet" href="/public/common/css/admin/list.css" />
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>
     <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
     <script type="text/javascript" src="/public/common/local.js"></script>
 	<!-- Google Tag Manager -->
@@ -106,7 +108,77 @@
                         <th>작성일</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="item-list">
+                    <tr>
+                        <td>1</td>
+                        <td>공지</td>
+                        <td>첫 번째 콘텐츠</td>
+                        <td>홍길동</td>
+                        <td>2024-12-01</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>뉴스</td>
+                        <td>두 번째 콘텐츠</td>
+                        <td>김철수</td>
+                        <td>2024-12-02</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>공지</td>
+                        <td>첫 번째 콘텐츠</td>
+                        <td>홍길동</td>
+                        <td>2024-12-01</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>뉴스</td>
+                        <td>두 번째 콘텐츠</td>
+                        <td>김철수</td>
+                        <td>2024-12-02</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>공지</td>
+                        <td>첫 번째 콘텐츠</td>
+                        <td>홍길동</td>
+                        <td>2024-12-01</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>뉴스</td>
+                        <td>두 번째 콘텐츠</td>
+                        <td>김철수</td>
+                        <td>2024-12-02</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>공지</td>
+                        <td>첫 번째 콘텐츠</td>
+                        <td>홍길동</td>
+                        <td>2024-12-01</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>뉴스</td>
+                        <td>두 번째 콘텐츠</td>
+                        <td>김철수</td>
+                        <td>2024-12-02</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>공지</td>
+                        <td>첫 번째 콘텐츠</td>
+                        <td>홍길동</td>
+                        <td>2024-12-01</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>뉴스</td>
+                        <td>두 번째 콘텐츠</td>
+                        <td>김철수</td>
+                        <td>2024-12-02</td>
+                    </tr>
                     <tr>
                         <td>1</td>
                         <td>공지</td>
@@ -124,6 +196,10 @@
                     <!-- 추가 콘텐츠 -->
                 </tbody>
             </table>
+
+             <!-- pagination : item-list 10개 이상인 경우 -->
+             <div id="pagination"></div>
+
         </main>
     </div>
     <footer class="footer">
