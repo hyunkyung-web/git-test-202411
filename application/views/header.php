@@ -1,5 +1,5 @@
 <header>
-        <div class="container">
+        <div class="header-container flex_SB_center padd0-20">
             <div class="logo">
                 <img src="/public/images/main/logo01.png" alt="logo_main">
             </div>

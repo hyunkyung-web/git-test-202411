@@ -64,18 +64,18 @@
     <?php include_once APPPATH.'views/header.php'; ?>
 
     <section id="main-banner">
-        <div class="container">
+        <div class="banner-container padd0-20">
             <h1>Main banner</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod</p>
             <!-- <a href="#" class="btn">Learn More</a> -->
         </div>
     </section>
 
-    <section id="contents">
-        <h2>Contents List 1</h2>
-        <h3>Lorem ipsum dolor</h3>
+    <section id="contents" class="flex_SB_center">
+        <h2 class="font_blue">Contents List 1</h2>
+        <h3 class="padd10">Lorem ipsum dolor</h3>
         <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
-        <div id="contents-list">
+        <div id="contents-list" class="flex_SB_center">
             <div class="contents-list">
                 <img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" />
                 <p class="name">Alice</p>
@@ -95,11 +95,11 @@
         </div>
     </section>
 
-    <section id="contents">
-        <h2>Contents List 2</h2>
-        <h3>Lorem ipsum dolor</h3>
+    <section id="contents" class="flex_SB_center">
+        <h2 class="font_blue">Contents List 2</h2>
+        <h3 class="padd10">Lorem ipsum dolor</h3>
         <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
-        <div id="contents-list">
+        <div id="contents-list" class="flex_SB_center">
             <div class="contents-list">
                 <img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" />
                 <p class="name">Alice</p>
@@ -119,11 +119,11 @@
         </div>
     </section>
 
-    <section id="contents">
-        <h2>Contents List 3</h2>
-        <h3>Lorem ipsum dolor</h3>
+    <section id="contents" class="flex_SB_center">
+        <h2 class="font_blue">Contents List 3</h2>
+        <h3 class="padd10">Lorem ipsum dolor</h3>
         <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
-        <div id="contents-list">
+        <div id="contents-list" class="flex_SB_center">
             <div class="contents-list">
                 <img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" />
                 <p class="name">Alice</p>

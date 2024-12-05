@@ -1,0 +1,218 @@
+/* root style */
+:root {
+    --background-color-navy: #181c32;
+    --font-blue: #3437ee;
+}
+
+/* Reset styles */
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    background-color: #fff;
+}
+
+a {
+    display: inline-block;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+/* 사용자 정의 스타일 */
+/* display - flex 스타일 */
+.flex_SB_center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* color - blue */
+.font_blue {
+    color: var(--font-blue);
+}
+
+/* padding */
+.padd0-20 {
+    padding: 0 20px;
+}
+
+/* header */
+header {
+    background-color: var(--background-color-navy);
+    color: #fff;
+    padding: 20px 0;
+    /* position: relative; */
+}
+
+/* logo */
+.logo {
+    width: 15vw;
+    min-width: 150px;
+}
+
+.logo img {
+    width: 100%;
+}
+
+/* menu */
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* mobile menu */
+.menu-toggle {
+    display: none;
+    height: 100%;
+}
+
+.menu-toggle input {
+    display: none;
+}
+
+.menu-toggle span {
+    background-color: #fff;
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--background-color-navy);
+    padding: 10px;
+}
+
+.hamburger-menu li {
+    padding: 10px;
+}
+
+.hamburger-menu li a {
+    color: #fff;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+/* footer */
+footer {
+    background-color: var(--background-color-navy);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.8em;
+}
+footer a {
+    color: #fff;
+}
+
+/* media query */
+@media screen and (max-width: 1200px) {
+    nav ul {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        position: relative;
+        z-index: 999;
+    }
+
+    .menu-toggle input {
+        display: block;
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .menu-toggle span {
+        display: block;
+        background-color: #fff;
+        width: 25px;
+        height: 3px;
+        margin: 5px 0;
+        transition: all 0.3s ease-in-out;
+    }
+    .menu-toggle span:nth-of-type(1) {
+        top: 0;
+        transform-origin: 25% 50%;
+        transition: 0.3s;
+    }
+    .menu-toggle span:nth-of-type(2) {
+        top: calc(50% - 1px);
+    }
+    .menu-toggle span:nth-of-type(3) {
+        bottom: 0;
+        transform-origin: 25% 50%;
+        transition: 0.3s;
+    }
+
+    .menu-toggle.active span:nth-of-type(1) {
+        transform: rotate(45deg) translateX(20%);
+    }
+    .menu-toggle.active span:nth-of-type(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active span:nth-of-type(3) {
+        transform: rotate(-45deg) translateX(20%);
+    }
+
+    .hamburger-menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        background-color: var(--background-color-navy);
+        opacity: 0.9;
+        padding: 10px;
+        height: 100%;
+        width: 100%;
+        right: -100%;
+        transform: scaleX(1);
+        transition: all 1s ease 0.1s;
+    }
+    .hamburger-menu ul {
+        position: absolute;
+        top: 15%;
+    }
+
+    /* .hamburger-menu.active */
+    .hamburger-menu.active {
+        /* display: flex;
+        flex-direction: column; */
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0%;
+        transform: scaleX(1);
+        background-color: var(--background-color-navy);
+    }
+
+    .hamburger-menu.active ul {
+        position: absolute;
+        top: 15%;
+    }
+
+    .hamburger-menu.active ul {
+        position: absolute;
+        top: 15%;
+    }
+}

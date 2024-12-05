@@ -1,204 +1,40 @@
-/* Reset styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-html,
-body {
-    height: 100%;
-}
+@import url(layout.css);
 
-/* Global styles */
-body {
-    font-family: "Noto Sans KR", sans-serif;
-    background-color: #fff;
-}
-ul,
-li {
-    list-style: none;
-}
-a {
-    display: inline-block;
-}
+/***************************************
+main
+***************************************/
 
-.container {
+/* main - banner */
+.banner-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
-}
-
-h1 {
-    font-size: 2em;
-}
-h2 {
-    color: #3437ee;
-}
-h3 {
-    padding: 10px;
-}
-header {
-    background-color: #181c32;
-    color: #fff;
-    padding: 20px 0;
-    /* position: relative; */
-}
-header .container {
-    /* position: relative; */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 24px;
-}
-
-.logo {
-    width: 15vw;
-    min-width: 150px;
-}
-
-.logo img {
-    width: 100%;
-}
-
-nav ul {
-    list-style: none;
-}
-
-nav ul li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.menu-toggle {
-    display: none;
-    height: 100%;
-}
-
-.menu-toggle input {
-    display: none;
-}
-
-.menu-toggle span {
-    background-color: #fff;
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px 0;
-    transition: all 0.3s ease-in-out;
-}
-
-.hamburger-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #181c32;
-    padding: 10px;
-}
-
-.hamburger-menu li {
-    padding: 10px;
-}
-
-.hamburger-menu li a {
-    color: #fff;
-    text-decoration: none;
-    word-break: break-all;
 }
 
 #main-banner {
     background-image: url("https://via.placeholder.com/1500x600");
     background-size: cover;
     background-position: center;
+    background-color: #ddd;
     color: #fff;
     text-align: center;
     padding: 100px 0;
 }
 
-#main-banner h2 {
+#main-banner h1 {
     font-size: 36px;
     margin-bottom: 20px;
 }
 
 #main-banner p {
     font-size: 18px;
-    margin-bottom: 30px;
-}
-
-/* content */
-
-#content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 60px;
-}
-
-/* Section 컨테이너 스타일 */
-.content-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    width: 80%;
-    max-width: 1200px;
-    border-radius: 15px;
-    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-    overflow: hidden;
-}
-
-/* 이미지 컨테이너 */
-.image-container {
-    flex: 1;
-    max-width: 50%;
-}
-
-.image-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* 텍스트 컨테이너 */
-.text-container {
-    flex: 1;
-    padding: 40px;
-    text-align: left;
-}
-
-.text-container h1 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.text-container p {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 30px;
-    line-height: 1.6;
+    /* margin-bottom: 30px; */
 }
 
 /* contents */
-/* 기본 스타일 초기화 */
 
-/* 팀 컨테이너 스타일 */
+/* 콘텐츠 컨테이너 스타일 */
 #contents {
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     padding: 60px;
     max-width: 1200px;
     margin: 0 auto;
@@ -209,10 +45,8 @@ nav ul li a {
 }
 
 #contents-list {
-    display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
-    align-items: center;
+    justify-content: normal;
     width: 80%;
     max-width: 1200px;
     margin: 20px 0 0;
@@ -226,7 +60,7 @@ nav ul li a {
     max-width: 80%;
 }
 
-/* 팀 멤버 카드 스타일 */
+/* 콘텐츠 리스트 스타일 */
 .contents-list {
     width: 23%;
     background-color: #ffffff;
@@ -245,10 +79,9 @@ nav ul li a {
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* 프로필 사진 스타일 */
+/* 콘텐츠 썸네일 스타일 */
 .cont-thumb {
     width: 90%;
-    /* height: 100px; */
     border-radius: 50%;
     margin-bottom: 10px;
     object-fit: cover;
@@ -263,118 +96,47 @@ nav ul li a {
     margin: 0;
 }
 
-footer {
-    background-color: #181c32;
-    color: #fff;
+/***************************************
+article
+***************************************/
+/* list.php */
+#article {
+    flex-direction: column;
+    padding: 60px;
+}
+#article p {
     text-align: center;
-    padding: 20px 0;
+    padding: 20px;
 }
 
-footer p {
-    margin: 0;
-    font-size: 0.8em;
+#article-each {
+    flex-wrap: wrap;
+    width: 70%;
+    max-width: 900px;
+    gap: 1.4em;
 }
-footer a {
-    color: #fff;
+#article-each h2 {
+    display: block;
+}
+
+/* 리스트 스타일 - .contents-list 에 추가 */
+.article-each {
+    width: 48%;
+    max-width: unset;
+}
+
+/* 리스트 썸네일 스타일 - .cont-thumb 에 추가 */
+.article-thumb {
+    width: 200px;
+    height: 200px;
 }
 
 /* media query */
 @media screen and (max-width: 1200px) {
-    nav ul {
-        display: none;
-    }
-
-    .menu-toggle {
-        display: block;
-        cursor: pointer;
-        position: relative;
-        z-index: 999;
-    }
-
-    .hamburger-menu {
-        display: block;
-    }
-
-    .menu-toggle input {
-        display: block;
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-
-    .menu-toggle span {
-        display: block;
-        background-color: #fff;
-        width: 25px;
-        height: 3px;
-        margin: 5px 0;
-        transition: all 0.3s ease-in-out;
-    }
-    .menu-toggle span:nth-of-type(1) {
-        top: 0;
-        transform-origin: 25% 50%;
-        transition: 0.3s;
-    }
-    .menu-toggle span:nth-of-type(2) {
-        top: calc(50% - 1px);
-    }
-    .menu-toggle span:nth-of-type(3) {
-        bottom: 0;
-        transform-origin: 25% 50%;
-        transition: 0.3s;
-    }
-
-    .menu-toggle.active span:nth-of-type(1) {
-        transform: rotate(45deg) translateX(20%);
-    }
-    .menu-toggle.active span:nth-of-type(2) {
-        opacity: 0;
-    }
-    .menu-toggle.active span:nth-of-type(3) {
-        transform: rotate(-45deg) translateX(20%);
-    }
-
-    .hamburger-menu {
-        /* display: none; */
-        position: fixed;
-        top: 0;
-        background-color: #181c32;
-        opacity: 0.9;
-        padding: 10px;
-        height: 100%;
-        width: 100%;
-        right: -100%;
-        transform: scaleX(1);
-        transition: all 1s ease 0.1s;
-    }
-    .hamburger-menu ul {
-        position: absolute;
-        top: 15%;
-    }
-
-    /* 여기부터 다시 */
-    .hamburger-menu.active {
-        /* display: flex;
-        flex-direction: column; */
-        display: block;
-        position: fixed;
-        top: 0;
-        right: 0%;
-        transform: scaleX(1);
-        background-color: #181c32;
-    }
-
-    .hamburger-menu.active ul {
-        position: absolute;
-        top: 15%;
-    }
-
-    .hamburger-menu.active ul {
-        position: absolute;
-        top: 15%;
-    }
-
-    /* content */
+    /***************************************
+    main
+    ***************************************/
+    /* main - content */
     .content-section {
         flex-direction: column;
     }
@@ -392,37 +154,48 @@ footer a {
         justify-content: center;
     }
     #contents-list .contents-list {
-        min-width: 300px;
+        min-width: 47%;
     }
 
-    /* list page */
-    #work-each {
-        flex-direction: column;
+    .cont-thumb {
+        width: 50%;
     }
 
-    #work-each .work-each {
-        min-width: 300px;
+    .article-thumb {
+        width: 20vw;
+        height: 20vw;
     }
 
-    /* contact page */
-    .contact {
-        flex-direction: column;
+    /***************************************
+    article
+    ***************************************/
+
+    #article-each {
+        /* flex-direction: column; */
+        width: 100%;
     }
-    .contact .contact-each {
+
+    .article-each {
         min-width: 300px;
     }
 }
 
 @media screen and (max-width: 768px) {
+    /***************************************
+    main
+    ***************************************/
+    /* main - content */
     section#contents {
         width: 90%;
     }
 
-    #contents-list {
+    #contents-list,
+    #article-each {
         flex-direction: column;
     }
 
-    #contents-list .contents-list {
+    #contents-list .contents-list,
+    .article-each {
         min-width: unset;
         width: 100%;
     }

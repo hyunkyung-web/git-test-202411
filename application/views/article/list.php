@@ -63,45 +63,43 @@
     
     <?php include_once APPPATH.'views/header.php'; ?>
     
-    <section id="work">
-        <h3>WORKS</h3>
-        <h2>Sed ut perspiciatis</h2>
+    <section id="article" class="flex_SB_center">
+        <h2>Contents Lists</h2>
         <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p>
-        <div id="work-each">
-            <div class="work-each">
-                <a href="./sign.html" target="_blank">
-                    <img src="/public/images/work_sign_thumb.png" alt="work 1" class="work-pic" />
+        <div id="article-each" class="flex_SB_center">
+            <div class="contents-list article-each">
+                <a href="/member/verify">
+                    <img src="/public/images/work_sign_thumb.png" alt="article 1" class="cont-thumb article-thumb" />
                     <p class="name">Login</p>
                 </a>
             </div>
 
-            <div class="work-each">
-                <a href="./contact.html" target="_blank">
-                    <img src="/public/images/work_contact.png" alt="work 2" class="work-pic" />
+            <div class="contents-list article-each">
+                <a href="#">
+                    <img src="/public/images/work_contact.png" alt="article 2" class="cont-thumb article-thumb" />
                     <p class="name">Contact</p>
                 </a>
             </div>
-            <div class="work-each">
-                <a href="./create_account.html" target="_blank">
-                    <img src="/public/images/work_account.png" alt="work 3" class="work-pic" />
+            <div class="contents-list article-each">
+                <a href="/member/sign_up">
+                    <img src="/public/images/work_account.png" alt="article 3" class="cont-thumb article-thumb" />
                     <p class="name">Create Account</p>
                 </a>
             </div>
-            <div class="work-each">
-                <img src="/public/images/work3.png" alt="work 4" class="work-pic" />
-                <p class="name" style="color: #777">voluptatem</p>
+            <div class="contents-list article-each">
+                <img src="/public/images/work3.png" alt="article 4" class="cont-thumb article-thumb" />
+                <p class="name">voluptatem</p>
             </div>
 
-            <div class="work-each">
-                <img src="/public/images/work1.png" alt="work 4" class="work-pic" />
-                <p class="name" style="color: #777">voluptatem</p>
+            <div class="contents-list article-each">
+                <img src="/public/images/work1.png" alt="article 4" class="cont-thumb article-thumb" />
+                <p class="name">voluptatem</p>
             </div>
-            <div class="work-each">
-                <img src="/public/images/work2.png" alt="work 4" class="work-pic" />
-                <p class="name" style="color: #777">voluptatem</p>
+            <div class="contents-list article-each">
+                <img src="/public/images/work2.png" alt="article 4" class="cont-thumb article-thumb" />
+                <p class="name">voluptatem</p>
             </div>
         </div>
-        <button class="btn">View more</button>
     </section>
     
     <?php include_once APPPATH.'views/footer.php'; ?>
