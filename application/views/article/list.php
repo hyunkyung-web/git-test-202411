@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/public/common/css/reset.css?ver=2205031100" />
-    <link rel="stylesheet" href="/public/common/css/local.css" />    
+    <link rel="stylesheet" href="/public/common/css/main.css" />    
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
@@ -61,7 +61,49 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    컨텐츠 리스트
+    <?php include_once APPPATH.'views/header.php'; ?>
     
+    <section id="work">
+        <h3>WORKS</h3>
+        <h2>Sed ut perspiciatis</h2>
+        <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p>
+        <div id="work-each">
+            <div class="work-each">
+                <a href="./sign.html" target="_blank">
+                    <img src="/public/images/work_sign_thumb.png" alt="work 1" class="work-pic" />
+                    <p class="name">Login</p>
+                </a>
+            </div>
+
+            <div class="work-each">
+                <a href="./contact.html" target="_blank">
+                    <img src="/public/images/work_contact.png" alt="work 2" class="work-pic" />
+                    <p class="name">Contact</p>
+                </a>
+            </div>
+            <div class="work-each">
+                <a href="./create_account.html" target="_blank">
+                    <img src="/public/images/work_account.png" alt="work 3" class="work-pic" />
+                    <p class="name">Create Account</p>
+                </a>
+            </div>
+            <div class="work-each">
+                <img src="/public/images/work3.png" alt="work 4" class="work-pic" />
+                <p class="name" style="color: #777">voluptatem</p>
+            </div>
+
+            <div class="work-each">
+                <img src="/public/images/work1.png" alt="work 4" class="work-pic" />
+                <p class="name" style="color: #777">voluptatem</p>
+            </div>
+            <div class="work-each">
+                <img src="/public/images/work2.png" alt="work 4" class="work-pic" />
+                <p class="name" style="color: #777">voluptatem</p>
+            </div>
+        </div>
+        <button class="btn">View more</button>
+    </section>
+    
+    <?php include_once APPPATH.'views/footer.php'; ?>
 </body>   
 </html>
