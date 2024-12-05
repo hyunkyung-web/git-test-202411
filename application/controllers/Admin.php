@@ -53,18 +53,6 @@ class Admin extends CI_Controller {
 	    $this->load->view('/admin/user_form');
 	}
 
-	public function header()
-	{
-	    $this->load->view('/admin/header');
-	}
-	public function footer()
-	{
-	    $this->load->view('/admin/footer');
-	}
-	public function aside()
-	{
-	    $this->load->view('/admin/aside');
-	}
 
 
 

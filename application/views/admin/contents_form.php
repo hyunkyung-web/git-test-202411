@@ -66,20 +66,9 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <header class="header">
-        <!-- <h1></h1> -->
-        <div class="logo"><img src="/public/common/images/dwave_pro_logo.png" alt=""></div>
-
-    </header>
+    <?php include_once APPPATH.'views/admin/header.php'; ?>
     <div class="container">
-        <aside class="sidebar">
-            <ul>
-                <li>콘텐츠 관리</li>
-                <li>사용자 관리</li>
-                <li>설정</li>
-                <li>로그아웃</li>
-            </ul>
-        </aside>
+        <?php include_once APPPATH.'views/admin/aside.php'; ?>
 
         <main class="main-content">
             <form>
