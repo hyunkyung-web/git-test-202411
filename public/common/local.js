@@ -84,7 +84,6 @@ $(function () {
 let slideNum = 1;
 
 function getSlideCount() {
-<<<<<<< HEAD
 	return $(".event_slide div").length;
 }
 
@@ -98,60 +97,35 @@ function moveSlideEnd(goSlide) {
 	var slideWidth = $(".event_slide > div").width();
 	var moveWidth = slideWidth * goSlide * posType;
 	$(".event_slide").stop().animate({ left: moveWidth }, 0);
-=======
-    return $(".event_slide div").length;
-}
-
-function moveSlide(slideNum) {
-    var slideWidth = $(".event_slide > div").width();
-    var moveWidth = slideWidth * (slideNum - 1) * -1;
-    $(".event_slide").stop().animate({ left: moveWidth }, 1000);
-}
-function moveSlideEnd(goSlide) {
-    var posType = goSlide == 1 ? 1 : -1;
-    var slideWidth = $(".event_slide > div").width();
-    var moveWidth = slideWidth * goSlide * posType;
-    $(".event_slide").stop().animate({ left: moveWidth }, 0);
->>>>>>> acaefa5 (241204 member, main - se)
 }
 
 function schWebinar() {
-    alert("웨비나 검색");
+	alert("웨비나 검색");
 }
 
-//froala editor
-// new FroalaEditor("#editor", {
-// 	toolbarInline: false,
-// 	charCounterCount: false,
-// 	placeholderText: "내용을 입력하세요...",
-// });
-
 function initializeFroalaEditor() {
-    new FroalaEditor("#editor", {
-        toolbarInline: false,
-        charCounterCount: false,
-        placeholderText: "내용을 입력하세요..."
-    });
+	new FroalaEditor("#editor", {
+		toolbarInline: false,
+		charCounterCount: false,
+		placeholderText: "내용을 입력하세요...",
+	});
 }
 
 function usePagination() {
-    const itemsPerPage = 10;
-    const totalItems = $("#item-list tr").length;
+	const itemsPerPage = 10;
+	const totalItems = $("#item-list tr").length;
 
-    $("#pagination").twbsPagination({
-        totalPages: Math.ceil(totalItems / itemsPerPage),
-        visiblePages: 10,
-        onPageClick: function (event, page) {
-            const start = (page - 1) * itemsPerPage;
-            const end = start + itemsPerPage;
+	$("#pagination").twbsPagination({
+		totalPages: Math.ceil(totalItems / itemsPerPage),
+		visiblePages: 10,
+		onPageClick: function (event, page) {
+			const start = (page - 1) * itemsPerPage;
+			const end = start + itemsPerPage;
 
-            // 현재 페이지 행
-            $("#item-list tr").hide().slice(start, end).show();
-        }
-    });
+			// 현재 페이지 행
+			$("#item-list tr").hide().slice(start, end).show();
+		},
+	});
 
-    $("#item-list tr").hide().slice(0, itemsPerPage).show();
+	$("#item-list tr").hide().slice(0, itemsPerPage).show();
 }
-
-// generateItems();
-// generatePagination();
