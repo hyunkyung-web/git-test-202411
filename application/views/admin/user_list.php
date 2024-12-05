@@ -66,6 +66,7 @@
 
 
     <?php include_once APPPATH.'views/admin/header.php'; ?>
+    <!-- aside, button -->
     <div class="container">
         <?php include_once APPPATH.'views/admin/aside.php'; ?>
         <main class="main-content">

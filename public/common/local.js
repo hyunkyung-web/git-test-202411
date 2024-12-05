@@ -1,25 +1,8 @@
 $(function () {
-	if ($("#pagination").length) {
-		usePagination();
-	}
-	if ($("#editor").length) {
-		initializeFroalaEditor();
-	}
-
 	$(window).resize(function () {
 		//        location.reload();
 	});
 	//btn search
-	$(".btn_search").click(function () {
-		schWebinar();
-		return;
-	});
-	$("#input1").keydown(function (e) {
-		if (e.keyCode == 13) {
-			schWebinar();
-			return;
-		}
-	});
 
 	$(".btn_slide").click(function (e) {
 		var btnGb = $(this).attr("class").replace("btn_slide ", "");
@@ -78,7 +61,24 @@ $(function () {
 		},
 	});
 
-	//    $(".event_slide").draggable();
+	if ($("#pagination").length) {
+		usePagination();
+	}
+	if ($("#editor").length) {
+		initializeFroalaEditor();
+	}
+
+	$(".sub-list-toggle").on("click", function () {
+		const subList = $(this).next("ul");
+		subList.toggle();
+
+		const icon = $(this).find("i");
+		if (subList.is(":visible")) {
+			icon.removeClass("fa-chevron-down").addClass("fa-chevron-up");
+		} else {
+			icon.removeClass("fa-chevron-up").addClass("fa-chevron-down");
+		}
+	});
 });
 
 let slideNum = 1;
@@ -107,6 +107,7 @@ function initializeFroalaEditor() {
 	new FroalaEditor("#editor", {
 		toolbarInline: false,
 		charCounterCount: false,
+		quickInsert: false,
 		placeholderText: "내용을 입력하세요...",
 	});
 }

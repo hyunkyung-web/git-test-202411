@@ -21,8 +21,9 @@ table {
 th,
 td {
 	border: 1px solid #ddd;
-	padding: 10px;
+	padding: 5px;
 	text-align: left;
+	height: 3em;
 }
 
 th {
@@ -30,12 +31,16 @@ th {
 	font-weight: bold;
 }
 
-tbody tr:nth-child(even) {
+/* tbody tr:nth-child(even) {
 	background-color: #f9f9f9;
-}
+} */
 
-tbody tr:hover {
+/* tbody tr:hover {
 	background-color: #f1f1f1;
+} */
+
+td.add-file input {
+	margin-top: 5px;
 }
 
 .classify-contents {
@@ -43,12 +48,28 @@ tbody tr:hover {
 	background: none;
 }
 
+td.radio {
+	display: flex;
+	align-items: center;
+	margin: 0 auto;
+
+	border-top: none;
+	border-left: none;
+}
+td.radio input {
+	margin-right: 3px;
+}
+
 input,
 select {
 	width: 100%;
 	height: 100%;
-	border: 1px solid #ddd;
-	padding: 5px;
+	/* border: 1px solid #ddd; */
+	/* padding: 5px; */
+}
+select {
+	width: 18%;
+	border: 1px solid #ccc;
 }
 
 input[type="radio"] {
@@ -77,13 +98,17 @@ select {
 }
 button {
 	padding: 5px 20px;
-	background-color: #606060;
-	color: #fff;
+	/* background-color: #606060; */
+	background-color: #f2f2f2;
+	/* color: #fff; */
+	color: #333;
+	border: 1px solid #ddd;
 	margin-left: 5px;
 	display: inline-block;
 }
 button:hover {
-	background-color: #007bff;
+	background-color: var(--primary-color);
+	color: #fff;
 }
 
 /* froala editor */
@@ -95,6 +120,9 @@ button:hover {
 
 /* 하단 powered by froala 글자 삭제 */
 #fr-logo {
+	display: none !important;
+}
+.fr-quick-insert {
 	display: none !important;
 }
 

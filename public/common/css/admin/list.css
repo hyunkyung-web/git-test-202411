@@ -18,6 +18,11 @@ body {
 
 button {
 	display: inline-block;
+	padding: 10px 20px;
+	background: #f0f0f0;
+	color: #333;
+	border: 1px solid #ddd;
+	cursor: pointer;
 }
 
 .main-content {
@@ -32,13 +37,9 @@ button {
 	justify-content: space-between;
 	align-items: flex-start;
 	margin-bottom: 20px;
+	background: none;
 }
 .add-content {
-	padding: 10px 20px;
-	background-color: #007bff;
-	color: white;
-	border: none;
-	cursor: pointer;
 }
 
 .search-bar {
@@ -48,10 +49,9 @@ button {
 }
 
 .category-select,
-.search-input,
-.search-button {
+.search-input {
 	margin-left: 10px;
-	border: 1px solid var(--background-color);
+	border: 1px solid #ddd;
 	padding: 4px;
 }
 
@@ -60,11 +60,8 @@ button {
 }
 
 .search-button {
-	padding: 10px 20px;
-	background-color: #28a745;
-	color: white;
-	border: none;
-	cursor: pointer;
+	margin-left: 10px;
+	padding: 4px 10px;
 }
 
 .content-table {
@@ -84,8 +81,12 @@ button {
 }
 
 button {
-	border-radius: 20px;
+	border-radius: 10px;
 	padding: 10px;
+}
+button:hover {
+	background-color: var(--primary-color);
+	color: #fff;
 }
 
 #item-list {

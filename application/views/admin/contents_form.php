@@ -101,7 +101,7 @@
                         </tr>
                         <tr>
                             <th>첨부 파일</th>
-                            <td><input type="file" /></td>
+                            <td class="add-file"><input type="file" /></td>
                         </tr>
 
                     </tbody>

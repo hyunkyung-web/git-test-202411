@@ -25,7 +25,7 @@ button {
 }
 
 /* header */
-.header {
+/* .header {
 	background-color: var(--background-color);
 	color: white;
 
@@ -34,6 +34,36 @@ button {
 }
 .header .logo {
 	width: 20%;
+} */
+
+header {
+	background-color: var(--primary-color);
+	color: white;
+	color: #fff;
+	padding: 20px 0;
+	position: relative;
+}
+header .header-container {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header h1 {
+	margin: 0;
+	font-size: 24px;
+}
+
+.logo {
+	width: 15vw;
+	min-width: 200px;
+	max-width: 300px;
+}
+
+.logo img {
+	width: 100%;
 }
 
 /* aside */
@@ -46,8 +76,14 @@ button {
 }
 
 .sidebar {
+	position: relative;
 	width: 200px;
-	background-color: var(--primary-color);
+	/* 958f80 */
+	/* 454760 */
+
+	/* 454655 */
+	/* a9aabc */
+	background-color: #454655;
 	padding: 20px 0px;
 	color: #fff;
 }
@@ -58,21 +94,70 @@ button {
 }
 
 .sidebar li {
-	margin: 10px 0;
-	padding: 13px 33px 13px 20px;
-	border-bottom: 1px solid #2e3b57;
+	/* margin: 10px 0; */
+	padding: 25px 20px;
+	border-bottom: 1px solid #181c32;
+	cursor: pointer;
+}
+.sidebar li:hover {
+	/* background-color: #a9aabc; */
+}
+.sidebar li i {
+	float: right;
+	margin-top: 2px;
+}
+
+.sub-list {
+	display: none;
+}
+.sub-list li {
+	border: none;
+}
+span.sub-list-toggle {
+	width: 100%;
+	display: block;
+}
+
+/* aside toggle */
+.sidebar-toggle {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	background-color: #a9aabc;
+	background-color: #454655;
+	color: white;
+	border: none;
+	border-radius: 3px;
+	padding: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	z-index: 1001;
+	font-size: 1.3rem;
+}
+
+.sidebar-toggle:hover {
+	/* background-color: #0056b3; */
+	/* background-color: #a9aabc; */
+}
+
+.sidebar.open {
+	left: -150px;
 }
 
 .main-content {
 	width: 80%;
 	margin: 0 auto;
 }
+.main-content.wide {
+	/* width: 100%; */
+	margin-left: 0;
+}
 
 /* footer */
 
 .footer {
-	background-color: var(--background-color);
-	color: var(--primary-color);
+	color: var(--background-color);
+	background-color: var(--primary-color);
 
 	text-align: center;
 	padding: 10px;
@@ -82,7 +167,7 @@ button {
 }
 
 button {
-	border-radius: 20px;
+	border-radius: 10px;
 	padding: 10px;
 }
 

@@ -116,7 +116,7 @@
                         <tr>
                             <th>권한분류</th>
 
-                            <td>
+                            <td class="radio">
                                 <input type="radio" id="userType_1" name="userType" value="userType" checked>
                                 <label for="userType_1">일반</label>
 
@@ -127,7 +127,7 @@
                         </tr>
                         <tr>
                             <th>정보수신</th>
-                            <td>
+                            <td class="radio">
                                 <input type="radio" name="optin" id="optin_2" value="N" checked>
                                 <label for="optin_2">동의안함</label>
                                 <input type="radio" name="optin" id="optin_1" value="Y">
@@ -137,7 +137,7 @@
                         </tr>
                         <tr>
                             <th>사용여부</th>
-                            <td>
+                            <td class="radio">
                                 <input type="radio" name="useYn" id="useYn_1" value="Y" checked>
                                 <label for="useYn_1">사용</label>
                                 <input type="radio" name="useYn" id="useYn_2" value="N">
