@@ -20,7 +20,6 @@ li {
 }
 a {
     display: inline-block;
-    color: #fff;
 }
 
 .container {
@@ -29,18 +28,23 @@ a {
     padding: 0 20px;
 }
 
-h3 {
+h1 {
+    font-size: 2em;
+}
+h2 {
     color: #3437ee;
+}
+h3 {
     padding: 10px;
 }
 header {
     background-color: #181c32;
     color: #fff;
     padding: 20px 0;
-    position: relative;
+    /* position: relative; */
 }
 header .container {
-    position: relative;
+    /* position: relative; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -109,6 +113,7 @@ nav ul li a {
 .hamburger-menu li a {
     color: #fff;
     text-decoration: none;
+    word-break: break-all;
 }
 
 #main-banner {
@@ -185,74 +190,65 @@ nav ul li a {
     line-height: 1.6;
 }
 
-/* 버튼 스타일 */
-.cta-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-    background-color: #0056b3;
-}
-
-/* team */
+/* contents */
 /* 기본 스타일 초기화 */
 
 /* 팀 컨테이너 스타일 */
-#team {
+#contents {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-#team p {
+#contents p {
     text-align: center;
     padding: 20px;
 }
 
-#team-member {
+#contents-list {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
     align-items: center;
     width: 80%;
     max-width: 1200px;
     margin: 20px 0 0;
-    gap: 20px;
+    gap: 1.4em;
 }
-#team h2 {
+#contents h2 {
     display: block;
+}
+#contents h3 {
+    display: inline-block;
+    max-width: 80%;
 }
 
 /* 팀 멤버 카드 스타일 */
-.team-member {
-    width: 20%;
+.contents-list {
+    width: 23%;
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
-    flex: 1;
+    /* flex: 1; */
     max-width: 300px;
     padding: 20px;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.team-member:hover {
+.contents-list:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* 프로필 사진 스타일 */
-.profile-pic {
-    width: 100px;
-    height: 100px;
+.cont-thumb {
+    width: 90%;
+    /* height: 100px; */
     border-radius: 50%;
     margin-bottom: 10px;
     object-fit: cover;
@@ -267,23 +263,6 @@ nav ul li a {
     margin: 0;
 }
 
-.btn {
-    display: inline-block;
-    /* background-color: #ff5733; */
-    background-color: #555;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    margin: 20px;
-    border: none;
-}
-
-.btn:hover {
-    background-color: #ff6e4a;
-}
-
 footer {
     background-color: #181c32;
     color: #fff;
@@ -293,6 +272,10 @@ footer {
 
 footer p {
     margin: 0;
+    font-size: 0.8em;
+}
+footer a {
+    color: #fff;
 }
 
 /* media query */
@@ -355,13 +338,11 @@ footer p {
         /* display: none; */
         position: fixed;
         top: 0;
-
         background-color: #181c32;
         opacity: 0.9;
         padding: 10px;
         height: 100%;
         width: 100%;
-
         right: -100%;
         transform: scaleX(1);
         transition: all 1s ease 0.1s;
@@ -388,24 +369,29 @@ footer p {
         top: 15%;
     }
 
+    .hamburger-menu.active ul {
+        position: absolute;
+        top: 15%;
+    }
+
     /* content */
     .content-section {
         flex-direction: column;
     }
-    section#team {
-        width: 100%;
+    section#contents {
+        width: 80%;
         padding: 60px 0;
     }
-    section#team h3,
-    section#team h2 {
+    section#contents h3,
+    section#contents h2 {
         text-align: center;
     }
-    #team-member {
+    #contents-list {
         /* flex-direction: column; */
         flex-wrap: wrap;
         justify-content: center;
     }
-    #team-member .team-member {
+    #contents-list .contents-list {
         min-width: 300px;
     }
 
@@ -428,7 +414,16 @@ footer p {
 }
 
 @media screen and (max-width: 768px) {
-    #team-member {
+    section#contents {
+        width: 90%;
+    }
+
+    #contents-list {
         flex-direction: column;
+    }
+
+    #contents-list .contents-list {
+        min-width: unset;
+        width: 100%;
     }
 }

@@ -65,85 +65,82 @@
 
     <section id="main-banner">
         <div class="container">
-            <h2>Main banner</h2>
+            <h1>Main banner</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod</p>
             <!-- <a href="#" class="btn">Learn More</a> -->
         </div>
     </section>
 
-    <section id="team">
-        <h3>Contents List 1</h3>
-        <h2>Lorem ipsum dolor Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis molestias nihil repudiandae illo fugit expedita culpa, sapiente possimus, alias tempore error in beatae neque dolore modi quaerat mollitia dolorum labore?</h2>
+    <section id="contents">
+        <h2>Contents List 1</h2>
+        <h3>Lorem ipsum dolor</h3>
         <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
-        <div id="team-member">
-            <div class="team-member">
-                <img src="/public/images/profile1.png" alt="Member 1" class="profile-pic" />
+        <div id="contents-list">
+            <div class="contents-list">
+                <img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" />
                 <p class="name">Alice</p>
             </div>
-            <div class="team-member">
-                <img src="/public/images/profile2.png" alt="Member 2" class="profile-pic" />
+            <div class="contents-list">
+                <img src="/public/images/profile2.png" alt="List 2" class="cont-thumb" />
                 <p class="name">Bob</p>
             </div>
-            <div class="team-member">
-                <img src="/public/images/profile1.png" alt="Member 3" class="profile-pic" />
+            <div class="contents-list">
+                <img src="/public/images/profile1.png" alt="List 3" class="cont-thumb" />
                 <p class="name">Charlie</p>
             </div>
-            <div class="team-member">
-                <img src="/public/images/profile2.png" alt="Member 4" class="profile-pic" />
+            <div class="contents-list">
+                <img src="/public/images/profile2.png" alt="List 4" class="cont-thumb" />
                 <p class="name">Diana</p>
             </div>
         </div>
-        <!-- <button class="btn">Contact Team</button> -->
     </section>
 
-    <section id="team">
-        <h3>Contents List 2</h3>
-        <h2>Lorem ipsum dolor</h2>
+    <section id="contents">
+        <h2>Contents List 2</h2>
+        <h3>Lorem ipsum dolor</h3>
         <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
-        <div id="team-member">
-            <div class="team-member">
-                <img src="/public/images/profile1.png" alt="Member 1" class="profile-pic" />
+        <div id="contents-list">
+            <div class="contents-list">
+                <img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" />
                 <p class="name">Alice</p>
             </div>
-            <div class="team-member">
-                <img src="/public/images/profile2.png" alt="Member 2" class="profile-pic" />
+            <div class="contents-list">
+                <img src="/public/images/profile2.png" alt="List 2" class="cont-thumb" />
                 <p class="name">Bob</p>
             </div>
-            <div class="team-member">
-                <img src="/public/images/profile1.png" alt="Member 3" class="profile-pic" />
+            <div class="contents-list">
+                <img src="/public/images/profile1.png" alt="List 3" class="cont-thumb" />
                 <p class="name">Charlie</p>
             </div>
-            <div class="team-member">
-                <img src="/public/images/profile2.png" alt="Member 4" class="profile-pic" />
+            <div class="contents-list">
+                <img src="/public/images/profile2.png" alt="List 4" class="cont-thumb" />
                 <p class="name">Diana</p>
             </div>
         </div>
-        <!-- <button class="btn">Contact Team</button> -->
     </section>
 
-    <section id="team">
-        <h3>Contents List 3</h3>
-        <h2>Lorem ipsum dolor</h2>
+    <section id="contents">
+        <h2>Contents List 3</h2>
+        <h3>Lorem ipsum dolor</h3>
         <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
-        <div id="team-member">
-            <div class="team-member">
-                <img src="/public/images/profile1.png" alt="Member 1" class="profile-pic" />
+        <div id="contents-list">
+            <div class="contents-list">
+                <img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" />
                 <p class="name">Alice</p>
             </div>
-            <div class="team-member">
-                <img src="/public/images/profile2.png" alt="Member 2" class="profile-pic" />
+            <div class="contents-list">
+                <img src="/public/images/profile2.png" alt="List 2" class="cont-thumb" />
                 <p class="name">Bob</p>
             </div>
-            <div class="team-member">
-                <img src="/public/images/profile1.png" alt="Member 3" class="profile-pic" />
+            <div class="contents-list">
+                <img src="/public/images/profile1.png" alt="List 3" class="cont-thumb" />
                 <p class="name">Charlie</p>
             </div>
-            <div class="team-member">
-                <img src="/public/images/profile2.png" alt="Member 4" class="profile-pic" />
+            <div class="contents-list">
+                <img src="/public/images/profile2.png" alt="List 4" class="cont-thumb" />
                 <p class="name">Diana</p>
             </div>
         </div>
-        <!-- <button class="btn">Contact Team</button> -->
     </section>
     
     <?php include_once APPPATH.'views/footer.php'; ?>
