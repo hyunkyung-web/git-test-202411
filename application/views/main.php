@@ -61,38 +61,7 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="/public/images/main/logo01.png" alt="logo_main">
-            </div>
-
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="/article/list">List</a></li>
-                </ul>
-            </nav>
-
-            <!-- mobile -->
-            <div class="menu-toggle">
-                <input type="checkbox" />
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="hamburger-menu">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="/article/list">List</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
+    <?php include_once APPPATH.'views/header.php'; ?>
 
     <section id="main-banner">
         <div class="container">
@@ -104,7 +73,7 @@
 
     <section id="team">
         <h3>Contents List 1</h3>
-        <h2>Lorem ipsum dolor</h2>
+        <h2>Lorem ipsum dolor Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis molestias nihil repudiandae illo fugit expedita culpa, sapiente possimus, alias tempore error in beatae neque dolore modi quaerat mollitia dolorum labore?</h2>
         <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
         <div id="team-member">
             <div class="team-member">
@@ -176,6 +145,7 @@
         </div>
         <!-- <button class="btn">Contact Team</button> -->
     </section>
-       
+    
+    <?php include_once APPPATH.'views/footer.php'; ?>
 </body>   
 </html>

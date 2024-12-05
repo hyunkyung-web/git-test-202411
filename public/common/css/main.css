@@ -11,7 +11,7 @@ body {
 
 /* Global styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     background-color: #fff;
 }
 ul,
@@ -19,7 +19,8 @@ li {
     list-style: none;
 }
 a {
-    display: block;
+    display: inline-block;
+    color: #fff;
 }
 
 .container {
@@ -284,7 +285,7 @@ nav ul li a {
 }
 
 footer {
-    background-color: #333;
+    background-color: #181c32;
     color: #fff;
     text-align: center;
     padding: 20px 0;
@@ -367,7 +368,7 @@ footer p {
     }
     .hamburger-menu ul {
         position: absolute;
-        top: 13%;
+        top: 15%;
     }
 
     /* 여기부터 다시 */
@@ -384,15 +385,25 @@ footer p {
 
     .hamburger-menu.active ul {
         position: absolute;
-        top: 13%;
+        top: 15%;
     }
 
     /* content */
     .content-section {
         flex-direction: column;
     }
+    section#team {
+        width: 100%;
+        padding: 60px 0;
+    }
+    section#team h3,
+    section#team h2 {
+        text-align: center;
+    }
     #team-member {
-        flex-direction: column;
+        /* flex-direction: column; */
+        flex-wrap: wrap;
+        justify-content: center;
     }
     #team-member .team-member {
         min-width: 300px;
@@ -413,5 +424,11 @@ footer p {
     }
     .contact .contact-each {
         min-width: 300px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #team-member {
+        flex-direction: column;
     }
 }
