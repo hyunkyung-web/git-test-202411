@@ -20,17 +20,21 @@ class Admin extends CI_Controller {
 	public function index()
 	{
 
-	    echo 'hyun!!';
+// 	    echo 'hyun!!';
 
 
-// 	    $this->login();
+	    $this->main();
 // 	    $this->load->view('/admin/login');
 	}
-
-
+	
 	public function login()
 	{
 	    $this->load->view('/admin/login');
+	}
+
+	public function main()
+	{
+	    $this->load->view('/admin/main');
 	}
 
 	public function contents_list()
