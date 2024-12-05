@@ -101,6 +101,7 @@ button {
 #pagination {
 	text-align: center;
 	margin: 50px 0;
+	font-size: 0.8rem;
 }
 
 #pagination ul {
