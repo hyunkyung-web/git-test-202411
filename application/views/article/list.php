@@ -75,22 +75,26 @@
             </div>
 
             <div class="contents-list article-each">
-                <a href="#">
-                    <img src="/public/images/work_contact.png" alt="article 2" class="cont-thumb article-thumb" />
-                    <p class="name">Contact</p>
-                </a>
-            </div>
-            <div class="contents-list article-each">
                 <a href="/member/sign_up">
-                    <img src="/public/images/work_account.png" alt="article 3" class="cont-thumb article-thumb" />
+                    <img src="/public/images/work_account.png" alt="article 2" class="cont-thumb article-thumb" />
                     <p class="name">Create Account</p>
                 </a>
             </div>
+
             <div class="contents-list article-each">
-                <img src="/public/images/work3.png" alt="article 4" class="cont-thumb article-thumb" />
-                <p class="name">voluptatem</p>
+                <a href="node">
+                    <img src="/public/images/work3.png" alt="article 3" class="cont-thumb article-thumb" />
+                    <p class="name">voluptatem</p>
+                </a>
             </div>
 
+            <div class="contents-list article-each">
+                <a href="#">
+                    <img src="/public/images/work_contact.png" alt="article 4" class="cont-thumb article-thumb" />
+                    <p class="name">Contact</p>
+                </a>
+            </div>
+            
             <div class="contents-list article-each">
                 <img src="/public/images/work1.png" alt="article 4" class="cont-thumb article-thumb" />
                 <p class="name">voluptatem</p>

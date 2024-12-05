@@ -161,11 +161,6 @@ article
         width: 50%;
     }
 
-    .article-thumb {
-        width: 20vw;
-        height: 20vw;
-    }
-
     /***************************************
     article
     ***************************************/
@@ -177,6 +172,11 @@ article
 
     .article-each {
         min-width: 300px;
+    }
+
+    .article-thumb {
+        width: 20vw;
+        height: 20vw;
     }
 }
 
@@ -194,9 +194,40 @@ article
         flex-direction: column;
     }
 
-    #contents-list .contents-list,
+    #contents-list .contents-list {
+        min-width: unset;
+        width: 100%;
+    }
+
+    /***************************************
+    article
+    ***************************************/
+    #article p {
+        padding: 20px 0;
+    }
+
     .article-each {
         min-width: unset;
         width: 100%;
+        max-width: 300px;
+    }
+
+    .article-each a {
+        margin: 0 auto;
+    }
+
+    .article-thumb {
+        width: 30vw;
+        height: 30vw;
+    }
+
+    .name {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .article-each {
+        max-width: unset;
     }
 }
