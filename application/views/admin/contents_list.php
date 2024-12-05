@@ -197,7 +197,6 @@
                 </tbody>
             </table>
 
-             <!-- pagination : item-list 10개 이상인 경우 -->
              <div id="pagination"></div>
 
         </main>

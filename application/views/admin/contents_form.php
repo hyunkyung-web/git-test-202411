@@ -119,7 +119,7 @@
                     <tfoot>
                         <tr>
                             <td colspan="2">
-                                  <!-- froala 에디터 내용추가 -->
+                                  <!-- froala 에디터 -->
                                 <div id="editor"> </div>
                             </td>
                         </tr>
@@ -138,17 +138,6 @@
         <p>© 2025 관리자</p>
     </footer>
 
-        <!-- froala editor -->
-    <!-- <script>
-
-        new FroalaEditor('#editor', {
-        toolbarInline: false,
-        charCounterCount: false,
-        placeholderText: '내용을 입력하세요...',
-
-        });
-
-    </script> -->
 
 
 

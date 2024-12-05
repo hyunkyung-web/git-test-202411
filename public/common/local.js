@@ -1,11 +1,4 @@
 $(function () {
-	if ($("#pagination").length) {
-		usePagination();
-	}
-	if ($("#editor").length) {
-		initializeFroalaEditor();
-	}
-
 	$(window).resize(function () {
 		//        location.reload();
 	});
@@ -79,6 +72,13 @@ $(function () {
 	});
 
 	//    $(".event_slide").draggable();
+
+	if ($("#pagination").length) {
+		usePagination();
+	}
+	if ($("#editor").length) {
+		initializeFroalaEditor();
+	}
 });
 
 let slideNum = 1;
@@ -102,13 +102,6 @@ function moveSlideEnd(goSlide) {
 function schWebinar() {
 	alert("웨비나 검색");
 }
-
-//froala editor
-// new FroalaEditor("#editor", {
-// 	toolbarInline: false,
-// 	charCounterCount: false,
-// 	placeholderText: "내용을 입력하세요...",
-// });
 
 function initializeFroalaEditor() {
 	new FroalaEditor("#editor", {
@@ -136,6 +129,3 @@ function usePagination() {
 
 	$("#item-list tr").hide().slice(0, itemsPerPage).show();
 }
-
-// generateItems();
-// generatePagination();

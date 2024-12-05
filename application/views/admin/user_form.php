@@ -93,8 +93,8 @@
                         <tr>
                             <th>아이디</th>
                             <td>
-                                <input type="text" name="userId" id="userId" style="max-width: 25%;" value="" placeholder="아이디">
-                                <button id="btnChkUse" onclick="admChkUserId();return(false);">중복확인</button>
+                                <input type="text" name="userId" id="userId" style="max-width: 25%;" value="">
+                                <button>중복확인</button>
 
                             </td>
                         </tr>
@@ -171,18 +171,6 @@
     <footer class="footer">
         <p>© 2025 관리자</p>
     </footer>
-
-        <!-- froala editor -->
-    <!-- <script>
-
-        new FroalaEditor('#editor', {
-        toolbarInline: false,
-        charCounterCount: false,
-        placeholderText: '내용을 입력하세요...',
-
-        });
-
-    </script> -->
 
 
 

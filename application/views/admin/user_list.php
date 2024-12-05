@@ -250,12 +250,8 @@
                         <td>Y</td>
                     </tr>
 
-
-                    <!-- 추가 콘텐츠 -->
                 </tbody>
             </table>
-
-            <!-- pagination -->
             <div id="pagination"></div>
 
         </main>
