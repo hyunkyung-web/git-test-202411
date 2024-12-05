@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;800&display=swap");
+
+@import url(/public/common/css/local.css);
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #e2f0fa;
+    color: #181c32;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Hahmlet", "Noto Sans KR", sans-serif;
+    height: 100vh;
+    margin: -20px 0 50px;
+}
+
+form {
+    width: 100%;
+}
+
+input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+button {
+    width: 100%;
+    border-radius: 4px;
+    background-color: #181c32;
+    color: #ffffff;
+    font-size: var(--font-size--normal);
+    font-weight: bold;
+    padding: 12px 45px;
+    margin: 20px 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: "Hahmlet", "Noto Sans KR", sans-serif;
+    transition: transform 80ms ease-in;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 768px;
+    min-height: 400px;
+    margin: 0 auto;
+    transition: all 0.6s ease-in-out;
+}
+
+.logo {
+    width: 25%;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.member-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+}
+
+.member-container button {
+    align-self: flex-end;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer i {
+    color: red;
+}
+
+footer a {
+    color: #3c97bf;
+    text-decoration: none;
+}

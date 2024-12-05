@@ -16,14 +16,14 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/public/common/css/reset.css?ver=2205031100" />
-    <link rel="stylesheet" href="/public/common/css/local.css" />    
+    <link rel="stylesheet" href="/public/common/css/main.css" />    
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>    
     <script type="text/javascript" src="/public/common/script/common.js?ver=2205031000"></script>
-    <script type="text/javascript" src="/public/common/local.js"></script>                 
+    <script type="text/javascript" src="/public/common/script/main.js"></script>                 
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -61,7 +61,121 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    fregregr
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="/public/images/main/logo01.png" alt="logo_main">
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="/article/list">List</a></li>
+                </ul>
+            </nav>
+
+            <!-- mobile -->
+            <div class="menu-toggle">
+                <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="hamburger-menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="/article/list">List</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <section id="main-banner">
+        <div class="container">
+            <h2>Main banner</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod</p>
+            <!-- <a href="#" class="btn">Learn More</a> -->
+        </div>
+    </section>
+
+    <section id="team">
+        <h3>Contents List 1</h3>
+        <h2>Lorem ipsum dolor</h2>
+        <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
+        <div id="team-member">
+            <div class="team-member">
+                <img src="/public/images/profile1.png" alt="Member 1" class="profile-pic" />
+                <p class="name">Alice</p>
+            </div>
+            <div class="team-member">
+                <img src="/public/images/profile2.png" alt="Member 2" class="profile-pic" />
+                <p class="name">Bob</p>
+            </div>
+            <div class="team-member">
+                <img src="/public/images/profile1.png" alt="Member 3" class="profile-pic" />
+                <p class="name">Charlie</p>
+            </div>
+            <div class="team-member">
+                <img src="/public/images/profile2.png" alt="Member 4" class="profile-pic" />
+                <p class="name">Diana</p>
+            </div>
+        </div>
+        <!-- <button class="btn">Contact Team</button> -->
+    </section>
+
+    <section id="team">
+        <h3>Contents List 2</h3>
+        <h2>Lorem ipsum dolor</h2>
+        <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
+        <div id="team-member">
+            <div class="team-member">
+                <img src="/public/images/profile1.png" alt="Member 1" class="profile-pic" />
+                <p class="name">Alice</p>
+            </div>
+            <div class="team-member">
+                <img src="/public/images/profile2.png" alt="Member 2" class="profile-pic" />
+                <p class="name">Bob</p>
+            </div>
+            <div class="team-member">
+                <img src="/public/images/profile1.png" alt="Member 3" class="profile-pic" />
+                <p class="name">Charlie</p>
+            </div>
+            <div class="team-member">
+                <img src="/public/images/profile2.png" alt="Member 4" class="profile-pic" />
+                <p class="name">Diana</p>
+            </div>
+        </div>
+        <!-- <button class="btn">Contact Team</button> -->
+    </section>
+
+    <section id="team">
+        <h3>Contents List 3</h3>
+        <h2>Lorem ipsum dolor</h2>
+        <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
+        <div id="team-member">
+            <div class="team-member">
+                <img src="/public/images/profile1.png" alt="Member 1" class="profile-pic" />
+                <p class="name">Alice</p>
+            </div>
+            <div class="team-member">
+                <img src="/public/images/profile2.png" alt="Member 2" class="profile-pic" />
+                <p class="name">Bob</p>
+            </div>
+            <div class="team-member">
+                <img src="/public/images/profile1.png" alt="Member 3" class="profile-pic" />
+                <p class="name">Charlie</p>
+            </div>
+            <div class="team-member">
+                <img src="/public/images/profile2.png" alt="Member 4" class="profile-pic" />
+                <p class="name">Diana</p>
+            </div>
+        </div>
+        <!-- <button class="btn">Contact Team</button> -->
+    </section>
        
 </body>   
 </html>
