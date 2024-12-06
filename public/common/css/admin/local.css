@@ -10,9 +10,23 @@ body {
 table {
 	font-size: 0.8rem;
 }
+
+a{text-decoration: none; cursor: pointer; color: unset;}
+
 button {
-	font-family: "Noto Sans KR", sans-serif;
+	background-color: #f0f0f0;
+	color: #000;
+	border: 1px solid #aaa;
+	border-radius: 8px; 
+	margin-left: 5px;
+	display: inline-block;
 	font-size: 0.8rem;
+	cursor: pointer;
+	padding: 5px 12px;
+}
+button:hover {
+	background-color: var(--primary-color);
+	color: #fff;
 }
 
 :root {
@@ -38,9 +52,7 @@ button {
 
 header {
 	background-color: var(--primary-color);
-	color: white;
-	color: #fff;
-	padding: 20px 0;
+	padding: 10px;
 	position: relative;
 }
 header .header-container {
@@ -77,7 +89,7 @@ header h1 {
 
 .sidebar {
 	position: relative;
-	width: 200px;
+	width: 15%;
 	/* 958f80 */
 	/* 454760 */
 
@@ -170,10 +182,6 @@ span.sub-list-toggle {
 	width: 100%;
 }
 
-button {
-	border-radius: 10px;
-	padding: 10px;
-}
 
 @media (max-width: 1024px) {
 	.sidebar {

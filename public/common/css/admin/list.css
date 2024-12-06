@@ -16,18 +16,11 @@ body {
 	height: 100vh;
 }
 
-button {
-	display: inline-block;
-	padding: 10px 20px;
-	background: #f0f0f0;
-	color: #333;
-	border: 1px solid #ddd;
-	cursor: pointer;
-}
+
 
 .main-content {
 	flex-grow: 1;
-	padding: 40px;
+	padding: 20px 40px;
 	overflow-y: auto;
 }
 
@@ -61,7 +54,6 @@ button {
 
 .search-button {
 	margin-left: 10px;
-	padding: 4px 10px;
 }
 
 .content-table {
@@ -80,14 +72,6 @@ button {
 	background-color: #f2f2f2;
 }
 
-button {
-	border-radius: 10px;
-	padding: 10px;
-}
-button:hover {
-	background-color: var(--primary-color);
-	color: #fff;
-}
 
 #item-list {
 	margin-bottom: 20px;
@@ -112,21 +96,16 @@ button:hover {
 
 #pagination ul li {
 	display: inline;
-	margin: 0 5px;
-	padding: 5px 10px;
-	border: 1px solid #ccc;
+	margin: 0 3px;
+	padding: 3px 8px;
+	border: 1px solid #ddd;
 	border-radius: 5px;
 	cursor: pointer;
 	transition: background-color 0.3s;
 	background-color: #f0f0f0;
+	color: #333;
 }
 
-#pagination ul li:hover {
-	background-color: var(--primary-color);
-}
-#pagination ul li:hover a {
-	color: #fff;
-}
 
 #pagination ul li:nth-of-type(1),
 #pagination ul li:nth-of-type(2),
