@@ -23,7 +23,7 @@
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>
+<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script> -->
     <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
     <script type="text/javascript" src="/public/common/local.js"></script>
 	<!-- Google Tag Manager -->
@@ -64,9 +64,9 @@
     <!-- End Google Tag Manager (noscript) -->
 
 
-    <?php include_once APPPATH.'views/admin/header.php'; ?>
+    <?php include_once APPPATH.'views/admin/inc_header.php'; ?>
     <div class="container">
-        <?php include_once APPPATH.'views/admin/aside.php'; ?>
+        <?php include_once APPPATH.'views/admin/inc_aside.php'; ?>
         <main class="main-content">
             <header class="main-header">
                 <div class="main-header-firstLine">
@@ -112,70 +112,70 @@
                         <td>2024-12-02</td>
                     </tr>
                     <tr>
-                        <td>1</td>
+                        <td>3</td>
                         <td>공지</td>
                         <td>첫 번째 콘텐츠</td>
                         <td>홍길동</td>
                         <td>2024-12-01</td>
                     </tr>
                     <tr>
-                        <td>2</td>
+                        <td>4</td>
                         <td>뉴스</td>
                         <td>두 번째 콘텐츠</td>
                         <td>김철수</td>
                         <td>2024-12-02</td>
                     </tr>
                     <tr>
-                        <td>1</td>
+                        <td>5</td>
                         <td>공지</td>
                         <td>첫 번째 콘텐츠</td>
                         <td>홍길동</td>
                         <td>2024-12-01</td>
                     </tr>
                     <tr>
-                        <td>2</td>
+                        <td>6</td>
                         <td>뉴스</td>
                         <td>두 번째 콘텐츠</td>
                         <td>김철수</td>
                         <td>2024-12-02</td>
                     </tr>
                     <tr>
-                        <td>1</td>
+                        <td>7</td>
                         <td>공지</td>
                         <td>첫 번째 콘텐츠</td>
                         <td>홍길동</td>
                         <td>2024-12-01</td>
                     </tr>
                     <tr>
-                        <td>2</td>
+                        <td>8</td>
                         <td>뉴스</td>
                         <td>두 번째 콘텐츠</td>
                         <td>김철수</td>
                         <td>2024-12-02</td>
                     </tr>
                     <tr>
-                        <td>1</td>
+                        <td>9</td>
                         <td>공지</td>
                         <td>첫 번째 콘텐츠</td>
                         <td>홍길동</td>
                         <td>2024-12-01</td>
                     </tr>
                     <tr>
-                        <td>2</td>
+                        <td>10</td>
                         <td>뉴스</td>
                         <td>두 번째 콘텐츠</td>
                         <td>김철수</td>
                         <td>2024-12-02</td>
                     </tr>
                     <tr>
-                        <td>1</td>
+                        <td>11</td>
                         <td>공지</td>
                         <td>첫 번째 콘텐츠</td>
                         <td>홍길동</td>
                         <td>2024-12-01</td>
                     </tr>
                     <tr>
-                        <td>2</td>
+                        <td>12</td>
                         <td>뉴스</td>
                         <td>두 번째 콘텐츠</td>
                         <td>김철수</td>
@@ -185,13 +185,22 @@
                 </tbody>
             </table>
 
-             <div id="pagination"></div>
+             <div id="pagination">
+             	<ul class="pagination">
+             		<li class="page-item first disabled"><a href="#" class="page-link">First</a></li>
+             		<li class="page-item prev disabled"><a href="#" class="page-link">Previous</a></li>
+             		<li class="page-item active"><a href="#" class="page-link">1</a></li>
+             		<li class="page-item"><a href="#" class="page-link">2</a></li>
+             		<li class="page-item next"><a href="#" class="page-link">Next</a></li>
+             		<li class="page-item last"><a href="#" class="page-link">Last</a></li>
+         		</ul>
+             </div>
+             
+             
 
         </main>
     </div>
-    <footer class="footer">
-        <p>© 2025 관리자</p>
-    </footer>
+    <?php include_once APPPATH.'views/admin/inc_footer.php'; ?>
 
 
 

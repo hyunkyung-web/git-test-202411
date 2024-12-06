@@ -85,8 +85,8 @@ body {
 
 #pagination {
 	text-align: center;
-	margin: 50px 0;
-	font-size: 0.8rem;
+	margin: 20px 0;
+	font-size: 0.65rem;
 }
 
 #pagination ul {
@@ -106,13 +106,6 @@ body {
 	color: #333;
 }
 
-
-#pagination ul li:nth-of-type(1),
-#pagination ul li:nth-of-type(2),
-#pagination ul li:nth-of-type(5),
-#pagination ul li:nth-of-type(6) {
-	display: none;
-}
 
 @media (max-width: 1024px) {
 	.main-header {
