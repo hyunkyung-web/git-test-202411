@@ -7,3 +7,30 @@ document.addEventListener("DOMContentLoaded", function () {
         navLinks.classList.toggle("active");
     });
 });
+
+function callData(pageNum) {
+    var callUrl;
+
+    switch (pageNum) {
+        // main
+        case 1:
+            callUrl = "/";
+            break;
+        //member
+        case 11:
+            callUrl = "/member/verify";
+            break;
+        case 12:
+            callUrl = "member/sign_up";
+            break;
+        // article
+        case 2:
+            callUrl = "/article/list";
+            break;
+        case 21:
+            callUrl = "/article/node";
+            break;
+    }
+
+    window.location.href = callUrl;
+}
