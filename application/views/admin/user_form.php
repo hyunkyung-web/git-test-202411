@@ -25,7 +25,6 @@
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
-    <!-- Froala Editor JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.11/js/froala_editor.pkgd.min.js"></script>
     <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
     <script defer type="text/javascript" src="/public/common/local.js"></script>

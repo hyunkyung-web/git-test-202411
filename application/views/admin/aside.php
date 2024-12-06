@@ -8,7 +8,7 @@
             <ul class="sub-list">
                 <li>서브 리스트</li>
                 <li>서브 리스트</li>
-                <li>서브 리스트</li>
+                <li>서브 리스트서브 리스트서브 리스트서브 리스트서브 리스트</li>
                 <li>서브 리스트</li>
                 <li>서브 리스트</li>
                 <li>서브 리스트</li>
@@ -20,4 +20,6 @@
         <li>설정</li>
         <li>로그아웃</li>
     </ul>
+    <!-- <button class="sidebar-toggle"><i class="fas fa-chevron-left"></i></button> -->
+    <button class="sidebar-toggle"><i class="fas fa-bars"></i></button>
 </aside>

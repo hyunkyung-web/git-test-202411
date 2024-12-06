@@ -90,7 +90,8 @@ header h1 {
 
 .sidebar ul {
 	list-style-type: none;
-	padding: 0;
+	/* padding: 0; */
+	padding-top: 15px;
 }
 
 .sidebar li {
@@ -103,8 +104,9 @@ header h1 {
 	/* background-color: #a9aabc; */
 }
 .sidebar li i {
-	float: right;
+	/* float: right; */
 	margin-top: 2px;
+	margin-left: 5px;
 }
 
 .sub-list {
@@ -121,36 +123,37 @@ span.sub-list-toggle {
 /* aside toggle */
 .sidebar-toggle {
 	position: absolute;
-	bottom: 0px;
+	top: 0px;
 	right: 0px;
-	background-color: #a9aabc;
-	background-color: #454655;
-	color: white;
+	/* background-color: #f2f2f2;
+	color: #333; */
+	background: #181c32;
+	color: #f2f2f2;
 	border: none;
-	border-radius: 3px;
-	padding: 10px;
+	width: 40px;
+	height: 40px;
 	cursor: pointer;
-	transition: background-color 0.3s;
-	z-index: 1001;
-	font-size: 1.3rem;
+	transition: right 0.3s;
+	margin-top: 5px;
+	padding: 0px;
 }
-
-.sidebar-toggle:hover {
-	/* background-color: #0056b3; */
-	/* background-color: #a9aabc; */
-}
-
-.sidebar.open {
-	left: -150px;
-}
-
-.main-content {
-	width: 80%;
-	margin: 0 auto;
-}
-.main-content.wide {
-	/* width: 100%; */
+.sidebar-toggle.move {
+	right: -40px;
+	background: #181c32;
+	color: #f2f2f2;
 	margin-left: 0;
+}
+.sidebar-toggle.move:hover,
+.sidebar-toggle:hover {
+	background: #f2f2f2;
+	color: #181c32;
+}
+
+.sidebar {
+	transition: margin-left 0.3s;
+}
+.sidebar.collapsed {
+	margin-left: -180px;
 }
 
 /* footer */

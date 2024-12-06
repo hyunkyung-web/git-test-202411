@@ -79,6 +79,20 @@ $(function () {
 			icon.removeClass("fa-chevron-up").addClass("fa-chevron-down");
 		}
 	});
+
+	$(".sidebar-toggle").on("click", function () {
+		const sidebar = $(".sidebar");
+		sidebar.toggleClass("collapsed");
+		// const icon = $(this).find("i");
+
+		if (sidebar.hasClass("collapsed")) {
+			// icon.removeClass("fa-chevron-left").addClass("fa-chevron-right");
+			$(this).addClass("move");
+		} else {
+			// icon.removeClass("fa-chevron-right").addClass("fa-chevron-left");
+			$(this).removeClass("move");
+		}
+	});
 });
 
 let slideNum = 1;
