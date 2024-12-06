@@ -63,7 +63,7 @@
     
     <?php include_once APPPATH.'views/header.php'; ?>
     
-    <section id="article-node" class="padd30">
+    <section id="article-node">
         <div class="cont_left padd20">
             <img src="/public/images/cont.png" alt="cont" />
         </div>
