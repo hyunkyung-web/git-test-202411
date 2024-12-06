@@ -63,7 +63,7 @@
 
     <div class="container">
         <div class="logo">
-            <img src="/public/common/images/novo_logo.png" alt="novo_logo">
+            <img src="/public/common/images/dwave_pro_logo.png" alt="dwave_pro_logo">
         </div>
         
         <div class="member-container">
@@ -73,13 +73,26 @@
                     <input type="text"  placeholder="이름" required />
                 </div>
 
+                <div class="form_item phone">
+                    <input type="tel"  placeholder="휴대전화번호" maxlength="16" required />
+                </div>
+
                 <div class="form_item email">
                     <input type="email" placeholder="Email" required />
                 </div>
 
-                <div class="form_item phone" id="divPhoneNo">
-                    <input type="tel"  placeholder="휴대전화번호" maxlength="16" required />
+                <div class="form_item Hosp">
+                    <input type="text"  placeholder="병원명" required />
                 </div>
+
+                <div class="form_item Dept">
+                    <input type="text"  placeholder="진료과목" required />
+                </div>
+
+                <div class="form_item license_num">
+                    <input type="text"  placeholder="자격번호/면허번호" required />
+                </div>
+
                 <button>Sign Up</button>
             </form>
         </div>

@@ -1,14 +1,50 @@
+@charset "UTF-8";
+
 /* root style */
 :root {
     --background-color-navy: #181c32;
+    --background-color-skyblue: #e2f0fa;
     --font-blue: #3437ee;
 }
 
 /* Reset styles */
 
+* {
+    margin: 0;
+    padding: 0;
+    border: none 0;
+    box-sizing: border-box;
+}
+html {
+    width: 100%;
+    /* height: 100%; */
+}
+
 body {
     font-family: "Noto Sans KR", sans-serif;
     background-color: #fff;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+}
+
+ul,
+li,
+ol {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+button {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    -webkit-appearance: none;
 }
 
 a {
@@ -33,16 +69,35 @@ h1 {
 }
 
 /* padding */
+.padd10 {
+    padding: 10px;
+}
+.padd20 {
+    padding: 20px;
+}
+.padd30 {
+    padding: 30px;
+}
+.padd60 {
+    padding: 60px;
+}
 .padd0-20 {
     padding: 0 20px;
 }
 
 /* header */
 header {
+    position: fixed;
+    top: 0;
+    width: 100%;
     background-color: var(--background-color-navy);
     color: #fff;
     padding: 20px 0;
     /* position: relative; */
+}
+
+header + section {
+    min-height: 81vh;
 }
 
 /* logo */
@@ -191,7 +246,7 @@ footer a {
     }
     .hamburger-menu ul {
         position: absolute;
-        top: 15%;
+        top: 10%;
     }
 
     /* .hamburger-menu.active */
@@ -208,11 +263,6 @@ footer a {
 
     .hamburger-menu.active ul {
         position: absolute;
-        top: 15%;
-    }
-
-    .hamburger-menu.active ul {
-        position: absolute;
-        top: 15%;
+        top: 10%;
     }
 }

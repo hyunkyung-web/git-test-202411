@@ -23,7 +23,7 @@
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>    
     <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
-    <script type="text/javascript" src="/public/common/local.js"></script>                 
+    <script type="text/javascript" src="/public/common/script/main.js"></script>                 
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -63,44 +63,36 @@
     
     <?php include_once APPPATH.'views/header.php'; ?>
     
-    <section id="article" class="flex_SB_center">
+    <section id="article" class="flex_SB_center padd60">
         <h2>Contents Lists</h2>
         <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p>
         <div id="article-each" class="flex_SB_center">
             <div class="contents-list article-each">
-                <a href="/member/verify">
-                    <img src="/public/images/work_sign_thumb.png" alt="article 1" class="cont-thumb article-thumb" />
-                    <p class="name">Login</p>
-                </a>
+                <img src="/public/images/work_sign_thumb.png" alt="article 1" class="cont-thumb article-thumb" onclick="callData(11)" />
+                <p class="name">Login</p>
             </div>
 
             <div class="contents-list article-each">
-                <a href="/member/sign_up">
-                    <img src="/public/images/work_account.png" alt="article 2" class="cont-thumb article-thumb" />
-                    <p class="name">Create Account</p>
-                </a>
+                <img src="/public/images/work_account.png" alt="article 2" class="cont-thumb article-thumb" onclick="callData(12)"/>
+                <p class="name">Create Account</p>
             </div>
 
             <div class="contents-list article-each">
-                <a href="node">
-                    <img src="/public/images/work3.png" alt="article 3" class="cont-thumb article-thumb" />
-                    <p class="name">voluptatem</p>
-                </a>
+                <img src="/public/images/work3.png" alt="article 3" class="cont-thumb article-thumb" onclick="callData(21)"/>
+                <p class="name">voluptatem</p>
             </div>
 
             <div class="contents-list article-each">
-                <a href="#">
-                    <img src="/public/images/work_contact.png" alt="article 4" class="cont-thumb article-thumb" />
-                    <p class="name">Contact</p>
-                </a>
+                <img src="/public/images/work_contact.png" alt="article 4" class="cont-thumb article-thumb" onclick="callData(21)"/>
+                <p class="name">voluptatem</p>
             </div>
             
             <div class="contents-list article-each">
-                <img src="/public/images/work1.png" alt="article 4" class="cont-thumb article-thumb" />
+                <img src="/public/images/work1.png" alt="article 4" class="cont-thumb article-thumb" onclick="callData(21)"/>
                 <p class="name">voluptatem</p>
             </div>
             <div class="contents-list article-each">
-                <img src="/public/images/work2.png" alt="article 4" class="cont-thumb article-thumb" />
+                <img src="/public/images/work2.png" alt="article 4" class="cont-thumb article-thumb" onclick="callData(21)"/>
                 <p class="name">voluptatem</p>
             </div>
         </div>

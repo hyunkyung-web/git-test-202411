@@ -1,15 +1,15 @@
 <header>
         <div class="header-container flex_SB_center padd0-20">
-            <div class="logo">
+            <div class="logo" onclick="callData(1)">
                 <img src="/public/images/main/logo01.png" alt="logo_main">
             </div>
 
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="/article/list">List</a></li>
+                    <li onclick="callData(1)">Home</li>
+                    <li>About</li>
+                    <li>Services</li>
+                    <li onclick="callData(2)">List</li>
                 </ul>
             </nav>
 
@@ -22,10 +22,10 @@
             </div>
             <div class="hamburger-menu">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="/article/list">List</a></li>
+                    <li onclick="callData(1)">Home</li>
+                    <li>About</li>
+                    <li>Services</li>
+                    <li onclick="callData(2)">List</li>
                 </ul>
             </div>
         </div>
