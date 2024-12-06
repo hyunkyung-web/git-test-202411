@@ -241,7 +241,7 @@
 
                 </tbody>
             </table>
-            <div id="pagination"></div>
+            <?php include_once APPPATH.'views/admin/inc_paging.php'; ?>
 
         </main>
     </div>

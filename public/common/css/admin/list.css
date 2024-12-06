@@ -96,7 +96,7 @@ body {
 
 #pagination ul li {
 	display: inline;
-	margin: 0 3px;
+	margin: 0 1px;
 	padding: 3px 8px;
 	border: 1px solid #ddd;
 	border-radius: 5px;

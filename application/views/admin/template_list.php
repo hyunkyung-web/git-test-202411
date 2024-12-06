@@ -184,19 +184,8 @@
                     <!-- 추가 콘텐츠 -->
                 </tbody>
             </table>
-
-             <div id="pagination">
-             	<ul class="pagination">
-             		<li class="page-item first disabled"><a href="#" class="page-link">First</a></li>
-             		<li class="page-item prev disabled"><a href="#" class="page-link">Previous</a></li>
-             		<li class="page-item active"><a href="#" class="page-link">1</a></li>
-             		<li class="page-item"><a href="#" class="page-link">2</a></li>
-             		<li class="page-item next"><a href="#" class="page-link">Next</a></li>
-             		<li class="page-item last"><a href="#" class="page-link">Last</a></li>
-         		</ul>
-             </div>
-             
-             
+            
+            <?php include_once APPPATH.'views/admin/inc_paging.php'; ?>        
 
         </main>
     </div>

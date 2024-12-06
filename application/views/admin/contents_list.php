@@ -22,8 +22,7 @@
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>
+    
     <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
     <script type="text/javascript" src="/public/common/local.js"></script>
 	<!-- Google Tag Manager -->
@@ -185,7 +184,7 @@
                 </tbody>
             </table>
 
-             <div id="pagination"></div>
+			<?php include_once APPPATH.'views/admin/inc_paging.php'; ?>
 
         </main>
     </div>
