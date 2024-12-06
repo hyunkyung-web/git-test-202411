@@ -18,7 +18,7 @@ main
     color: #fff;
     text-align: center;
     padding: 100px 0;
-    margin-top: 100px;
+    margin-top: 6vw;
 }
 
 #main-banner h1 {
@@ -103,7 +103,7 @@ article
 /* list.php */
 #article {
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 6vw;
 }
 #article p {
     text-align: center;
@@ -135,20 +135,23 @@ article
 /* node.php */
 #article-node {
     display: flex;
-    /* flex-direction: column; */
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     max-width: 1200px;
     padding: 50px 0;
-    margin: 100px auto 0;
+    margin: 6vw auto 0;
 }
 
 #article-node div {
     min-height: 400px;
 }
 .cont_left {
-    width: 40%;
+    width: 50%;
     text-align: center;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .cont_left img {
@@ -156,7 +159,7 @@ article
 }
 
 .cont_right {
-    width: 60%;
+    width: 50%;
     height: 100%;
     line-height: 2;
     font-size: 1em;
@@ -196,6 +199,11 @@ article
 
 /* media query */
 @media screen and (max-width: 1200px) {
+    #article,
+    #article-node {
+        margin-top: 100px;
+    }
+
     /***************************************
     main
     ***************************************/
@@ -304,7 +312,9 @@ article
     .cont_left {
         width: 50%;
         margin: 0 auto;
+        border-radius: 0;
         border: 0;
+        box-shadow: 0;
     }
 
     .cont_right {
