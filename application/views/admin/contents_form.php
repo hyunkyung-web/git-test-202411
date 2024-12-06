@@ -16,8 +16,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.11/css/froala_editor.pkgd.min.css">
-    <link rel="stylesheet" href="/public/common/css/reset.css?ver=2205031100" />
-    <link rel="stylesheet" href="/public/common/css/local_new.css" />
+    <link rel="stylesheet" href="/public/common/css/admin/local.css" />
     <link rel="stylesheet" href="/public/common/css/admin/form.css" />
 
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
@@ -66,9 +65,9 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <?php include_once APPPATH.'views/admin/header.php'; ?>
+    <?php include_once APPPATH.'views/admin/inc_header.php'; ?>
     <div class="container">
-        <?php include_once APPPATH.'views/admin/aside.php'; ?>
+        <?php include_once APPPATH.'views/admin/inc_aside.php'; ?>
 
         <main class="main-content">
             <form>
@@ -123,9 +122,7 @@
 
 
     </div>
-    <footer class="footer">
-        <p>© 2025 관리자</p>
-    </footer>
+    <?php include_once APPPATH.'views/admin/inc_footer.php'; ?>
 
 
 

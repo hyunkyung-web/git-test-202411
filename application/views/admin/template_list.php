@@ -64,9 +64,9 @@
     <!-- End Google Tag Manager (noscript) -->
 
 
-    <?php include_once APPPATH.'views/admin/inc_header.php'; ?>
+    <?php include_once APPPATH.'views/admin/header.php'; ?>
     <div class="container">
-        <?php include_once APPPATH.'views/admin/inc_aside.php'; ?>
+        <?php include_once APPPATH.'views/admin/aside.php'; ?>
         <main class="main-content">
             <header class="main-header">
                 <div class="main-header-firstLine">
@@ -189,7 +189,9 @@
 
         </main>
     </div>
-    <?php include_once APPPATH.'views/admin/inc_footer.php'; ?>
+    <footer class="footer">
+        <p>© 2025 관리자</p>
+    </footer>
 
 
 

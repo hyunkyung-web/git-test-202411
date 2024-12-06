@@ -56,6 +56,11 @@ class Admin extends CI_Controller {
 	{
 	    $this->load->view('/admin/user_form');
 	}
+	
+	public function template_list()
+	{
+	    $this->load->view('/admin/template_list');
+	}
 
 
 

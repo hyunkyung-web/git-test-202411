@@ -16,10 +16,8 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.11/css/froala_editor.pkgd.min.css">
-    <link rel="stylesheet" href="/public/common/css/reset.css?ver=2205031100" />
-    <link rel="stylesheet" href="/public/common/css/local_new.css" />
+    <link rel="stylesheet" href="/public/common/css/admin/local.css" />
     <link rel="stylesheet" href="/public/common/css/admin/form.css" />
-
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
@@ -155,9 +153,7 @@
 
 
     </div>
-    <footer class="footer">
-        <p>© 2025 관리자</p>
-    </footer>
+    <?php include_once APPPATH.'views/admin/inc_footer.php'; ?>
 
 
 
