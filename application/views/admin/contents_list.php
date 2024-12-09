@@ -15,14 +15,15 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/public/common/css/admin/local.css" />
-    <link rel="stylesheet" href="/public/common/css/admin/list.css" />
+    <!-- <link rel="stylesheet" href="/public/common/css/admin/local.css" />
+    <link rel="stylesheet" href="/public/common/css/admin/list.css" /> -->
+    <link rel="stylesheet" href="/public/common/css/local.css" />
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
-    
+
     <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
     <script type="text/javascript" src="/public/common/script/local.js"></script>
 	<!-- Google Tag Manager -->
@@ -63,7 +64,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
 
-    <?php include_once APPPATH.'views/admin/inc_header.php'; ?>
+    <!-- <?php include_once APPPATH.'views/admin/inc_header.php'; ?> -->
     <div class="container">
         <?php include_once APPPATH.'views/admin/inc_aside.php'; ?>
         <main class="main-content">
