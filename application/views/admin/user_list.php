@@ -94,31 +94,28 @@
                         <th>소속/부서</th>
                         <th>가입일</th>
                         <th>접속일</th>
-                        <th>작성자</th>
                         <th>사용</th>
                     </tr>
                 </thead>
                 <tbody id="item-list">
                     <tr>
                         <td style="text-align: center;"><input type="checkbox" /></td>
-                        <td>hk</td>
-                        <td>hk</td>
-                        <td>hyunkyung.kho@d-wave.co.kr</td>
-                        <td>디웨이브</td>
+                        <td>apple</td>
+                        <td>김사과</td>
+                        <td>apple@d-wave.co.kr</td>
+                        <td>당뇨사업부</td>
                         <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
+                        <td>2024-12-01</td>                        
                         <td>Y</td>
                     </tr>
                     <tr>
                         <td style="text-align: center;"><input type="checkbox" /></td>
-                        <td>hk</td>
-                        <td>hk</td>
-                        <td>hyunkyung.kho@d-wave.co.kr</td>
-                        <td>디웨이브</td>
+                        <td>mogwa</td>
+                        <td>나모과</td>
+                        <td>mogwa@d-wave.co.kr</td>
+                        <td>당뇨사업부</td>
                         <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
+                        <td>2024-12-01</td>                        
                         <td>Y</td>
                     </tr>
 
