@@ -70,7 +70,7 @@
             <header class="main-header">
                 <div class="main-header-firstLine">
                     <!-- button 추가 -->
-                    <button class="add-content">콘텐츠 추가</button>
+                    <button type="button" class="add-content" onclick="javascript: openMenu(110);">콘텐츠 추가</button>
 
                 </div>
 

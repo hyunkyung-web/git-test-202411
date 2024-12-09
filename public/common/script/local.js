@@ -23,7 +23,13 @@ function openMenu(menuNum=0){
 		case 100:
 			location.href = "/admin/contents_list";
 			break;
+		case 110:
+			location.href = "/admin/contents_form";
+			break;
 		case 200:
+			location.href = "/admin/template_list";
+			break;
+		case 210:
 			location.href = "/admin/template_list";
 			break;
 		case 900:

@@ -14,7 +14,7 @@
             <!-- <i class="fas fa-chevron-up"></i> -->
             <ul class="sub-list">
                 <li onclick="javascript: openMenu(200);">템플릿 관리</li>
-                <li>발송 관리</li>
+                <li onclick="javascript: openMenu(210);">발송 관리</li>
             </ul>
         </li>        
         <li>설정</li>
