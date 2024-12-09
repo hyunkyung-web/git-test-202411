@@ -70,11 +70,12 @@
         <?php include_once APPPATH.'views/admin/inc_aside.php'; ?>
 
         <main class="main-content">
+            <h3>사용자관리-상세정보</h3>
             <form>
                 <table>
                     <colgroup>
-                        <col style="width: 30%;">
-                        <col style="width: 70%;">
+                        <col style="width: 20%;">
+                        <col style="width: 80%;">
                     </colgroup>
                     <!-- <thead>
                         <tr>
@@ -84,34 +85,25 @@
                     </thead> -->
                     <tbody>
                         <tr>
-                            <th>제목</th>
-                            <td><input type="text" /></td>
+                            <th>이름</th>
+                            <td><input type="text" placeholder="이름" required/></td>
                         </tr>
                         <tr>
-                            <th>게시 구분</th>
+                            <th>휴대전화번호</th>
                             <td>
-                                <select class="classify-contents">
-                                    <option value="">선택</option>
-                                    <option value="type1">일반</option>
-                                    <option value="type2">공지</option>
-
-                                </select>
+                            <input type="tel"  placeholder="휴대전화번호" maxlength="16" required />
                             </td>
                         </tr>
                         <tr>
-                            <th>첨부 파일</th>
-                            <td class="add-file"><input type="file" /></td>
+                            <th>E-Mail</th>
+                            <td><input type="email" placeholder="Email" required /></td>
+                        </tr>
+                        <tr>
+                            <th>부서명</th>
+                            <td><input type="text"  placeholder="부서명" required /></td>
                         </tr>
 
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2">
-                                  <!-- froala 에디터 -->
-                                <div id="editor"> </div>
-                            </td>
-                        </tr>
-                    </tfoot>
                 </table>
             </form>
             <div class="btn-wrap">
