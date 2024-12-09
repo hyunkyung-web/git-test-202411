@@ -27,7 +27,7 @@
     <!-- Froala Editor JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.11/js/froala_editor.pkgd.min.js"></script>
     <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
-    <script defer type="text/javascript" src="/public/common/local.js"></script>
+    <script defer type="text/javascript" src="/public/common/script/local.js"></script>
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

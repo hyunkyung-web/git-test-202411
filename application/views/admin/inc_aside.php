@@ -5,17 +5,16 @@
 
             <!-- <i class="fas fa-chevron-up"></i> -->
             <ul class="sub-list">
-                <li>서브 리스트 1</li>
-                <li>서브 리스트 2</li>                
+                <li onclick="javascript: openMenu(100);">콘텐츠 리스트</li>                                
             </ul>
         </li>
-        <li>사용자 관리</li>
+        <li onclick="javascript: openMenu(900);">사용자 관리</li>
         <li>
             <span class="sub-list-toggle">Kakao Message <i class="fas fa-chevron-down"></i></span>
             <!-- <i class="fas fa-chevron-up"></i> -->
             <ul class="sub-list">
-                <li>템플릿</li>
-                <li>발송관리</li>                
+                <li onclick="javascript: openMenu(200);">템플릿 관리</li>
+                <li>발송 관리</li>
             </ul>
         </li>        
         <li>설정</li>

@@ -24,7 +24,7 @@
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
-    <script type="text/javascript" src="/public/common/local.js"></script>
+    <script defer type="text/javascript" src="/public/common/script/local.js"></script>
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

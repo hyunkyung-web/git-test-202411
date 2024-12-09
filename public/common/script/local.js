@@ -15,3 +15,19 @@ $(function () {
 	});
 	
 });
+
+
+function openMenu(menuNum=0){
+	
+	switch(menuNum){
+		case 100:
+			location.href = "/admin/contents_list";
+			break;
+		case 200:
+			location.href = "/admin/template_list";
+			break;
+		case 900:
+			location.href = "/admin/user_list";
+			break;
+	}
+}

@@ -25,7 +25,7 @@
 
 <!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script> -->
     <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
-    <script type="text/javascript" src="/public/common/local.js"></script>
+    <script type="text/javascript" src="/public/common/script/local.js"></script>
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -71,7 +71,7 @@
             <header class="main-header">
                 <div class="main-header-firstLine">
                     <!-- button 추가 -->
-                    <button class="add-content">콘텐츠 추가</button>
+                    <button class="add-content">템플릿 추가</button>
 
                 </div>
 
