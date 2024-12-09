@@ -21,7 +21,7 @@ table {
 th,
 td {
 	border: 1px solid #ddd;
-	padding: 5px;
+	padding: 0px;
 	text-align: left;
 	height: 3em;
 }
@@ -64,13 +64,12 @@ input,
 select {
 	width: 100%;
 	height: 100%;
+	border: none;
+	padding: 5px 10px;
 	/* border: 1px solid #ddd; */
 	/* padding: 5px; */
 }
-select {
-	width: 18%;
-	border: 1px solid #ccc;
-}
+
 
 input[type="radio"] {
 	display: inline-block;

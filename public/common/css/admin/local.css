@@ -51,8 +51,7 @@ button:hover {
 } */
 
 header {
-	background-color: var(--primary-color);
-	padding: 10px;
+	background-color: var(--primary-color);	
 	position: relative;
 }
 header .header-container {
@@ -86,6 +85,8 @@ header h1 {
 	height: calc(100% - 60px);
 	max-height: 85%;
 }
+
+.main-content h3{margin-bottom: 20px;}
 
 .sidebar {
 	position: relative;
