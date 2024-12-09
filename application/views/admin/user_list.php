@@ -69,7 +69,9 @@
     <div class="container">
         <?php include_once APPPATH.'views/admin/inc_aside.php'; ?>
         <main class="main-content">
-            <header class="main-header">
+        	<h3>사용자관리</h3>
+        	        	
+            <header class="main-header">            	       
                 <div class="main-header-firstLine">
                     <!-- button 추가 -->
                     <button type="button" class="add-content" onclick="javascript: openMenu(110);">Add User</button>
