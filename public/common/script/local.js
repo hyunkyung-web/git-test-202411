@@ -35,5 +35,8 @@ function openMenu(menuNum=0){
 		case 900:
 			location.href = "/admin/user_list";
 			break;
+		case 910:
+			location.href = "/admin/user_form";
+			break;
 	}
 }

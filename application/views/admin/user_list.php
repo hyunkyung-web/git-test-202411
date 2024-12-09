@@ -72,8 +72,8 @@
             <header class="main-header">
                 <div class="main-header-firstLine">
                     <!-- button 추가 -->
-                    <button class="add-content">신규사용자</button>
-
+                    <button type="button" class="add-content" onclick="javascript: openMenu(110);">Add User</button>
+                    <button type="button" class="add-content" onclick="javascript: openMenu(110);">Delete User</button>
                 </div>
 
                 <div class="search-bar">
@@ -85,7 +85,7 @@
             <table class="content-table">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th style="text-align: center;"><input type="checkbox" /></th>
                         <th>아이디</th>
                         <th>성명</th>
                         <th>이메일</th>
@@ -98,7 +98,7 @@
                 </thead>
                 <tbody id="item-list">
                     <tr>
-                        <td>1</td>
+                        <td style="text-align: center;"><input type="checkbox" /></td>
                         <td>hk</td>
                         <td>hk</td>
                         <td>hyunkyung.kho@d-wave.co.kr</td>
@@ -109,126 +109,7 @@
                         <td>Y</td>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>hk</td>
-                        <td>hk</td>
-                        <td>hyunkyung.kho@d-wave.co.kr</td>
-                        <td>디웨이브</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>Y</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>hk</td>
-                        <td>hk</td>
-                        <td>hyunkyung.kho@d-wave.co.kr</td>
-                        <td>디웨이브</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>Y</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>hk</td>
-                        <td>hk</td>
-                        <td>hyunkyung.kho@d-wave.co.kr</td>
-                        <td>디웨이브</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>Y</td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>hk</td>
-                        <td>hk</td>
-                        <td>hyunkyung.kho@d-wave.co.kr</td>
-                        <td>디웨이브</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>Y</td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>hk</td>
-                        <td>hk</td>
-                        <td>hyunkyung.kho@d-wave.co.kr</td>
-                        <td>디웨이브</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>Y</td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>hk</td>
-                        <td>hk</td>
-                        <td>hyunkyung.kho@d-wave.co.kr</td>
-                        <td>디웨이브</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>Y</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>hk</td>
-                        <td>hk</td>
-                        <td>hyunkyung.kho@d-wave.co.kr</td>
-                        <td>디웨이브</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>Y</td>
-                    </tr> <tr>
-                        <td>1</td>
-                        <td>hk</td>
-                        <td>hk</td>
-                        <td>hyunkyung.kho@d-wave.co.kr</td>
-                        <td>디웨이브</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>Y</td>
-                    </tr> <tr>
-                        <td>1</td>
-                        <td>hk</td>
-                        <td>hk</td>
-                        <td>hyunkyung.kho@d-wave.co.kr</td>
-                        <td>디웨이브</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>Y</td>
-                    </tr> <tr>
-                        <td>1</td>
-                        <td>hk</td>
-                        <td>hk</td>
-                        <td>hyunkyung.kho@d-wave.co.kr</td>
-                        <td>디웨이브</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>Y</td>
-                    </tr> <tr>
-                        <td>1</td>
-                        <td>hk</td>
-                        <td>hk</td>
-                        <td>hyunkyung.kho@d-wave.co.kr</td>
-                        <td>디웨이브</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>2024-12-01</td>
-                        <td>Y</td>
-                    </tr> <tr>
-                        <td>1</td>
+                        <td style="text-align: center;"><input type="checkbox" /></td>
                         <td>hk</td>
                         <td>hk</td>
                         <td>hyunkyung.kho@d-wave.co.kr</td>
