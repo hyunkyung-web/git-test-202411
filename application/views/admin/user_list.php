@@ -98,13 +98,14 @@
                             <!-- button 추가 -->
                             <div>
                                 <!-- <button type="button" class="add-content" onclick="javascript: openMenu(110);">Add User</button> -->
+                                <button type="button" class="add-user" onclick="javascript: openMenu(910);"><i class="fa-solid fa-circle-plus"></i> Add</button>
                                 <button type="button" class="delete-user" onclick="javascript: openMenu(110);"><i class="fa-solid fa-circle-minus"></i> Del</button>
                                 <button type="button" class="download-user" onclick="javascript: openMenu(110);"><i class="fa-solid fa-download"></i> Excel</button>
                             </div>
                         </div>
 
                         <div class="search-bar">
-                            <select class="category-select">
+                            <select class="category-select list-select">
                                 <option value="">DEPT/BU</option>
                                 <option value="category1">CMR</option>
                                 <option value="category2">F&O</option>
