@@ -27,10 +27,10 @@ button {
 	font-weight: bold;
 	cursor: pointer;
 }
-button:hover {
+/* button:hover {
 	background-color: var(--primary-color);
 	color: #fff;
-}
+} */
 
 :root {
 	--background-color: #e2f0fa;
@@ -409,8 +409,32 @@ th {
 	font-size: 0.9em;
 }
 
-td.add-file input {
-	margin-top: 5px;
+/* 커스텀 input type="file" */
+td.add-file {
+	display: flex;
+	align-items: center;
+}
+
+td.add-file .upload-name {
+	display: inline-block;
+	padding: 0 8px;
+	vertical-align: middle;
+	border: 1px solid #dddddd;
+	width: 35%;
+	color: #6c716e;
+}
+
+td.add-file label {
+	/* button style */
+	display: inline-block;
+	padding: 8px 15px;
+	border-radius: 5px;
+	margin-left: 5px;
+	font-weight: bold;
+	font-size: 0.9em;
+	background: #c7f8f5;
+	color: #19c5bb;
+	cursor: pointer;
 }
 
 .classify-contents {
@@ -455,6 +479,9 @@ select {
 select {
 	width: 18%;
 	border: 1px solid #ccc;
+}
+select option {
+	font-size: 0.8em;
 }
 
 input[type="radio"] {
@@ -528,8 +555,6 @@ select {
 	cursor: pointer;
 	display: flex;
 	justify-content: flex-end;
-	/* position: absolute;
-	right: 3%; */
 }
 
 /******************** list-table ********************/

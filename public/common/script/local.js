@@ -1,8 +1,5 @@
-$(function () {	
-	
+$(function () {
 	$(".sub-list-toggle").on("click", function () {
-
-		
 		const subList = $(this).next("ul");
 		subList.toggle();
 
@@ -13,13 +10,22 @@ $(function () {
 			icon.removeClass("fa-chevron-up").addClass("fa-chevron-down");
 		}
 	});
-	
+
+	startEditor();
 });
 
+function startEditor() {
+	nhn.husky.EZCreator.createInIFrame({
+		oAppRef: oEditor,
+		elPlaceHolder: "editorTxt",
+		sSkinURI: "/public/common/smarteditor/SmartEditor2Skin.html",
 
-function openMenu(menuNum=0){
-	
-	switch(menuNum){
+		fCreator: "createSEditor2",
+	});
+}
+
+function openMenu(menuNum = 0) {
+	switch (menuNum) {
 		case 100:
 			location.href = "/admin/contents_list";
 			break;
