@@ -13,10 +13,8 @@
 	<meta property="og:image" content="https://dr-wave.co.kr/public/images/logo.png"/>
 	<meta property="og:url" content="" />
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet" />
-    <!-- <link rel="stylesheet" href="/public/common/css/admin/local.css" />
-    <link rel="stylesheet" href="/public/common/css/admin/list.css" /> -->
+    <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
     <link rel="stylesheet" href="/public/common/css/local.css" />
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
@@ -25,6 +23,7 @@
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>
 
+    <script src="/public/common/script/fontawesome.all.min.js"></script>
     <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
     <script defer type="text/javascript" src="/public/common/script/local.js"></script>
 	<!-- Google Tag Manager -->
@@ -73,15 +72,17 @@
 
             <!-- flex 1 -->
             <div class="main-content-top">
-                <h3>Members <br />
-                    <span>Message Target</span>
+                <h3>Members
+
                 </h3>
                 <nav>
                     <ul class="nav-links">
                         <!-- 검색, 로그아웃, user -->
-                            <li>search</li>
-                            <li>logout</li>
-                            <li>userInfo</li>
+                            <li><i class="fa-solid fa-magnifying-glass"></i>
+                            </i>
+                            </li>
+                            <li><i class="fa-solid fa-power-off"></i></li>
+                            <li><span style="color: #c6c5cd ">Hi</span>, <span>디웨이브</span></li>
 
                     </ul>
                 </nav>
@@ -91,50 +92,150 @@
                 <div>
                     <header class="main-header">
                         <div class="main-header-firstLine">
+                            <h3>Members <br />
+                                <span>Message Target</span>
+                            </h3>
                             <!-- button 추가 -->
-                            <button type="button" class="add-content" onclick="javascript: openMenu(110);">Add User</button>
-                            <button type="button" class="add-content" onclick="javascript: openMenu(110);">Delete User</button>
+                            <div>
+                                <!-- <button type="button" class="add-content" onclick="javascript: openMenu(110);">Add User</button> -->
+                                <button type="button" class="delete-user" onclick="javascript: openMenu(110);"><i class="fa-solid fa-circle-minus"></i> Del</button>
+                                <button type="button" class="download-user" onclick="javascript: openMenu(110);"><i class="fa-solid fa-download"></i> Excel</button>
+                            </div>
                         </div>
 
                         <div class="search-bar">
-
-                            <input type="text" placeholder="검색" class="search-input">
-                            <button class="search-button">검색</button>
+                            <select class="category-select">
+                                <option value="">DEPT/BU</option>
+                                <option value="category1">CMR</option>
+                                <option value="category2">F&O</option>
+                                <option value="category2">CE</option>
+                            </select>
+                            <input type="text" placeholder="Search..." class="search-input">
+                            <button class="search-button">Search</button>
                         </div>
                     </header>
                     <table class="content-table">
                         <thead>
                             <tr>
-                                <th style="text-align: center;"><input type="checkbox" /></th>
+                                <th  align="center">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span class="custom-checkbox"></span>
+                                    </label>
+                                </th>
+                                <th>DEPT / BU</th>
+                                <th>TEAM</th>
                                 <th>아이디</th>
                                 <th>성명</th>
-                                <th>이메일</th>
-                                <th>소속/부서</th>
+                                <!-- <th>이메일</th>
+                                <th>소속/부서</th> -->
                                 <th>가입일</th>
                                 <th>접속일</th>
-                                <th>사용</th>
+                                <!-- <th>사용</th> -->
                             </tr>
                         </thead>
                         <tbody id="item-list">
                             <tr>
-                                <td style="text-align: center;"><input type="checkbox" /></td>
+                                <td  align="center">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span class="custom-checkbox"></span>
+                                    </label>
+                                </td>
+                                <td>CMR</td>
+                                <td>PV</td>
                                 <td>apple</td>
                                 <td>김사과</td>
-                                <td>apple@d-wave.co.kr</td>
-                                <td>당뇨사업부</td>
+                                <!-- <td>apple@d-wave.co.kr</td>
+                                <td>당뇨사업부</td> -->
                                 <td>2024-12-01</td>
                                 <td>2024-12-01</td>
-                                <td>Y</td>
+                                <!-- <td>Y</td> -->
                             </tr>
                             <tr>
-                                <td style="text-align: center;"><input type="checkbox" /></td>
+                                <td align="center">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span class="custom-checkbox"></span>
+                                    </label>
+                                </td>
+                                <td>CRM</td>
+                                <td>Medical Team</td>
                                 <td>mogwa</td>
                                 <td>나모과</td>
-                                <td>mogwa@d-wave.co.kr</td>
-                                <td>당뇨사업부</td>
+                                <!-- <td>mogwa@d-wave.co.kr</td>
+                                <td>당뇨사업부</td> -->
                                 <td>2024-12-01</td>
                                 <td>2024-12-01</td>
-                                <td>Y</td>
+                                <!-- <td>Y</td> -->
+                            </tr>
+                            <tr>
+                                <td  align="center">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span class="custom-checkbox"></span>
+                                    </label>
+                                </td>
+                                <td>CMR</td>
+                                <td>PV</td>
+                                <td>apple</td>
+                                <td>김사과</td>
+                                <!-- <td>apple@d-wave.co.kr</td>
+                                <td>당뇨사업부</td> -->
+                                <td>2024-12-01</td>
+                                <td>2024-12-01</td>
+                                <!-- <td>Y</td> -->
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span class="custom-checkbox"></span>
+                                    </label>
+                                </td>
+                                <td>CRM</td>
+                                <td>Medical Team</td>
+                                <td>mogwa</td>
+                                <td>나모과</td>
+                                <!-- <td>mogwa@d-wave.co.kr</td>
+                                <td>당뇨사업부</td> -->
+                                <td>2024-12-01</td>
+                                <td>2024-12-01</td>
+                                <!-- <td>Y</td> -->
+                            </tr>
+                            <tr>
+                                <td  align="center">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span class="custom-checkbox"></span>
+                                    </label>
+                                </td>
+                                <td>CMR</td>
+                                <td>PV</td>
+                                <td>apple</td>
+                                <td>김사과</td>
+                                <!-- <td>apple@d-wave.co.kr</td>
+                                <td>당뇨사업부</td> -->
+                                <td>2024-12-01</td>
+                                <td>2024-12-01</td>
+                                <!-- <td>Y</td> -->
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span class="custom-checkbox"></span>
+                                    </label>
+                                </td>
+                                <td>CRM</td>
+                                <td>Medical Team</td>
+                                <td>mogwa</td>
+                                <td>나모과</td>
+                                <!-- <td>mogwa@d-wave.co.kr</td>
+                                <td>당뇨사업부</td> -->
+                                <td>2024-12-01</td>
+                                <td>2024-12-01</td>
+                                <!-- <td>Y</td> -->
                             </tr>
 
                         </tbody>
