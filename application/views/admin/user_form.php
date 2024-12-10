@@ -63,9 +63,9 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <?php include_once APPPATH.'views/admin/header.php'; ?>
+    <?php include_once APPPATH.'views/admin/inc_header.php'; ?>
     <div class="container">
-        <?php include_once APPPATH.'views/admin/aside.php'; ?>
+        <?php include_once APPPATH.'views/admin/inc_aside.php'; ?>
         <main class="main-content">
             <form>
                 <table>
