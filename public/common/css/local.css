@@ -174,24 +174,24 @@ header h1 {
 	background-color: #1f1c2f;
 	padding: 0px;
 	color: #757989;
-	font-size: 1rem;
+	font-size: 1em;
 }
 
-.sidebar ul {
+.sidebar > ul {
 	list-style-type: none;
-	/* padding: 0; */
-	padding-top: 10px;
+	padding: 10px 20px;
 }
 
 .sidebar li {
 	/* margin: 10px 0; */
-	padding: 20px 30px;
+	/* padding: 20px 30px; */
 	/* border-bottom: 1px solid #181c32; */
 	cursor: pointer;
 }
 
 .sidebar li.logo {
-	padding: 20px 20px;
+	padding: 20px 0px;
+	padding-bottom: 30px;
 }
 /* .sidebar > ul > li:hover,
 .sidebar > ul > li.active {
@@ -204,53 +204,39 @@ header h1 {
 	margin-left: 5px;
 }
 
+/* sub-list */
 .sub-list {
 	display: none;
-}
-.sub-list > li {
-	border: none;
-	padding: 20px 25px;
+	padding-left: 30px;
+	font-size: 0.8em;
 }
 
 span.sub-list-toggle {
 	width: 100%;
 	display: block;
 }
-
-/* aside toggle */
-.sidebar-toggle {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	/* background-color: #f2f2f2;
-	color: #333; */
-	background: #181c32;
-	color: #f2f2f2;
-	border: none;
-	width: 40px;
-	height: 40px;
-	cursor: pointer;
-	transition: right 0.3s;
-	margin-top: 5px;
-	padding: 0px;
+span.sub-list-toggle:hover {
+	color: #fff;
 }
-.sidebar-toggle.move {
-	right: -40px;
-	background: #181c32;
-	color: #f2f2f2;
-	margin-left: 0;
-}
-.sidebar-toggle.move:hover,
-.sidebar-toggle:hover {
-	background: #f2f2f2;
-	color: #181c32;
+span.sub-list-toggle.active {
+	color: #fff;
 }
 
-.sidebar {
-	transition: margin-left 0.3s;
+/* sidebar > ul > li.nav-item */
+.nav-item {
+	margin-bottom: 20px;
 }
-.sidebar.collapsed {
-	margin-left: -180px;
+.nav-item span {
+	display: inline-block;
+	margin-bottom: 15px;
+}
+/* .open 추가 */
+.nav-item.open .sub-list {
+	display: block;
+}
+
+.nav-item.open .sub-list-toggle i {
+	transform: rotate(180deg);
 }
 
 /******************** container2 - main ********************/
@@ -644,10 +630,6 @@ select {
 }
 .fr-box.fr-basic .fr-wrapper {
 	border-bottom-color: #fff !important;
-}
-
-#smart_editor2 {
-	width: auto !important;
 }
 
 /******************** footer ********************/
