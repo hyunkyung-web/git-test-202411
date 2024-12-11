@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
     <link rel="stylesheet" href="/public/common/css/local.css" />
-    <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
@@ -145,10 +145,10 @@
                                 <tr>
                                     <th>첨부 파일</th>
                                     <td class="add-file">
-                                    <!-- <input type="file" /> -->
-                                        <input class="upload-name" value="Add file..." placeholder="Add file..." readonly>
+                                        <input type="file" />
+                                        <!-- <input class="upload-name" value="Add file..." placeholder="Add file..." readonly>
                                         <label for="file"> <i class="fa-solid fa-circle-check"></i> add file</label>
-                                        <input type="file" id="file" style="display: none;">
+                                        <input type="file" id="file" style="display: none;"> -->
                                     </td>
                                 </tr>
 
@@ -169,7 +169,7 @@
 
                     <div class="btn-wrap">
                         <button class="save-user form-btn"><i class="fa-solid fa-circle-plus"></i> save</button>
-                        <button class="cancel-user form-btn"><i class="fa-solid fa-circle-minus"></i> cancel</button>
+                        <button class="cancel-user form-btn" onclick="javascript: openMenu(100);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
                     </div>
 
                     <?php include_once APPPATH.'views/admin/inc_paging.php'; ?>

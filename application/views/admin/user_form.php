@@ -219,7 +219,7 @@
 
                     <div class="btn-wrap">
                         <button class="save-user form-btn"><i class="fa-solid fa-circle-plus"></i> save</button>
-                        <button class="cancel-user form-btn"><i class="fa-solid fa-circle-minus"></i> cancel</button>
+                        <button class="cancel-user form-btn" onclick="javascript: openMenu(100);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
                     </div>
 
                     <?php include_once APPPATH.'views/admin/inc_paging.php'; ?>

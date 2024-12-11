@@ -14,10 +14,8 @@
 	<meta property="og:url" content="" />
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/public/common/css/reset.css?ver=2205031100" />
-    <link rel="stylesheet" href="/public/common/css/admin/local.css" />
-    <link rel="stylesheet" href="/public/common/css/admin/login.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/common/css/local.css" />
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
@@ -56,7 +54,7 @@
 
 </script>
 
-<body>
+<body class="body-login">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5Z935QD"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -74,7 +72,7 @@
                 <input type="checkbox" id="remember">
                 <label for="remember">로그인 저장</label>
             </div>
-            <button type="submit">로그인</button>
+            <button type="submit" class="btn-login" onclick="javascript: openMenu(100);">로그인</button>
         </form>
     </div>
 

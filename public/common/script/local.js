@@ -11,15 +11,17 @@ $(function () {
 		}
 	});
 
-	startEditor();
+	if ($("#smarteditor").length) {
+		startEditor();
+	}
 });
 
 function startEditor() {
+	var oEditor = [];
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: oEditor,
 		elPlaceHolder: "editorTxt",
 		sSkinURI: "/public/common/smarteditor/SmartEditor2Skin.html",
-
 		fCreator: "createSEditor2",
 	});
 }
