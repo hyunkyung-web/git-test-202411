@@ -4,10 +4,10 @@
             <img src="/public/images/main/logo01.png" alt="">
         </li>
         <li class="nav-item">
-            <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Kakao <i class="fas fa-chevron-down"></i></span>
+            <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; CMS <i class="fas fa-chevron-down"></i></span>
             <!-- <i class="fas fa-chevron-up"></i> -->
             <ul class="sub-list">
-                <li onclick="javascript: openMenu(100);">콘텐츠 리스트</li>
+                <li onclick="javascript: openMenu(100);">CMS List</li>
             </ul>
         </li>
 
