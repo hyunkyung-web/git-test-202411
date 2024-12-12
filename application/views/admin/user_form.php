@@ -143,7 +143,7 @@
                                 </tr>
                                 <tr>
                                     <th>아이디</th>
-                                    <td>
+                                    <td class="userId_wrap">
                                         <input type="text" name="userId" id="userId"  value="">
                                         <button class="validate-userId form-btn"><i class="fa-solid fa-circle-check"></i> check</button>
 
