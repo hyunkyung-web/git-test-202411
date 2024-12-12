@@ -1,6 +1,76 @@
 @import url(layout.css);
 
 /***************************************
+member
+***************************************/
+
+.member-wrap {
+    background-color: #e2f0fa;
+    color: #181c32;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Noto Sans KR", sans-serif;
+    height: 100vh;
+    /* margin: -20px 0 50px; */
+}
+
+.member-wrap button {
+    width: 100%;
+    border-radius: 4px;
+    background-color: #181c32;
+    color: #ffffff;
+    font-size: var(--font-size--normal);
+    font-weight: bold;
+    padding: 12px 45px;
+    margin: 20px 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: "Noto Sans KR", sans-serif;
+    transition: transform 80ms ease-in;
+}
+
+.member-wrap button:active {
+    transform: scale(0.95);
+}
+
+.member-wrap button:focus {
+    outline: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 500px;
+    /* min-height: 400px; */
+    margin: 0 auto;
+    transition: all 0.6s ease-in-out;
+}
+
+.member-wrap .logo {
+    width: 25%;
+    margin: 20px 0;
+}
+
+.member-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+}
+
+/***************************************
 main
 ***************************************/
 
@@ -324,6 +394,12 @@ article
 }
 
 @media screen and (max-width: 480px) {
+    /* member */
+    .member-container {
+        padding: 0 20px;
+    }
+
+    /* article */
     .article-each {
         max-width: unset;
     }

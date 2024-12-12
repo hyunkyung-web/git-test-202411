@@ -15,15 +15,12 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/public/common/css/reset.css?ver=2205031100" />
-    <link rel="stylesheet" href="/public/common/css/member.css" />    
+    <link rel="stylesheet" href="/public/common/css/user/main.css" />    
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>    
-    <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
-    <script type="text/javascript" src="/public/common/local.js"></script>                 
+    <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -61,25 +58,29 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <div class="container">
-        <div class="logo">
-            <img src="/public/common/images/novo_logo.png" alt="novo_logo">
-        </div>
-        
-        <div class="member-container">
-            <h1>SIGN IN</h1>
-            <form action="#">
-                <div class="form_item user" id="divName">
-                    <input type="text" id="name" name="name" placeholder="이름" class="input" value="" maxlength="40" />
-                </div>
+    <div class="member-wrap">
+        <div class="container">
+            <div class="logo">
+            <img src="/public/common/images/dwave_pro_logo.png" alt="dwave_pro_logo">
+            </div>
+            
+            <div class="member-container">
+                <h1>SIGN IN</h1>
+                <form action="#">
+                    <div class="form_item user" id="divName">
+                        <input type="text" id="name" name="name" placeholder="이름" class="input" value="" maxlength="40" />
+                    </div>
 
-                <div class="form_item phone" id="divPhoneNo">
-                    <input type="tel" id="phoneNo" name="phoneNo" placeholder="휴대전화번호" class="input" value="" maxlength="16" />
-                </div>
-                <button>Sign IN</button>
-            </form>
+                    <div class="form_item phone" id="divPhoneNo">
+                        <input type="tel" id="phoneNo" name="phoneNo" placeholder="휴대전화번호" class="input" value="" maxlength="16" />
+                    </div>
+                    <button type="button">Sign IN</button>
+                </form>
+            </div>
         </div>
     </div>
+
+    
 
 </body>   
 </html>
