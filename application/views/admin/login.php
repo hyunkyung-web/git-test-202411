@@ -15,14 +15,14 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/public/common/css/local.css" />
+    <link rel="stylesheet" href="/public/common/css/admin.css" />
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
-    <script defer type="text/javascript" src="/public/common/script/local.js"></script>
+    <script defer type="text/javascript" src="/public/common/script/admin.js"></script>
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -72,7 +72,7 @@
                 <input type="checkbox" id="remember">
                 <label for="remember">로그인 저장</label>
             </div>
-            <button type="submit" class="btn-login" onclick="javascript: openMenu(100);">로그인</button>
+            <button type="button" class="btn-login" onclick="javascript: openMenu(100);">로그인</button>
         </form>
     </div>
 

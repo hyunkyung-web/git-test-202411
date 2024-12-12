@@ -15,7 +15,7 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
-    <link rel="stylesheet" href="/public/common/css/local.css" />
+    <link rel="stylesheet" href="/public/common/css/admin.css" />
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
@@ -25,7 +25,7 @@
 
     <script src="/public/common/script/fontawesome.all.min.js"></script>
     <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
-    <script defer type="text/javascript" src="/public/common/script/local.js"></script>
+    <script defer type="text/javascript" src="/public/common/script/admin.js"></script>
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -63,26 +63,21 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-
-
     <!-- aside, button -->
     <div class="container">
         <?php include_once APPPATH.'views/admin/inc_aside.php'; ?>
         <div class="main-content-wrap">
-
             <!-- flex 1 -->
             <div class="main-content-top">
-                <h3>Members
-
-                </h3>
+                <h3>Members</h3>
                 <nav>
                     <ul class="nav-links">
                         <!-- 검색, 로그아웃, user -->
-                            <li><i class="fa-solid fa-magnifying-glass"></i>
-                            </i>
-                            </li>
-                            <li><i class="fa-solid fa-power-off"></i></li>
-                            <li><span style="color: #c6c5cd ">Hi</span>, <span>디웨이브</span></li>
+                        <li><i class="fa-solid fa-magnifying-glass"></i>
+                        </i>
+                        </li>
+                        <li><i class="fa-solid fa-power-off"></i></li>
+                        <li><span style="color: #c6c5cd ">Hi</span>, <span>디웨이브</span></li>
 
                     </ul>
                 </nav>
@@ -218,11 +213,9 @@
                     </form>
 
                     <div class="btn-wrap">
-                        <button class="save-user form-btn"><i class="fa-solid fa-circle-plus"></i> save</button>
-                        <button class="cancel-user form-btn" onclick="javascript: openMenu(100);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
+                        <button type="button" class="save-user form-btn"><i class="fa-solid fa-circle-plus"></i> save</button>
+                        <button type="button" class="cancel-user form-btn" onclick="javascript: openMenu(100);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
                     </div>
-
-                    <?php include_once APPPATH.'views/admin/inc_paging.php'; ?>
                 </div>
 
 
