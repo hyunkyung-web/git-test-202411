@@ -15,7 +15,7 @@
 
             <!-- mobile -->
             <div class="menu-toggle">
-                <input type="checkbox" />
+                <!-- <input type="checkbox" /> -->
                 <span></span>
                 <span></span>
                 <span></span>
