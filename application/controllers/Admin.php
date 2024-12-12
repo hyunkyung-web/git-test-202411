@@ -141,7 +141,7 @@ class Admin extends CI_Controller {
 	    $totalRecord = $query["listCount"];
 	    $totalPage = ceil($totalRecord/$pageSize);
 	    
-	    $viewData = ["schData"=>$schData, "data"=>$query["list"], "totalRecord"=>$totalRecord, "pageSize"=>$pageSize, "page"=>$page,
+	    $viewData = ["menuNum"=>200, "schData"=>$schData, "data"=>$query["list"], "totalRecord"=>$totalRecord, "pageSize"=>$pageSize, "page"=>$page,
 	        "listFnc"=>"templateList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage
 	    ];
 	    

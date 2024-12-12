@@ -2,11 +2,10 @@ $(function () {
 	$(".sub-list-toggle").on("click", function () {
 		$(this).toggleClass("active");
 		const subList = $(this).next("ul");
-		subList.toggle();
+		subList.toggle();		
 
-		console.log("test");
 		const icon = $(this).find("i");
-		if (subList.is(":visible")) {
+		if (subList.css("display")=="block") {
 			icon.removeClass("fa-chevron-down").addClass("fa-chevron-up");
 		} else {
 			icon.removeClass("fa-chevron-up").addClass("fa-chevron-down");
