@@ -7,13 +7,15 @@
             <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; CMS <i class="fas fa-chevron-down"></i></span>
             <!-- <i class="fas fa-chevron-up"></i> -->
             <ul class="sub-list">
-                <li onclick="javascript: openMenu(100);">CMS List</li>
+                <li onclick="javascript: openMenu(100);">CMS List</li>                
             </ul>
         </li>
 
-        <li class="nav-item" onclick="javascript: openMenu(900);">
-            <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; MicroSite </span>
-
+        <li class="nav-item">
+            <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Template </span>
+            <ul class="sub-list">
+                <li onclick="javascript: openMenu(200);">Template List</li>                
+            </ul>
         </li>
 
         <li class="nav-item" onclick="javascript: openMenu(100);">
@@ -23,12 +25,10 @@
 
         <li class="nav-item" onclick="javascript: openMenu(900);">
             <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Members </span>
-
         </li>
 
         <li class="nav-item">
             <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Long-term Emplyees </span>
-
         </li>
 
         <li class="nav-item">
