@@ -104,13 +104,16 @@ h1 {
 
 /* header */
 header {
-    position: fixed;
-    top: 0;
+    position: relative;
     width: 100%;
     height: 120px;
     background-color: var(--background-color-navy);
     color: #fff;
     z-index: 999;
+}
+
+header .header-container {
+    height: 100%;
 }
 
 header + section {
@@ -122,6 +125,7 @@ header + section {
     width: 15vw;
     min-width: 150px;
     max-width: 300px;
+    max-height: 90px;
 }
 
 /* menu */
@@ -206,6 +210,7 @@ footer a {
         cursor: pointer;
         position: relative;
         z-index: 999;
+        height: auto;
     }
 
     .menu-toggle input {
