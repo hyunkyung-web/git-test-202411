@@ -343,6 +343,7 @@ span.sub-list-toggle.active {
 	background: #c7f8f5;
 	color: #19c5bb;
 	border: none;
+	height: auto;
 }
 .search-bar {
 	/* margin-left: auto; */
@@ -377,7 +378,7 @@ span.sub-list-toggle.active {
 /******************** form ********************/
 
 /* table  */
-table {
+form table {
 	width: 100%;
 	border-collapse: collapse;
 	margin: 20px 0;
@@ -387,22 +388,27 @@ table {
 textarea {
 	border: none;
 }
-th,
-td {
+form th,
+form td {
 	border-bottom: 1px solid #ddd;
-	/* padding: 5px; */
 	text-align: left;
 	height: 3em;
-	text-align: center;
 }
-th {
+form th {
 	/* color: #b5b5b8; */
 	font-weight: bold;
 	border-top: none;
+	padding-left: 10px;
+	background: #f9f9f9;
 }
 
+form td.userId_wrap {
+	/* border: 1px solid red; */
+	display: flex;
+	flex-direction: row;
+}
 /* 커스텀 input type="file" */
-td.add-file {
+form td.add-file {
 	display: flex;
 	align-items: center;
 }
@@ -449,11 +455,14 @@ td.radio input {
 .form-select {
 }
 form input {
-	width: 35%;
+	border: none;
+	width: 100%;
+	height: 100%;
+	padding: 10px;
 }
 form .form-select,
 form input {
-	border: 1px solid #ddd;
+	/* border: 1px solid #ddd; */
 	border-radius: 5px;
 }
 
@@ -461,7 +470,7 @@ form input {
 	margin-left: 5px;
 }
 /* input, select  */
-input,
+
 select {
 	width: 100%;
 	height: 100%;
@@ -560,7 +569,7 @@ select {
 .list-table td {
 	border: 1px solid #ddd;
 	padding: 8px;
-	text-align: left;
+	text-align: center;
 }
 
 .list-table th {
