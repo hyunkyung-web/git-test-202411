@@ -1,8 +1,14 @@
-<header class="header">
-        <!-- <h1></h1> -->
-        <div class="header-container">
-                <div class="logo">
-                        <img src="/public/images/main/logo01.png" alt="">
-                </div>
-        </div>
-</header>
+<div class="main-content-top">
+        <h3>Members
+        </h3>
+        <nav>
+                <ul class="nav-links">
+                <!-- 검색, 로그아웃, user -->
+                <li><i class="fa-solid fa-magnifying-glass"></i>
+                </i>
+                </li>
+                <li><i class="fa-solid fa-power-off"></i></li>
+                <li><span style="color: #c6c5cd ">Hi</span>, <span>디웨이브</span></li>
+                </ul>
+        </nav>
+</div>

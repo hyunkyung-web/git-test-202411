@@ -2,10 +2,10 @@ $(function () {
 	$(".sub-list-toggle").on("click", function () {
 		$(this).toggleClass("active");
 		const subList = $(this).next("ul");
-		subList.toggle();		
+		subList.toggle();
 
 		const icon = $(this).find("i");
-		if (subList.css("display")=="block") {
+		if (subList.css("display") == "block") {
 			icon.removeClass("fa-chevron-down").addClass("fa-chevron-up");
 		} else {
 			icon.removeClass("fa-chevron-up").addClass("fa-chevron-down");
@@ -25,6 +25,17 @@ function startEditor() {
 		sSkinURI: "/public/common/smarteditor/SmartEditor2Skin.html",
 		fCreator: "createSEditor2",
 	});
+}
+
+function updateFileName() {
+	const fileInput = $("#file").get(0);
+	const uploadNameInput = $(".upload-name");
+
+	if (fileInput.files.length > 0) {
+		uploadNameInput.val(fileInput.files[0].name);
+	} else {
+		uploadNameInput.val("Add file...");
+	}
 }
 
 function openMenu(menuNum = 0) {

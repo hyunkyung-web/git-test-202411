@@ -71,30 +71,13 @@
         <div class="main-content-wrap">
 
             <!-- flex 1 -->
-            <div class="main-content-top">
-                <h3>Members
-
-                </h3>
-                <nav>
-                    <ul class="nav-links">
-                        <!-- 검색, 로그아웃, user -->
-                        <li><i class="fa-solid fa-magnifying-glass"></i>
-                        </i>
-                        </li>
-                        <li><i class="fa-solid fa-power-off"></i></li>
-                        <li><span style="color: #c6c5cd ">Hi</span>, <span>디웨이브</span></li>
-
-                    </ul>
-                </nav>
-            </div>
+            <?php include_once APPPATH.'views/admin/inc_header.php'; ?>
             <!-- flex 2 -->
             <main class="main-content">
                 <div>
                     <header class="main-header">
                         <div class="main-header-firstLine">
-                            <h3>Members <br />
-                                <span>Message Target</span>
-                            </h3>
+                            <!-- <h3></h3> -->
                             <!-- button 추가 -->
                             <div>
                                 <!-- <button type="button" class="add-content" onclick="javascript: openMenu(110);">Add User</button> -->

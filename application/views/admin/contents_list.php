@@ -71,28 +71,13 @@
         <div class="main-content-wrap">
 
             <!-- flex 1 -->
-            <div class="main-content-top">
-                <h3>Contents</h3>
-                <nav>
-                    <ul class="nav-links">
-                        <!-- 검색, 로그아웃, user -->
-                            <li><i class="fa-solid fa-magnifying-glass"></i>
-                            </i>
-                            </li>
-                            <li><i class="fa-solid fa-power-off"></i></li>
-                            <li><span style="color: #c6c5cd ">Hi</span>, <span>디웨이브</span></li>
-
-                    </ul>
-                </nav>
-            </div>
+            <?php include_once APPPATH.'views/admin/inc_header.php'; ?>
             <!-- flex 2 -->
             <main class="main-content">
                 <div>
                     <header class="main-header">
                         <div class="main-header-firstLine">
-                            <h3>Contents <br />
-                                <span>Message Target</span>
-                            </h3>
+                           <!-- <h3></h3> -->
                             <!-- button 추가 -->
                             <div>
                                 <button type="button" class="add-user btn1" onclick="javascript: openMenu(110);"><i class="fa-solid fa-circle-plus"></i> Add</button>
@@ -102,16 +87,16 @@
 
                         <div class="search-bar">
                             <select class="category-select list-select">
-                                <option value="">구분</option>
+                                <option value="">Search...</option>
                                 <option value="category1">공지</option>
                                 <option value="category2">뉴스</option>
 
                             </select>
-                            <input type="text" placeholder="Search..." class="search-input">
+                            <input type="text" placeholder="검색..." class="search-input">
                             <button type="button" class="search-button">Search</button>
                         </div>
                     </header>
-                    <table class="content-table">
+                    <table class="list-table">
                         <thead>
                             <tr>
                                 <th align="center">
@@ -137,7 +122,7 @@
                                 </td>
                                 <td>1</td>
                                 <td>공지</td>
-                                <td>첫 번째 콘텐츠</td>
+                                <td class="align_left">첫 번째 콘텐츠</td>
                                 <td>홍길동</td>
                                 <td>2024-12-01</td>
                             </tr>
@@ -150,7 +135,7 @@
                                 </td>
                                 <td>2</td>
                                 <td>뉴스</td>
-                                <td>두 번째 콘텐츠</td>
+                                <td class="align_left">두 번째 콘텐츠</td>
                                 <td>김철수</td>
                                 <td>2024-12-02</td>
                             </tr>
@@ -163,7 +148,7 @@
                                 </td>
                                 <td>1</td>
                                 <td>공지</td>
-                                <td>첫 번째 콘텐츠</td>
+                                <td class="align_left">첫 번째 콘텐츠</td>
                                 <td>홍길동</td>
                                 <td>2024-12-01</td>
                             </tr>
@@ -176,7 +161,7 @@
                                 </td>
                                 <td>2</td>
                                 <td>뉴스</td>
-                                <td>두 번째 콘텐츠</td>
+                                <td class="align_left">두 번째 콘텐츠</td>
                                 <td>김철수</td>
                                 <td>2024-12-02</td>
                             </tr>
@@ -189,7 +174,7 @@
                                 </td>
                                 <td>1</td>
                                 <td>공지</td>
-                                <td>첫 번째 콘텐츠</td>
+                                <td class="align_left">첫 번째 콘텐츠</td>
                                 <td>홍길동</td>
                                 <td>2024-12-01</td>
                             </tr>
@@ -202,7 +187,7 @@
                                 </td>
                                 <td>2</td>
                                 <td>뉴스</td>
-                                <td>두 번째 콘텐츠</td>
+                                <td class="align_left">두 번째 콘텐츠</td>
                                 <td>김철수</td>
                                 <td>2024-12-02</td>
                             </tr>
@@ -215,7 +200,7 @@
                                 </td>
                                 <td>1</td>
                                 <td>공지</td>
-                                <td>첫 번째 콘텐츠</td>
+                                <td class="align_left">첫 번째 콘텐츠</td>
                                 <td>홍길동</td>
                                 <td>2024-12-01</td>
                             </tr>
@@ -228,7 +213,7 @@
                                 </td>
                                 <td>2</td>
                                 <td>뉴스</td>
-                                <td>두 번째 콘텐츠</td>
+                                <td class="align_left">두 번째 콘텐츠</td>
                                 <td>김철수</td>
                                 <td>2024-12-02</td>
                             </tr>
@@ -241,7 +226,7 @@
                                 </td>
                                 <td>1</td>
                                 <td>공지</td>
-                                <td>첫 번째 콘텐츠</td>
+                                <td class="align_left">첫 번째 콘텐츠</td>
                                 <td>홍길동</td>
                                 <td>2024-12-01</td>
                             </tr>
@@ -254,7 +239,7 @@
                                 </td>
                                 <td>2</td>
                                 <td>뉴스</td>
-                                <td>두 번째 콘텐츠</td>
+                                <td class="align_left">두 번째 콘텐츠</td>
                                 <td>김철수</td>
                                 <td>2024-12-02</td>
                             </tr>
@@ -267,7 +252,7 @@
                                 </td>
                                 <td>1</td>
                                 <td>공지</td>
-                                <td>첫 번째 콘텐츠</td>
+                                <td class="align_left">첫 번째 콘텐츠</td>
                                 <td>홍길동</td>
                                 <td>2024-12-01</td>
                             </tr>
@@ -280,7 +265,7 @@
                                 </td>
                                 <td>2</td>
                                 <td>뉴스</td>
-                                <td>두 번째 콘텐츠</td>
+                                <td class="align_left">두 번째 콘텐츠</td>
                                 <td>김철수</td>
                                 <td>2024-12-02</td>
                             </tr>

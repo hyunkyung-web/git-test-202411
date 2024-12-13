@@ -68,20 +68,7 @@
         <?php include_once APPPATH.'views/admin/inc_aside.php'; ?>
         <div class="main-content-wrap">
             <!-- flex 1 -->
-            <div class="main-content-top">
-                <h3>Members</h3>
-                <nav>
-                    <ul class="nav-links">
-                        <!-- 검색, 로그아웃, user -->
-                        <li><i class="fa-solid fa-magnifying-glass"></i>
-                        </i>
-                        </li>
-                        <li><i class="fa-solid fa-power-off"></i></li>
-                        <li><span style="color: #c6c5cd ">Hi</span>, <span>디웨이브</span></li>
-
-                    </ul>
-                </nav>
-            </div>
+            <?php include_once APPPATH.'views/admin/inc_header.php'; ?>
             <!-- flex 2 -->
             <main class="main-content">
                 <div>
@@ -142,17 +129,17 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>아이디</th>
+                                    <th class="required">아이디</th>
                                     <td class="userId_wrap">
                                         <input type="text" name="userId" id="userId"  value="">
-                                        <button class="validate-userId form-btn"><i class="fa-solid fa-circle-check"></i> check</button>
+                                        <button type="button" class="validate-userId form-btn"><i class="fa-solid fa-circle-check"></i> check</button>
 
                                     </td>
                                 </tr>
 
 
                                 <tr>
-                                    <th>비밀번호</th>
+                                    <th class="required">비밀번호</th>
                                     <td><input type="password" /></td>
                                 </tr>
                                 <tr>

@@ -72,21 +72,7 @@
         <div class="main-content-wrap">
 
             <!-- flex 1 -->
-            <div class="main-content-top">
-                <h3>Members
-
-                </h3>
-                <nav>
-                    <ul class="nav-links">
-                        <!-- 검색, 로그아웃, user -->
-                        <li><i class="fa-solid fa-magnifying-glass"></i>
-                        </i>
-                        </li>
-                        <li><i class="fa-solid fa-power-off"></i></li>
-                        <li><span style="color: #c6c5cd ">Hi</span>, <span>디웨이브</span></li>
-                    </ul>
-                </nav>
-            </div>
+            <?php include_once APPPATH.'views/admin/inc_header.php'; ?>
             <!-- flex 2 -->
             <main class="main-content">
                 <div>
@@ -144,10 +130,14 @@
                                 <tr>
                                     <th>첨부 파일</th>
                                     <td class="add-file">
-                                        <input type="file" />
+                                        <!-- <input type="file" /> -->
                                         <!-- <input class="upload-name" value="Add file..." placeholder="Add file..." readonly>
                                         <label for="file"> <i class="fa-solid fa-circle-check"></i> add file</label>
                                         <input type="file" id="file" style="display: none;"> -->
+
+                                        <input class="upload-name" value="Add file..." placeholder="Add file..." readonly>
+                                        <label for="file"> <i class="fa-solid fa-circle-check"></i> add file</label>
+                                        <input type="file" id="file" style="display: none;" onchange="updateFileName()">
                                     </td>
                                 </tr>
 
