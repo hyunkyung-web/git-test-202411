@@ -54,22 +54,26 @@ class Admin extends CI_Controller {
 
 	public function contents_list()
 	{
-	    $this->load->view('/admin/contents_list');
+	    $viewData = ["menuNum"=>100];
+	    $this->load->view('/admin/contents_list', $viewData);
 	}
 
 	public function contents_form()
 	{
-	    $this->load->view('/admin/contents_form');
+	    $viewData = ["menuNum"=>110];
+	    $this->load->view('/admin/contents_form', $viewData);
 	}
 
 	public function user_list()
 	{
-	    $this->load->view('/admin/user_list');
+	    $viewData = ["menuNum"=>900];
+	    $this->load->view('/admin/user_list', $viewData);
 	}
 
 	public function user_form()
 	{
-	    $this->load->view('/admin/user_form');
+	    $viewData = ["menuNum"=>910];
+	    $this->load->view('/admin/user_form', $viewData);
 	}
 	
 	
@@ -80,8 +84,7 @@ class Admin extends CI_Controller {
 	    $editMode = $idx==-1 ? "N" : "U";
 	    
 	    $dataProfile = [
-	        ["key"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af", "profile_nm"=>"dr-wave"],
-	        ["key"=>"20230306", "profile_nm"=>"waflab"]
+	        ["key"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af", "profile_nm"=>"dr-wave"]
 	    ];
 	    
 	    $img_data = [
@@ -110,12 +113,41 @@ class Admin extends CI_Controller {
 	        }
 	    } else {
 	        foreach($keyVal as $col){
-	            $info+= [$col => ''];
+	            $info+= [$col => ''];	            
 	        }
+	        $info["template_type"]="ft";
 	    }
 	    
-	    $viewData = ["editMode"=>$editMode, "info"=>$info, "idx"=>$idx, "dataProfile"=>$dataProfile, "img_data"=>$img_data];
+	    $viewData = ["menuNum"=>210, "editMode"=>$editMode, "info"=>$info, "idx"=>$idx, "dataProfile"=>$dataProfile, "img_data"=>$img_data];
 	    $this->load->view('/admin/template_form', $viewData);
+	}
+	
+	public function template_save(){
+	    
+	    $this->session_chk("admin");
+	    
+	    $query = $this->msgModel->template_save([
+	        "editMode"=> getPost("editMode", "N"),
+	        "idx"=> getPost("idx", -1),
+	        "profile_type"=> getPost("profile_type", ""),
+	        "profile_key"=> getPost("profile_key", ""),
+	        "template_type"=> getPost("template_type", "at"),
+	        "template_cd"=> getPost("template_cd", ""),
+	        "img_url"=> getPost("img_url", ""),
+	        "img_link"=> getPost("img_link", ""),
+	        "template_nm"=> getPost("template_nm", ""),
+	        "template_msg"=> getPost("template_msg", ''),
+	        "btn_type"=> getPost("btn_type", ""),
+	        "btn_name"=> getPost("btn_name", ""),
+	        "btn_link"=> getPost("btn_link", "")
+	    ]);
+	    
+	    if ( $query["result"] != "db_error") {
+	        echo json_encode(['result' => 'ok', 'msg'=>$query["msg"], 'rtn_idx'=>$query["rtn_idx"]]);
+	    } else {
+	        echo json_encode(['result' => 'db_error', 'msg'=>$query["msg"]]);
+	    }
+	    exit;
 	}
 	
 	public function template_list(){
@@ -150,33 +182,7 @@ class Admin extends CI_Controller {
 	    // 	    $this->load->view('/admin/inc_paging', $pageData);
 	}
 	
-	public function template_save(){
-	    
-	    $this->session_chk("admin");
-	    
-	    $query = $this->msgModel->template_save([
-	        "editMode"=> getPost("editMode", "N"),
-	        "idx"=> getPost("idx", -1),
-	        "profile_type"=> getPost("profile_type", ""),
-	        "profile_key"=> getPost("profile_key", ""),
-	        "template_type"=> getPost("template_type", "at"),
-	        "template_cd"=> getPost("template_cd", ""),
-	        "img_url"=> getPost("img_url", ""),
-	        "img_link"=> getPost("img_link", ""),
-	        "template_nm"=> getPost("template_nm", ""),
-	        "template_msg"=> getPost("template_msg", ''),
-	        "btn_type"=> getPost("btn_type", ""),
-	        "btn_name"=> getPost("btn_name", ""),
-	        "btn_link"=> getPost("btn_link", "")
-	    ]);
-	    
-	    if ( $query["result"] != "db_error") {
-	        echo json_encode(['result' => 'ok', 'msg'=>$query["msg"], 'rtn_idx'=>$query["rtn_idx"]]);
-	    } else {
-	        echo json_encode(['result' => 'db_error', 'msg'=>$query["msg"]]);
-	    }
-	    exit;
-	}
+	
 	
 
 	

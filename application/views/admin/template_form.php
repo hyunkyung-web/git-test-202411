@@ -24,7 +24,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>
 
     <script src="/public/common/script/fontawesome.all.min.js"></script>
-    <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
+    <script defer type="text/javascript" src="/public/common/script/common.js"></script>
     <script defer type="text/javascript" src="/public/common/script/admin.js"></script>
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -67,21 +67,12 @@
 
     <!-- aside, button -->
     <div class="container">
+    	<div class="blind"></div>
         <?php include_once APPPATH.'views/admin/inc_aside.php'; ?>
         <div class="main-content-wrap">
 
             <!-- flex 1 -->
-            <div class="main-content-top">
-                <h3>Template</h3>
-                <nav>
-                    <ul class="nav-links">
-                        <!-- 검색, 로그아웃, user -->
-                        <li><i class="fa-solid fa-magnifying-glass"></i></li>
-                        <li><i class="fa-solid fa-power-off"></i></li>
-                        <li><span style="color: #c6c5cd ">Hi</span>, <span>디웨이브</span></li>
-                    </ul>
-                </nav>
-            </div>
+            <?php include_once APPPATH.'views/admin/inc_header.php'; ?>
             <!-- flex 2 -->
             <main class="main-content">
                 <div>                	
@@ -95,8 +86,7 @@
             			<tr>
             				<th class="full_line require">발신키구분</th>
             				<td class="full_line">
-            					<select name="profile_key" id="profile_key">
-            						<option value="">발신키 선택</option><?php
+            					<select class="category-select form-select" name="profile_key" id="profile_key"><?php 
             						foreach($dataProfile as $row){?>
             						<option value="<?php echo $row["key"];?>" <?php echo $info["profile_key"]==$row["key"] ? "selected" : "";?>><?php echo $row["profile_nm"];?></option><?php 
             					}?>
@@ -107,7 +97,7 @@
             			<tr>
             				<th class="full_line require">발송구분</th>
             				<td class="full_line">
-            					<label><input type="radio" name="template_type" id="msg_type_1" value="at" <?php echo $info["template_type"]=="at" ? "checked" : ($info["template_type"]=="" ? "checked" : "");?>/><span>알림톡</span></label>
+            					<label><input type="radio" name="template_type" id="msg_type_1" value="at" <?php echo $info["template_type"]=="at" ? "checked" : "";?>/><span>알림톡</span></label>
             					<label><input type="radio" name="template_type" id="msg_type_2" value="ft" <?php echo $info["template_type"]=="ft" ? "checked" : "";?>/><span>친구톡</span></label>
             				</td>
             			</tr>
@@ -120,9 +110,9 @@
             				<td class="full_line"><input type="text" name="template_nm" id="template_nm" value="<?php echo $info["template_nm"];?>" placeholder="템플릿명" /></td>				
             			</tr>
             			<tr>
-            				<th>이미지선택</th>
+            				<th>이미지선택<button type="button" onclick="cmmOpenPop('.pop_img');">찾기</button></th>
             				<td>
-            					<span style="display: inline-block; width: 85%;"><input type="text" name="img_url" id="img_url" value="<?php echo $info["img_url"];?>" style="width: 90%;" readonly /></span><span style="display: inline-block; width: 15%; text-align: right;"><button>찾기</button>&nbsp;</span>
+            					<input type="text" name="img_url" id="img_url" value="<?php echo $info["img_url"];?>" readonly />
             				</td>
             			</tr>
             			<tr>
@@ -161,6 +151,20 @@
             		<input type="hidden" name="editMode" id="editMode" value="<?php echo $editMode;?>"/>
             		<input type="hidden" name="idx" id="idx" value="<?php echo $idx;?>"/>
             		</form>
+            		
+            		<div class="pop_img">
+                		<div class="btn_pop_close">
+                			<h2 onclick="cmmClosePop('.pop_img');">X</h2>
+                		</div>
+                		<div class="img_list"><?php
+                		foreach($img_data as $row){ ?>
+                			<div>
+                				<img src="<?php echo $row["img_url"]?>">
+                				<h5><?php echo $row["img_name"]?></h5>
+                			</div><?php 
+                		}?>
+                		</div>                		            			
+                	</div>
 
                     <div class="btn-wrap">
                         <button class="save-user form-btn"><i class="fa-solid fa-circle-plus"></i> save</button>

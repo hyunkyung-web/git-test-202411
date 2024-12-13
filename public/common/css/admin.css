@@ -27,6 +27,7 @@ button {
 	font-weight: bold;
 	cursor: pointer;
 }
+.blind{width: 100%; height: 100%; position: fixed; top: 0; background: rgba(0, 0, 0, 0.7); z-index: 90; display: none;}
 /* button:hover {
 	background-color: var(--primary-color);
 	color: #fff;
@@ -212,6 +213,8 @@ header h1 {
 	display: none;
 	padding-left: 30px;
 }
+
+.sub-list li{padding: 5px 0;}
 
 span.sub-list-toggle {
 	width: 100%;
@@ -517,6 +520,14 @@ input#userId {
 }
 label {
 	/* margin-right: 10px; */
+	vertical-align: middle;
+}
+label > span{vertical-align: middle;}
+input[type=radio] {
+    width: 1.1em;
+    vertical-align: middle;
+    margin: 0;
+    margin-right: 0.2em;
 }
 
 /******************** 체크박스 스타일 변경 ********************/
@@ -675,6 +686,15 @@ select {
 	bottom: 0;
 	width: 100%;
 }
+
+.pop_img{position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; max-height: 50vh; overflow: auto; background: #fff; z-index: 91; display: none}
+.btn_pop_close{width: 100%; background: #000; color: yellow; top: 0; text-align: right; padding: 0 10px; cursor: pointer;}
+.pop_img .img_list{display: flex; width: 100%;}
+.img_list h5{text-align: center; margin: 0}
+.img_list div{width: 49%; float: left; text-align: center; margin: 0.5em 0.2em;}
+.img_list div > img{width: 95%; border-radius: 5px; opacity: 0.8}
+.img_list div > img:hover{opacity: 1.0; cursor: pointer;}
+
 
 @media (max-width: 1024px) {
 	.sidebar {

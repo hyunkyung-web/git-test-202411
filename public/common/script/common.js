@@ -8,9 +8,9 @@ function cmmOpenPop(obj){
 	$('.blind').css('display', 'block');
 	$(obj).css("display", "block");
 	//$('html').scrollTop(0);
-	$(obj).css({
-        top: ($(window).height() - $(obj).outerHeight()) / 2 + $(window).scrollTop() + "px",
-     });
+//	$(obj).css({
+//        top: ($(window).height() - $(obj).outerHeight()) / 2 + $(window).scrollTop() + "px",
+//     });
 }
 /******************************************************************
 *	함수명: cmmClosePop()

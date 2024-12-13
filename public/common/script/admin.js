@@ -6,9 +6,11 @@ $(function () {
 
 		const icon = $(this).find("i");
 		if (subList.css("display") == "block") {
-			icon.removeClass("fa-chevron-down").addClass("fa-chevron-up");
+			console.log(icon.prop("class"));
+//			icon.attr("class", "fas fa-chevron-up");
+//			icon.removeClass("fa-chevron-down").addClass("fa-chevron-up");
 		} else {
-			icon.removeClass("fa-chevron-up").addClass("fa-chevron-down");
+			icon.attr("class", "fas fa-chevron-down");
 		}
 	});
 
@@ -50,7 +52,7 @@ function openMenu(menuNum = 0) {
 			location.href = "/admin/template_list";
 			break;
 		case 210:
-			location.href = "/admin/template_list";
+			location.href = "/admin/template_form";
 			break;
 		case 900:
 			location.href = "/admin/user_list";
@@ -60,3 +62,36 @@ function openMenu(menuNum = 0) {
 			break;
 	}
 }
+
+
+function msgBtnAdd(){
+	
+	let btnStr='';
+	let btnCnt = $("#ftButton tr").length/2;
+	
+	if(btnCnt == 5){		
+		alert("버튼은 최대 5개까지만 생성 할 수 있습니다.");
+		return;
+	}
+	
+	btnStr+='<tr><td>';
+	btnStr+='<button type="button" class="btn_remove" onclick="msgBtnRemove(this);">X</button>&nbsp;&nbsp;<select name="btn_type[]">';
+	btnStr+='<option value="">타입</option>';
+	btnStr+='<option value="WL">웹버튼</option>';
+	btnStr+='</select>';							
+	btnStr+='</td>';
+	btnStr+='<td><input type="text" name="btn_name[]" placeholder="버튼명" /></td></tr>';
+	btnStr+='<tr><td colspan="2"><input type="text" name="btn_link[]" placeholder="연결링크" /></td></tr>';
+	
+	$("#ftButton").append(btnStr);
+}
+
+function msgBtnRemove(e){
+	
+	let prTr = $(e).parent().parent();
+	prTr.next().remove();
+	prTr.remove();
+	return;
+	
+}
+
