@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	border: none 0;
+	box-sizing: border-box;
+}
+html,
+body {
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+}
+
+div {
+	box-sizing: border-box;
+}
+
+ul,
+li,
+ol {
+	list-style: none;
+}
+img {
+	width: 100%;
+	height: 100%;
+}
+legend,
+caption {
+	display: none;
+}
+hr {
+	border-collapse: collapse;
+}
+a {
+	text-decoration: none;
+	color: #222;
+}
+button {
+	display: block;
+	background: none;
+	border: none;
+	cursor: pointer;
+	-webkit-appearance: none;
+}
+/* form 속성 정의 */
+input {
+	border: none;
+	background: none;
+}
+input:focus,
+select:focus {
+	/* outline: none; */
+}
+table {
+	width: 100%;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	font-size: 1em;
+}
+th {
+	background-color: #f2f2f2;
+}
+
+th,
+td {
+	border: 1px solid #ddd;
+	text-align: center;
+	padding: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+input.upload-name,
+textarea,
+select {
+	width: 100%;
+	height: 100%;
+	padding: 8px;
+	border-radius: 4px;
+	font-size: 0.9em;
+	/* border: 1px solid #f3f3f2; */
+}
+input[type="radio"],
+input[type="check"] {
+	display: block;
+}
+label {
+	font-size: 0.9em;
+}
+
+input.inputbox {
+	padding: 3px;
+}
+
+th label {
+	display: inline-block;
+	width: 100%;
+	/* height: 100%; */
+	box-sizing: border-box;
+}
+
+.center {
+	text-align: center !important;
+}
+.left {
+	text-align: left !important;
+}
+
+/* flex요소 설정 */
+.flex-row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.flex-end {
+	justify-content: flex-end;
+}
+.flex-start {
+	justify-content: flex-start;
+}
+.flex-between {
+	justify-content: space-between;
+}

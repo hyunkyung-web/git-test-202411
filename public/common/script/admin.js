@@ -7,8 +7,8 @@ $(function () {
 		const icon = $(this).find("i");
 		if (subList.css("display") == "block") {
 			console.log(icon.prop("class"));
-//			icon.attr("class", "fas fa-chevron-up");
-//			icon.removeClass("fa-chevron-down").addClass("fa-chevron-up");
+			//			icon.attr("class", "fas fa-chevron-up");
+			//			icon.removeClass("fa-chevron-down").addClass("fa-chevron-up");
 		} else {
 			icon.attr("class", "fas fa-chevron-down");
 		}
@@ -63,22 +63,24 @@ function openMenu(menuNum = 0) {
 	}
 }
 
+<<<<<<< HEAD
 function imgUrlView(imgUrl) {
 	$("#img_url").val("");
 	$("#img_url").val(imgUrl);
 	cmmClosePop('.pop_img');
 }
 
+=======
+function msgBtnAdd() {
+	let btnStr = "";
+	let btnCnt = $("#ftButton tr").length / 2;
+>>>>>>> branch 'main' of https://github.com/hyunkyung-web/git-test-202411.git
 
-function msgBtnAdd(){
-	
-	let btnStr='';
-	let btnCnt = $("#ftButton tr").length/2;
-	
-	if(btnCnt == 5){		
+	if (btnCnt == 5) {
 		alert("버튼은 최대 5개까지만 생성 할 수 있습니다.");
 		return;
 	}
+<<<<<<< HEAD
 	
 	btnStr+='<tr><td>';
 	btnStr+='<button type="button" class="btn_remove" onclick="msgBtnRemove(this);">X</button>&nbsp;&nbsp;';
@@ -90,17 +92,31 @@ function msgBtnAdd(){
 	btnStr+='<td><input type="text" name="btn_name[]" placeholder="버튼명" /></td></tr>';
 	btnStr+='<tr><td colspan="2"><input type="text" name="btn_link[]" placeholder="연결링크" /></td></tr>';
 	
+=======
+
+	btnStr += '<tr><td class="flex-row">';
+	btnStr +=
+		'<button type="button" class="btn_remove" onclick="msgBtnRemove(this);"><i class="fa-solid fa-circle-minus"></i></button>&nbsp;&nbsp;<select name="btn_type[]">';
+	btnStr += '<option value="">타입</option>';
+	btnStr += '<option value="WL">웹버튼</option>';
+	btnStr += "</select>";
+	btnStr += "</td>";
+	btnStr +=
+		'<td class="add-after"><input type="text" name="btn_name[]" placeholder="버튼명" /></td></tr>';
+	btnStr +=
+		'<tr><td colspan="2"><input type="text" name="btn_link[]" placeholder="연결링크" /></td></tr>';
+
+>>>>>>> branch 'main' of https://github.com/hyunkyung-web/git-test-202411.git
 	$("#ftButton").append(btnStr);
 }
 
-function msgBtnRemove(e){
-	
+function msgBtnRemove(e) {
 	let prTr = $(e).parent().parent();
 	prTr.next().remove();
 	prTr.remove();
 	return;
-	
 }
+<<<<<<< HEAD
 
 function templateList(page){
 	
@@ -171,3 +187,5 @@ function templateSave(editMode){
 	});
 }
 
+=======
+>>>>>>> branch 'main' of https://github.com/hyunkyung-web/git-test-202411.git

@@ -15,6 +15,7 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/common/css/reset.css" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
@@ -75,8 +76,13 @@
             <!-- flex 2 -->
             <main class="main-content">
                 <div>
+<<<<<<< HEAD
                     <header class="main-header">                    	
                         <div class="main-header-firstLine">                            
+=======
+                    <header class="main-header">
+                        <div class="main-header-firstLine">
+>>>>>>> branch 'main' of https://github.com/hyunkyung-web/git-test-202411.git
                             <!-- button 추가 -->
                             <div>
                                 <button type="button" class="add-user btn1" onclick="javascript: openMenu(210);"><i class="fa-solid fa-circle-plus"></i> Add</button>
