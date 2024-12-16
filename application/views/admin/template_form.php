@@ -169,7 +169,7 @@
 
             		<div class="pop_img">
                 		<div class="btn_pop_close">
-                			<h2 onclick="cmmClosePop('.pop_img');">X</h2>
+                			<h2 onclick="cmmClosePop('.pop_img');"><i class="fa-solid fa-x"></i></h2>
                 		</div>
                 		<div class="img_list"><?php
                 		foreach($img_data as $row){ ?>
