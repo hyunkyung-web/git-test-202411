@@ -24,7 +24,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>
 
     <script src="/public/common/script/fontawesome.all.min.js"></script>
-    <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
+    <script type="text/javascript" src="/public/common/script/common.js?ver=2205031000"></script>
     <script defer type="text/javascript" src="/public/common/script/admin.js"></script>
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -75,26 +75,29 @@
             <!-- flex 2 -->
             <main class="main-content">
                 <div>
-                    <header class="main-header">
+                    <header class="main-header">                    	
                         <div class="main-header-firstLine">                            
                             <!-- button 추가 -->
                             <div>
                                 <button type="button" class="add-user btn1" onclick="javascript: openMenu(210);"><i class="fa-solid fa-circle-plus"></i> Add</button>
-                                <button type="button" class="delete-user btn2" onclick="javascript: openMenu(110);"><i class="fa-solid fa-circle-minus"></i> Del</button>
+                                <button type="button" class="delete-user btn2" onclick="#"><i class="fa-solid fa-circle-minus"></i> Del</button>
                             </div>
                         </div>
-
+                        
+						<form name="frmSearch" id="frmSearch" style="width: 100%;">
                         <div class="search-bar">
-                            <select class="category-select list-select">
+                            <select class="category-select list-select" name="sch_1">
                                 <option value="">구분</option>
-                                <option value="category1">공지</option>
-                                <option value="category2">뉴스</option>
-
+                                <option value="000">공지사항</option>
+                                <option value="010">뉴스</option>
                             </select>
-                            <input type="text" placeholder="Search..." class="search-input">
+                            <input type="text" name="sch_2" placeholder="Search..." class="search-input">
                             <button class="search-button">Search</button>
                         </div>
+                        </form>
+                        
                     </header>
+                    
                     <table class="list-table">
                         <thead>
                             <tr>
@@ -104,14 +107,14 @@
                                         <span class="custom-checkbox"></span>
                                     </label>
                                 </th>
-                                <th>No</th>
-                                <th>구분</th>
-                                <th>제목</th>
+                                <th>템플릿명/코드</th>
+                                <th>메세지</th>
+                                <th>등록일자</th>
                                 <th>작성자</th>
-                                <th>작성일</th>
                             </tr>
                         </thead>
-                        <tbody id="item-list">
+                        <tbody id="item-list"><?php 
+                        foreach($data as $row){?>
                             <tr>
                                 <td align="center">
                                     <label>
@@ -119,156 +122,12 @@
                                         <span class="custom-checkbox"></span>
                                     </label>
                                 </td>
-                                <td>1</td>
-                                <td>공지</td>
-                                <td>첫 번째 콘텐츠</td>
-                                <td>홍길동</td>
-                                <td>2024-12-01</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </td>
-                                <td>2</td>
-                                <td>뉴스</td>
-                                <td>두 번째 콘텐츠</td>
-                                <td>김철수</td>
-                                <td>2024-12-02</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </td>
-                                <td>1</td>
-                                <td>공지</td>
-                                <td>첫 번째 콘텐츠</td>
-                                <td>홍길동</td>
-                                <td>2024-12-01</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </td>
-                                <td>2</td>
-                                <td>뉴스</td>
-                                <td>두 번째 콘텐츠</td>
-                                <td>김철수</td>
-                                <td>2024-12-02</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </td>
-                                <td>1</td>
-                                <td>공지</td>
-                                <td>첫 번째 콘텐츠</td>
-                                <td>홍길동</td>
-                                <td>2024-12-01</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </td>
-                                <td>2</td>
-                                <td>뉴스</td>
-                                <td>두 번째 콘텐츠</td>
-                                <td>김철수</td>
-                                <td>2024-12-02</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </td>
-                                <td>1</td>
-                                <td>공지</td>
-                                <td>첫 번째 콘텐츠</td>
-                                <td>홍길동</td>
-                                <td>2024-12-01</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </td>
-                                <td>2</td>
-                                <td>뉴스</td>
-                                <td>두 번째 콘텐츠</td>
-                                <td>김철수</td>
-                                <td>2024-12-02</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </td>
-                                <td>1</td>
-                                <td>공지</td>
-                                <td>첫 번째 콘텐츠</td>
-                                <td>홍길동</td>
-                                <td>2024-12-01</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </td>
-                                <td>2</td>
-                                <td>뉴스</td>
-                                <td>두 번째 콘텐츠</td>
-                                <td>김철수</td>
-                                <td>2024-12-02</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </td>
-                                <td>1</td>
-                                <td>공지</td>
-                                <td>첫 번째 콘텐츠</td>
-                                <td>홍길동</td>
-                                <td>2024-12-01</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </td>
-                                <td>2</td>
-                                <td>뉴스</td>
-                                <td>두 번째 콘텐츠</td>
-                                <td>김철수</td>
-                                <td>2024-12-02</td>
-                            </tr>
-                            <!-- 추가 콘텐츠 -->
+                                <td><a href="/admin/template_form/<?php echo $row["idx"];?>"><?php echo $row["template_nm"].'('.$row["template_cd"].')';?></a></td>
+                                <td><?php echo $row["template_msg"];?></td>
+                                <td><?php echo date('y-m-d', strtotime($row["wdate"]));?></td>
+                                <td><?php echo getExist($row["wuser"], 'noname');?></td>                                
+                            </tr><?php 
+                        }?>                            
                         </tbody>
                     </table>
 

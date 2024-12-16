@@ -1,5 +1,12 @@
 
 
+function adjustHeight(obj) {
+  var textEle = $(obj);
+  $(obj)[0].style.height = 'auto';
+  var textEleHeight = textEle.prop('scrollHeight');
+  textEle.css('height', textEleHeight);
+};
+
 /******************************************************************
 *	함수명: cmmOpenPop()
 *	기능: 팝업 열기

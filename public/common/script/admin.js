@@ -63,6 +63,12 @@ function openMenu(menuNum = 0) {
 	}
 }
 
+function imgUrlView(imgUrl) {
+	$("#img_url").val("");
+	$("#img_url").val(imgUrl);
+	cmmClosePop('.pop_img');
+}
+
 
 function msgBtnAdd(){
 	
@@ -75,7 +81,8 @@ function msgBtnAdd(){
 	}
 	
 	btnStr+='<tr><td>';
-	btnStr+='<button type="button" class="btn_remove" onclick="msgBtnRemove(this);">X</button>&nbsp;&nbsp;<select name="btn_type[]">';
+	btnStr+='<button type="button" class="btn_remove" onclick="msgBtnRemove(this);">X</button>&nbsp;&nbsp;';
+	btnStr+='<select name="btn_type[]" class="category-select form-select">';
 	btnStr+='<option value="">타입</option>';
 	btnStr+='<option value="WL">웹버튼</option>';
 	btnStr+='</select>';							
@@ -93,5 +100,74 @@ function msgBtnRemove(e){
 	prTr.remove();
 	return;
 	
+}
+
+function templateList(page){
+	
+	let postUrl = "/admin/template_list/"+page;
+	
+	$("#frmSearch").attr("action", postUrl).submit();
+	
+}
+
+/******************************************************************
+*	함수명: templateSave()
+*	기능: 템플릿 저장
+******************************************************************/
+function templateSave(editMode){
+	
+//	var reqArr = ["txtNm", "txtDate", "txtTime", "txtRuntime", "txtAgenda", "txtSpeaker", "txtPasskey"];
+//	var chkReq = false;
+//
+//	if(editMode == "D"){
+//		if(!confirm('데이터를 삭제하시겠습니까?')){
+//			return;
+//		}
+//		imgDelete('event', $("#txtIdx").val(), "delete");
+//	} else {
+//		$.each(reqArr, function(idx, item){
+//			if($.trim($("#"+item).val()).length == 0){
+//				cmmShowMsg ($("#"+item).prop("placeholder")+' 필수입력 누락입니다.');
+//				$("#"+item).focus();
+//				chkReq = true;
+//				return false;
+//			}
+//		});
+//		if(chkReq){
+//			console.log('필수입력 누락');
+//			return;
+//		}
+//	}
+	
+	$("#editMode").val(editMode);
+	var postData = new FormData($("#frm1")[0]);
+//	var postData = $("#frm1").serialize();
+	
+	$.ajax({
+		type: "POST",
+		enctype: 'multipart/form-data',
+		contentType : false,
+		processData : false,
+		url: "/admin/template_save",
+		data: postData,
+		dataType: "json",
+		beforeSend:function(){
+		},
+		success: function(data){
+			
+			alert(data.msg);
+			
+			if(editMode != "D"){											
+				$("#idx").val(data.rtn_idx);
+			} else {
+				templateList('main');
+			}
+			return;
+		},
+		error: function(request, status, err){
+			console.log(err);
+			return;
+		}
+	});
 }
 

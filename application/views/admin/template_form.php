@@ -159,7 +159,7 @@
                 		<div class="img_list"><?php
                 		foreach($img_data as $row){ ?>
                 			<div>
-                				<img src="<?php echo $row["img_url"]?>">
+                				<img src="<?php echo $row["img_url"]?>" onclick="javascript:imgUrlView(this.src);" />
                 				<h5><?php echo $row["img_name"]?></h5>
                 			</div><?php 
                 		}?>
@@ -167,8 +167,8 @@
                 	</div>
 
                     <div class="btn-wrap">
-                        <button class="save-user form-btn"><i class="fa-solid fa-circle-plus"></i> save</button>
-                        <button class="cancel-user form-btn" onclick="javascript: openMenu(100);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
+                        <button type="button" class="save-user form-btn" onclick="javascript:templateSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
+                        <button type="button" class="cancel-user form-btn" onclick="javascript: openMenu(100);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
                     </div>
                 </div>
 

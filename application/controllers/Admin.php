@@ -37,50 +37,42 @@ class Admin extends CI_Controller {
     }
 
 
-	public function index()
-	{
+	public function index(){
 	    $this->main();
 	}
 	
-	public function login()
-	{
+	public function login(){
 	    $this->load->view('/admin/login');
 	}
 
-	public function main()
-	{
+	public function main(){
 	    $this->load->view('/admin/main');
 	}
 
-	public function contents_list()
-	{
+	public function contents_list(){
 	    $viewData = ["menuNum"=>100];
 	    $this->load->view('/admin/contents_list', $viewData);
 	}
 
-	public function contents_form()
-	{
+	public function contents_form(){
 	    $viewData = ["menuNum"=>110];
 	    $this->load->view('/admin/contents_form', $viewData);
 	}
 
-	public function user_list()
-	{
+	public function user_list(){
 	    $viewData = ["menuNum"=>900];
 	    $this->load->view('/admin/user_list', $viewData);
 	}
 
-	public function user_form()
-	{
+	public function user_form(){
 	    $viewData = ["menuNum"=>910];
 	    $this->load->view('/admin/user_form', $viewData);
 	}
 	
 	
-	public function template_form()
-	{	    
+	public function template_form($idx=-1){	    
 	    
-	    $idx = getPost("idx", -1);
+// 	    $idx = getPost("idx", -1);
 	    $editMode = $idx==-1 ? "N" : "U";
 	    
 	    $dataProfile = [
@@ -124,7 +116,7 @@ class Admin extends CI_Controller {
 	
 	public function template_save(){
 	    
-	    $this->session_chk("admin");
+// 	    $this->session_chk("admin");
 	    
 	    $query = $this->msgModel->template_save([
 	        "editMode"=> getPost("editMode", "N"),
@@ -150,9 +142,9 @@ class Admin extends CI_Controller {
 	    exit;
 	}
 	
-	public function template_list(){
+	public function template_list($page=1){	    
 	    
-	    $page = getPost("page", 1);
+// 	    $page = getRequest("page", 1);
 	    $template_type = getPost("sch_1", "");
 	    $keyword = getPost("sch_2", "");
 	    $schData = ["sch_1"=>$template_type, "sch_2"=>$keyword, "page"=>$page];
@@ -160,7 +152,7 @@ class Admin extends CI_Controller {
 	    //리스트에 보여줄 게시물의 갯수
 	    $pageSize = 10;
 	    //페이징에 보여줄 페이지의 갯수
-	    $blockSize = 10;
+	    $blockSize = 5;
 	    //쿼리로 조회 할 DB의 주소 시작번호(start) 가져올 갯수(end)
 	    $startPage = ($page-1) * $pageSize;
 	    $endPage = $pageSize;
@@ -173,8 +165,8 @@ class Admin extends CI_Controller {
 	    $totalRecord = $query["listCount"];
 	    $totalPage = ceil($totalRecord/$pageSize);
 	    
-	    $viewData = ["menuNum"=>200, "schData"=>$schData, "data"=>$query["list"], "totalRecord"=>$totalRecord, "pageSize"=>$pageSize, "page"=>$page,
-	        "listFnc"=>"templateList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage
+	    $viewData = ["menuNum"=>200, "schData"=>$schData, "data"=>$query["list"], "totalRecord"=>$totalRecord, "page"=>$page,
+	        "listFnc"=>"templateList", "blockSize"=>$blockSize, "totalPage"=>$totalPage
 	    ];
 	    
 	    // 	    $pageData = ["listFnc"=>"eventList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "page"=>$page];
