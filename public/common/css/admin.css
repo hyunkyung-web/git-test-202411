@@ -10,9 +10,6 @@ body {
 	font-size: 14px;
 	color: #5c5d5e;
 }
-table {
-	font-size: 1em;
-}
 
 a {
 	text-decoration: none;
@@ -27,7 +24,15 @@ button {
 	font-weight: bold;
 	cursor: pointer;
 }
-.blind{width: 100%; height: 100%; position: fixed; top: 0; background: rgba(0, 0, 0, 0.7); z-index: 90; display: none;}
+.blind {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 90;
+	display: none;
+}
 /* button:hover {
 	background-color: var(--primary-color);
 	color: #fff;
@@ -48,6 +53,14 @@ li {
 }
 .align_left {
 	text-align: left !important;
+}
+
+select,
+input {
+	color: #6c716e;
+}
+::placeholder {
+	color: #6c716e;
 }
 /******************** Login ********************/
 
@@ -214,7 +227,9 @@ header h1 {
 	padding-left: 30px;
 }
 
-.sub-list li{padding: 5px 0;}
+.sub-list li {
+	padding: 5px 0;
+}
 
 span.sub-list-toggle {
 	width: 100%;
@@ -306,10 +321,18 @@ span.sub-list-toggle.active {
 	justify-content: space-between;
 	align-items: flex-start;
 	margin-bottom: 15px;
+	padding-left: 0;
+	padding-right: 0;
 	background: none;
 }
 
 .main-header-firstLine {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: flex-end;
+}
+.main-header-firstLine > div {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
@@ -354,22 +377,20 @@ span.sub-list-toggle.active {
 	display: flex;
 	align-items: center;
 	width: 50%;
-	height: 2.5em;
+}
+.search-bar select {
+	font-size: 0.8em;
+	width: 30%;
+}
+.search-bar select,
+.search-bar input {
+	border: 1px solid #eee;
 }
 
-.category-select,
-.search-input {
-	/* margin-left: 10px; */
-	border: 1px solid #f3f3f2;
-	padding: 4px;
-	border-radius: 5px;
-	height: 100%;
-}
-
-.search-input {
-	padding: 5px;
-	width: 50%;
-}
+/* .search-input {
+    padding: 5px;
+    width: 50%;
+} */
 
 .search-button {
 	margin-left: 10px;
@@ -385,7 +406,7 @@ span.sub-list-toggle.active {
 /******************** form ********************/
 
 /* table  */
-form table {
+form-table {
 	width: 100%;
 	border-collapse: collapse;
 	margin: 20px 0;
@@ -397,7 +418,7 @@ textarea {
 }
 form th,
 form td {
-	border: 1px solid #ddd;
+	/* border: 1px solid #ddd; */
 	text-align: left;
 	height: 3em;
 }
@@ -405,10 +426,13 @@ form th {
 	/* color: #b5b5b8; */
 	font-weight: bold;
 	padding-left: 10px;
-	background: #f9f9f9;
+	/* background: #f9f9f9; */
 }
 form th.required {
 	color: #4c91d7;
+}
+form td {
+	padding: 0;
 }
 
 form td.userId_wrap {
@@ -435,9 +459,10 @@ td.add-file .upload-name {
 	display: inline-block;
 	padding: 0 5px;
 	vertical-align: middle;
-	border: 1px solid #f3f3f2;
+	/* border: 1px solid #f3f3f2; */
 	width: 30%;
 	color: #6c716e;
+	outline: none;
 }
 
 td.add-file label {
@@ -470,12 +495,12 @@ td.radio input {
 }
 
 .form-select {
-	width: 30%;
+	width: 100%;
 	/* margin-left: 5px; */
 	font-size: 0.9em;
-	padding: 8px 0px;
+	padding: 8px 8px;
 }
-form input {
+.form input {
 	border: none;
 	width: 60%;
 	height: 100%;
@@ -483,29 +508,22 @@ form input {
 	color: #6c716e;
 	font-size: 0.9em;
 }
-form .form-select,
+.form-select,
 form input {
-	border-radius: 5px;
+	border: none;
+}
+
+/* select 화살표 삭제 */
+.form-select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
 
 .form-btn {
 	margin-left: 5px;
 }
 /* input, select  */
-
-select {
-	/* width: 100%;
-	height: 100%; */
-	/* border: 1px solid #ddd; */
-	/* padding: 5px; */
-}
-select {
-	width: 18%;
-	border: 1px solid #ccc;
-}
-select option {
-	font-size: 0.7em;
-}
 
 input[type="radio"] {
 	display: inline-block;
@@ -514,20 +532,21 @@ input[type="radio"] {
 
 input#userId {
 	display: inline-block;
-	border: none;
-	width: 60%;
+	width: 30%;
 	/* border: 1px solid red; */
 }
 label {
 	/* margin-right: 10px; */
 	vertical-align: middle;
 }
-label > span{vertical-align: middle;}
-input[type=radio] {
-    width: 1.1em;
-    vertical-align: middle;
-    margin: 0;
-    margin-right: 0.2em;
+label > span {
+	vertical-align: middle;
+}
+input[type="radio"] {
+	width: 1.1em;
+	vertical-align: middle;
+	margin: 0;
+	margin-right: 0.2em;
 }
 
 /******************** 체크박스 스타일 변경 ********************/
@@ -578,40 +597,35 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	opacity: 1;
 }
 
-select {
-	/* margin-right: 5px; */
-	width: 60%;
-	color: #6c716e;
-}
-
 .btn-wrap {
 	border: none;
 	cursor: pointer;
 	display: flex;
 	justify-content: flex-end;
+	margin-top: 15px;
 }
 
 /******************** list-table ********************/
 
-.list-table {
-	width: 100%;
-	border-collapse: collapse;
-}
+/* .list-table {
+    width: 100%;
+    border-collapse: collapse;
+} */
 
 .list-table th,
 .list-table td {
-	border: 1px solid #ddd;
-	padding: 5px;
-	text-align: center;
+	/* border: 1px solid #ddd; */
+	/* padding: 5px; */
+	/* text-align: center; */
 }
 
 .list-table th {
-	background-color: #f2f2f2;
+	/* background-color: #f2f2f2; */
 }
 
 .list-select {
-	width: 30%;
-	font-size: 0.8em;
+	/* width: 30%;
+    font-size: 0.8em; */
 }
 
 #item-list {
@@ -687,14 +701,50 @@ select {
 	width: 100%;
 }
 
-.pop_img{position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; max-height: 50vh; overflow: auto; background: #fff; z-index: 91; display: none}
-.btn_pop_close{width: 100%; background: #000; color: yellow; top: 0; text-align: right; padding: 0 10px; cursor: pointer;}
-.pop_img .img_list{display: flex; width: 100%;}
-.img_list h5{text-align: center; margin: 0}
-.img_list div{width: 49%; float: left; text-align: center; margin: 0.5em 0.2em;}
-.img_list div > img{width: 95%; border-radius: 5px; opacity: 0.8}
-.img_list div > img:hover{opacity: 1.0; cursor: pointer;}
-
+.pop_img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 50%;
+	max-height: 50vh;
+	overflow: auto;
+	background: #fff;
+	z-index: 91;
+	display: none;
+}
+.btn_pop_close {
+	width: 100%;
+	background: #000;
+	color: yellow;
+	top: 0;
+	text-align: right;
+	padding: 0 10px;
+	cursor: pointer;
+}
+.pop_img .img_list {
+	display: flex;
+	width: 100%;
+}
+.img_list h5 {
+	text-align: center;
+	margin: 0;
+}
+.img_list div {
+	width: 49%;
+	float: left;
+	text-align: center;
+	margin: 0.5em 0.2em;
+}
+.img_list div > img {
+	width: 95%;
+	border-radius: 5px;
+	opacity: 0.8;
+}
+.img_list div > img:hover {
+	opacity: 1;
+	cursor: pointer;
+}
 
 @media (max-width: 1024px) {
 	.sidebar {
@@ -730,5 +780,8 @@ select {
 	.search-button {
 		margin-left: 0;
 		margin-top: 5px;
+	}
+	input#userId {
+		width: 100%;
 	}
 }

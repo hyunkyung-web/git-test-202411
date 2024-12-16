@@ -15,6 +15,7 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/common/css/reset.css" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
@@ -113,17 +114,16 @@
                             </thead> -->
                             <tbody>
                                 <tr>
-                                    <th>제목</th>
-                                    <td><input type="text" /></td>
+                                    <th><label for="title">제목</label></th>
+                                    <td><input type="text" id="title" name="title" /></td>
                                 </tr>
                                 <tr>
-                                    <th>게시 구분</th>
+                                    <th><label for="category">게시 구분</label></th>
                                     <td>
-                                        <select class="category-select form-select">
+                                        <select class="category-select form-select" id="category" name="category">
                                             <option value="">게시 구분</option>
                                             <option value="type1">일반</option>
                                             <option value="type2">공지</option>
-
                                         </select>
                                     </td>
                                 </tr>
@@ -132,15 +132,14 @@
                                     <td class="add-file">
                                         <!-- <input type="file" /> -->
                                         <!-- <input class="upload-name" value="Add file..." placeholder="Add file..." readonly>
-                                        <label for="file"> <i class="fa-solid fa-circle-check"></i> add file</label>
-                                        <input type="file" id="file" style="display: none;"> -->
+                                    <label for="file"> <i class="fa-solid fa-circle-check"></i> add file</label>
+                                    <input type="file" id="file" style="display: none;"> -->
 
-                                        <input class="upload-name" value="Add file..." placeholder="Add file..." readonly>
                                         <label for="file"> <i class="fa-solid fa-circle-check"></i> add file</label>
-                                        <input type="file" id="file" style="display: none;" onchange="updateFileName()">
+                                        <input type="file" id="file" name="file" style="display: none" onchange="updateFileName()" />
+                                        <input class="upload-name" value="file.." placeholder="file.." readonly />
                                     </td>
                                 </tr>
-
                             </tbody>
                             <tfoot>
                                 <tr>

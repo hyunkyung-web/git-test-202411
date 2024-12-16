@@ -15,6 +15,7 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/common/css/reset.css" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
@@ -103,50 +104,46 @@
                             </colgroup>
 
                             <tbody>
-                                <tr>
-                                    <th>DEPT / BU</th>
-                                    <td>
-                                        <select class="category-select form-select">
-                                            <option value="">DEPT/BU</option>
-                                            <option value="category1">CMR</option>
-                                            <option value="category2">F&O</option>
-                                            <option value="category2">CE</option>
-                                        </select>
+                                    <tr>
+                                        <th><label for="userDept">DEPT / BU</label></th>
+                                        <td>
+                                            <select class="category-select form-select" id="userDept" name="userDept">
+                                                <option value="">DEPT/BU</option>
+                                                <option value="category1">CMR</option>
+                                                <option value="category2">F&O</option>
+                                                <option value="category2">CE</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><label for="userTeam">TEAM</label></th>
+                                        <td>
+                                            <select class="category-select form-select" id="userTeam" name="userTeam>
+                                                <option value="">TEMA</option>
+                                                <option value="category1">PV</option>
+                                                <option value="category2">medical</option>
+                                                <option value="category3">F&O</option>
+                                                <option value="category4">CE</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="required"><label for="userId">아이디</label></th>
+                                        <td class="userId_wrap">
+                                            <input type="text" name="userId" id="userId" value="" />
+                                            <button type="button" class="validate-userId form-btn"><i class="fa-solid fa-circle-check"></i> check</button>
+                                        </td>
+                                    </tr>
 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>TEAM</th>
-                                    <td>
-                                        <select class="category-select form-select">
-                                            <option value="">TEMA</option>
-                                            <option value="category1">PV</option>
-                                            <option value="category2">medical</option>
-                                            <option value="category3">F&O</option>
-                                            <option value="category4">CE</option>
-                                        </select>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="required">아이디</th>
-                                    <td class="userId_wrap">
-                                        <input type="text" name="userId" id="userId"  value="">
-                                        <button type="button" class="validate-userId form-btn"><i class="fa-solid fa-circle-check"></i> check</button>
-
-                                    </td>
-                                </tr>
-
-
-                                <tr>
-                                    <th class="required">비밀번호</th>
-                                    <td><input type="password" /></td>
-                                </tr>
-                                <tr>
-                                    <th>비밀번호 확인</th>
-                                    <td><input type="password" /></td>
-                                </tr>
-                                <!-- <tr>
+                                    <tr>
+                                        <th class="required"><label for="userPwd">비밀번호</label></th>
+                                        <td><input type="password" name="userPwd" id="userPwd" /></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="required"><label for="userPwd_validate">비밀번호 확인</label></th>
+                                        <td><input type="password" id="userPwd_validate" name="userPwd_validate"/></td>
+                                    </tr>
+                                    <!-- <tr>
                                     <th>성명</th>
                                     <td><input type="text" /></td>
                                 </tr>
@@ -194,7 +191,7 @@
                                         <label for="useYn_2">사용안함</label>
                                     </td>
                                 </tr> -->
-                            </tbody>
+                                </tbody>
 
                         </table>
                     </form>

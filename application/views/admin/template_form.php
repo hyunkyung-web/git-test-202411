@@ -15,6 +15,7 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/common/css/reset.css" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
@@ -75,20 +76,20 @@
             <?php include_once APPPATH.'views/admin/inc_header.php'; ?>
             <!-- flex 2 -->
             <main class="main-content">
-                <div>                	
+                <div>
                     <form name="frm1" id="frm1">
             		<table>
             			<colgroup>
             				<col width="25%" />
-            				<col width="75%" />				
+            				<col width="75%" />
             			</colgroup>
             			<tbody>
             			<tr>
             				<th class="full_line require">발신키구분</th>
             				<td class="full_line">
-            					<select class="category-select form-select" name="profile_key" id="profile_key"><?php 
+            					<select class="category-select form-select" name="profile_key" id="profile_key"><?php
             						foreach($dataProfile as $row){?>
-            						<option value="<?php echo $row["key"];?>" <?php echo $info["profile_key"]==$row["key"] ? "selected" : "";?>><?php echo $row["profile_nm"];?></option><?php 
+            						<option value="<?php echo $row["key"];?>" <?php echo $info["profile_key"]==$row["key"] ? "selected" : "";?>><?php echo $row["profile_nm"];?></option><?php
             					}?>
             					</select>
             					<input type="hidden" name="profile_type" id="profile_type" value="<?php echo $info["profile_type"];?>"/>
@@ -107,7 +108,7 @@
             			</tr>
             			<tr>
             				<th class="full_line require">템플릿명</th>
-            				<td class="full_line"><input type="text" name="template_nm" id="template_nm" value="<?php echo $info["template_nm"];?>" placeholder="템플릿명" /></td>				
+            				<td class="full_line"><input type="text" name="template_nm" id="template_nm" value="<?php echo $info["template_nm"];?>" placeholder="템플릿명" /></td>
             			</tr>
             			<tr>
             				<th>이미지선택<button type="button" onclick="cmmOpenPop('.pop_img');">찾기</button></th>
@@ -123,11 +124,11 @@
             				<th class="full_line require">메세지내용</th>
             				<td class="full_line">
             					<textarea name="template_msg" id="template_msg" placeholder="템플릿 메세지를 입력해주세요" onkeyup="javascript:adjustHeight('#template_msg');"><?php echo $info["template_msg"];?></textarea>
-            				</td>				
+            				</td>
             			</tr>
             			<tr>
             				<th class="full_line">버튼정보</th>
-            				<td class="full_line"><button type="button" onclick="msgBtnAdd();">버튼추가(+)</button></td>								
+            				<td class="full_line"><button type="button" onclick="msgBtnAdd();">버튼추가(+)</button></td>
             			</tr>
             			<tfoot class="item ft" id="ftButton"><?php
             			for($i=1; $i<=$info["btn_cnt"]; $i++){?>
@@ -143,15 +144,15 @@
             				</tr>
             				<tr>
             					<td colspan="2"><input type="text" name="btn_link[]" placeholder="연결링크" value="<?php echo $info["btn_link_".$i];?>"></td>
-            				</tr><?php 
+            				</tr><?php
             			} ?>
             			</tfoot>
-            			</tbody>		
+            			</tbody>
             		</table>
             		<input type="hidden" name="editMode" id="editMode" value="<?php echo $editMode;?>"/>
             		<input type="hidden" name="idx" id="idx" value="<?php echo $idx;?>"/>
             		</form>
-            		
+
             		<div class="pop_img">
                 		<div class="btn_pop_close">
                 			<h2 onclick="cmmClosePop('.pop_img');">X</h2>
@@ -161,9 +162,9 @@
                 			<div>
                 				<img src="<?php echo $row["img_url"]?>">
                 				<h5><?php echo $row["img_name"]?></h5>
-                			</div><?php 
+                			</div><?php
                 		}?>
-                		</div>                		            			
+                		</div>
                 	</div>
 
                     <div class="btn-wrap">
