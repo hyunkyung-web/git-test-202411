@@ -145,8 +145,8 @@ class Admin extends CI_Controller {
 	public function template_list($page=1){	    
 	    
 // 	    $page = getRequest("page", 1);
-	    $template_type = getPost("sch_1", "");
-	    $keyword = getPost("sch_2", "");
+	    $template_type = getRequest("sch_1", "");
+	    $keyword = getRequest("sch_2", "");
 	    $schData = ["sch_1"=>$template_type, "sch_2"=>$keyword, "page"=>$page];
 	    
 	    //리스트에 보여줄 게시물의 갯수
