@@ -97,10 +97,17 @@
             			</tr>
             			<tr>
             				<th class="full_line require">발송구분</th>
-            				<td class="full_line">
-            					<label><input type="radio" name="template_type" id="msg_type_1" value="at" <?php echo $info["template_type"]=="at" ? "checked" : "";?>/><span>알림톡</span></label>
-            					<label><input type="radio" name="template_type" id="msg_type_2" value="ft" <?php echo $info["template_type"]=="ft" ? "checked" : "";?>/><span>친구톡</span></label>
-            				</td>
+
+							<td class="full_line radio radio-msg">
+								<span>
+									<input type="radio" name="template_type" id="msg_type_1" value="at" <?php echo $info["template_type"]=="at" ? "checked" : "";?>/>
+									<label for="msg_type_1">알림톡</label>
+								</span>
+								<span>
+								    <input type="radio" name="template_type" id="msg_type_2" value="ft" <?php echo $info["template_type"]=="ft" ? "checked" : "";?>/>
+									<label for="msg_type_2">친구톡</label>
+								</span>
+							</td>
             			</tr>
             			<tr>
             				<th class="full_line require">템플릿코드</th>
@@ -111,14 +118,21 @@
             				<td class="full_line"><input type="text" name="template_nm" id="template_nm" value="<?php echo $info["template_nm"];?>" placeholder="템플릿명" /></td>
             			</tr>
             			<tr>
-            				<th>이미지선택<button type="button" onclick="cmmOpenPop('.pop_img');">찾기</button></th>
-            				<td>
+            				<th>
+								이미지선택
+
+							</th>
+            				<td class="flex-row ">
+								<button type="button" class="detail-btn" onclick="cmmOpenPop('.pop_img');"><i class="fa-solid fa-circle-plus"></i> 찾기</button>
+
             					<input type="text" name="img_url" id="img_url" value="<?php echo $info["img_url"];?>" readonly />
             				</td>
             			</tr>
             			<tr>
             				<th>이미지링크</th>
-            				<td><input type="text" name="img_link" id="img_link" value="<?php echo $info["img_link"];?>"/></td>
+            				<td>
+								<input type="text" name="img_link" id="img_link" value="<?php echo $info["img_link"];?>"/>
+							</td>
             			</tr>
             			<tr>
             				<th class="full_line require">메세지내용</th>
@@ -128,7 +142,7 @@
             			</tr>
             			<tr>
             				<th class="full_line">버튼정보</th>
-            				<td class="full_line"><button type="button" onclick="msgBtnAdd();">버튼추가(+)</button></td>
+            				<td class="full_line"><button type="button" class="detail-btn" onclick="msgBtnAdd();"><i class="fa-solid fa-circle-plus"></i> 버튼추가</button></td>
             			</tr>
             			<tfoot class="item ft" id="ftButton"><?php
             			for($i=1; $i<=$info["btn_cnt"]; $i++){?>

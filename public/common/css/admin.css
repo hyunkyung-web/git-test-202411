@@ -24,6 +24,15 @@ button {
 	font-weight: bold;
 	cursor: pointer;
 }
+button.detail-btn {
+	background: #c7f8f5;
+	color: #19c5bb;
+	border: none;
+	height: 2.5em;
+	font-size: 0.9em;
+	margin-left: 8px;
+	text-align: left;
+}
 .blind {
 	width: 100%;
 	height: 100%;
@@ -61,6 +70,26 @@ input {
 }
 ::placeholder {
 	color: #6c716e;
+}
+
+/* table 특이사항 */
+td.flex-row {
+	border: none;
+	border-right: 1px solid #ddd;
+}
+td.radio-msg {
+	border-bottom: none;
+}
+td.add-after {
+	border-left: none;
+}
+#ftButton td.flex-row,
+#ftButton td.flex-row select {
+	background: #f2f2f2;
+	border-left: none;
+}
+#ftButton .btn_remove {
+	color: #f44d5f;
 }
 /******************** Login ********************/
 
@@ -365,8 +394,7 @@ span.sub-list-toggle.active {
 	color: #f44d5f;
 	border: none;
 }
-.main-header-firstLine button.download-user,
-.validate-userId {
+.main-header-firstLine button.download-user {
 	background: #c7f8f5;
 	color: #19c5bb;
 	border: none;
@@ -489,9 +517,11 @@ td.radio {
 
 	border-top: none;
 	border-left: none;
+
+	padding: 8px;
 }
-td.radio input {
-	margin-right: 3px;
+td.radio span {
+	margin-right: 10px;
 }
 
 .form-select {
@@ -511,6 +541,12 @@ td.radio input {
 .form-select,
 form input {
 	border: none;
+}
+input#img_url {
+	width: 70%;
+}
+textarea {
+	height: auto;
 }
 
 /* select 화살표 삭제 */

@@ -131,7 +131,7 @@
                                         <th class="required"><label for="userId">아이디</label></th>
                                         <td class="userId_wrap">
                                             <input type="text" name="userId" id="userId" value="" />
-                                            <button type="button" class="validate-userId form-btn"><i class="fa-solid fa-circle-check"></i> check</button>
+                                            <button type="button" class="validate-userId form-btn detail-btn"><i class="fa-solid fa-circle-check"></i> check</button>
                                         </td>
                                     </tr>
 
@@ -142,6 +142,23 @@
                                     <tr>
                                         <th class="required"><label for="userPwd_validate">비밀번호 확인</label></th>
                                         <td><input type="password" id="userPwd_validate" name="userPwd_validate"/></td>
+                                    </tr>
+
+                                    <tr>
+                                    <th>권한분류</th>
+
+                                        <td class="radio">
+                                            <span>
+                                                <input type="radio" id="userType_1" name="userType" value="userType" checked>
+                                                <label for="userType_1">일반</label>
+                                            </span>
+
+                                            <span>
+                                                <input type="radio" id="userType_2" name="userType" value="userType" checked>
+                                                <label for="userType_2">관리자</label>
+                                            </span>
+                                        </td>
+
                                     </tr>
                                     <!-- <tr>
                                     <th>성명</th>
