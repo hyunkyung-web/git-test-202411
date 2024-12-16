@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>콘텐츠 리스트</title>
+	<title>Contents List</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="닥터웨이브" />
@@ -15,7 +15,6 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
-    <link rel="stylesheet" href="/public/common/css/reset.css" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
@@ -25,7 +24,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>
 
     <script src="/public/common/script/fontawesome.all.min.js"></script>
-    <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
+    <script type="text/javascript" src="/public/common/script/common.js?ver=2205031000"></script>
     <script defer type="text/javascript" src="/public/common/script/admin.js"></script>
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -78,14 +77,14 @@
                 <div>
                     <header class="main-header">
                         <div class="main-header-firstLine">
-                           <!-- <h3></h3> -->
                             <!-- button 추가 -->
                             <div>
-                                <button type="button" class="add-user btn1" onclick="javascript: openMenu(110);"><i class="fa-solid fa-circle-plus"></i> Add</button>
-                                <button type="button" class="delete-user btn2" onclick="javascript: openMenu(110);"><i class="fa-solid fa-circle-minus"></i> Del</button>
+                                <button type="button" class="add-user btn1" onclick="javascript: openMenu(110);"><i class="fa-solid fa-circle-plus"></i> New</button>
+                                <button type="button" class="delete-user btn2" onclick="#"><i class="fa-solid fa-circle-minus"></i> Del</button>
                             </div>
                         </div>
-
+						
+						<form name="frmSearch" id="frmSearch" style="width: 100%;">
                         <div class="search-bar">
                             <select class="category-select list-select">
                                 <option value="">Search...</option>
@@ -96,6 +95,7 @@
                             <input type="text" placeholder="검색..." class="search-input">
                             <button type="button" class="search-button">Search</button>
                         </div>
+                        </form>
                     </header>
                     <table class="list-table">
                         <thead>
