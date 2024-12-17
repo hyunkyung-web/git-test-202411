@@ -82,8 +82,7 @@ function msgBtnAdd(){
 	
 	btnStr+='<tr><td>';
 	btnStr+='<button type="button" class="btn_remove" onclick="msgBtnRemove(this);">X</button>&nbsp;&nbsp;';
-	btnStr+='<select name="btn_type[]" class="category-select form-select">';
-	btnStr+='<option value="">타입</option>';
+	btnStr+='<select class="category-select form-select" name="btn_type[]" class="category-select form-select">';
 	btnStr+='<option value="WL">웹버튼</option>';
 	btnStr+='</select>';							
 	btnStr+='</td>';
@@ -159,6 +158,7 @@ function templateSave(editMode){
 			
 			if(editMode != "D"){											
 				$("#idx").val(data.rtn_idx);
+				location.href="/admin/template_form/"+data.rtn_idx;
 			} else {
 				templateList('main');
 			}

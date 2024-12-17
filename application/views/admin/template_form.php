@@ -134,8 +134,7 @@
             				<tr>
             					<td>
                 					<button type="button" class="btn_remove" onclick="msgBtnRemove(this);">X</button>&nbsp;&nbsp;
-                					<select name="btn_type[]">
-                						<option value="">타입</option>
+                					<select class="category-select form-select" name="btn_type[]">
                 						<option value="WL" <?php echo $info["btn_type_".$i] == "WL" ? "selected" : "";?>>웹버튼</option>
                 					</select>
             					</td>

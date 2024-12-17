@@ -99,6 +99,13 @@
                     </header>
                     
                     <table class="list-table">
+                    	<colgroup>
+                    		<col width="5%"/>
+                    		<col width="20%"/>
+                    		<col width="55%"/>
+                    		<col width="10%"/>
+                    		<col width="10%"/>
+                    	</colgroup>
                         <thead>
                             <tr>
                                 <th align="center">
@@ -122,9 +129,9 @@
                                         <span class="custom-checkbox"></span>
                                     </label>
                                 </td>
-                                <td><a href="/admin/template_form/<?php echo $row["idx"];?>"><?php echo $row["template_nm"].'('.$row["template_cd"].')';?></a></td>
-                                <td><?php echo $row["template_msg"];?></td>
-                                <td><?php echo date('y-m-d', strtotime($row["wdate"]));?></td>
+                                <td style="text-align: left;"><a href="/admin/template_form/<?php echo $row["idx"];?>"><?php echo $row["template_nm"].'('.$row["template_cd"].')';?></a></td>
+                                <td style="text-align: left;"><?php echo $row["template_msg"];?></td>
+                                <td><?php echo date('Y-m-d', strtotime($row["wdate"]));?></td>
                                 <td><?php echo getExist($row["wuser"], 'noname');?></td>                                
                             </tr><?php 
                         }?>                            
