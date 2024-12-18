@@ -158,7 +158,7 @@ function templateSave(editMode){
 			
 			if(editMode != "D"){											
 				$("#idx").val(data.rtn_idx);
-				location.href="/admin/template_form/"+data.rtn_idx;
+				location.replace('/admin/template_form/'+data.rtn_idx);
 			} else {
 				templateList('main');
 			}

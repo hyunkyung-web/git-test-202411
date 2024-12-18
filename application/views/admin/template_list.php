@@ -91,8 +91,8 @@
                                 <option value="000">공지사항</option>
                                 <option value="010">뉴스</option>
                             </select>
-                            <input type="text" name="sch_2" placeholder="Search..." class="search-input">
-                            <button class="search-button">Search</button>
+                            <input type="text" name="sch_2" placeholder="Search..." class="search-input" autocomplet="off" value="<?php echo $schData["sch_2"];?>" />
+                            <button type="button" class="search-button" onclick="javascript:templateList(1);">Search</button>
                         </div>
                         </form>
                         
@@ -101,8 +101,8 @@
                     <table class="list-table">
                     	<colgroup>
                     		<col width="5%"/>
-                    		<col width="20%"/>
-                    		<col width="55%"/>
+                    		<col width="25%"/>
+                    		<col width="50%"/>
                     		<col width="10%"/>
                     		<col width="10%"/>
                     	</colgroup>

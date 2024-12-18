@@ -255,7 +255,7 @@ span.sub-list-toggle.active {
 	flex-grow: 1;
 	padding: 40px;
 	overflow-y: auto;
-	padding: 20px;
+	padding: 1em;
 	background: #e8e8f2;
 }
 
@@ -363,7 +363,7 @@ span.sub-list-toggle.active {
 	border: 1px solid #f3f3f2;
 	padding: 4px;
 	border-radius: 5px;
-	height: 100%;
+	/*height: 100%;*/
 }
 
 .search-input {
@@ -378,7 +378,7 @@ span.sub-list-toggle.active {
 	border: 1px solid #dfeefc;
 }
 ::placeholder {
-	color: #6c716e;
+	color: #999;
 	font-size: 0.9em;
 }
 
@@ -402,6 +402,7 @@ form td {
 	border: 1px solid #ddd;
 	text-align: left;
 	height: 3em;
+	padding: 5px;
 }
 form th {
 	/* color: #b5b5b8; */
@@ -506,7 +507,7 @@ select {
 	border: 1px solid #ccc;
 }
 select option {
-	font-size: 0.7em;
+	font-size: 0.9em;
 }
 
 input[type="radio"] {
@@ -588,7 +589,7 @@ select {
 
 .btn-wrap {
 	border: none;
-	cursor: pointer;
+/*	cursor: pointer;*/
 	display: flex;
 	justify-content: flex-end;
 }
@@ -693,13 +694,53 @@ select {
 	width: 100%;
 }
 
+
+/********************	Template Form	****************/
 .pop_img{position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; max-height: 50vh; overflow: auto; background: #fff; z-index: 91; display: none}
-.btn_pop_close{width: 100%; background: #000; color: #fff; top: 0; text-align: right; padding: 0 10px; cursor: pointer;}
-.img_list{width: 100%; overflow: auto;}
+.btn_pop_close{width: 100%; background: foreground; color: #000; top: 0; text-align: right; padding: 0 10px;}
+.btn_pop_close a{font-size: 2em; font-weight: 600;}
+.img_list{width: 100%; overflow: auto; display: flex; justify-content: center;}
 .img_list h5{text-align: center; margin: 0}
 .img_list div{width: 23.5%; float: left; text-align: center; margin: 0.5em 0.2em;}
 .img_list div > img{width: 95%; border-radius: 5px; opacity: 0.8}
 .img_list div > img:hover{opacity: 1.0; cursor: pointer;}
+
+#tabs li > a{    
+	float: left;
+    padding: .5em 1em;
+    text-decoration: none;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active{
+    border: 1px solid #c5c5c5;
+    background: #f6f6f6;
+    font-weight: normal;
+    color: #454545;
+}
+ 
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover{
+    border: 1px solid #003eff;
+    background: #007fff;
+    font-weight: normal;
+    color: #ffffff;
+}
+
+.ui-tabs .ui-tabs-nav li{
+    list-style: none;
+    float: left;
+    position: relative;
+    top: 0;
+    margin: 1px .2em 0 0;
+    border-bottom-width: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.ui-corner-top{
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
 
 
 @media (max-width: 1024px) {

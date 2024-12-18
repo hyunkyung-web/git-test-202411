@@ -76,7 +76,7 @@ class Admin extends CI_Controller {
 	    $editMode = $idx==-1 ? "N" : "U";
 	    
 	    $dataProfile = [
-	        ["key"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af", "profile_nm"=>"dr-wave"]
+	        ["key"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af", "profile_nm"=>"닥터웨이브"]
 	    ];
 	    
 	    $img_data = [
@@ -147,7 +147,7 @@ class Admin extends CI_Controller {
 // 	    $page = getRequest("page", 1);
 	    $template_type = getRequest("sch_1", "");
 	    $keyword = getRequest("sch_2", "");
-	    $schData = ["sch_1"=>$template_type, "sch_2"=>$keyword, "page"=>$page];
+	    $schData = ["sch_1"=>$template_type, "sch_2"=>$keyword];
 	    
 	    //리스트에 보여줄 게시물의 갯수
 	    $pageSize = 10;
