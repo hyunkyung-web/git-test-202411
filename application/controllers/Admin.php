@@ -58,16 +58,82 @@ class Admin extends CI_Controller {
 	    $viewData = ["menuNum"=>110];
 	    $this->load->view('/admin/contents_form', $viewData);
 	}
-
-	public function user_list(){
-	    $viewData = ["menuNum"=>900];
+	
+	public function hcp_list(){
+	    $viewData = ["menuNum"=>800];
+	    $this->load->view('/admin/hcp_list', $viewData);
+	}
+	
+	public function hcp_form(){
+	    $viewData = ["menuNum"=>810];
+	    $this->load->view('/admin/hcp_form', $viewData);
+	}
+	
+	public function user_list($page=1){
+	    
+	    // 	    $page = getRequest("page", 1);
+	    $template_type = getRequest("sch_1", "");
+	    $keyword = getRequest("sch_2", "");
+	    $schData = ["sch_1"=>$template_type, "sch_2"=>$keyword];
+	    
+	    //리스트에 보여줄 게시물의 갯수
+	    $pageSize = 10;
+	    //페이징에 보여줄 페이지의 갯수
+	    $blockSize = 5;
+	    //쿼리로 조회 할 DB의 주소 시작번호(start) 가져올 갯수(end)
+	    $startPage = ($page-1) * $pageSize;
+	    $endPage = $pageSize;
+	    
+	    $query = $this->msgModel->template_list([
+	        "template_type"=>$template_type, "keyword"=>$keyword, "profile_type"=>"", "start"=>$startPage, "end"=>$endPage
+	    ]);
+	    
+	    
+	    $totalRecord = $query["listCount"];
+	    $totalPage = ceil($totalRecord/$pageSize);
+	    
+	    $viewData = ["menuNum"=>900, "schData"=>$schData, "data"=>$query["list"], "totalRecord"=>$totalRecord, "page"=>$page,
+	        "listFnc"=>"userList", "blockSize"=>$blockSize, "totalPage"=>$totalPage
+	    ];
+	    
+	    // 	    $pageData = ["listFnc"=>"eventList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "page"=>$page];	    
 	    $this->load->view('/admin/user_list', $viewData);
+	    // 	    $this->load->view('/admin/inc_paging', $pageData);
 	}
 
-	public function user_form(){
-	    $viewData = ["menuNum"=>910];
+	public function user_form($idx=-1){
+	    
+	    // 	    $idx = getPost("idx", -1);
+	    $editMode = $idx==-1 ? "N" : "U";
+	    
+	    $query = $this->msgModel->template_open(["idx"=>$idx]);
+	    $info = [];
+	    $keyVal = [
+	        "profile_type", "profile_key",
+	        "template_type", "template_cd", "template_nm", "template_msg",
+	        "img_url", "img_link",
+	        "btn_type_1", "btn_name_1", "btn_link_1", "btn_type_2", "btn_name_2", "btn_link_2",
+	        "btn_type_3", "btn_name_3", "btn_link_3", "btn_type_4", "btn_name_4", "btn_link_4",
+	        "btn_type_5", "btn_name_5", "btn_link_5", "btn_cnt"
+	    ];
+	    
+	    if($query){
+	        foreach($query as $row){
+	            foreach($keyVal as $col){
+	                $info+= [$col => $row[$col]];
+	            }
+	        }
+	    } else {
+	        foreach($keyVal as $col){
+	            $info+= [$col => ''];
+	        }
+	        $info["template_type"]="ft";
+	    }
+	    
+	    $viewData = ["menuNum"=>910, "editMode"=>$editMode, "info"=>$info, "idx"=>$idx, "dataProfile"=>$dataProfile, "img_data"=>$img_data];
 	    $this->load->view('/admin/user_form', $viewData);
 	}
+
 	
 	
 	public function template_form($idx=-1){	    

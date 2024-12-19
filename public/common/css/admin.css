@@ -388,7 +388,7 @@ span.sub-list-toggle.active {
 form table {
 	width: 100%;
 	border-collapse: collapse;
-	margin: 20px 0;
+	margin: 0 0 20px;
 	color: #5c5d5e;
 }
 
@@ -617,7 +617,8 @@ select {
 
 .list-select {
 	width: 30%;
-	font-size: 0.8em;
+	font-size: 0.9em;
+	padding: 8px 0;
 }
 
 #item-list {

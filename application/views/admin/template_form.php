@@ -76,11 +76,13 @@
             <?php include_once APPPATH.'views/admin/inc_header.php'; ?>
             <!-- flex 2 -->
             <main class="main-content">
-                <div id="tabs"> 
-                    <ul>
-                        <li><a href="#tabs-1">form</a></li>
-                        <li><a href="#tabs-2">Sender</a></li>
-    				</ul>  
+                <div id="tabs">
+                	<div style="width: 100%; overflow: hidden;"> 
+                        <ul>
+                            <li><a href="#tabs-1">form</a></li>
+                            <li><a href="#tabs-2">Preview</a></li>
+        				</ul>  
+    				</div>
     				    
 				    <div id="tabs-1">         	
                     	<form name="frm1" id="frm1">                        
@@ -163,8 +165,26 @@
                             <button type="button" class="cancel-user form-btn" onclick="javascript: openMenu(200);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
                         </div>
                 	</div>
-                	<div id="tabs-2">                		
-            		</div>
+                	
+                	<div id="tabs-2">
+            			<div class="mobile_screen" style="width: 300px; border-radius: 8px; border: solid 1px #f1f1f1; margin: 1.5em 0">
+                			<div style="width: 100%; border-radius: 8px;">
+                				<img src="https://mud-kage.kakao.com/dn/xRPSI/btsKOqGeRa7/QVKEY9vwUAd1NPvh3zyuJ1/img_l.jpg" style="width: 100%; border-radius: 8px;"/>
+            				</div>
+                			<div style="width: 100%; padding: 1em; font-size: 0.8em;"><?php echo nl2br('국내 성인 ADHD 현황 - 2023년도
+
+2023년도 국내 성인 인구수(20-44세)9 : 16,870,491명
+● 예 상 ADHD 환자 수(유병률 4.4%) : 742,302명
+* 국가 통계 포털에서 확인한 2021년도 국내 20-44세 인구 수에 미국 18-44세 성인 ADHD 유병률인
+4.4%6를 곱하여 산출하였습니다.
+● 질 병코드 F90.0(과다활동을 수반한 주의력결핍장애) 환자 수(20-44세)10 : 87,136명
+● 국 내 성인 ADHD 잠재 환자 중, 예상 진단율 : 11.7%
+* 질병코드 F90.0으로 진단받은 환자 수를 예상 ADHD 환자 수로 나누어 산출하였습니다.');?></div>
+                			<div style="width: 100%; margin: 0.5em 0; text-align: center;">
+								<button class="btn_link" style="width: 95%; font-size: 0.8em; padding: 0.5em;  border-radius: 4px; background: #f1f1f1; color: #000; text-align: center; font-weight: 400;">컨텐츠 확인하기</button>
+                			 </div>
+            			</div>
+                	</div>
                     
             	</div>
             	

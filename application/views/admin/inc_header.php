@@ -4,8 +4,10 @@
         "110"=>"Contents-Informaton", 
         "200"=>"Template-List", 
         "210"=>"Template-Information", 
-        "900"=>"Member-List",
-        "910"=>"Member-Information", 
+        "800"=>"HCP-List",
+        "810"=>"HCP-Information", 
+        "900"=>"User-List",
+        "910"=>"User-Information", 
     ];
 ?>
 

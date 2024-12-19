@@ -16,7 +16,7 @@ class User_model extends CI_Model {
         }
         
         $sql = "select a.*, b.login_dt, b.device, b.device_info ";
-        $sql.= "from tb_user_info as a ";
+        $sql.= "from tb_user as a ";
         $sql.= "left outer join ( ";
         $sql.= "    select user_id, wdate as login_dt, device, device_info ";
         $sql.= "    from tb_user_log ";
@@ -40,7 +40,7 @@ class User_model extends CI_Model {
     
     public function user_info($opt) {
         
-        $sql = "select * from tb_user_info ";
+        $sql = "select * from tb_user ";
         $sql.= "where idx=?";
         $list = $this->db->query($sql, [$opt["idx"]])->result_array();
         
@@ -50,7 +50,7 @@ class User_model extends CI_Model {
     
     public function chk_user_duple($user_id){
         
-        $sql = "select * from tb_user_info where user_id='".$user_id."' ";
+        $sql = "select * from tb_user where user_id='".$user_id."' ";
         $dataCnt = $this->db->query($sql)->num_rows();
         
         return ["result"=>$dataCnt==0 ? "ok" : "error", "msg"=>$dataCnt==0 ? "사용 가능한 아이디 입니다." : "이미 사용중인 아이디 입니다."];
@@ -77,7 +77,7 @@ class User_model extends CI_Model {
         
         if($opt["editMode"] == "N") {
             
-            $sql = "insert into tb_user_info (user_id, user_pw, user_nm, user_email, company, dept, user_type, optin, optin_dt, use_yn, wuser, wdate) values (";
+            $sql = "insert into tb_user (user_id, user_pw, user_nm, user_email, company, dept, user_type, optin, optin_dt, use_yn, wuser, wdate) values (";
             $sql.= "'".$opt["user_id"]."', '".md5($opt["user_pw"])."', '".$opt["user_nm"]."', '".$opt["user_email"]."', ";
             $sql.= "'".$opt["company"]."', '".$opt["dept"]."', '".$opt["user_type"]."', '".$opt["optin"]."', ";
             if($opt["optin"]=="Y"){
@@ -89,7 +89,7 @@ class User_model extends CI_Model {
             $rtnIdx = $this->db->insert_id();
             
         } elseif($opt["editMode"]=="U"){
-            $sql = "update tb_user_info set ";
+            $sql = "update tb_user set ";
             //암호를 변경하려고 하는 경우에만 암호필드 업데이트
             if(!empty($opt["user_pw"])){
                 $sql.= "user_pw = '".md5($opt["user_pw"])."', ";
@@ -111,7 +111,7 @@ class User_model extends CI_Model {
             $data = $this->db->query($sql);
             
         } elseif($opt["editMode"]=="D"){
-            $sql = "update tb_user_info set ";
+            $sql = "update tb_user set ";
             $sql.= "use_yn = 'N', ";
             $sql.= "udate = now(), ";
             $sql.= "uuser = '$session_id' ";
@@ -219,7 +219,7 @@ class User_model extends CI_Model {
             $strWhere_2 = " and user_pw='".md5($opt["user_pw"])."' " ;
             
             
-            $sql = "select * from tb_user_info ";
+            $sql = "select * from tb_user ";
             
             $idCnt = $this->db->query($sql.$strWhere_1)->num_rows();
             $userConfirm = $this->db->query($sql.$strWhere_1.$strWhere_2)->num_rows();

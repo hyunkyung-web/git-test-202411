@@ -54,6 +54,12 @@ function openMenu(menuNum = 0) {
 		case 210:
 			location.href = "/admin/template_form";
 			break;
+		case 800:
+			location.href = "/admin/hcp_list";
+			break;
+		case 810:
+			location.href = "/admin/hcp_form";
+			break;
 		case 900:
 			location.href = "/admin/user_list";
 			break;

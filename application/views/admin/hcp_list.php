@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>User List</title>
+	<title>HCP List</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="닥터웨이브" />
@@ -115,9 +115,9 @@
                                     </label>
                                 </th>
                                 <th>성명</th>
-                                <th>아이디</th>
-                                <th>소속/부서</th>
                                 <th>이메일</th>
+                                <th>연락처</th>
+                                <th>소속/부서</th>
                             </tr>
                         </thead>
                         <tbody id="item-list"><?php 

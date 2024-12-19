@@ -14,7 +14,7 @@
         </li>
 
         <li class="nav-item">
-            <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Template <i class="fas fa-chevron-down"></i></span>
+            <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Message Template <i class="fas fa-chevron-down"></i></span>
             <ul class="sub-list" <?php echo in_array($menuNum, [200, 210]) ? 'style="display: block;"' : '';?>>
                 <li onclick="javascript: openMenu(200);">Template List</li>
                 <li onclick="javascript: openMenu(210);">Template New</li>
@@ -25,12 +25,20 @@
             <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Notice Board </span>
 
         </li>
+        
+        <li class="nav-item">
+            <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; HCP <i class="fas fa-chevron-down"></i></span>
+            <ul class="sub-list" <?php echo in_array($menuNum, [800, 810]) ? 'style="display: block;"' : '';?>>
+                <li onclick="javascript: openMenu(800);">HCP List</li>
+                <li onclick="javascript: openMenu(810);">HCP New</li>
+            </ul>
+        </li>
 
         <li class="nav-item">
-            <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Members <i class="fas fa-chevron-down"></i></span>
+            <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Users <i class="fas fa-chevron-down"></i></span>
             <ul class="sub-list" <?php echo in_array($menuNum, [900, 910]) ? 'style="display: block;"' : '';?>>
-                <li onclick="javascript: openMenu(900);">Members List</li>
-                <li onclick="javascript: openMenu(910);">Members New</li>
+                <li onclick="javascript: openMenu(900);">Internal User List</li>
+                <li onclick="javascript: openMenu(910);">Internal User New</li>
             </ul>
         </li>
         
