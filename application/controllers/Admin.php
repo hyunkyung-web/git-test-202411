@@ -216,7 +216,7 @@ class Admin extends CI_Controller {
 	    $schData = ["sch_1"=>$template_type, "sch_2"=>$keyword];
 	    
 	    //리스트에 보여줄 게시물의 갯수
-	    $pageSize = 10;
+	    $pageSize = 5;
 	    //페이징에 보여줄 페이지의 갯수
 	    $blockSize = 5;
 	    //쿼리로 조회 할 DB의 주소 시작번호(start) 가져올 갯수(end)

@@ -181,7 +181,7 @@
 ● 국 내 성인 ADHD 잠재 환자 중, 예상 진단율 : 11.7%
 * 질병코드 F90.0으로 진단받은 환자 수를 예상 ADHD 환자 수로 나누어 산출하였습니다.');?></div>
                 			<div style="width: 100%; margin: 0.5em 0; text-align: center;">
-								<button class="btn_link" style="width: 95%; font-size: 0.8em; padding: 0.5em;  border-radius: 4px; background: #f1f1f1; color: #000; text-align: center; font-weight: 400;">컨텐츠 확인하기</button>
+								<button class="btn_link" style="width: 95%; font-size: 0.8em; padding: 1em;  border-radius: 4px; background: #f1f1f1; color: #000; text-align: center; font-weight: 400;">컨텐츠 확인하기</button>
                 			 </div>
             			</div>
                 	</div>

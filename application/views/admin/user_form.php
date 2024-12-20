@@ -73,154 +73,93 @@
             <!-- flex 2 -->
             <main class="main-content">
                 <div>
-                    <!-- <header class="main-header">
-                        <div class="main-header-firstLine">
-                            <h3>Members <br />
-                                <span>Message Target</span>
-                            </h3>
-                            <div>
-                                <button type="button" class="add-user" onclick="javascript: openMenu(910);"><i class="fa-solid fa-circle-plus"></i> Add</button>
-                                <button type="button" class="delete-user" onclick="javascript: openMenu(110);"><i class="fa-solid fa-circle-minus"></i> Del</button>
-                                <button type="button" class="download-user" onclick="javascript: openMenu(110);"><i class="fa-solid fa-download"></i> Excel</button>
-                            </div>
-                        </div>
-
-                        <div class="search-bar">
-                            <select class="category-select">
-                                <option value="">DEPT/BU</option>
-                                <option value="category1">CMR</option>
-                                <option value="category2">F&O</option>
-                                <option value="category2">CE</option>
-                            </select>
-                            <input type="text" placeholder="Search..." class="search-input">
-                            <button class="search-button">Search</button>
-                        </div>
-                    </header> -->
-                    <form>
-                        <table>
-                            <colgroup>
-                                <col style="width: 20%;">
-                                <col style="width: 80%;">
-                            </colgroup>
-
-                            <tbody>
-                                    <tr>
-                                        <th><label for="userDept">DEPT / BU</label></th>
-                                        <td>
-                                            <select class="category-select form-select" id="userDept" name="userDept">
-                                                <option value="">DEPT/BU</option>
-                                                <option value="category1">CMR</option>
-                                                <option value="category2">F&O</option>
-                                                <option value="category2">CE</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th><label for="userTeam">TEAM</label></th>
-                                        <td>
-                                            <select class="category-select form-select" id="userTeam" name="userTeam">
-                                                <option value="">TEMA</option>
-                                                <option value="category1">PV</option>
-                                                <option value="category2">medical</option>
-                                                <option value="category3">F&O</option>
-                                                <option value="category4">CE</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="required"><label for="userId">아이디</label></th>
-                                        <td class="userId_wrap">
-                                            <input type="text" name="userId" id="userId" value="" />
-                                            <button type="button" class="validate-userId form-btn detail-btn"><i class="fa-solid fa-circle-check"></i> check</button>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th class="required"><label for="userPwd">비밀번호</label></th>
-                                        <td><input type="password" name="userPwd" id="userPwd" /></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="required"><label for="userPwd_validate">비밀번호 확인</label></th>
-                                        <td><input type="password" id="userPwd_validate" name="userPwd_validate"/></td>
-                                    </tr>
-
-                                    <tr>
-                                    <th>권한분류</th>
-
-                                        <td class="radio">
-                                            <span>
-                                                <input type="radio" id="userType_1" name="userType" value="userType" checked>
-                                                <label for="userType_1">일반</label>
-                                            </span>
-
-                                            <span>
-                                                <input type="radio" id="userType_2" name="userType" value="userType" checked>
-                                                <label for="userType_2">관리자</label>
-                                            </span>
-                                        </td>
-
-                                    </tr>
-                                    <!-- <tr>
-                                    <th>성명</th>
-                                    <td><input type="text" /></td>
-                                </tr>
-                                <tr>
-                                    <th>이메일</th>
-                                    <td><input type="email" /></td>
-                                </tr>
-                                <tr>
-                                    <th>성명</th>
-                                    <td><input type="text" /></td>
-                                </tr>
-                                <tr>
-                                    <th>부서</th>
-                                    <td><input type="text" /></td>
-                                </tr>
-
-                                <tr>
-                                    <th>권한분류</th>
-
-                                    <td class="radio">
-                                        <input type="radio" id="userType_1" name="userType" value="userType" checked>
-                                        <label for="userType_1">일반</label>
-
-                                        <input type="radio" id="userType_2" name="userType" value="userType" checked>
-                                        <label for="userType_2">관리자</label>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <th>정보수신</th>
-                                    <td class="radio">
-                                        <input type="radio" name="optin" id="optin_2" value="N" checked>
-                                        <label for="optin_2">동의안함</label>
-                                        <input type="radio" name="optin" id="optin_1" value="Y">
-                                        <label for="optin_1">동의함</label>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <th>사용여부</th>
-                                    <td class="radio">
-                                        <input type="radio" name="useYn" id="useYn_1" value="Y" checked>
-                                        <label for="useYn_1">사용</label>
-                                        <input type="radio" name="useYn" id="useYn_2" value="N">
-                                        <label for="useYn_2">사용안함</label>
-                                    </td>
-                                </tr> -->
-                                </tbody>
-
-                        </table>
-                    </form>
+                    <form name="frm1" id="frm1">
+            		<table>
+            			<colgroup>
+            				<col width="25%" />
+            				<col width="75%" />				
+            			</colgroup>
+            			<tbody>
+            			<tr>
+            				<th class="full_line require">아이디</th>
+            				<td class="full_line">
+            					<input type="text" name="userId" id="userId"  value="<?php echo $info["user_id"];?>" placeholder="아이디" <?php echo $editMode=="U" ? 'readonly' : '';?>/>
+            					<?php if($editMode=="N") { ?><button type="button" class="validate-userId form-btn detail-btn" onclick="admChkUserId();return(false);"><i class="fa-solid fa-circle-check"></i> 중복확인</button><?php }?>
+            					<?php if($editMode=="U") { ?><button id="btnChgPw" onclick="admChgUserPw();return(false);">암호변경</button><?php }?>
+            					
+            				</td>
+            			</tr>
+            			<tr class="userPw" <?php echo $editMode=="U" ? 'style="display: none;"' : '';?>>
+            				<th class="full_line require">비밀번호</th>
+            				<td class="full_line">
+            					<input type="password" name="userPw" id="userPw" placeholder="비밀번호" />
+            				</td>
+            			</tr>
+            			<tr class="userPw" <?php echo $editMode=="U" ? 'style="display: none;"' : '';?>>
+            				<th class="full_line require">비밀번호(확인)</th>
+            				<td class="full_line">					
+            					<input type="password" name="userPw_2" id="userPw_2" placeholder="비밀번호 확인" />
+            				</td>
+            			</tr>
+            			<tr>
+            				<th class="full_line require">성명</th>
+            				<td class="full_line"><input type="text" name="userNm" id="userNm" value="<?php echo $info["user_nm"];?>" placeholder="성명" /></td>
+            			</tr>
+            			<tr>
+            				<th class="full_line">이메일</th>
+            				<td class="full_line"><input type="text" name="userEmail" id="userEmail" value="<?php echo $info["user_email"];?>" placeholder="이메일" /></td>
+            			</tr>
+            			<tr>
+            				<th class="full_line">소속</th>
+            				<td class="full_line">
+            					<input type="text" name="company" id="company" value="<?php echo $info["company"];?>" placeholder="소속"/>
+            				</td>
+            			</tr>
+            			<tr>
+            				<th class="full_line">부서</th>
+            				<td class="full_line">
+            					<input type="text" name="dept" id="dept" value="<?php echo $info["dept"];?>" placeholder="부서"/>
+            				</td>
+            			</tr>			
+            			<tr>
+            				<th class="full_line require">권한분류</th>
+            				<td class="full_line">
+            					<input type="radio" name="userType" id="userType_1" value="user" <?php echo $info["user_type"]=="user" ? "checked" : '';?>/><label for="userType_1">일반</label>
+            					<input type="radio" name="userType" id="userType_2" value="admin" <?php echo $info["user_type"]=="admin" ? "checked" : '';?>/><label for="userType_2">관리자</label>					
+            				</td>
+            			</tr>
+            			<tr>
+            				<th class="full_line require">정보수신</th>
+            				<td class="full_line">
+            					<input type="radio" name="optin" id="optin_2" value="N" <?php echo $info["optin"]!="Y" ? "checked" : '';?>/><label for="optin_2">동의안함</label>
+            					<input type="radio" name="optin" id="optin_1" value="Y" <?php echo $info["optin"]=="Y" ? "checked" : '';?>/><label for="optin_1">동의함</label><?php 
+            					if($info["optin"]=="Y"){?>
+            						<input type="date" name="optinDt" id="optinDt" style="border: none;" readonly value="<?php echo isset($info["optin_dt"]) ? date('Y-m-d', strtotime($info["optin_dt"])) : '';?>" />
+            						<input type="checkbox" name="optinUpdate" id="optinUpdate" value="Y" /><label for="optinUpdate">수신재동의</label><?php 
+                                }?>
+            					<input type="hidden" name="optinOld" id="optinOld" value="<?php echo $info["optin"];?>" />
+            				</td>
+            			</tr>
+            			<tr>
+            				<th class="full_line require">사용여부</th>
+            				<td class="full_line">
+            					<input type="radio" name="useYn" id="useYn_1" value="Y" <?php echo $info["use_yn"]=="Y" ? "checked" : '';?>/><label for="useYn_1">사용</label>
+            					<input type="radio" name="useYn" id="useYn_2" value="N" <?php echo $info["use_yn"]!="Y" ? "checked" : '';?>/><label for="useYn_2">사용안함</label>	
+            					<button>test</button>				
+            				</td>
+            			</tr>
+            			
+            			</tbody>		
+            		</table>
+            		<input type="hidden" name="editMode" id="editMode" value="<?php echo $editMode;?>"/>
+            		<input type="hidden" name="idx" id="idx" value="<?php echo $info["idx"];?>"/>
+            		</form>
 
                     <div class="btn-wrap">
-                        <button type="button" class="save-user form-btn"><i class="fa-solid fa-circle-plus"></i> save</button>
-                        <button type="button" class="cancel-user form-btn" onclick="javascript: openMenu(100);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
-                    </div>
+                            <button type="button" class="save-user form-btn" onclick="javascript:userSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
+                            <button type="button" class="cancel-user form-btn" onclick="javascript: openMenu(900);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
+                        </div>
                 </div>
-
-
-
             </main>
 
         </div>
