@@ -77,7 +77,7 @@
             <!-- flex 2 -->
             <main class="main-content">
                 <div id="tabs">
-                	<div style="width: 100%; overflow: hidden;">
+                	<div>
                         <ul>
                             <li><a href="#tabs-1">form</a></li>
                             <li><a href="#tabs-2">Preview</a></li>
