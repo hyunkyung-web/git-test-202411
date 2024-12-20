@@ -145,7 +145,10 @@
             				<td class="full_line">
             					<input type="radio" name="useYn" id="useYn_1" value="Y" <?php echo $info["use_yn"]=="Y" ? "checked" : '';?>/><label for="useYn_1">사용</label>
             					<input type="radio" name="useYn" id="useYn_2" value="N" <?php echo $info["use_yn"]!="Y" ? "checked" : '';?>/><label for="useYn_2">사용안함</label>
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'main' of https://github.com/hyunkyung-web/git-test-202411.git
             				</td>
             			</tr>
 
