@@ -74,19 +74,19 @@
             <main class="main-content">
                 <div>
                     <form name="frm1" id="frm1">
-            		<table>
+            		<table class="form-table">
             			<colgroup>
             				<col width="25%" />
-            				<col width="75%" />				
+            				<col width="75%" />
             			</colgroup>
             			<tbody>
             			<tr>
             				<th class="full_line require">아이디</th>
             				<td class="full_line">
             					<input type="text" name="userId" id="userId"  value="<?php echo $info["user_id"];?>" placeholder="아이디" <?php echo $editMode=="U" ? 'readonly' : '';?>/>
-            					<?php if($editMode=="N") { ?><button type="button" class="validate-userId form-btn detail-btn" onclick="admChkUserId();return(false);"><i class="fa-solid fa-circle-check"></i> 중복확인</button><?php }?>
+            					<?php if($editMode=="N") { ?><button type="button" class="form-btn detail-btn" onclick="admChkUserId();return(false);"><i class="fa-solid fa-circle-check"></i> 중복확인</button><?php }?>
             					<?php if($editMode=="U") { ?><button id="btnChgPw" onclick="admChgUserPw();return(false);">암호변경</button><?php }?>
-            					
+
             				</td>
             			</tr>
             			<tr class="userPw" <?php echo $editMode=="U" ? 'style="display: none;"' : '';?>>
@@ -97,7 +97,7 @@
             			</tr>
             			<tr class="userPw" <?php echo $editMode=="U" ? 'style="display: none;"' : '';?>>
             				<th class="full_line require">비밀번호(확인)</th>
-            				<td class="full_line">					
+            				<td class="full_line">
             					<input type="password" name="userPw_2" id="userPw_2" placeholder="비밀번호 확인" />
             				</td>
             			</tr>
@@ -120,22 +120,22 @@
             				<td class="full_line">
             					<input type="text" name="dept" id="dept" value="<?php echo $info["dept"];?>" placeholder="부서"/>
             				</td>
-            			</tr>			
+            			</tr>
             			<tr>
             				<th class="full_line require">권한분류</th>
             				<td class="full_line">
             					<input type="radio" name="userType" id="userType_1" value="user" <?php echo $info["user_type"]=="user" ? "checked" : '';?>/><label for="userType_1">일반</label>
-            					<input type="radio" name="userType" id="userType_2" value="admin" <?php echo $info["user_type"]=="admin" ? "checked" : '';?>/><label for="userType_2">관리자</label>					
+            					<input type="radio" name="userType" id="userType_2" value="admin" <?php echo $info["user_type"]=="admin" ? "checked" : '';?>/><label for="userType_2">관리자</label>
             				</td>
             			</tr>
             			<tr>
             				<th class="full_line require">정보수신</th>
             				<td class="full_line">
             					<input type="radio" name="optin" id="optin_2" value="N" <?php echo $info["optin"]!="Y" ? "checked" : '';?>/><label for="optin_2">동의안함</label>
-            					<input type="radio" name="optin" id="optin_1" value="Y" <?php echo $info["optin"]=="Y" ? "checked" : '';?>/><label for="optin_1">동의함</label><?php 
+            					<input type="radio" name="optin" id="optin_1" value="Y" <?php echo $info["optin"]=="Y" ? "checked" : '';?>/><label for="optin_1">동의함</label><?php
             					if($info["optin"]=="Y"){?>
             						<input type="date" name="optinDt" id="optinDt" style="border: none;" readonly value="<?php echo isset($info["optin_dt"]) ? date('Y-m-d', strtotime($info["optin_dt"])) : '';?>" />
-            						<input type="checkbox" name="optinUpdate" id="optinUpdate" value="Y" /><label for="optinUpdate">수신재동의</label><?php 
+            						<input type="checkbox" name="optinUpdate" id="optinUpdate" value="Y" /><label for="optinUpdate">수신재동의</label><?php
                                 }?>
             					<input type="hidden" name="optinOld" id="optinOld" value="<?php echo $info["optin"];?>" />
             				</td>
@@ -144,12 +144,12 @@
             				<th class="full_line require">사용여부</th>
             				<td class="full_line">
             					<input type="radio" name="useYn" id="useYn_1" value="Y" <?php echo $info["use_yn"]=="Y" ? "checked" : '';?>/><label for="useYn_1">사용</label>
-            					<input type="radio" name="useYn" id="useYn_2" value="N" <?php echo $info["use_yn"]!="Y" ? "checked" : '';?>/><label for="useYn_2">사용안함</label>	
-            					<button>test</button>				
+            					<input type="radio" name="useYn" id="useYn_2" value="N" <?php echo $info["use_yn"]!="Y" ? "checked" : '';?>/><label for="useYn_2">사용안함</label>
+
             				</td>
             			</tr>
-            			
-            			</tbody>		
+
+            			</tbody>
             		</table>
             		<input type="hidden" name="editMode" id="editMode" value="<?php echo $editMode;?>"/>
             		<input type="hidden" name="idx" id="idx" value="<?php echo $info["idx"];?>"/>

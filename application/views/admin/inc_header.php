@@ -1,13 +1,13 @@
-<?php 
+<?php
     $menuList = [
         "100"=>"Contents-List",
-        "110"=>"Contents-Informaton", 
-        "200"=>"Template-List", 
-        "210"=>"Template-Information", 
+        "110"=>"Contents-Informaton",
+        "200"=>"Template-List",
+        "210"=>"Template-Information",
         "800"=>"HCP-List",
-        "810"=>"HCP-Information", 
+        "810"=>"HCP-Information",
         "900"=>"User-List",
-        "910"=>"User-Information", 
+        "910"=>"User-Information",
     ];
 ?>
 
@@ -22,4 +22,5 @@
                 <li><span style="color: #c6c5cd ">Hi</span>, <span>디웨이브</span></li>
             </ul>
         </nav>
+
 </div>

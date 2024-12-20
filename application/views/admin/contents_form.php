@@ -101,7 +101,7 @@
                         </div>
                     </header> -->
                     <form>
-                        <table>
+                        <table class="form-table">
                             <colgroup>
                                 <col style="width: 20%;">
                                 <col style="width: 80%;">
