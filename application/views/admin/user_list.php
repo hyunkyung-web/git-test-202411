@@ -89,7 +89,7 @@
                                 <option value="010">소속/부서</option>
                             </select>
                             <input type="text" name="sch_2" placeholder="Search..." class="search-input" autocomplet="off" value="<?php echo $schData["sch_2"];?>" />
-                            <button type="button" class="search-button" onclick="javascript:templateList(1);">Search</button>
+                            <button type="button" class="search-button" onclick="javascript:userList(1);">Search</button>
                         </div>
                         </form>
                         
