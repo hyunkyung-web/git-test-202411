@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>사용자 추가</title>
+	<title>User Information</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="닥터웨이브" />
@@ -15,17 +15,13 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
-    <link rel="stylesheet" href="/public/common/css/reset.css" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
-    <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  	<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 
     <script src="/public/common/script/fontawesome.all.min.js"></script>
-    <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
+    <script defer type="text/javascript" src="/public/common/script/common.js"></script>
     <script defer type="text/javascript" src="/public/common/script/admin.js"></script>
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -84,8 +80,8 @@
             				<th class="full_line require">아이디</th>
             				<td class="full_line">
             					<input type="text" name="userId" id="userId"  value="<?php echo $info["user_id"];?>" placeholder="아이디" <?php echo $editMode=="U" ? 'readonly' : '';?>/>
-            					<?php if($editMode=="N") { ?><button type="button" class="form-btn detail-btn" onclick="admChkUserId();return(false);"><i class="fa-solid fa-circle-check"></i> 중복확인</button><?php }?>
-            					<?php if($editMode=="U") { ?><button id="btnChgPw" onclick="admChgUserPw();return(false);">암호변경</button><?php }?>
+            					<?php if($editMode=="N") { ?><button type="button" class="form-btn detail-btn" onclick="userDuplicateCheck();return(false);"><i class="fa-solid fa-circle-check"></i> 중복확인</button><?php }?>
+            					<?php if($editMode=="U") { ?><button type="button" class="form-btn detail-btn"  onclick="userPasswordChange();return(false);"><i class="fa-solid fa-circle-check"></i> 암호변경</button><?php }?>
 
             				</td>
             			</tr>

@@ -182,3 +182,122 @@ function templateSave(editMode) {
 		},
 	});
 }
+
+
+
+function userList(page) {
+	let postUrl = "/admin/user_list/" + page;
+
+	$("#frmSearch").attr("action", postUrl).submit();
+}
+
+/******************************************************************
+*	함수명: userSave()
+*	기능: 사용자 저장
+******************************************************************/
+function userSave(editMode){
+//	var reqArr = ["userId", "userPw", "userNm"];
+//	var chkReq = false;
+//	
+//	if(editMode=="N"){
+//		$.each(reqArr, function(idx, item){
+//			if($.trim($("#"+item).val()).length == 0){
+//				cmmShowMsg ($("#"+item).prop("placeholder")+' 필수입력 누락입니다.');
+//				$("#"+item).focus();
+//				chkReq = true;
+//				return false;
+//			}			
+//		});
+//		
+//		if(chkReq){
+//			console.log('필수입력 누락');
+//			return;
+//		}
+//		if($.trim($("#userPw").val()) != $.trim($("#userPw_2").val())){
+//			cmmShowMsg('비밀번호가 일치하지 않습니다.');
+//			return;
+//		}
+//	}
+//	
+//	if(editMode=="U"){
+//		if($(".userPw").css("display")!="none"){
+//			if($.trim($("#userPw").val()).length == 0){
+//				cmmShowMsg('비밀번호를 입력하세요.');
+//				$("#userPw").focus();
+//				return;
+//			}
+//			if($.trim($("#userPw").val()) != $.trim($("#userPw_2").val())){
+//				cmmShowMsg('비밀번호가 일치하지 않습니다.');
+//				$("#userPw").focus();
+//				return;
+//			}
+//		}
+//		
+//		for(i=2; i<reqArr.length; i++){
+//			if($.trim($("#"+reqArr[i]).val()).length == 0){
+//				cmmShowMsg ($("#"+reqArr[i]).prop("placeholder")+' 필수입력 누락입니다.');
+//				$("#"+reqArr[i]).focus();
+//				return;
+//			}
+//		}
+//	}
+	
+	var postData = $("#frm1").serialize();
+	
+	$.ajax({
+		type: "POST",
+		url: "/admin/user_save/",
+		data: postData,
+		dataType: "json",
+		beforeSend:function(){
+		},
+		success: function(data){			
+			alert(data.msg);
+		},
+		error: function(request, status, err){
+			console.log(err);
+			return;
+		}
+	});
+}
+
+function userDuplicateCheck(){
+	
+	if($.trim($("#userId").val()).length == 0) {
+		alert("아이디를 입력하세요.");
+		return;
+	}
+	
+	var userId = $("#userId").val();
+	
+	$.ajax({	
+		  type: "POST",
+		  url: "/admin/user_duplicate_check",
+		  data: {userId:userId},
+		  dataType: "json",
+		  success: function(data){
+			alert(data.msg);
+			return;
+		  },
+		  error: function(request, status, err){
+			alert("Server Error Occured:"+ err);
+			return;
+		  }
+	});
+}
+
+/******************************************************************
+*	함수명: admChgUserPw()
+*	기능: 사용자 암호변경 모드 전환
+******************************************************************/
+function userPasswordChange(){
+	var chgMod = $(".userPw").css("display");
+	//암호변경 모드가 아님
+	if(chgMod == "none"){
+		$(".userPw").show();
+		$("#btnChgPw").text('변경취소');
+	} else {			
+		$(".userPw").hide();
+		$("#btnChgPw").text('암호변경');
+	}
+}

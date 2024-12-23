@@ -16,15 +16,12 @@
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
-    <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  	<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 
     <script src="/public/common/script/fontawesome.all.min.js"></script>
-    <script type="text/javascript" src="/public/common/script/common.js?ver=2205031000"></script>
+    <script defer type="text/javascript" src="/public/common/script/common.js"></script>
     <script defer type="text/javascript" src="/public/common/script/admin.js"></script>
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -129,10 +126,10 @@
                                         <span class="custom-checkbox"></span>
                                     </label>
                                 </td>
-                                <td style="text-align: left;"><a href="/admin/template_form/<?php echo $row["idx"];?>"><?php echo $row["template_nm"].'('.$row["template_cd"].')';?></a></td>
-                                <td style="text-align: left;"><?php echo $row["template_msg"];?></td>
-                                <td><?php echo date('Y-m-d', strtotime($row["wdate"]));?></td>
-                                <td><?php echo getExist($row["wuser"], 'noname');?></td>                                
+                                <td style="text-align: left;"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_nm"];?></a></td>
+                                <td style="text-align: left;"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_id"];?></a></td>
+                                <td style="text-align: left;"><?php echo $row["company"].'-'.$row["dept"];?></td>
+                                <td style="text-align: left;"><?php echo $row["user_email"];?></td>                               
                             </tr><?php 
                         }?>                            
                         </tbody>

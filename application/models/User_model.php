@@ -15,10 +15,10 @@ class User_model extends CI_Model {
             $strWhere .= "and (a.user_id like '%".$opt["keyword"]."%' or a.user_nm like '%".$opt["keyword"]."%' or a.user_email like '%".$opt["keyword"]."%' or a.company like '%".$opt["keyword"]."%') ";
         }
         
-        $sql = "select a.*, b.login_dt, b.device, b.device_info ";
+        $sql = "select a.*, b.login_dt, b.user_device, b.device_info ";
         $sql.= "from tb_user as a ";
         $sql.= "left outer join ( ";
-        $sql.= "    select user_id, wdate as login_dt, device, device_info ";
+        $sql.= "    select user_id, wdate as login_dt, user_device, device_info ";
         $sql.= "    from tb_user_log ";
         $sql.= "    where idx in (select max(idx) from tb_user_log group by user_id) ";
         $sql.= ") as b on a.user_id=b.user_id ";
@@ -38,19 +38,19 @@ class User_model extends CI_Model {
         exit;
     }
     
-    public function user_info($opt) {
+    public function user_open($opt) {
         
         $sql = "select * from tb_user ";
         $sql.= "where idx=?";
-        $list = $this->db->query($sql, [$opt["idx"]])->result_array();
-        
+        $list = $this->db->query($sql, [$opt["idx"]])->result_array();        
+    
         return $list;
         exit;
     }
     
     public function chk_user_duple($user_id){
         
-        $sql = "select * from tb_user where user_id='".$user_id."' ";
+        $sql = "select * from tb_user where user_id='".$user_id."' ";   
         $dataCnt = $this->db->query($sql)->num_rows();
         
         return ["result"=>$dataCnt==0 ? "ok" : "error", "msg"=>$dataCnt==0 ? "사용 가능한 아이디 입니다." : "이미 사용중인 아이디 입니다."];
@@ -61,32 +61,35 @@ class User_model extends CI_Model {
         
         $this->db->trans_begin();
         
-        $session_id = $this->session->userdata["user_id"];
-        $session_nm = $this->session->userdata["user_nm"];
-        
-        if($opt["editMode"] == "N") {
-            //신규등록 시 기존 사용자와의 아이디 중복여부 확인
-            $chkDuple = $this->chk_user_duple($opt["user_id"]);
-            if($chkDuple["result"] != "ok"){                
-                return ["result"=>$chkDuple["result"], "msg"=>$chkDuple["msg"]];
-                exit;
-            }
-        }
+        $session_id = getExist($this->session->userdata["user_id"], 'noname');
+        $session_nm = getExist($this->session->userdata["user_nm"], 'noname');      
         
         $rtnIdx = $opt["idx"];
         
         if($opt["editMode"] == "N") {
             
-            $sql = "insert into tb_user (user_id, user_pw, user_nm, user_email, company, dept, user_type, optin, optin_dt, use_yn, wuser, wdate) values (";
-            $sql.= "'".$opt["user_id"]."', '".md5($opt["user_pw"])."', '".$opt["user_nm"]."', '".$opt["user_email"]."', ";
-            $sql.= "'".$opt["company"]."', '".$opt["dept"]."', '".$opt["user_type"]."', '".$opt["optin"]."', ";
-            if($opt["optin"]=="Y"){
-                $sql.= "now(), ";
-            }
-            $sql.= "'".$opt["use_yn"]."', '".$session_id."', now() )";            
-            $data = $this->db->query($sql);  
+            //신규등록 시 기존 사용자와의 아이디 중복여부 확인
+            $chkDuple = $this->chk_user_duple($opt["user_id"]);
             
-            $rtnIdx = $this->db->insert_id();
+            if($chkDuple["result"] != "ok"){
+                return ["result"=>$chkDuple["result"], "msg"=>$chkDuple["msg"]];
+                exit;
+            } else {
+                
+                $sql = "insert into tb_user (user_id, user_pw, user_nm, user_email, company, dept, user_type, optin, optin_dt, use_yn, wuser, wdate) values (";
+                $sql.= "'".$opt["user_id"]."', '".md5($opt["user_pw"])."', '".$opt["user_nm"]."', '".$opt["user_email"]."', ";
+                $sql.= "'".$opt["company"]."', '".$opt["dept"]."', '".$opt["user_type"]."', '".$opt["optin"]."', ";
+                if($opt["optin"]=="Y"){
+                    $sql.= "now(), ";
+                } else {
+                    $sql.= "Null, ";
+                }
+                $sql.= "'".$opt["use_yn"]."', '".$session_id."', now() )";
+                
+                $data = $this->db->query($sql);  
+                
+                $rtnIdx = $this->db->insert_id();
+            }
             
         } elseif($opt["editMode"]=="U"){
             $sql = "update tb_user set ";

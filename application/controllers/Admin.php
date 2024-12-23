@@ -7,6 +7,7 @@ class Admin extends CI_Controller {
         parent::__construct();
         
         $this->load->model('msg_model', 'msgModel');
+        $this->load->model('user_model', 'userModel');
 
 //         $this->load->model('event_model', 'eventModel');
 
@@ -84,8 +85,8 @@ class Admin extends CI_Controller {
 	    $startPage = ($page-1) * $pageSize;
 	    $endPage = $pageSize;
 	    
-	    $query = $this->msgModel->template_list([
-	        "template_type"=>$template_type, "keyword"=>$keyword, "profile_type"=>"", "start"=>$startPage, "end"=>$endPage
+	    $query = $this->userModel->user_list([
+	        "keyword"=>$keyword, "start"=>$startPage, "end"=>$endPage
 	    ]);
 	    
 	    
@@ -103,18 +104,13 @@ class Admin extends CI_Controller {
 
 	public function user_form($idx=-1){
 	    
-	    // 	    $idx = getPost("idx", -1);
-	    $editMode = $idx==-1 ? "N" : "U";
+// 	    $idxNo = getPost("idxNo", -1);	    
 	    
-	    $query = $this->msgModel->template_open(["idx"=>$idx]);
+	    $query = $this->userModel->user_open(["idx"=>$idx]);	    
+	    
 	    $info = [];
 	    $keyVal = [
-	        "profile_type", "profile_key",
-	        "template_type", "template_cd", "template_nm", "template_msg",
-	        "img_url", "img_link",
-	        "btn_type_1", "btn_name_1", "btn_link_1", "btn_type_2", "btn_name_2", "btn_link_2",
-	        "btn_type_3", "btn_name_3", "btn_link_3", "btn_type_4", "btn_name_4", "btn_link_4",
-	        "btn_type_5", "btn_name_5", "btn_link_5", "btn_cnt"
+	        "idx", "user_id", "user_pw", "user_nm", "user_email", "company", "dept", "user_type", "optin", "optin_dt", "use_yn"
 	    ];
 	    
 	    if($query){
@@ -123,15 +119,58 @@ class Admin extends CI_Controller {
 	                $info+= [$col => $row[$col]];
 	            }
 	        }
+	        $editMode ="U";
 	    } else {
 	        foreach($keyVal as $col){
 	            $info+= [$col => ''];
 	        }
-	        $info["template_type"]="ft";
+	        $info["idx"] = -1;
+	        $info["use_yn"] = "Y";
+	        $info["user_type"] = "user";
+	        $editMode ="N";
 	    }
 	    
-	    $viewData = ["menuNum"=>910, "editMode"=>$editMode, "info"=>$info, "idx"=>$idx, "dataProfile"=>$dataProfile, "img_data"=>$img_data];
+	    
+	    $viewData = ["menuNum"=>910, "editMode"=>$editMode, "info"=>$info];
+	    
 	    $this->load->view('/admin/user_form', $viewData);
+	}
+	
+	public function user_save(){	    
+
+	    $query = $this->userModel->user_save([
+	        "editMode"=> getPost("editMode", "N"),
+	        "idx"=> getPost("idx", -1),
+	        "user_id" => getPost("userId", ""),
+	        "user_pw" => getPost("userPw", ""),
+	        "user_nm" => getPost("userNm", ""),
+	        "user_email" => getPost("userEmail", ""),
+	        "company" => getPost("company", ""),
+	        "dept" => getPost("dept", ""),
+	        "user_type" => getPost("userType", "user"),
+	        "optin" => getPost("optin", "N"),
+	        "optin_dt" => getPost("optinDt", "Null"),
+	        "optin_old" => getPost("optinOld", "N"),
+	        "optin_update" => getPost("optinUpdate", "N"),
+	        "use_yn" => getPost("useYn", "Y")
+	    ]);
+	    
+	    echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"]]);
+	    exit;
+	}
+	
+	public function user_duplicate_check(){
+	    
+	    if(getPost("userId", "")){
+	        $query = $this->userModel->chk_user_duple(getPost("userId", ""));
+	    }else {
+	        echo json_encode(['result' => "error", 'msg'=>"아이디를 입력하세요"]);
+	        exit;
+	    }
+	    
+	    echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"]]);
+	    exit;
+	    
 	}
 
 	
