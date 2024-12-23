@@ -8,8 +8,8 @@
 	<title>User List</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
-	<meta property="og:title" content="닥터웨이브" />
-	<meta property="og:description" content="닥터웨이브" />
+	<meta property="og:title" content="Dr-Round" />
+	<meta property="og:description" content="Dr-Round" />
 	<meta property="og:image" content="https://dr-wave.co.kr/public/images/logo.png"/>
 	<meta property="og:url" content="" />
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
