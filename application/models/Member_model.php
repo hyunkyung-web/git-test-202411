@@ -91,7 +91,7 @@ class member_model extends CI_Model {
         
         $this->db->trans_begin();
         
-        if($opt["editMode"] == "N"||$opt["editMode"] == "C") {          
+        if($opt["editMode"] == "N" || $opt["editMode"] == "C") {          
             //신규등록 시 기존 사용자와의 아이디 중복여부 확인
             $valid_result = $this->create_valid($opt["cellphone"]);
             
@@ -103,12 +103,12 @@ class member_model extends CI_Model {
         
         $idx = $opt["idx"];
         
-        if($opt["editMode"] == "N"||$opt["editMode"]=="C") {
+        if($opt["editMode"] == "N" || $opt["editMode"]=="C") {
             
-            $sql = "insert into tb_member (member_nm, member_type, cellphone, email_addr, biz_nm, specialty, license_num, signup_dt, optin, optin_dt, ";
+            $sql = "insert into tb_member (member_nm, member_type, cellphone, email_addr, biz_nm, specialty, uuid, signup_dt, optin, optin_dt, ";
             $sql.= "member_status, wuser, wdate) values (";
             $sql.= "'".$opt["member_nm"]."', '".$opt["member_type"]."', '".$opt["cellphone"]."', ";
-            $sql.= "'".$opt["email_addr"]."', '".$opt["biz_nm"]."', '".$opt["specialty"]."', '".$opt["license_num"]."', ";            
+            $sql.= "'".$opt["email_addr"]."', '".$opt["biz_nm"]."', '".$opt["specialty"]."', '".$opt["uuid"]."', ";            
             $sql.= " now(), 'Y', now(), ";
 
             
@@ -128,7 +128,7 @@ class member_model extends CI_Model {
             $sql.= "cellphone = '".$opt["cellphone"]."', ";            
             $sql.= "biz_nm = '".$opt["biz_nm"]."', ";
             $sql.= "specialty = '".$opt["specialty"]."', ";
-            $sql.= "license_num = '".$opt["license_num"]."', ";
+            $sql.= "uuid = '".$opt["uuid"]."', ";
             $sql.= "member_status = '".$opt["member_status"]."', ";
             $sql.= "udate = now(), ";
             $sql.= "uuser = '".$this->session->userdata["user_id"]."' ";

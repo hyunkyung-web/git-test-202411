@@ -100,6 +100,44 @@ class Admin extends CI_Controller {
 	    $this->load->view('/admin/hcp_form', $viewData);
 	}
 	
+	public function hcp_save(){
+	    
+	    $before_status = getPost("before_status", "");
+	    $alarm_type = getPost("editMode", "C")=="C" ? 'welcome' : '';
+	    
+	    $query = $this->memberModel->member_save([
+	        "editMode"=> getPost("editMode", "C"),
+	        "member_id"=> getPost("member_id", -1),
+	        "member_nm" => getPost("member_nm", "Unknown"),
+	        "member_type" => getPost("member_type", "hcp"),
+	        "cellphone" => getPost("cellphone", ""),
+	        "email_addr" => getPost("email_addr", ""),
+	        "biz_nm" => getPost("biz_nm", ""),
+	        "specialty" => getPost("specialty", ""),
+	        "license_num" => getPost("license_num", ""),
+	        "member_status" => getPost("member_status", "hold")
+	    ]);
+	    
+	    if(($before_status=="hold" || $before_status=="expire") && getPost("member_status", "hold")=="active"){
+	        $alarm_type = "member_active";
+	    }elseif($before_status=="active" && getPost("member_status", "hold")=="expire"){
+	        $alarm_type = "member_expire";
+	    }
+	    
+	    if ( $query["result"] == "EXIST_ID") {
+	        echo json_encode(array('result' => 'EXIST_ID'));
+	        exit;
+	    } else {
+	        if ( $query["result"] != "DB_ERROR") {
+	            echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"], 'push_msg_type'=>$alarm_type, 'idx' => $query["idx"]]);
+	        } else {
+	            echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"]]);
+	        }
+	        exit;
+	    }
+	    
+	}
+	
 	public function user_list($page=1){
 	    
 	    // 	    $page = getRequest("page", 1);

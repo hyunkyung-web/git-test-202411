@@ -95,19 +95,27 @@
             				<td class="full_line"><input type="text" name="cellphone" id="cellphone" value="<?php echo $info["cellphone"];?>" placeholder="핸드폰" /></td>
             			</tr>
             			<tr>
-            				<th class="full_line">병원</th>
+            				<th class="full_line">회원구분</th>
             				<td class="full_line">
-            					<input type="text" name="biz_nm" id="biz_nm" value="<?php echo $info["biz_nm"];?>" placeholder="병원"/>
+            					<label><input type="radio" name="member_type" id="member_type_1" value="hcp" <?php echo $info["member_type"]=="hcp" ? "checked" : '';?>/>HCP</label>
+            					<label><input type="radio" name="member_type" id="member_type_2" value="pharm" <?php echo $info["member_type"]=="pharm" ? "checked" : '';?>/>Pharm</label>
+            					<label><input type="radio" name="member_type" id="member_type_3" value="etc" <?php echo $info["member_type"]=="etc" ? "checked" : '';?>/>Etc</label>            					
             				</td>
             			</tr>
             			<tr>
-            				<th class="full_line">전공과목</th>
+            				<th class="full_line">근무처</th>
             				<td class="full_line">
-            					<input type="text" name="specialty" id="specialty" value="<?php echo $info["specialty"];?>" placeholder="전공과목"/>
+            					<input type="text" name="biz_nm" id="biz_nm" value="<?php echo $info["biz_nm"];?>" placeholder="근무처"/>
+            				</td>
+            			</tr>
+            			<tr>
+            				<th class="full_line">부서/전공</th>
+            				<td class="full_line">
+            					<input type="text" name="specialty" id="specialty" value="<?php echo $info["specialty"];?>" placeholder="부서/전공"/>
             				</td>
             			</tr>	            			
             			<tr>
-            				<th class="full_line">회원상태</th>
+            				<th class="full_line">계정상태</th>
             				<td class="full_line">
             					<label><input type="radio" name="member_status" id="member_status_1" value="hold" <?php echo $info["member_status"]=="hold" ? "checked" : '';?>/>보류</label>
             					<label><input type="radio" name="member_status" id="member_status_2" value="active" <?php echo $info["member_status"]=="active" ? "checked" : '';?>/>활동</label>
@@ -118,7 +126,7 @@
             			<tr>
             				<th class="full_line">UUID</th>
             				<td class="full_line">
-            					<input type="text" name="uuid" id="uuid" value="<?php echo $info["uuid"];?>" placeholder="자격번호"/>
+            					<input type="text" name="uuid" id="uuid" value="<?php echo $info["uuid"];?>" placeholder="UUID"/>
             				</td>
             			</tr>		
             			</tbody>		
@@ -127,7 +135,7 @@
             		</form>
 
                     <div class="btn-wrap">
-                            <button type="button" class="save-user form-btn" onclick="javascript:userSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
+                            <button type="button" class="save-user form-btn" onclick="javascript:memberSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
                             <button type="button" class="cancel-user form-btn" onclick="javascript: openMenu(900);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
                         </div>
                 </div>

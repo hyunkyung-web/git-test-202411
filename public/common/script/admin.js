@@ -184,6 +184,61 @@ function templateSave(editMode) {
 }
 
 
+function memberList(page) {
+	let postUrl = "/admin/member_list/" + page;
+
+	$("#frmSearch").attr("action", postUrl).submit();
+}
+
+/******************************************************************
+*	함수명: memberSave()
+*	기능: 사용자 저장
+******************************************************************/
+function memberSave(editMode){
+	
+//	var reqArr = ["userId", "userPw", "userNm"];
+//	var chkReq = false;
+//	
+//	if(editMode=="N"){
+//		$.each(reqArr, function(idx, item){
+//			if($.trim($("#"+item).val()).length == 0){
+//				cmmShowMsg ($("#"+item).prop("placeholder")+' 필수입력 누락입니다.');
+//				$("#"+item).focus();
+//				chkReq = true;
+//				return false;
+//			}			
+//		});
+//		
+//		if(chkReq){
+//			console.log('필수입력 누락');
+//			return;
+//		}
+//		if($.trim($("#userPw").val()) != $.trim($("#userPw_2").val())){
+//			cmmShowMsg('비밀번호가 일치하지 않습니다.');
+//			return;
+//		}
+//	}
+	
+	$("#editMode").val(editMode);
+	
+	var postData = $("#frm1").serialize();
+	
+	$.ajax({
+		type: "POST",
+		url: "/member/member_save/",
+		data: postData,
+		dataType: "json",
+		beforeSend:function(){
+		},
+		success: function(data){			
+			alert(data.msg);
+		},
+		error: function(request, status, err){
+			console.log(err);
+			return;
+		}
+	});
+}
 
 function userList(page) {
 	let postUrl = "/admin/user_list/" + page;
