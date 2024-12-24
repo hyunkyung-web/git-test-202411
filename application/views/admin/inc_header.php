@@ -6,8 +6,8 @@
         "210"=>"Template-Information",
         "800"=>"HCP-List",
         "810"=>"HCP-Information",
-        "900"=>"User-List",
-        "910"=>"User-Information",
+        "900"=>"Internal User-List",
+        "910"=>"Internal User-Information",
     ];
 ?>
 

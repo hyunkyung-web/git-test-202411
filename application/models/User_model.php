@@ -38,7 +38,7 @@ class User_model extends CI_Model {
         exit;
     }
     
-    public function user_open($opt) {
+    public function user_info($opt) {
         
         $sql = "select * from tb_user ";
         $sql.= "where idx=?";

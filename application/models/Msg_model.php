@@ -7,6 +7,49 @@ class Msg_model extends CI_Model {
         $this->load->database();
     }
     
+    public function template_list($opt) {
+        
+        $strWhere = "where (use_yn is null or use_yn != 'N') ";
+        
+        if($opt["profile_type"] != ''){
+            $strWhere.= "and (profile_type = '".$opt["profile_type"]."') ";
+        }
+        
+        if($opt["template_type"] != ''){
+            $strWhere.= "and (template_type = '".$opt["template_type"]."') ";
+        }
+        if(trim($opt["keyword"]) != ""){
+            $strWhere.= "and (template_cd like '%".$opt["keyword"]."%' or template_nm like '%".$opt["keyword"]."%') ";
+        }
+        
+        $sql = "select * ";
+        $sql.= "from tb_msg_template ";
+        $sql.= $strWhere;
+        $listSql = "order by idx desc limit ?, ?";
+        
+        $listCount = $this->db->query($sql)->num_rows();
+        if(isset($opt["start"])){
+            $list = $this->db->query($sql.$listSql, [$opt["start"], $opt["end"]])->result_array();
+        }else {
+            $list = $this->db->query($sql)->result_array();
+        }
+        
+        return ["list"=>$list, "listCount" => $listCount];
+        exit;
+    }
+    
+    public function template_info($opt) {
+        
+        $strWhere = "where idx=".$opt["idx"]." ";
+        
+        $sql = "select * from tb_msg_template ";
+        $sql.= $strWhere;
+        $list = $this->db->query($sql)->result_array();
+        
+        return $list;
+        exit;
+    }
+    
     public function template_save($opt){
         
         $this->db->trans_begin();  
@@ -123,48 +166,7 @@ class Msg_model extends CI_Model {
         
     }
     
-    public function template_list($opt) {
     
-        $strWhere = "where (use_yn is null or use_yn != 'N') ";
-        
-        if($opt["profile_type"] != ''){
-            $strWhere.= "and (profile_type = '".$opt["profile_type"]."') ";
-        }  
-        
-        if($opt["template_type"] != ''){
-            $strWhere.= "and (template_type = '".$opt["template_type"]."') ";
-        }        
-        if(trim($opt["keyword"]) != ""){
-            $strWhere.= "and (template_cd like '%".$opt["keyword"]."%' or template_nm like '%".$opt["keyword"]."%') ";
-        }
-        
-        $sql = "select * ";
-        $sql.= "from tb_msg_template ";
-        $sql.= $strWhere;
-        $listSql = "order by idx desc limit ?, ?";
-        
-        $listCount = $this->db->query($sql)->num_rows();            
-        if(isset($opt["start"])){
-            $list = $this->db->query($sql.$listSql, [$opt["start"], $opt["end"]])->result_array();
-        }else {
-            $list = $this->db->query($sql)->result_array();
-        }
-        
-        return ["list"=>$list, "listCount" => $listCount];
-        exit;
-    }
-    
-    public function template_open($opt) {
-        
-        $strWhere = "where idx=".$opt["idx"]." ";
-        
-        $sql = "select * from tb_msg_template ";
-        $sql.= $strWhere;
-        $list = $this->db->query($sql)->result_array();
-        
-        return $list;
-        exit;
-    }
     
     public function save_sms_log($opt){
         

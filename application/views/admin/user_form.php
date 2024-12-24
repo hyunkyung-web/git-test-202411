@@ -79,31 +79,31 @@
             			<tr>
             				<th class="full_line require">아이디</th>
             				<td class="full_line">
-            					<input type="text" name="userId" id="userId"  value="<?php echo $info["user_id"];?>" placeholder="아이디" <?php echo $editMode=="U" ? 'readonly' : '';?>/>
+            					<input type="text" name="user_id" id="user_id"  value="<?php echo $info["user_id"];?>" placeholder="아이디" <?php echo $editMode=="U" ? 'readonly' : '';?>/>
             					<?php if($editMode=="N") { ?><button type="button" class="form-btn detail-btn" onclick="userDuplicateCheck();return(false);"><i class="fa-solid fa-circle-check"></i> 중복확인</button><?php }?>
-            					<?php if($editMode=="U") { ?><button type="button" class="form-btn detail-btn"  onclick="userPasswordChange();return(false);"><i class="fa-solid fa-circle-check"></i> 암호변경</button><?php }?>
+            					<?php if($editMode=="U") { ?><button type="button" id="btnChgPw" class="form-btn detail-btn"  onclick="userPasswordChange();return(false);"><i class="fa-solid fa-circle-check"></i> 암호변경</button><?php }?>
 
             				</td>
             			</tr>
-            			<tr class="userPw" <?php echo $editMode=="U" ? 'style="display: none;"' : '';?>>
+            			<tr class="user-password" <?php echo $editMode=="U" ? 'style="display: none;"' : '';?>>
             				<th class="full_line require">비밀번호</th>
             				<td class="full_line">
-            					<input type="password" name="userPw" id="userPw" placeholder="비밀번호" />
+            					<input type="password" name="user_pw" id="user_pw" placeholder="비밀번호" />
             				</td>
             			</tr>
-            			<tr class="userPw" <?php echo $editMode=="U" ? 'style="display: none;"' : '';?>>
+            			<tr class="user-password" <?php echo $editMode=="U" ? 'style="display: none;"' : '';?>>
             				<th class="full_line require">비밀번호(확인)</th>
             				<td class="full_line">
-            					<input type="password" name="userPw_2" id="userPw_2" placeholder="비밀번호 확인" />
+            					<input type="password" name="user_pw_2" id="user_pw_2" placeholder="비밀번호 확인" />
             				</td>
             			</tr>
             			<tr>
             				<th class="full_line require">성명</th>
-            				<td class="full_line"><input type="text" name="userNm" id="userNm" value="<?php echo $info["user_nm"];?>" placeholder="성명" /></td>
+            				<td class="full_line"><input type="text" name="user_nm" id="user_nm" value="<?php echo $info["user_nm"];?>" placeholder="성명" /></td>
             			</tr>
             			<tr>
             				<th class="full_line">이메일</th>
-            				<td class="full_line"><input type="text" name="userEmail" id="userEmail" value="<?php echo $info["user_email"];?>" placeholder="이메일" /></td>
+            				<td class="full_line"><input type="text" name="user_email" id="user_email" value="<?php echo $info["user_email"];?>" placeholder="이메일" /></td>
             			</tr>
             			<tr>
             				<th class="full_line">소속</th>
@@ -120,8 +120,8 @@
             			<tr>
             				<th class="full_line require">권한분류</th>
             				<td class="full_line">
-            					<input type="radio" name="userType" id="userType_1" value="user" <?php echo $info["user_type"]=="user" ? "checked" : '';?>/><label for="userType_1">일반</label>
-            					<input type="radio" name="userType" id="userType_2" value="admin" <?php echo $info["user_type"]=="admin" ? "checked" : '';?>/><label for="userType_2">관리자</label>
+            					<input type="radio" name="user_type" id="user_type_1" value="user" <?php echo $info["user_type"]=="user" ? "checked" : '';?>/><label for="userType_1">일반</label>
+            					<input type="radio" name="user_type" id="user_type_2" value="admin" <?php echo $info["user_type"]=="admin" ? "checked" : '';?>/><label for="userType_2">관리자</label>
             				</td>
             			</tr>
             			<tr>
@@ -130,17 +130,17 @@
             					<input type="radio" name="optin" id="optin_2" value="N" <?php echo $info["optin"]!="Y" ? "checked" : '';?>/><label for="optin_2">동의안함</label>
             					<input type="radio" name="optin" id="optin_1" value="Y" <?php echo $info["optin"]=="Y" ? "checked" : '';?>/><label for="optin_1">동의함</label><?php
             					if($info["optin"]=="Y"){?>
-            						<input type="date" name="optinDt" id="optinDt" style="border: none;" readonly value="<?php echo isset($info["optin_dt"]) ? date('Y-m-d', strtotime($info["optin_dt"])) : '';?>" />
-            						<input type="checkbox" name="optinUpdate" id="optinUpdate" value="Y" /><label for="optinUpdate">수신재동의</label><?php
+            						<input type="date" name="optin_dt" id="optin_dt" style="border: none;" readonly value="<?php echo isset($info["optin_dt"]) ? date('Y-m-d', strtotime($info["optin_dt"])) : '';?>" />
+            						<input type="checkbox" name="optin_update" id="optin_update" value="Y" /><label for="optinUpdate">수신재동의</label><?php
                                 }?>
-            					<input type="hidden" name="optinOld" id="optinOld" value="<?php echo $info["optin"];?>" />
+            					<input type="hidden" name="optin_old" id="optin_old" value="<?php echo $info["optin"];?>" />
             				</td>
             			</tr>
             			<tr>
             				<th class="full_line require">사용여부</th>
             				<td class="full_line">
-            					<input type="radio" name="useYn" id="useYn_1" value="Y" <?php echo $info["use_yn"]=="Y" ? "checked" : '';?>/><label for="useYn_1">사용</label>
-            					<input type="radio" name="useYn" id="useYn_2" value="N" <?php echo $info["use_yn"]!="Y" ? "checked" : '';?>/><label for="useYn_2">사용안함</label>
+            					<label><input type="radio" name="use_yn" id="use_yn_1" value="Y" <?php echo $info["use_yn"]=="Y" ? "checked" : '';?>/>사용</label>
+            					<label><input type="radio" name="use_yn" id="use_yn_2" value="N" <?php echo $info["use_yn"]!="Y" ? "checked" : '';?>/>사용안함</label>
             				</td>
             			</tr>
 

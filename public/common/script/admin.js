@@ -196,7 +196,7 @@ function userList(page) {
 *	기능: 사용자 저장
 ******************************************************************/
 function userSave(editMode){
-//	var reqArr = ["userId", "userPw", "userNm"];
+//	var reqArr = ["user_id", "user_pw", "user_nm"];
 //	var chkReq = false;
 //	
 //	if(editMode=="N"){
@@ -213,22 +213,22 @@ function userSave(editMode){
 //			console.log('필수입력 누락');
 //			return;
 //		}
-//		if($.trim($("#userPw").val()) != $.trim($("#userPw_2").val())){
+//		if($.trim($("#user_pw").val()) != $.trim($("#user_pw_2").val())){
 //			cmmShowMsg('비밀번호가 일치하지 않습니다.');
 //			return;
 //		}
 //	}
 //	
 //	if(editMode=="U"){
-//		if($(".userPw").css("display")!="none"){
-//			if($.trim($("#userPw").val()).length == 0){
+//		if($(".user_pw").css("display")!="none"){
+//			if($.trim($("#user_pw").val()).length == 0){
 //				cmmShowMsg('비밀번호를 입력하세요.');
-//				$("#userPw").focus();
+//				$("#user_pw").focus();
 //				return;
 //			}
-//			if($.trim($("#userPw").val()) != $.trim($("#userPw_2").val())){
+//			if($.trim($("#user_pw").val()) != $.trim($("#user_pw_2").val())){
 //				cmmShowMsg('비밀번호가 일치하지 않습니다.');
-//				$("#userPw").focus();
+//				$("#user_pw").focus();
 //				return;
 //			}
 //		}
@@ -263,17 +263,17 @@ function userSave(editMode){
 
 function userDuplicateCheck(){
 	
-	if($.trim($("#userId").val()).length == 0) {
+	if($.trim($("#user_id").val()).length == 0) {
 		alert("아이디를 입력하세요.");
 		return;
 	}
 	
-	var userId = $("#userId").val();
+	var userId = $("#user_id").val();
 	
 	$.ajax({	
 		  type: "POST",
 		  url: "/admin/user_duplicate_check",
-		  data: {userId:userId},
+		  data: {user_id:userId},
 		  dataType: "json",
 		  success: function(data){
 			alert(data.msg);
@@ -291,13 +291,13 @@ function userDuplicateCheck(){
 *	기능: 사용자 암호변경 모드 전환
 ******************************************************************/
 function userPasswordChange(){
-	var chgMod = $(".userPw").css("display");
+	var chgMod = $(".user-password").css("display");
 	//암호변경 모드가 아님
 	if(chgMod == "none"){
-		$(".userPw").show();
+		$(".user-password").show();
 		$("#btnChgPw").text('변경취소');
 	} else {			
-		$(".userPw").hide();
+		$(".user-password").hide();
 		$("#btnChgPw").text('암호변경');
 	}
 }

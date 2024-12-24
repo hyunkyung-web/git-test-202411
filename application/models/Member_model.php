@@ -9,7 +9,7 @@ class member_model extends CI_Model {
     
     public function member_list($opt) {   
         
-        $strWhere = "where member_id > -1 ";
+        $strWhere = "where idx > -1 ";
         
         if(trim($opt["keyword"]) != ""){
             $strWhere.= "and (member_nm like '%".$opt["keyword"]."%' or email_addr like '%".$opt["keyword"]."%' ";
@@ -17,9 +17,9 @@ class member_model extends CI_Model {
         }
         
         $sql = "select * ";
-        $sql.= "from round_member_list ";
+        $sql.= "from tb_member ";
         $sql.= $strWhere;
-        $listSql = "order by member_id desc limit ?, ?";    
+        $listSql = "order by idx desc limit ?, ?";    
         
         $listCount = $this->db->query($sql)->num_rows();
         
@@ -34,9 +34,19 @@ class member_model extends CI_Model {
         exit;
     }
     
+    public function member_info($opt) {
+        
+        $sql = "select * from tb_member ";
+        $sql.= "where idx=?";
+        $list = $this->db->query($sql, [$opt["idx"]])->result_array();
+        
+        return $list;
+        exit;
+    }
+    
     public function member_address_book(){
         $sql = "select * ";
-        $sql.= "from round_member_list ";
+        $sql.= "from tb_member ";
         $sql.= "where member_status <> 'expire' ";
         $list = $this->db->query($sql)->result_array();
         
@@ -45,29 +55,21 @@ class member_model extends CI_Model {
     }
     
     
-    public function member_info($opt) {
-        
-        $sql = "select * from round_member_list ";
-        $sql.= "where member_id=?";
-        $list = $this->db->query($sql, [$opt["member_id"]])->result_array();
-        
-        return $list;
-        exit;
-    }
+    
     
     public function get_member_cellphone($opt) {
         
-        $sql = "select * from round_member_list ";
-        $sql.= "where member_id=?";
+        $sql = "select * from tb_member ";
+        $sql.= "where idx=?";
         $list = $this->db->query($sql, $opt)->result_array();
         
         return $list;
         exit;
     }
     
-    public function get_member_id($opt) {
+    public function get_idx($opt) {
         
-        $sql = "select * from round_member_list ";
+        $sql = "select * from tb_member ";
         $sql.= "where member_status <> 'expire' and cellphone=?";        
         $list = $this->db->query($sql, $opt)->result_array();
         
@@ -77,7 +79,7 @@ class member_model extends CI_Model {
     
     private function create_valid($cellphone){
         
-        $sql = "select * from round_member_list where cellphone='".$cellphone."' ";
+        $sql = "select * from tb_member where cellphone='".$cellphone."' ";
         $dataCnt = $this->db->query($sql)->num_rows();
 
         
@@ -99,11 +101,11 @@ class member_model extends CI_Model {
             }
         }
         
-        $member_id = $opt["member_id"];
+        $idx = $opt["idx"];
         
         if($opt["editMode"] == "N"||$opt["editMode"]=="C") {
             
-            $sql = "insert into round_member_list (member_nm, member_type, cellphone, email_addr, biz_nm, specialty, license_num, signup_dt, optin, optin_dt, ";
+            $sql = "insert into tb_member (member_nm, member_type, cellphone, email_addr, biz_nm, specialty, license_num, signup_dt, optin, optin_dt, ";
             $sql.= "member_status, wuser, wdate) values (";
             $sql.= "'".$opt["member_nm"]."', '".$opt["member_type"]."', '".$opt["cellphone"]."', ";
             $sql.= "'".$opt["email_addr"]."', '".$opt["biz_nm"]."', '".$opt["specialty"]."', '".$opt["license_num"]."', ";            
@@ -117,10 +119,10 @@ class member_model extends CI_Model {
             }
             
             $data = $this->db->query($sql);            
-            $member_id = $this->db->insert_id();
+            $idx = $this->db->insert_id();
             
         } elseif($opt["editMode"]=="U"){
-            $sql = "update round_member_list set ";            
+            $sql = "update tb_member set ";            
             $sql.= "member_nm = '".$opt["member_nm"]."', ";            
             $sql.= "email_addr = '".$opt["email_addr"]."', ";
             $sql.= "cellphone = '".$opt["cellphone"]."', ";            
@@ -130,15 +132,15 @@ class member_model extends CI_Model {
             $sql.= "member_status = '".$opt["member_status"]."', ";
             $sql.= "udate = now(), ";
             $sql.= "uuser = '".$this->session->userdata["user_id"]."' ";
-            $sql.= "where member_id=".$member_id." ";
+            $sql.= "where idx=".$idx." ";
             $data = $this->db->query($sql);
             
         } elseif($opt["editMode"]=="D"){
-            $sql = "update round_member_list set ";
+            $sql = "update tb_member set ";
             $sql.= "member_status = 'expire', ";
             $sql.= "udate = now(), ";
             $sql.= "uuser = '".$this->session->userdata["user_id"]."' ";
-            $sql.= "where member_id=".$member_id." ";
+            $sql.= "where idx=".$idx." ";
             $data = $this->db->query($sql);
         }
         
@@ -162,7 +164,7 @@ class member_model extends CI_Model {
                     $msg = "삭제 완료";
                     break;
             }
-            return ["result"=>"ok", "msg"=>$msg, "member_id"=>$member_id];
+            return ["result"=>"ok", "msg"=>$msg, "idx"=>$idx];
         }
         exit;        
     }
@@ -188,16 +190,16 @@ class member_model extends CI_Model {
             $strWhere = "where member_nm='".$opt["member_nm"]."' and cellphone='".$opt["cellphone"]."' ";
             $strWhere_1 = "and member_status='active' " ;
             
-            $sql = "select * from round_member_list ";
+            $sql = "select * from tb_member ";
             
             $member_cnt = $this->db->query($sql.$strWhere)->num_rows();
             $valid_cnt = $this->db->query($sql.$strWhere.$strWhere_1)->num_rows();
             $list = $this->db->query($sql.$strWhere)->result_array();
             
             if($valid_cnt==1){
-                $member_id = $list[0]["member_id"];
-                $sql = "insert into round_member_log (log_type, member_id, member_nm, user_device, device_info, log_ip, wdate) values ( ";
-                $sql.= "'LOGIN', '".$member_id."', '".$opt["member_nm"]."', '".$opt["user_device"]."', '".$opt["device_info"]."', ";
+                $idx = $list[0]["idx"];
+                $sql = "insert into round_member_log (log_type, idx, member_nm, user_device, device_info, log_ip, wdate) values ( ";
+                $sql.= "'LOGIN', '".$idx."', '".$opt["member_nm"]."', '".$opt["user_device"]."', '".$opt["device_info"]."', ";
                 $sql.= "'".$conn_ip."', now() )";                
                 $data = $this->db->query($sql);
                 
@@ -217,8 +219,8 @@ class member_model extends CI_Model {
             
         } elseif($opt["login_type"]=="logout"){
             
-            $sql = "insert into round_member_log (log_type, member_id, member_nm, user_device, device_info, log_ip, wdate) values ( ";
-            $sql.= "'LOGOUT', '".$opt["member_id"]."', '".$opt["member_nm"]."', '".$opt["user_device"]."', '".$opt["device_info"]."', ";
+            $sql = "insert into round_member_log (log_type, idx, member_nm, user_device, device_info, log_ip, wdate) values ( ";
+            $sql.= "'LOGOUT', '".$opt["idx"]."', '".$opt["member_nm"]."', '".$opt["user_device"]."', '".$opt["device_info"]."', ";
             $sql.= "'".$conn_ip."', now() )";
             $data = $this->db->query($sql);
             
@@ -232,7 +234,7 @@ class member_model extends CI_Model {
         
         $sql = "select * from tb_user ";
         $sql.= "where idx=?";
-        $list = $this->db->query($sql, [$this->session->userdata["member_idx"]])->result_array();
+        $list = $this->db->query($sql, [$this->session->userdata["idxx"]])->result_array();
         
         return $list;
         exit;
@@ -243,7 +245,7 @@ class member_model extends CI_Model {
         
         $this->db->trans_begin();
         
-        $session_id = $this->session->userdata["member_id"];        
+        $session_id = $this->session->userdata["idx"];        
         $optIn = "null";
         $arrDept = ["마취통증의학과", "중환자의학과", "응급의학과"];
         if($opt["dept_cd"]==99){
@@ -273,7 +275,7 @@ class member_model extends CI_Model {
         $sql.= "opt_in = $optIn, ";
         $sql.= "udate = now(), ";
         $sql.= "uuser = '$session_id' ";
-        $sql.= "where idx=".$opt["idx"]." and member_id='".$opt["member_id"]."' ";
+        $sql.= "where idx=".$opt["idx"]." and idx='".$opt["idx"]."' ";
         $data = $this->db->query($sql);        
         
         if (!$data) {
@@ -293,13 +295,13 @@ class member_model extends CI_Model {
     public function update_password($opt) {
         
         $this->db->trans_begin();
-        $session_id = $this->session->userdata["member_id"];
+        $session_id = $this->session->userdata["idx"];
         
         $sql = "update tb_user set ";
         $sql.= "member_pw = '".md5($opt["member_pw"])."', ";
         $sql.= "udate = now(), ";
         $sql.= "uuser = '$session_id' ";
-        $sql.= "where idx=".$opt["idx"]." and member_id='".$opt["member_id"]."' ";
+        $sql.= "where idx=".$opt["idx"]." and idx='".$opt["idx"]."' ";
         
         $data = $this->db->query($sql);
         
@@ -321,13 +323,13 @@ class member_model extends CI_Model {
         $resetPw = (string)time();
         
         $userChk = "select * from tb_user ";
-        $userChk .= "where member_id='".$opt["member_id"]."' and member_email='".$opt["member_email"]."' ";
+        $userChk .= "where idx='".$opt["idx"]."' and member_email='".$opt["member_email"]."' ";
         $chkCount = $this->db->query($userChk)->num_rows();
         
         if($chkCount == 1){
             $sql = "update tb_user set ";
             $sql.= "member_pw = '".md5($resetPw)."' ";
-            $sql.= "where member_id='".$opt["member_id"]."' and member_email='".$opt["member_email"]."' ";
+            $sql.= "where idx='".$opt["idx"]."' and member_email='".$opt["member_email"]."' ";
             
             $data = $this->db->query($sql);
             
@@ -351,8 +353,8 @@ class member_model extends CI_Model {
     
     public function save_email_log($opt) {
         
-        $sql = "insert into tb_email_log (member_id, email_id, mail_msg, wdate) values (";
-        $sql.= "'".$opt["member_id"]."', '".$opt["email_id"]."', '".$opt["mail_msg"]."', now()) ";
+        $sql = "insert into tb_email_log (idx, email_id, mail_msg, wdate) values (";
+        $sql.= "'".$opt["idx"]."', '".$opt["email_id"]."', '".$opt["mail_msg"]."', now()) ";
         $data = $this->db->query($sql);        
     }
     
@@ -361,7 +363,7 @@ class member_model extends CI_Model {
     public function auth_save($opt) {
         
         $this->db->trans_begin();
-        $session_id = $this->session->userdata["member_id"];
+        $session_id = $this->session->userdata["idx"];
         
         if($opt["editMode"]=="N"){
             $sql = "insert into tb_auth (auth_code, auth_desc, wdate, wuser) values (";

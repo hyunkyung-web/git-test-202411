@@ -8,6 +8,7 @@ class Admin extends CI_Controller {
         
         $this->load->model('msg_model', 'msgModel');
         $this->load->model('user_model', 'userModel');
+        $this->load->model('member_model', 'memberModel');
 
 //         $this->load->model('event_model', 'eventModel');
 
@@ -65,8 +66,37 @@ class Admin extends CI_Controller {
 	    $this->load->view('/admin/hcp_list', $viewData);
 	}
 	
-	public function hcp_form(){
-	    $viewData = ["menuNum"=>810];
+	public function hcp_form($idx=-1){
+	    
+
+	    
+// 	    $member_id = getPost("member_id", -1);
+	    $editMode = $idx==-1 ? "N" : "U";
+
+	    
+	    $query = $this->memberModel->member_info(["idx"=>$idx]);
+	 
+	    $info = [];
+	    $keyVal = [
+	        "idx", "member_nm", "email_addr", "cellphone", "biz_nm", "specialty", "uuid", "member_status", "signup_dt"
+	    ];
+	    
+	    if($query){
+	        foreach($query as $row){
+	            foreach($keyVal as $col){
+	                $info+= [$col => $row[$col]];
+	            }
+	        }
+	    } else {
+	        foreach($keyVal as $col){
+	            $info+= [$col => ''];
+	        }
+	        $info["member_id"] = -1;
+	        $info["member_status"] = "hold";
+	    }
+	    
+	    $viewData = ["menuNum"=>810, "editMode"=>$editMode, "info"=>$info];
+	    
 	    $this->load->view('/admin/hcp_form', $viewData);
 	}
 	
@@ -106,7 +136,9 @@ class Admin extends CI_Controller {
 	    
 // 	    $idxNo = getPost("idxNo", -1);	    
 	    
-	    $query = $this->userModel->user_open(["idx"=>$idx]);	    
+	    $editMode = $idx==-1 ? "N" : "U";
+	    
+	    $query = $this->userModel->user_info(["idx"=>$idx]);	    
 	    
 	    $info = [];
 	    $keyVal = [
@@ -119,7 +151,6 @@ class Admin extends CI_Controller {
 	                $info+= [$col => $row[$col]];
 	            }
 	        }
-	        $editMode ="U";
 	    } else {
 	        foreach($keyVal as $col){
 	            $info+= [$col => ''];
@@ -127,7 +158,6 @@ class Admin extends CI_Controller {
 	        $info["idx"] = -1;
 	        $info["use_yn"] = "Y";
 	        $info["user_type"] = "user";
-	        $editMode ="N";
 	    }
 	    
 	    
@@ -141,18 +171,18 @@ class Admin extends CI_Controller {
 	    $query = $this->userModel->user_save([
 	        "editMode"=> getPost("editMode", "N"),
 	        "idx"=> getPost("idx", -1),
-	        "user_id" => getPost("userId", ""),
-	        "user_pw" => getPost("userPw", ""),
-	        "user_nm" => getPost("userNm", ""),
-	        "user_email" => getPost("userEmail", ""),
+	        "user_id" => getPost("user_id", ""),
+	        "user_pw" => getPost("user_pw", ""),
+	        "user_nm" => getPost("user_nm", ""),
+	        "user_email" => getPost("user_email", ""),
 	        "company" => getPost("company", ""),
 	        "dept" => getPost("dept", ""),
-	        "user_type" => getPost("userType", "user"),
+	        "user_type" => getPost("user_type", "user"),
 	        "optin" => getPost("optin", "N"),
-	        "optin_dt" => getPost("optinDt", "Null"),
-	        "optin_old" => getPost("optinOld", "N"),
-	        "optin_update" => getPost("optinUpdate", "N"),
-	        "use_yn" => getPost("useYn", "Y")
+	        "optin_dt" => getPost("optin_dt", "Null"),
+	        "optin_old" => getPost("optin_old", "N"),
+	        "optin_update" => getPost("optin_update", "N"),
+	        "use_yn" => getPost("use_yn", "Y")
 	    ]);
 	    
 	    echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"]]);
@@ -161,8 +191,8 @@ class Admin extends CI_Controller {
 	
 	public function user_duplicate_check(){
 	    
-	    if(getPost("userId", "")){
-	        $query = $this->userModel->chk_user_duple(getPost("userId", ""));
+	    if(getPost("user_id", "")){
+	        $query = $this->userModel->chk_user_duple(getPost("user_id", ""));
 	    }else {
 	        echo json_encode(['result' => "error", 'msg'=>"아이디를 입력하세요"]);
 	        exit;
@@ -191,7 +221,7 @@ class Admin extends CI_Controller {
 	        ["img_name"=>"마이크로사이트", "img_url"=>"https://mud-kage.kakao.com/dn/ffQoH/btrZkzhJAsU/ebLISy9o1K62jRitT2PtlK/img_l.jpg"]
 	    ];
 	    
-	    $query = $this->msgModel->template_open(["idx"=>$idx]);
+	    $query = $this->msgModel->template_info(["idx"=>$idx]);
 	    $info = [];
 	    $keyVal = [
 	        "profile_type", "profile_key",
