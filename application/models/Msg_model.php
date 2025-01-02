@@ -145,7 +145,7 @@ class Msg_model extends CI_Model {
         if (!$data) {
             $errorMsg = $this->db->error();
             $this->db->trans_rollback();
-            return ["result"=>"db_error", "msg"=>$errorMsg];
+            return ["result"=>"error", "msg"=>$errorMsg];
         } else {
             $this->db->trans_commit();
             switch ($opt["editMode"]) {
@@ -159,7 +159,7 @@ class Msg_model extends CI_Model {
                     $resultMsg = "delete ok";
                     break;
             }
-            return ["result"=>"ok", "msg"=>$resultMsg, "rtn_idx"=>$rtn_idx];
+            return ["result"=>"ok", "msg"=>$resultMsg, "idx"=>$rtn_idx];
         }    
         
         exit;

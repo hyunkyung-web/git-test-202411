@@ -103,7 +103,11 @@
             			</tr>
             			<tr>
             				<th class="full_line">이메일</th>
-            				<td class="full_line"><input type="text" name="user_email" id="user_email" value="<?php echo $info["user_email"];?>" placeholder="이메일" /></td>
+            				<td class="full_line"><input type="text" name="user_email" id="user_email" value="<?php echo $info["user_email"];?>" placeholder="이메일" onblur="javsascript: cmmOnEmail(this);"/></td>
+            			</tr>
+            			<tr>
+            				<th class="full_line">핸드폰</th>
+            				<td class="full_line"><input type="text" name="cellphone" id="cellphone" value="<?php echo $info["cellphone"];?>" placeholder="핸드폰(숫자만 입력하세요)" onkeyup="javascript: cmmOnNumber(this);"/></td>
             			</tr>
             			<tr>
             				<th class="full_line">소속</th>
@@ -152,7 +156,7 @@
 
                     <div class="btn-wrap">
                             <button type="button" class="save-user form-btn" onclick="javascript:userSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
-                            <button type="button" class="cancel-user form-btn" onclick="javascript: openMenu(900);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
+                            <button type="button" class="cancel-user form-btn" onclick="javascript: returnList();"><i class="fa-solid fa-circle-minus"></i> cancel</button>
                         </div>
                 </div>
             </main>

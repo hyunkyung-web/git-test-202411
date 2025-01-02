@@ -162,7 +162,7 @@
 
                         <div class="btn-wrap">
                             <button type="button" class="save-user form-btn" onclick="javascript:templateSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
-                            <button type="button" class="cancel-user form-btn" onclick="javascript: openMenu(200);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
+                            <button type="button" class="cancel-user form-btn" onclick="javascript: returnList();"><i class="fa-solid fa-circle-minus"></i> cancel</button>
                         </div>
                 	</div>
 

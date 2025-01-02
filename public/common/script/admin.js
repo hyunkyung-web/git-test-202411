@@ -66,10 +66,10 @@ function openMenu(menuNum = 0) {
 			location.href = "/admin/template_form";
 			break;
 		case 800:
-			location.href = "/admin/hcp_list";
+			location.href = "/admin/member_list";
 			break;
 		case 810:
-			location.href = "/admin/hcp_form";
+			location.href = "/admin/member_form";
 			break;
 		case 900:
 			location.href = "/admin/user_list";
@@ -116,6 +116,10 @@ function msgBtnRemove(e) {
 	prTr.next().remove();
 	prTr.remove();
 	return;
+}
+
+function returnList(){
+	history.go(-1);
 }
 
 function templateList(page) {
@@ -167,10 +171,11 @@ function templateSave(editMode) {
 		beforeSend: function () {},
 		success: function (data) {
 			alert(data.msg);
-
 			if (editMode != "D") {
 				$("#idx").val(data.rtn_idx);
-				location.replace("/admin/template_form/" + data.rtn_idx);
+				if(data.result=="ok"){
+					location.replace("/admin/template_form/"+data.idx);	
+				}				
 			} else {
 				templateList("main");
 			}
@@ -232,6 +237,11 @@ function memberSave(editMode){
 		},
 		success: function(data){			
 			alert(data.msg);
+
+			if(data.result=="ok"){
+				location.replace("/admin/member_form/"+data.idx);	
+			}
+			
 		},
 		error: function(request, status, err){
 			console.log(err);
@@ -306,8 +316,10 @@ function userSave(editMode){
 		dataType: "json",
 		beforeSend:function(){
 		},
-		success: function(data){			
-			alert(data.msg);
+		success: function(data){
+			if(data.result=="ok"){
+				location.replace("/admin/user_form/"+data.idx);
+			}			
 		},
 		error: function(request, status, err){
 			console.log(err);

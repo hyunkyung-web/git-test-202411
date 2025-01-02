@@ -79,7 +79,7 @@
             			<tr>
             				<th class="full_line">회원번호</th>
             				<td class="full_line">
-            					<input type="text" name="member_id" id="member_id" style="max-width: 25%;" value="<?php echo $info["member_id"];?>" placeholder="회원번호" readonly/>
+            					<input type="text" name="idx" id="idx" style="max-width: 25%;" value="<?php echo $info["idx"];?>" placeholder="회원번호" readonly/>
             				</td>
             			</tr>
             			<tr>
@@ -88,11 +88,11 @@
             			</tr>
             			<tr>
             				<th class="full_line">이메일</th>
-            				<td class="full_line"><input type="text" name="email_addr" id="email_addr" value="<?php echo $info["email_addr"];?>" placeholder="이메일" /></td>
+            				<td class="full_line"><input type="text" name="member_email" id="member_email" value="<?php echo $info["member_email"];?>" placeholder="이메일" onblur="javsascript: cmmOnEmail(this);"/></td>
             			</tr>
             			<tr>
             				<th class="full_line">핸드폰</th>
-            				<td class="full_line"><input type="text" name="cellphone" id="cellphone" value="<?php echo $info["cellphone"];?>" placeholder="핸드폰" /></td>
+            				<td class="full_line"><input type="text" name="cellphone" id="cellphone" value="<?php echo $info["cellphone"];?>" placeholder="핸드폰(숫자만 입력하세요)" onkeyup="javascript: cmmOnNumber(this);"/></td>
             			</tr>
             			<tr>
             				<th class="full_line">회원구분</th>
@@ -136,7 +136,7 @@
 
                     <div class="btn-wrap">
                             <button type="button" class="save-user form-btn" onclick="javascript:memberSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
-                            <button type="button" class="cancel-user form-btn" onclick="javascript: openMenu(900);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
+                            <button type="button" class="cancel-user form-btn" onclick="javascript: returnList();"><i class="fa-solid fa-circle-minus"></i> cancel</button>
                         </div>
                 </div>
             </main>

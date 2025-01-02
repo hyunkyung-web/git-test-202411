@@ -118,20 +118,24 @@
                             </tr>
                         </thead>
                         <tbody id="item-list"><?php 
-                        foreach($data as $row){?>
-                            <tr>
-                                <td align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </td>
-                                <td style="text-align: left;"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_nm"];?></a></td>
-                                <td style="text-align: left;"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_id"];?></a></td>
-                                <td style="text-align: left;"><?php echo $row["company"].'-'.$row["dept"];?></td>
-                                <td style="text-align: left;"><?php echo $row["user_email"];?></td>                               
-                            </tr><?php 
-                        }?>                            
+                        if(count($data)>0){
+                            foreach($data as $row){?>
+                                <tr>
+                                    <td align="center">
+                                        <label>
+                                            <input type="checkbox">
+                                            <span class="custom-checkbox"></span>
+                                        </label>
+                                    </td>
+                                    <td style="text-align: left;"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_nm"];?></a></td>
+                                    <td style="text-align: left;"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_id"];?></a></td>
+                                    <td style="text-align: left;"><?php echo $row["company"].'-'.$row["dept"];?></td>
+                                    <td style="text-align: left;"><?php echo $row["user_email"];?></td>                               
+                                </tr><?php 
+                            }
+                        } else { 
+                            echo '<tr><td align="center" style="height: 5em; border: none;" colspan="20">검색결과가 없습니다.</td></tr>';
+                        }?>
                         </tbody>
                     </table>
 

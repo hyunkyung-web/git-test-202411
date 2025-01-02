@@ -76,8 +76,8 @@ class User_model extends CI_Model {
                 exit;
             } else {
                 
-                $sql = "insert into tb_user (user_id, user_pw, user_nm, user_email, company, dept, user_type, optin, optin_dt, use_yn, wuser, wdate) values (";
-                $sql.= "'".$opt["user_id"]."', '".md5($opt["user_pw"])."', '".$opt["user_nm"]."', '".$opt["user_email"]."', ";
+                $sql = "insert into tb_user (user_id, user_pw, user_nm, user_email, cellphone, company, dept, user_type, optin, optin_dt, use_yn, wuser, wdate) values (";
+                $sql.= "'".$opt["user_id"]."', '".md5($opt["user_pw"])."', '".$opt["user_nm"]."', '".$opt["user_email"]."', '".$opt["cellphone"]."', ";
                 $sql.= "'".$opt["company"]."', '".$opt["dept"]."', '".$opt["user_type"]."', '".$opt["optin"]."', ";
                 if($opt["optin"]=="Y"){
                     $sql.= "now(), ";
@@ -99,6 +99,7 @@ class User_model extends CI_Model {
             }
             $sql.= "user_nm = '".$opt["user_nm"]."', ";
             $sql.= "user_email = '".$opt["user_email"]."', ";
+            $sql.= "cellphone = '".$opt["cellphone"]."', ";
             $sql.= "company = '".$opt["company"]."', ";
             $sql.= "dept = '".$opt["dept"]."', ";
             $sql.= "user_type = '".$opt["user_type"]."', ";
@@ -139,7 +140,7 @@ class User_model extends CI_Model {
                     $msg = "삭제 완료";
                     break;
             }
-            return ["result"=>"ok", "msg"=>$msg, "rtnIdx"=>$rtnIdx];
+            return ["result"=>"ok", "msg"=>$msg, "idx"=>$rtnIdx];
         }
         exit;        
     }

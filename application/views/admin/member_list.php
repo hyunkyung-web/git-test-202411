@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Internal User List</title>
+	<title>Member List</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="Dr-Round" />
@@ -76,7 +76,7 @@
                         <div class="main-header-firstLine">                            
                             <!-- button 추가 -->
                             <div>
-                                <button type="button" class="add-user btn1" onclick="javascript: openMenu(910);"><i class="fa-solid fa-circle-plus"></i> New</button>
+                                <button type="button" class="add-user btn1" onclick="javascript: openMenu(810);"><i class="fa-solid fa-circle-plus"></i> New</button>
                                 <button type="button" class="delete-user btn2" onclick="#"><i class="fa-solid fa-circle-minus"></i> Del</button>
                             </div>
                         </div>
@@ -85,11 +85,11 @@
                         <div class="search-bar">
                             <select class="category-select list-select" name="sch_1">
                                 <option value="">성명</option>
-                                <option value="000">아이디</option>
-                                <option value="010">소속/부서</option>
+                                <option value="000">연락처</option>
+                                <option value="010">이메일</option>
                             </select>
                             <input type="text" name="sch_2" placeholder="Search..." class="search-input" autocomplet="off" value="<?php echo $schData["sch_2"];?>" />
-                            <button type="button" class="search-button" onclick="javascript:userList(1);">Search</button>
+                            <button type="button" class="search-button" onclick="javascript: memberList(1);">Search</button>
                         </div>
                         </form>
                         
@@ -112,26 +112,30 @@
                                     </label>
                                 </th>
                                 <th>성명</th>
-                                <th>아이디</th>
-                                <th>소속/부서</th>
                                 <th>이메일</th>
+                                <th>연락처</th>
+                                <th>소속/부서</th>
                             </tr>
                         </thead>
                         <tbody id="item-list"><?php 
-                        foreach($data as $row){?>
-                            <tr>
-                                <td align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </td>
-                                <td style="text-align: left;"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_nm"];?></a></td>
-                                <td style="text-align: left;"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_id"];?></a></td>
-                                <td style="text-align: left;"><?php echo $row["company"].'-'.$row["dept"];?></td>
-                                <td style="text-align: left;"><?php echo $row["user_email"];?></td>                               
-                            </tr><?php 
-                        }?>                            
+                        if(count($data)>0){
+                            foreach($data as $row){?>
+                                <tr>
+                                    <td align="center">
+                                        <label>
+                                            <input type="checkbox">
+                                            <span class="custom-checkbox"></span>
+                                        </label>
+                                    </td>
+                                    <td style="text-align: left;"><a href="/admin/member_form/<?php echo $row["idx"];?>"><?php echo $row["member_nm"];?></a></td>
+                                    <td style="text-align: left;"><a href="/admin/member_form/<?php echo $row["idx"];?>"><?php echo $row["member_email"];?></a></td>
+                                    <td style="text-align: left;"><?php echo $row["cellphone"];?></td>
+                                    <td style="text-align: left;"><?php echo $row["biz_nm"].'('.$row["specialty"].')';?></td>                               
+                                </tr><?php 
+                            }
+                        } else { 
+                            echo '<tr><td align="center" style="height: 5em; border: none;" colspan="20">검색결과가 없습니다.</td></tr>';
+                        }?>
                         </tbody>
                     </table>
 

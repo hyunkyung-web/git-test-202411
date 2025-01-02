@@ -61,8 +61,32 @@ class Admin extends CI_Controller {
 	    $this->load->view('/admin/contents_form', $viewData);
 	}
 	
-	public function member_list(){
-	    $viewData = ["menuNum"=>800];
+	public function member_list($page=1){
+	    // 	    $page = getRequest("page", 1);
+	    $schType = getRequest("sch_1", "");
+	    $keyword = getRequest("sch_2", "");
+	    $schData = ["sch_1"=>$schType, "sch_2"=>$keyword];
+	    
+	    //리스트에 보여줄 게시물의 갯수
+	    $pageSize = 10;
+	    //페이징에 보여줄 페이지의 갯수
+	    $blockSize = 5;
+	    //쿼리로 조회 할 DB의 주소 시작번호(start) 가져올 갯수(end)
+	    $startPage = ($page-1) * $pageSize;
+	    $endPage = $pageSize;
+	    
+	    $query = $this->memberModel->member_list([
+	        "keyword"=>$keyword, "start"=>$startPage, "end"=>$endPage
+	    ]);
+	  	    
+	    $totalRecord = $query["listCount"];
+	    $totalPage = ceil($totalRecord/$pageSize);
+	    
+	    $viewData = ["menuNum"=>800, "schData"=>$schData, "data"=>$query["list"], "totalRecord"=>$totalRecord, "page"=>$page,
+	        "listFnc"=>"memberList", "blockSize"=>$blockSize, "totalPage"=>$totalPage
+	    ];
+	    
+	    // 	    $pageData = ["listFnc"=>"eventList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "page"=>$page];
 	    $this->load->view('/admin/member_list', $viewData);
 	}
 	
@@ -78,7 +102,7 @@ class Admin extends CI_Controller {
 	 
 	    $info = [];
 	    $keyVal = [
-	        "idx", "member_nm", "email_addr", "cellphone", "biz_nm", "specialty", "uuid", "member_status", "signup_dt"
+	        "idx", "member_nm", "member_type", "member_email", "cellphone", "biz_nm", "specialty", "uuid", "member_status", "signup_dt"
 	    ];
 	    
 	    if($query){
@@ -91,7 +115,7 @@ class Admin extends CI_Controller {
 	        foreach($keyVal as $col){
 	            $info+= [$col => ''];
 	        }
-	        $info["member_id"] = -1;
+	        $info["idx"] = -1;
 	        $info["member_status"] = "hold";
 	    }
 	    
@@ -107,11 +131,11 @@ class Admin extends CI_Controller {
 	    
 	    $query = $this->memberModel->member_save([
 	        "editMode"=> getPost("editMode", "C"),
-	        "member_id"=> getPost("member_id", -1),
+	        "idx"=> getPost("idx", -1),
 	        "member_nm" => getPost("member_nm", "Unknown"),
 	        "member_type" => getPost("member_type", "hcp"),
 	        "cellphone" => getPost("cellphone", ""),
-	        "email_addr" => getPost("email_addr", ""),
+	        "member_email" => getPost("member_email", ""),
 	        "biz_nm" => getPost("biz_nm", ""),
 	        "specialty" => getPost("specialty", ""),
 	        "license_num" => getPost("license_num", ""),
@@ -124,16 +148,10 @@ class Admin extends CI_Controller {
 	        $alarm_type = "member_expire";
 	    }
 	    
-	    if ( $query["result"] == "EXIST_ID") {
-	        echo json_encode(array('result' => 'EXIST_ID'));
-	        exit;
+	    if ( $query["result"] == "ok") {
+	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"], 'push_msg_type'=>$alarm_type, 'idx' => $query["idx"]]);
 	    } else {
-	        if ( $query["result"] != "DB_ERROR") {
-	            echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"], 'push_msg_type'=>$alarm_type, 'idx' => $query["idx"]]);
-	        } else {
-	            echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"]]);
-	        }
-	        exit;
+	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"]]);
 	    }
 	    
 	}
@@ -180,7 +198,7 @@ class Admin extends CI_Controller {
 	    
 	    $info = [];
 	    $keyVal = [
-	        "idx", "user_id", "user_pw", "user_nm", "user_email", "company", "dept", "user_type", "optin", "optin_dt", "use_yn"
+	        "idx", "user_id", "user_pw", "user_nm", "user_email", "cellphone", "company", "dept", "user_type", "optin", "optin_dt", "use_yn"
 	    ];
 	    
 	    if($query){
@@ -213,6 +231,7 @@ class Admin extends CI_Controller {
 	        "user_pw" => getPost("user_pw", ""),
 	        "user_nm" => getPost("user_nm", ""),
 	        "user_email" => getPost("user_email", ""),
+	        "cellphone" => getPost("cellphone", ""),
 	        "company" => getPost("company", ""),
 	        "dept" => getPost("dept", ""),
 	        "user_type" => getPost("user_type", "user"),

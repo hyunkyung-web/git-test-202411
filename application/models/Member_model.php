@@ -7,19 +7,19 @@ class member_model extends CI_Model {
         $this->load->database(); 
     }
     
-    public function member_list($opt) {   
+    public function member_list($opt) {
         
         $strWhere = "where idx > -1 ";
         
         if(trim($opt["keyword"]) != ""){
-            $strWhere.= "and (member_nm like '%".$opt["keyword"]."%' or email_addr like '%".$opt["keyword"]."%' ";
+            $strWhere.= "and (member_nm like '%".$opt["keyword"]."%' or member_email like '%".$opt["keyword"]."%' ";
             $strWhere.= "or biz_nm like '%".$opt["keyword"]."%' or cellphone like '%".$opt["keyword"]."%') ";
         }
         
         $sql = "select * ";
         $sql.= "from tb_member ";
         $sql.= $strWhere;
-        $listSql = "order by idx desc limit ?, ?";    
+        $listSql = "order by idx desc limit ?, ?";
         
         $listCount = $this->db->query($sql)->num_rows();
         
@@ -43,6 +43,101 @@ class member_model extends CI_Model {
         return $list;
         exit;
     }
+    
+    public function member_save($opt){
+
+        $this->db->trans_begin();
+        
+        $session_id = getExist($this->session->userdata["user_id"], 'noname');
+        
+        if($opt["editMode"] == "N") {
+            //신규등록 시 기존 사용자와의 아이디 중복여부 확인
+            $valid_result = $this->signup_valid($opt["cellphone"]);
+            
+            if($valid_result["result"] != "ok"){
+                return ["result"=>$valid_result["result"], "msg"=>$valid_result["msg"]];
+                exit;
+            }
+        }
+        
+        $idx = $opt["idx"];
+        
+        if($opt["editMode"] == "N") {
+            
+            $sql = "insert into tb_member (member_nm, member_type, cellphone, member_email, biz_nm, specialty, uuid, signup_dt, optin, optin_dt, ";
+            $sql.= "member_status, wuser, wdate) values (";
+            $sql.= "'".$opt["member_nm"]."', '".$opt["member_type"]."', '".$opt["cellphone"]."', ";
+            $sql.= "'".$opt["member_email"]."', '".$opt["biz_nm"]."', '".$opt["specialty"]."', '".$opt["uuid"]."', ";
+            $sql.= " now(), 'Y', now(), ";
+            $sql.= "'hold', '".$session_id."', now() ) "; 
+            
+            $data = $this->db->query($sql);                
+            $idx = $this->db->insert_id();
+            
+        } elseif($opt["editMode"]=="U"){
+            $sql = "update tb_member set ";
+            $sql.= "member_nm = '".$opt["member_nm"]."', ";
+            $sql.= "member_type = '".$opt["member_type"]."', ";
+            $sql.= "member_email = '".$opt["member_email"]."', ";
+            $sql.= "cellphone = '".$opt["cellphone"]."', ";
+            $sql.= "biz_nm = '".$opt["biz_nm"]."', ";
+            $sql.= "specialty = '".$opt["specialty"]."', ";
+            $sql.= "uuid = '".$opt["uuid"]."', ";
+            $sql.= "member_status = '".$opt["member_status"]."', ";
+            $sql.= "udate = now(), ";
+            $sql.= "uuser = '".$session_id."' ";
+            $sql.= "where idx=".$idx." ";
+            $data = $this->db->query($sql);
+            
+        } elseif($opt["editMode"]=="D"){
+            $sql = "update tb_member set ";
+            $sql.= "member_status = 'expire', ";
+            $sql.= "udate = now(), ";
+            $sql.= "uuser = '".$session_id."' ";
+            $sql.= "where idx=".$idx." ";
+            $data = $this->db->query($sql);
+        }
+        
+        if (!$data) {
+            
+            $errorMsg = $this->db->error();            
+            $this->db->trans_rollback();
+            
+            echo $errorMsg;
+            exit;
+            
+            return (["result"=>"DB_ERROR", "msg"=>$errorMsg]);
+        } else {
+            $this->db->trans_commit();
+            switch ($opt["editMode"]) {
+                case "N":
+                    $msg = "회원가입 완료. 가입이 승인되면 가입하신 핸드폰으로 메세지가 발송됩니다.";
+                    break;
+                case "U":
+                    $msg = "업데이트 완료";
+                    break;
+                case "D":
+                    $msg = "삭제 완료";
+                    break;
+            }
+            return ["result"=>"ok", "msg"=>$msg, "idx"=>$idx];
+        }
+        
+        exit;
+    }
+    
+    private function signup_valid($cellphone){
+        
+        $sql = "select * from tb_member where cellphone='".$cellphone."' ";
+        $dataCnt = $this->db->query($sql)->num_rows();
+        
+        
+        return ["result"=>$dataCnt==0 ? "ok" : "error", "msg"=>$dataCnt==0 ? "사용 가능" : "사용중인 연락처입니다."];
+        exit;
+    }
+    
+    
+    
     
     public function member_address_book(){
         $sql = "select * ";
@@ -77,97 +172,6 @@ class member_model extends CI_Model {
         exit;
     }
     
-    private function create_valid($cellphone){
-        
-        $sql = "select * from tb_member where cellphone='".$cellphone."' ";
-        $dataCnt = $this->db->query($sql)->num_rows();
-
-        
-        return ["result"=>$dataCnt==0 ? "ok" : "error", "msg"=>$dataCnt==0 ? "사용 가능" : "사용중인 연락처입니다."];
-        exit;
-    }
-    
-    public function member_save($opt){
-        
-        $this->db->trans_begin();
-        
-        if($opt["editMode"] == "N" || $opt["editMode"] == "C") {          
-            //신규등록 시 기존 사용자와의 아이디 중복여부 확인
-            $valid_result = $this->create_valid($opt["cellphone"]);
-            
-            if($valid_result["result"] != "ok"){                
-                return ["result"=>$valid_result["result"], "msg"=>$valid_result["msg"]];
-                exit;
-            }
-        }
-        
-        $idx = $opt["idx"];
-        
-        if($opt["editMode"] == "N" || $opt["editMode"]=="C") {
-            
-            $sql = "insert into tb_member (member_nm, member_type, cellphone, email_addr, biz_nm, specialty, uuid, signup_dt, optin, optin_dt, ";
-            $sql.= "member_status, wuser, wdate) values (";
-            $sql.= "'".$opt["member_nm"]."', '".$opt["member_type"]."', '".$opt["cellphone"]."', ";
-            $sql.= "'".$opt["email_addr"]."', '".$opt["biz_nm"]."', '".$opt["specialty"]."', '".$opt["uuid"]."', ";            
-            $sql.= " now(), 'Y', now(), ";
-
-            
-            if($opt["editMode"]=="C"){
-                $sql.= "'hold', 'SYSTEM', now() ) ";
-            } else {
-                $sql.= "'hold', '".$this->session->userdata["user_id"]."', now() ) ";
-            }
-            
-            $data = $this->db->query($sql);            
-            $idx = $this->db->insert_id();
-            
-        } elseif($opt["editMode"]=="U"){
-            $sql = "update tb_member set ";            
-            $sql.= "member_nm = '".$opt["member_nm"]."', ";            
-            $sql.= "email_addr = '".$opt["email_addr"]."', ";
-            $sql.= "cellphone = '".$opt["cellphone"]."', ";            
-            $sql.= "biz_nm = '".$opt["biz_nm"]."', ";
-            $sql.= "specialty = '".$opt["specialty"]."', ";
-            $sql.= "uuid = '".$opt["uuid"]."', ";
-            $sql.= "member_status = '".$opt["member_status"]."', ";
-            $sql.= "udate = now(), ";
-            $sql.= "uuser = '".$this->session->userdata["user_id"]."' ";
-            $sql.= "where idx=".$idx." ";
-            $data = $this->db->query($sql);
-            
-        } elseif($opt["editMode"]=="D"){
-            $sql = "update tb_member set ";
-            $sql.= "member_status = 'expire', ";
-            $sql.= "udate = now(), ";
-            $sql.= "uuser = '".$this->session->userdata["user_id"]."' ";
-            $sql.= "where idx=".$idx." ";
-            $data = $this->db->query($sql);
-        }
-        
-        if (!$data) {
-            $errorMsg = $this->db->error();
-            $this->db->trans_rollback();
-            return (["result"=>"DB_ERROR", "msg"=>$errorMsg]);
-        } else {
-            $this->db->trans_commit();
-            switch ($opt["editMode"]) {
-                case "N":
-                    $msg = "신규생성 완료";
-                    break;
-                case "C":
-                    $msg = "회원가입 완료. 가입이 승인되면 가입하신 핸드폰으로 메세지가 발송됩니다.";
-                    break;
-                case "U":
-                    $msg = "업데이트 완료";
-                    break;
-                case "D":
-                    $msg = "삭제 완료";
-                    break;
-            }
-            return ["result"=>"ok", "msg"=>$msg, "idx"=>$idx];
-        }
-        exit;        
-    }
     
     
     

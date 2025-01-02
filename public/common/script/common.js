@@ -33,17 +33,27 @@ function cmmClosePop(obj=''){
 	$(".blind").css("display", "none");
 }
 
-function cmmOnlyNumber(obj){
-	$("#"+obj).val( $("#"+obj).val().replace( /[^0-9]/g, '' ));
+function cmmOnNumber(obj){
+	$(obj).val( $(obj).val().replace( /[^0-9]/g, '' ));
 }
 
-function cmmNumberComma(obj){
-	$("#"+obj).val( $("#"+obj).val().replace( /[^0-9\,]/g, '' ));
+function cmmOnComma(obj){
+	$(obj).val( $(obj).val().replace( /[^0-9\,]/g, '' ));
 }
 
-function cmmValidEmail(email){
-	let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
-	return(regex.test(email));
+function cmmOnEmail(obj){
+	var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;	
+	if(!regex.test($(obj).val())){
+		alert('이메일 주소 형식이 잘못되었습니다. 확인 후 다시 입력해주세요.');
+		return;
+	}
+}
+
+function cmmValidEmail(objValue){
+	
+	var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+	return(regex.test(objValue));
 }
 
 function cmmValidHandPhone(phone){
