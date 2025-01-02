@@ -225,7 +225,7 @@ function memberSave(editMode){
 	
 	$.ajax({
 		type: "POST",
-		url: "/member/member_save/",
+		url: "/admin/member_save/",
 		data: postData,
 		dataType: "json",
 		beforeSend:function(){

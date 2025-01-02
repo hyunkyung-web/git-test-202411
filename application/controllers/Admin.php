@@ -61,12 +61,12 @@ class Admin extends CI_Controller {
 	    $this->load->view('/admin/contents_form', $viewData);
 	}
 	
-	public function hcp_list(){
+	public function member_list(){
 	    $viewData = ["menuNum"=>800];
-	    $this->load->view('/admin/hcp_list', $viewData);
+	    $this->load->view('/admin/member_list', $viewData);
 	}
 	
-	public function hcp_form($idx=-1){
+	public function member_form($idx=-1){
 	    
 
 	    
@@ -97,10 +97,10 @@ class Admin extends CI_Controller {
 	    
 	    $viewData = ["menuNum"=>810, "editMode"=>$editMode, "info"=>$info];
 	    
-	    $this->load->view('/admin/hcp_form', $viewData);
+	    $this->load->view('/admin/member_form', $viewData);
 	}
 	
-	public function hcp_save(){
+	public function member_save(){
 	    
 	    $before_status = getPost("before_status", "");
 	    $alarm_type = getPost("editMode", "C")=="C" ? 'welcome' : '';
