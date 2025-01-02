@@ -131,7 +131,7 @@
 								<tr>
 									<th class="full_line require">메세지내용</th>
 									<td class="full_line">
-										<textarea name="template_msg" id="template_msg" placeholder="템플릿 메세지를 입력해주세요" onkeyup="javascript:adjustHeight('#template_msg');"><?php echo $info["template_msg"];?></textarea>
+										<textarea name="template_msg" id="template_msg" placeholder="템플릿 메세지를 입력해주세요" onkeyup="javascript: adjustHeight('#template_msg');"><?php echo $info["template_msg"];?></textarea>
 									</td>
 								</tr>
 								<tr>
