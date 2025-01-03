@@ -14,7 +14,10 @@ if(bSuccessUpload) {
 	if(!in_array($filename_ext, $allow_file)) {
 		$url .= '&errstr='.$name;
 	} else {
-		$uploadDir = '../../upload/';
+// 		$uploadDir = '../../upload/';
+	    $imgPath = '/public/data/article/';
+	    $uploadDir = $_SERVER["DOCUMENT_ROOT"].$imgPath;
+	    
 		if(!is_dir($uploadDir)){
 			mkdir($uploadDir, 0777);
 		}
@@ -25,7 +28,8 @@ if(bSuccessUpload) {
 		
 		$url .= "&bNewLine=true";
 		$url .= "&sFileName=".urlencode(urlencode($name));
-		$url .= "&sFileURL=upload/".urlencode(urlencode($name));
+// 		$url .= "&sFileURL=upload/".urlencode(urlencode($name));
+		$url .= "&sFileURL=".$imgPath.urlencode(urlencode($name));
 	}
 }
 // FAILED

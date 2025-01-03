@@ -20,7 +20,10 @@
 		$file->name = date("YmdHis").mt_rand().".".$filename_ext;
 		$file->content = file_get_contents("php://input");
 
-		$uploadDir = '../../upload/';
+// 		$uploadDir = '../../upload/';
+		$imgPath = '/public/data/article/';
+		$uploadDir = $_SERVER["DOCUMENT_ROOT"].$imgPath;
+		
 		if(!is_dir($uploadDir)){
 			mkdir($uploadDir, 0777);
 		}
@@ -30,7 +33,8 @@
 		if(file_put_contents($newPath, $file->content)) {
 			$sFileInfo .= "&bNewLine=true";
 			$sFileInfo .= "&sFileName=".$filename;
-			$sFileInfo .= "&sFileURL=upload/".$file->name;
+// 			$sFileInfo .= "&sFileURL=upload/".$file->name;
+			$sFileInfo .= "&sFileURL=".$imgPath.$file->name;
 		}
 		
 		echo $sFileInfo;
