@@ -36,7 +36,7 @@ function getRequest($obj, $swapVal){
     }
 }
 
-function uriRequest($obj, $swapVal){
+function urlRequest($obj, $swapVal){
     if (isset($_REQUEST[$obj]) || !empty($_REQUEST[$obj])) {
         return addslashes(urldecode(trim($_REQUEST[$obj])));
     } else {

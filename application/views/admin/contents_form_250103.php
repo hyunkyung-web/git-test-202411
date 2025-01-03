@@ -77,12 +77,41 @@
             <!-- flex 2 -->
             <main class="main-content">
                 <div>
+                    <!-- <header class="main-header">
+                        <div class="main-header-firstLine">
+                            <h3>Members <br />
+                                <span>Message Target</span>
+                            </h3>
+                            <div>
+                                <button type="button" class="add-user" onclick="javascript: openMenu(910);"><i class="fa-solid fa-circle-plus"></i> Add</button>
+                                <button type="button" class="delete-user" onclick="javascript: openMenu(110);"><i class="fa-solid fa-circle-minus"></i> Del</button>
+                                <button type="button" class="download-user" onclick="javascript: openMenu(110);"><i class="fa-solid fa-download"></i> Excel</button>
+                            </div>
+                        </div>
+
+                        <div class="search-bar">
+                            <select class="category-select">
+                                <option value="">DEPT/BU</option>
+                                <option value="category1">CMR</option>
+                                <option value="category2">F&O</option>
+                                <option value="category2">CE</option>
+                            </select>
+                            <input type="text" placeholder="Search..." class="search-input">
+                            <button class="search-button">Search</button>
+                        </div>
+                    </header> -->
                     <form>
                         <table class="form-table">
                             <colgroup>
                                 <col style="width: 20%;">
                                 <col style="width: 80%;">
                             </colgroup>
+                            <!-- <thead>
+                                <tr>
+                                    <th>항목</th>
+                                    <th>내용</th>
+                                </tr>
+                            </thead> -->
                             <tbody>
                                 <tr>
                                     <th><label for="title">제목</label></th>
@@ -101,6 +130,11 @@
                                 <tr>
                                     <th>첨부 파일</th>
                                     <td class="add-file">
+                                        <!-- <input type="file" /> -->
+                                        <!-- <input class="upload-name" value="Add file..." placeholder="Add file..." readonly>
+                                    <label for="file"> <i class="fa-solid fa-circle-check"></i> add file</label>
+                                    <input type="file" id="file" style="display: none;"> -->
+
                                         <label for="file"> <i class="fa-solid fa-circle-check"></i> add file</label>
                                         <input type="file" id="file" name="file" style="display: none" onchange="updateFileName()" />
                                         <input class="upload-name" value="file.." placeholder="file.." readonly />
@@ -110,6 +144,8 @@
                             <tfoot>
                                 <tr>
                                     <td colspan="2">
+                                        <!-- froala 에디터 -->
+                                        <!-- <div id="editor"> </div> -->
                                         <div id="smarteditor">
                                             <textarea name="editorTxt" id="editorTxt" cols="30" rows="10" style="width: 100%; height: 300px"></textarea>
                                         </div>

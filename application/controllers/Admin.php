@@ -56,9 +56,37 @@ class Admin extends CI_Controller {
 	    $this->load->view('/admin/contents_list', $viewData);
 	}
 
-	public function contents_form(){
-	    $viewData = ["menuNum"=>110];
+	public function contents_form($idx=-1){
+	    
+	    $editMode = $idx==-1 ? "N" : "U";
+	    
+	    
+	    
+	    
+	    $info = [];
+// 	    $keyVal = [
+// 	        "idx", "member_nm", "member_type", "member_email", "cellphone", "biz_nm", "specialty", "uuid", "member_status", "signup_dt"
+// 	    ];
+
+// 	    $query = $this->memberModel->member_info(["idx"=>$idx]);
+	    
+// 	    if($query){
+// 	        foreach($query as $row){
+// 	            foreach($keyVal as $col){
+// 	                $info+= [$col => $row[$col]];
+// 	            }
+// 	        }
+// 	    } else {
+// 	        foreach($keyVal as $col){
+// 	            $info+= [$col => ''];
+// 	        }
+// 	        $info["idx"] = -1;
+// 	        $info["member_status"] = "hold";
+// 	    }
+	    
+	    $viewData = ["menuNum"=>110, "editMode"=>$editMode, "info"=>$info];	    
 	    $this->load->view('/admin/contents_form', $viewData);
+	    
 	}
 	
 	public function member_list($page=1){
@@ -92,9 +120,6 @@ class Admin extends CI_Controller {
 	
 	public function member_form($idx=-1){
 	    
-
-	    
-// 	    $member_id = getPost("member_id", -1);
 	    $editMode = $idx==-1 ? "N" : "U";
 
 	    
