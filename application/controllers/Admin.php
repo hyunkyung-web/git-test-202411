@@ -259,7 +259,39 @@ class Admin extends CI_Controller {
 	    exit;
 	    
 	}
+	
 
+	public function template_list($page=1){
+	    
+	    // 	    $page = getRequest("page", 1);
+	    $template_type = getRequest("sch_1", "");
+	    $keyword = getRequest("sch_2", "");
+	    $schData = ["sch_1"=>$template_type, "sch_2"=>$keyword];
+	    
+	    //리스트에 보여줄 게시물의 갯수
+	    $pageSize = 5;
+	    //페이징에 보여줄 페이지의 갯수
+	    $blockSize = 5;
+	    //쿼리로 조회 할 DB의 주소 시작번호(start) 가져올 갯수(end)
+	    $startPage = ($page-1) * $pageSize;
+	    $endPage = $pageSize;
+	    
+	    $query = $this->msgModel->template_list([
+	        "template_type"=>$template_type, "keyword"=>$keyword, "profile_type"=>"", "start"=>$startPage, "end"=>$endPage
+	    ]);
+	    
+	    
+	    $totalRecord = $query["listCount"];
+	    $totalPage = ceil($totalRecord/$pageSize);
+	    
+	    $viewData = ["menuNum"=>200, "schData"=>$schData, "data"=>$query["list"], "totalRecord"=>$totalRecord, "page"=>$page,
+	        "listFnc"=>"templateList", "blockSize"=>$blockSize, "totalPage"=>$totalPage
+	    ];
+	    
+	    // 	    $pageData = ["listFnc"=>"eventList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "page"=>$page];
+	    $this->load->view('/admin/template_list', $viewData);
+	    // 	    $this->load->view('/admin/inc_paging', $pageData);
+	}
 	
 	
 	public function template_form($idx=-1){	    
@@ -334,37 +366,7 @@ class Admin extends CI_Controller {
 	    exit;
 	}
 	
-	public function template_list($page=1){	    
-	    
-// 	    $page = getRequest("page", 1);
-	    $template_type = getRequest("sch_1", "");
-	    $keyword = getRequest("sch_2", "");
-	    $schData = ["sch_1"=>$template_type, "sch_2"=>$keyword];
-	    
-	    //리스트에 보여줄 게시물의 갯수
-	    $pageSize = 5;
-	    //페이징에 보여줄 페이지의 갯수
-	    $blockSize = 5;
-	    //쿼리로 조회 할 DB의 주소 시작번호(start) 가져올 갯수(end)
-	    $startPage = ($page-1) * $pageSize;
-	    $endPage = $pageSize;
-	    
-	    $query = $this->msgModel->template_list([
-	        "template_type"=>$template_type, "keyword"=>$keyword, "profile_type"=>"", "start"=>$startPage, "end"=>$endPage
-	    ]);
-	    
-	    
-	    $totalRecord = $query["listCount"];
-	    $totalPage = ceil($totalRecord/$pageSize);
-	    
-	    $viewData = ["menuNum"=>200, "schData"=>$schData, "data"=>$query["list"], "totalRecord"=>$totalRecord, "page"=>$page,
-	        "listFnc"=>"templateList", "blockSize"=>$blockSize, "totalPage"=>$totalPage
-	    ];
-	    
-	    // 	    $pageData = ["listFnc"=>"eventList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "page"=>$page];
-	    $this->load->view('/admin/template_list', $viewData);
-	    // 	    $this->load->view('/admin/inc_paging', $pageData);
-	}
+	
 	
 	
 	

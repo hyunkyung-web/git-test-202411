@@ -30,6 +30,14 @@ function getPost($obj, $swapVal){
 
 function getRequest($obj, $swapVal){
     if (isset($_REQUEST[$obj]) || !empty($_REQUEST[$obj])) {
+        return addslashes(trim($_REQUEST[$obj]));
+    } else {
+        return addslashes(trim($swapVal));
+    }
+}
+
+function uriRequest($obj, $swapVal){
+    if (isset($_REQUEST[$obj]) || !empty($_REQUEST[$obj])) {
         return addslashes(urldecode(trim($_REQUEST[$obj])));
     } else {
         return addslashes(trim($swapVal));

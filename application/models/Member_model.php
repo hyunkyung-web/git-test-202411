@@ -12,9 +12,34 @@ class member_model extends CI_Model {
         $strWhere = "where idx > -1 ";
         
         if(trim($opt["keyword"]) != ""){
-            $strWhere.= "and (member_nm like '%".$opt["keyword"]."%' or member_email like '%".$opt["keyword"]."%' ";
-            $strWhere.= "or biz_nm like '%".$opt["keyword"]."%' or cellphone like '%".$opt["keyword"]."%') ";
-        }
+            if(mb_strpos(trim($opt["keyword"]), '+')){
+                
+                $andKeyword = explode("+", $opt["keyword"]);
+                
+                foreach($andKeyword as $row){
+                    $strWhere.= "and (member_nm like '%".trim($row)."%' or member_email like '%".trim($row)."%' ";
+                    $strWhere.= "or biz_nm like '%".trim($row)."%' or cellphone like '%".trim($row)."%') ";
+                }
+            } elseif(mb_strpos(trim($opt["keyword"]), ',')){
+                $andKeyword = explode(",", $opt["keyword"]);
+                $rowCnt = 0;
+                foreach($andKeyword as $row){
+                    if($rowCnt==0){
+                        $strWhere.= 'and ';
+                    } else{
+                        $strWhere.= 'or ';
+                    }
+                    $strWhere.= "(member_nm like '%".trim($row)."%' or member_email like '%".trim($row)."%' ";
+                    $strWhere.= "or biz_nm like '%".trim($row)."%' or cellphone like '%".trim($row)."%') ";
+                    
+                    $rowCnt++;
+                }
+                
+            }else{
+                $strWhere.= "and (member_nm like '%".trim($opt["keyword"])."%' or member_email like '%".trim($opt["keyword"])."%' ";
+                $strWhere.= "or biz_nm like '%".trim($opt["keyword"])."%' or cellphone like '%".trim($opt["keyword"])."%') ";
+            }
+        }        
         
         $sql = "select * ";
         $sql.= "from tb_member ";

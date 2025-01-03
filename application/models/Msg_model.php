@@ -18,8 +18,32 @@ class Msg_model extends CI_Model {
         if($opt["template_type"] != ''){
             $strWhere.= "and (template_type = '".$opt["template_type"]."') ";
         }
+        
         if(trim($opt["keyword"]) != ""){
-            $strWhere.= "and (template_cd like '%".$opt["keyword"]."%' or template_nm like '%".$opt["keyword"]."%') ";
+            if(mb_strpos(trim($opt["keyword"]), '+')){
+                
+                $andKeyword = explode("+", $opt["keyword"]);
+                
+                foreach($andKeyword as $row){
+                    $strWhere.= "and (template_cd like '%".trim($row)."%' or template_nm like '%".trim($row)."%') ";
+                }
+            } elseif(mb_strpos(trim($opt["keyword"]), ',')){
+                $andKeyword = explode(",", $opt["keyword"]);
+                $rowCnt = 0;
+                foreach($andKeyword as $row){
+                    if($rowCnt==0){
+                        $strWhere.= 'and ';
+                    } else{
+                        $strWhere.= 'or ';
+                    }
+                    $strWhere.= "(template_cd like '%".trim($row)."%' or template_nm like '%".trim($row)."%') ";
+                    
+                    $rowCnt++;
+                }
+                
+            }else{
+                $strWhere.= "and (template_cd like '%".trim($opt["keyword"])."%' or template_nm like '%".trim($opt["keyword"])."%') ";
+            }
         }
         
         $sql = "select * ";
