@@ -1,23 +1,15 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Msg_model extends CI_Model {
+class Contents_model extends CI_Model {
     
     public function __construct() {
         $this->load->database();
     }
     
-    public function template_list($opt) {
+    public function contents_list($opt) {
         
-        $strWhere = "where (use_yn is null or use_yn != 'N') ";
-        
-        if($opt["profile_type"] != ''){
-            $strWhere.= "and (profile_type = '".$opt["profile_type"]."') ";
-        }
-        
-        if($opt["template_type"] != ''){
-            $strWhere.= "and (template_type = '".$opt["template_type"]."') ";
-        }
+        $strWhere = "where idx > -1 ";
         
         if(trim($opt["keyword"]) != ""){
             if(mb_strpos(trim($opt["keyword"]), '+')){
@@ -25,7 +17,7 @@ class Msg_model extends CI_Model {
                 $andKeyword = explode("+", $opt["keyword"]);
                 
                 foreach($andKeyword as $row){
-                    $strWhere.= "and (template_cd like '%".trim($row)."%' or template_nm like '%".trim($row)."%') ";
+                    $strWhere.= "and (title like '%".trim($row)."%' or context like '%".trim($row)."%') ";
                 }
             } elseif(mb_strpos(trim($opt["keyword"]), ',')){
                 $andKeyword = explode(",", $opt["keyword"]);
@@ -36,18 +28,18 @@ class Msg_model extends CI_Model {
                     } else{
                         $strWhere.= 'or ';
                     }
-                    $strWhere.= "(template_cd like '%".trim($row)."%' or template_nm like '%".trim($row)."%') ";
+                    $strWhere.= "(title like '%".trim($row)."%' or context like '%".trim($row)."%') ";
                     
                     $rowCnt++;
                 }
                 
             }else{
-                $strWhere.= "and (template_cd like '%".trim($opt["keyword"])."%' or template_nm like '%".trim($opt["keyword"])."%') ";
+                $strWhere.= "and (title like '%".trim($opt["keyword"])."%' or context like '%".trim($opt["keyword"])."%') ";
             }
         }
         
         $sql = "select * ";
-        $sql.= "from tb_msg_template ";
+        $sql.= "from tb_contents ";
         $sql.= $strWhere;
         $listSql = "order by idx desc limit ?, ?";
         
@@ -62,11 +54,11 @@ class Msg_model extends CI_Model {
         exit;
     }
     
-    public function template_info($opt) {
+    public function contents_info($opt) {
         
         $strWhere = "where idx=".$opt["idx"]." ";
         
-        $sql = "select * from tb_msg_template ";
+        $sql = "select * from tb_contents ";
         $sql.= $strWhere;
         $list = $this->db->query($sql)->result_array();
         
@@ -74,7 +66,7 @@ class Msg_model extends CI_Model {
         exit;
     }
     
-    public function template_save($opt){
+    public function contents_save($opt){
         
         $this->db->trans_begin();  
         
@@ -188,99 +180,6 @@ class Msg_model extends CI_Model {
         exit;
         
     }
-    
-    
-    
-    public function save_sms_log($opt){
-        
-        $this->db->trans_begin();
-        
-        $session_id = $this->session->userdata["user_id"];
-        $session_nm = $this->session->userdata["user_nm"];
-        
-        $sql = "insert into tb_sms_log (";
-        $sql.= "sms_type, event_idx, to_mobile, subject, mail_body, result, remain_cnt, wdate) values (";
-        $sql.= "'".$opt["sms_type"]."', ".$opt["event_idx"].", '".$opt["to_mobile"]."', '".$opt["subject"]."', '".$opt["mail_body"]."', ";
-        $sql.= "'".$opt["result"]."', ".$opt["remain_cnt"].", now() )";
-        $data = $this->db->query($sql);
-        
-        if (!$data) {
-            $errorMsg = $this->db->error();
-            $this->db->trans_rollback();
-            return ["result"=>"db_error", "msg"=>$errorMsg];
-        } else {
-            $this->db->trans_commit();
-            return ["result"=>"ok", "msg"=>"save ok"];
-        }
-        
-        exit;
-    }
-
-        
-    public function biztalk_log($opt){
-        
-        $strWhere = "where a.idx > -1 ";
-        
-        if(trim($opt["keyword"]) != ""){
-            $strWhere.= "and (b.template_cd like '%".$opt["keyword"]."%' or b.template_nm like '%".$opt["keyword"]."%') ";
-        }
-        if($opt["template_type"] != ''){
-            $strWhere.= "and (b.template_type = '".$opt["template_type"]."') ";
-        } 
-        
-        $sql = "select a.template_idx, ifnull(b.template_type, 'at') as template_type, b.template_cd, ";
-        $sql.= "(case when b.template_type is null then '회원가입 승인' else b.template_nm end) as template_nm, ";
-        $sql.= "a.cellphone, a.member_id, c.member_nm, a.result_code, a.result_desc, ";
-        $sql.= "a.final_code, a.final_desc, a.message_key, a.wdate ";
-        $sql.= "from tb_biztalk_log a ";
-        $sql.= "left outer join tb_msg_template b on a.template_idx=b.idx ";
-        $sql.= "left outer join round_member_list c on a.member_id=c.member_id ";
-        $sql.= $strWhere;
-        $listSql = "order by a.wdate desc limit ?, ?";
-        
-        $listCount = $this->db->query($sql)->num_rows();
-        if(isset($opt["start"])){
-            $list = $this->db->query($sql.$listSql, [$opt["start"], $opt["end"]])->result_array();
-        }else {
-            $list = $this->db->query($sql)->result_array();
-        }
-        
-        return ["list"=>$list, "listCount" => $listCount];
-        exit;
-        
-    }
-    
-    public function save_biztalk_log($opt){
-        
-        $this->db->trans_begin();
-        
-        $sql = "insert into tb_biztalk_log (template_idx, cellphone, member_nm, member_id, ref_key, message_key, result_code, result_desc, wdate) values (";
-        $sql.= "'".$opt["template_idx"]."', '".$opt["cellphone"]."', '".$opt["member_nm"]."', '".$opt["member_id"]."', ";
-        $sql.= "'".$opt["ref_key"]."', '".$opt["message_key"]."', '".$opt["result_code"]."', '".$opt["result_desc"]."', now() ) ";
-        
-        $data = $this->db->query($sql);
-        
-        if (!$data) {
-            $errorMsg = $this->db->error();
-            $this->db->trans_rollback();
-            return ["result"=>"db_error", "msg"=>$errorMsg];
-        } else {
-            $this->db->trans_commit();
-            return ["result"=>"ok", "msg"=>"save ok"];
-        }
-        
-        exit;
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

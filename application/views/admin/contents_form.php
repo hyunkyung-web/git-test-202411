@@ -87,24 +87,25 @@
                             <tbody>
                                 <tr>
                                     <th><label for="title">제목</label></th>
-                                    <td><input type="text" id="title" name="title" /></td>
+                                    <td><input type="text" id="title" name="title" value="<?php echo $info["title"];?>"/></td>
                                 </tr>
                                 <tr>
-                                    <th><label for="category">게시 구분</label></th>
+                                    <th><label for="category">컨텐츠타입</label></th>
                                     <td>
-                                        <select class="category-select form-select" id="category" name="category">
-                                            <option value="">게시 구분</option>
-                                            <option value="type1">일반</option>
-                                            <option value="type2">공지</option>
+                                        <select class="category-select form-select" id="contents_type" name="contents_type">
+                                            <option value="">선택</option>
+                                            <option value="article" <?php echo $info["contents_type"]=="article" ? 'selected' : '';?>>article</option>
+                                            <option value="notice" <?php echo $info["contents_type"]=="notice" ? 'selected' : '';?>>notice</option>
                                         </select>
+                                        <input type="hidden" name="idx" id="idx" value="<?php echo $info["idx"];?>" placeholder="회원번호" readonly/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>첨부 파일</th>
                                     <td class="add-file">
-                                        <label for="file"> <i class="fa-solid fa-circle-check"></i> add file</label>
-                                        <input type="file" id="file" name="file" style="display: none" onchange="updateFileName()" />
-                                        <input class="upload-name" value="file.." placeholder="file.." readonly />
+                                        <label for="attach_file"> <i class="fa-solid fa-circle-check"></i> 파일추가</label>
+                                        <input type="file" name="attach_file" id="attach_file" style="display: none" onchange="updateFileName()" />
+                                        <input class="upload-name" value="<?php echo $info["attach_file"];?>" placeholder="" readonly />
                                     </td>
                                 </tr>
                             </tbody>
@@ -112,7 +113,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div id="smarteditor">
-                                            <textarea name="editorTxt" id="editorTxt" cols="30" rows="10" style="width: 100%; height: 300px"></textarea>
+                                            <textarea name="context" id="context" cols="30" rows="10" style="width: 100%; height: 300px"><?php echo $info["context"];?></textarea>
                                         </div>
                                     </td>
                                 </tr>
@@ -121,7 +122,7 @@
                     </form>
 
                     <div class="btn-wrap">
-                        <button type="button" class="save-user form-btn"><i class="fa-solid fa-circle-plus"></i> save</button>
+                        <button type="button" class="save-user form-btn" onclick="javascript: contentsSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
                         <button type="button" class="cancel-user form-btn" onclick="javascript: openMenu(100);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
                     </div>
                 </div>

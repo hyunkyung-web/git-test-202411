@@ -89,7 +89,6 @@ class User_model extends CI_Model {
         $this->db->trans_begin();
         
         $session_id = getExist($this->session->userdata["user_id"], 'noname');
-        $session_nm = getExist($this->session->userdata["user_nm"], 'noname');      
         
         $rtnIdx = $opt["idx"];
         

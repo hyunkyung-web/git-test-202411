@@ -34,20 +34,18 @@ function startEditor() {
 	var oEditor = [];
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: oEditor,
-		elPlaceHolder: "editorTxt",
+		elPlaceHolder: "context",
 		sSkinURI: "/public/common/smarteditor/SmartEditor2Skin.html",
 		fCreator: "createSEditor2",
 	});
 }
 
 function updateFileName() {
-	const fileInput = $("#file").get(0);
+	const fileInput = $("#attach_file").get(0);
 	const uploadNameInput = $(".upload-name");
 
 	if (fileInput.files.length > 0) {
 		uploadNameInput.val(fileInput.files[0].name);
-	} else {
-		uploadNameInput.val("Add file...");
 	}
 }
 
@@ -120,6 +118,72 @@ function msgBtnRemove(e) {
 
 function returnList(){
 	history.go(-1);
+}
+
+function contentsList(page) {
+	let postUrl = "/admin/contents_list/" + page;
+
+	$("#frmSearch").attr("action", postUrl).submit();
+}
+
+/******************************************************************
+ *	함수명: templateSave()
+ *	기능: 템플릿 저장
+ ******************************************************************/
+function contentsSave(editMode) {
+	//	var reqArr = ["txtNm", "txtDate", "txtTime", "txtRuntime", "txtAgenda", "txtSpeaker", "txtPasskey"];
+	//	var chkReq = false;
+	//
+	//	if(editMode == "D"){
+	//		if(!confirm('데이터를 삭제하시겠습니까?')){
+	//			return;
+	//		}
+	//		imgDelete('event', $("#txtIdx").val(), "delete");
+	//	} else {
+	//		$.each(reqArr, function(idx, item){
+	//			if($.trim($("#"+item).val()).length == 0){
+	//				cmmShowMsg ($("#"+item).prop("placeholder")+' 필수입력 누락입니다.');
+	//				$("#"+item).focus();
+	//				chkReq = true;
+	//				return false;
+	//			}
+	//		});
+	//		if(chkReq){
+	//			console.log('필수입력 누락');
+	//			return;
+	//		}
+	//	}
+
+	$("#editMode").val(editMode);
+	var postData = new FormData($("#frm1")[0]);
+	//	var postData = $("#frm1").serialize();
+
+	$.ajax({
+		type: "POST",
+		enctype: "multipart/form-data",
+		contentType: false,
+		processData: false,
+		url: "/admin/contents_save",
+		data: postData,
+		dataType: "json",
+		beforeSend: function () {},
+		success: function (data) {
+			alert(data.msg);
+			if (editMode != "D") {
+				$("#idx").val(data.rtn_idx);
+				if(data.result=="ok"){
+					location.replace("/admin/template_form/"+data.idx);	
+				}				
+			} else {
+				templateList("main");
+			}
+			return;
+		},
+		error: function (request, status, err) {
+			console.log(err);
+			return;
+		},
+	});
 }
 
 function templateList(page) {

@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
     public function __construct(){
         parent::__construct();
         
+        $this->load->model('contents_model', 'contentsModel');
         $this->load->model('msg_model', 'msgModel');
         $this->load->model('user_model', 'userModel');
         $this->load->model('member_model', 'memberModel');
@@ -51,41 +52,82 @@ class Admin extends CI_Controller {
 	    $this->load->view('/admin/main');
 	}
 
-	public function contents_list(){
-	    $viewData = ["menuNum"=>100];
+	public function contents_list($page=1){
+	    
+	    $schType = getRequest("sch_1", "");
+	    $keyword = getRequest("sch_2", "");
+	    $schData = ["sch_1"=>$schType, "sch_2"=>$keyword];
+	    
+	    //리스트에 보여줄 게시물의 갯수
+	    $pageSize = 10;
+	    //페이징에 보여줄 페이지의 갯수
+	    $blockSize = 5;
+	    //쿼리로 조회 할 DB의 주소 시작번호(start) 가져올 갯수(end)
+	    $startPage = ($page-1) * $pageSize;
+	    $endPage = $pageSize;
+	    
+	    $query = $this->contentsModel->contents_list([
+	        "keyword"=>$keyword, "start"=>$startPage, "end"=>$endPage
+	    ]);
+	    
+	    $totalRecord = $query["listCount"];
+	    $totalPage = ceil($totalRecord/$pageSize);
+	    
+	    $viewData = ["menuNum"=>100, "schData"=>$schData, "data"=>$query["list"], "totalRecord"=>$totalRecord, "page"=>$page,
+	        "listFnc"=>"contentsList", "blockSize"=>$blockSize, "totalPage"=>$totalPage
+	    ];
+	    
+	    // 	    $pageData = ["listFnc"=>"eventList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "page"=>$page];
 	    $this->load->view('/admin/contents_list', $viewData);
+	    
 	}
 
 	public function contents_form($idx=-1){
 	    
 	    $editMode = $idx==-1 ? "N" : "U";
 	    
-	    
-	    
-	    
 	    $info = [];
-// 	    $keyVal = [
-// 	        "idx", "member_nm", "member_type", "member_email", "cellphone", "biz_nm", "specialty", "uuid", "member_status", "signup_dt"
-// 	    ];
+	    $keyVal = [
+	        "idx", "contents_type", "title", "context", "attach_file"
+	    ];
 
-// 	    $query = $this->memberModel->member_info(["idx"=>$idx]);
+	    $query = $this->contentsModel->contents_info(["idx"=>$idx]);
 	    
-// 	    if($query){
-// 	        foreach($query as $row){
-// 	            foreach($keyVal as $col){
-// 	                $info+= [$col => $row[$col]];
-// 	            }
-// 	        }
-// 	    } else {
-// 	        foreach($keyVal as $col){
-// 	            $info+= [$col => ''];
-// 	        }
-// 	        $info["idx"] = -1;
-// 	        $info["member_status"] = "hold";
-// 	    }
+	    if($query){
+	        foreach($query as $row){
+	            foreach($keyVal as $col){
+	                $info+= [$col => $row[$col]];
+	            }
+	        }
+	    } else {
+	        foreach($keyVal as $col){
+	            $info+= [$col => ''];
+	        }
+	        $info["idx"] = -1;
+	        $info["contents_type"] = "article";
+	    }
 	    
 	    $viewData = ["menuNum"=>110, "editMode"=>$editMode, "info"=>$info];	    
 	    $this->load->view('/admin/contents_form', $viewData);
+	    
+	}
+	
+	public function contents_save(){	    
+	    
+	    $query = $this->contentsModel->contents_save([
+	        "editMode"=> getPost("editMode", "C"),
+	        "idx"=> getPost("idx", -1),
+	        "contents_type" => getPost("contents_type", "article"),
+	        "title" => getPost("title", "hcp"),
+	        "context" => getPost("context", ""),
+	        "attach_file" => $_POST["attach_file"]	        
+	    ]);
+	    
+	    if ( $query["result"] == "ok") {
+	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"], 'idx' => $query["idx"]]);
+	    } else {
+	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"]]);
+	    }
 	    
 	}
 	
@@ -141,6 +183,7 @@ class Admin extends CI_Controller {
 	            $info+= [$col => ''];
 	        }
 	        $info["idx"] = -1;
+	        $info["member_type"] = "hcp";
 	        $info["member_status"] = "hold";
 	    }
 	    
