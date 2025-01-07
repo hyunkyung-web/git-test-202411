@@ -30,10 +30,10 @@ class Member extends CI_Controller {
 	    $this->load->view('/member/verify');
 	}
 	
-	public function sign_up()
+	public function signup()
 	{
 	    
-	    $this->load->view('/member/sign_up');
+	    $this->load->view('/member/signup');
 	}
 	
 	

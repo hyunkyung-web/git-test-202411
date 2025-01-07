@@ -422,7 +422,7 @@ class Admin extends CI_Controller {
 	    $query = $this->msgModel->template_info(["idx"=>$idx]);
 	    $info = [];
 	    $keyVal = [
-	        "profile_type", "profile_key",
+	        "idx", "profile_type", "profile_key",
 	        "template_type", "template_cd", "template_nm", "template_msg",
 	        "img_url", "img_link",
 	        "btn_type_1", "btn_name_1", "btn_link_1", "btn_type_2", "btn_name_2", "btn_link_2",
@@ -468,7 +468,7 @@ class Admin extends CI_Controller {
 	    ]);
 	    
 	    if ( $query["result"] != "db_error") {
-	        echo json_encode(['result' => 'ok', 'msg'=>$query["msg"], 'rtn_idx'=>$query["rtn_idx"]]);
+	        echo json_encode(['result' => 'ok', 'msg'=>$query["msg"], 'idx'=>$query["idx"]]);
 	    } else {
 	        echo json_encode(['result' => 'db_error', 'msg'=>$query["msg"]]);
 	    }

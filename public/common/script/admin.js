@@ -242,7 +242,6 @@ function templateSave(editMode) {
 		success: function (data) {
 			alert(data.msg);
 			if (editMode != "D") {
-				$("#idx").val(data.rtn_idx);
 				if(data.result=="ok"){
 					location.replace("/admin/template_form/"+data.idx);	
 				}				

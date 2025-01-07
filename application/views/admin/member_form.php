@@ -87,13 +87,14 @@
             				<td class="full_line"><input type="text" name="member_nm" id="member_nm" value="<?php echo $info["member_nm"];?>" placeholder="성명" /></td>
             			</tr>
             			<tr>
-            				<th class="full_line">이메일</th>
-            				<td class="full_line"><input type="text" name="member_email" id="member_email" value="<?php echo $info["member_email"];?>" placeholder="이메일" onblur="javsascript: cmmOnEmail(this);"/></td>
-            			</tr>
-            			<tr>
             				<th class="full_line">핸드폰</th>
             				<td class="full_line"><input type="text" name="cellphone" id="cellphone" value="<?php echo $info["cellphone"];?>" placeholder="핸드폰(숫자만 입력하세요)" onkeyup="javascript: cmmOnNumber(this);"/></td>
             			</tr>
+            			<tr>
+            				<th class="full_line">이메일</th>
+            				<td class="full_line"><input type="text" name="member_email" id="member_email" value="<?php echo $info["member_email"];?>" placeholder="이메일" onblur="javsascript: cmmOnEmail(this);"/></td>
+            			</tr>
+            			
             			<tr>
             				<th class="full_line">회원구분</th>
             				<td class="full_line">

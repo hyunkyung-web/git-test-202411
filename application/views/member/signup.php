@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>회원가입</title>
+	<title>Sign up</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="닥터웨이브" />
@@ -20,7 +20,11 @@
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>             
+    <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
+    
+    <script defer type="text/javascript" src="/public/common/script/common.js"></script>
+    
+                 
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -66,29 +70,25 @@
             
             <div class="member-container">
                 <h1>SIGN UP</h1>
-                <form class="signup-form" action="#">
+                <form class="signup-form" id="frm1" name="frm1">
                     <div class="form_item user">
-                        <input type="text"  placeholder="이름" required />
+                        <input type="text" name="member_nm" id="member_nm" placeholder="이름" required />
                     </div>
 
                     <div class="form_item phone">
-                        <input type="tel"  placeholder="휴대전화번호" maxlength="16" required />
+                        <input type="tel"  name="cellphone" id="cellphone" placeholder="휴대전화번호" maxlength="16" onkeyup="javascript: cmmOnNumber(this);" required />
                     </div>
 
                     <div class="form_item email">
-                        <input type="email" placeholder="Email" required />
+                        <input type="email" name="member_email" id="member_email" placeholder="Email" onblur="javsascript: cmmOnEmail(this);" required />
                     </div>
 
                     <div class="form_item Hosp">
-                        <input type="text"  placeholder="병원명" required />
+                        <input type="text"  name="biz_nm" id="biz_nm" placeholder="병원명" required />
                     </div>
 
                     <div class="form_item Dept">
-                        <input type="text"  placeholder="진료과목" required />
-                    </div>
-
-                    <div class="form_item license_num">
-                        <input type="text"  placeholder="자격번호/면허번호" required />
+                        <input type="text"  name="specialty" id="specialty" placeholder="진료과목" required />
                     </div>
 
                     <button type="button">Sign Up</button>

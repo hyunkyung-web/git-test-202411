@@ -168,21 +168,13 @@
 
                 	<div id="tabs-2">
             			<div class="mobile_screen">
-                			<div>
-                				<img src="https://mud-kage.kakao.com/dn/xRPSI/btsKOqGeRa7/QVKEY9vwUAd1NPvh3zyuJ1/img_l.jpg"/>
-            				</div>
-                			<div><?php echo nl2br('국내 성인 ADHD 현황 - 2023년도
-
-2023년도 국내 성인 인구수(20-44세)9 : 16,870,491명
-● 예 상 ADHD 환자 수(유병률 4.4%) : 742,302명
-* 국가 통계 포털에서 확인한 2021년도 국내 20-44세 인구 수에 미국 18-44세 성인 ADHD 유병률인
-4.4%6를 곱하여 산출하였습니다.
-● 질 병코드 F90.0(과다활동을 수반한 주의력결핍장애) 환자 수(20-44세)10 : 87,136명
-● 국 내 성인 ADHD 잠재 환자 중, 예상 진단율 : 11.7%
-* 질병코드 F90.0으로 진단받은 환자 수를 예상 ADHD 환자 수로 나누어 산출하였습니다.');?></div>
-                			<div>
-								<button class="btn_link">컨텐츠 확인하기</button>
-                			 </div>
+                			<div><?php echo !empty($info["img_url"])?'<img src="'.$info["img_url"].'"/>' : '';?></div>
+                			<div><?php echo nl2br($info["template_msg"]);?></div>
+                			<div><?php
+                			for($i=1; $i<=$info["btn_cnt"]; $i++){?>
+                			     <a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php 
+                			}?>
+							</div>
             			</div>
                 	</div>
 
