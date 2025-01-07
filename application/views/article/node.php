@@ -62,32 +62,14 @@
     <?php include_once APPPATH.'views/header.php'; ?>
     
     <section id="article-node" class="padd60">
-        <div class="cont_left padd20">
-            <img src="/public/images/cont.png" alt="cont" />
-        </div>
+<!--         <div class="cont_left padd20"> -->
+<!--             <img src="/public/images/cont.png" alt="cont" /> -->
+<!--         </div> -->
         <!-- cont_left END -->
 
         <div class="cont_right padd20">
-            <h1>CONTENT NAME</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-            <div class="cont_description">
-                <p>CONTENT DESCRIPTION</p>
-                <span>
-                    *24시간 지속되는 피부 보습은 물론 존슨즈 만의 고유한 베이비 파우더 향으로 사랑스러움을 더해 보세요.<br />
-
-                    *24시간 지속되는 보습으로 건강하고 촉촉한 피부<br />
-
-                    *쉽게 건조해지는 연약한 아기 피부에 수분 보호막 형성<br />
-
-                    *저자극 포뮬러<br />
-                    *아기 피부를 부드럽게 마사지하며 교감의 순간을 만들어 보세요.<br />
-
-                    *피부과 테스트 완료<br />
-
-                    *32명 여성을 대상으로 24시간 실험한 결과, 2013, AP Skin Test Center                 
-                </span>
-                
-            </div>
+            <h1><?php echo $info["title"];?></h1>            
+            <div class="cont_description"><?php echo $info["body_text"];?></div>
         </div>
         <!-- cont_right END -->
     </section>
