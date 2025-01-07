@@ -13,14 +13,15 @@
 	<meta property="og:image" content="https://dr-wave.co.kr/public/images/logo.png"/>
 	<meta property="og:url" content="" />
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/public/common/css/user/main.css" />    
+    <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>    
+    <script src="/public/common/script/fontawesome.all.min.js"></script>
     <script type="text/javascript" src="/public/common/script/main.js"></script>                 
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -62,9 +63,13 @@
     <?php include_once APPPATH.'views/header.php'; ?>
     
     <section id="article-node" class="padd60">
-<!--         <div class="cont_left padd20"> -->
-<!--             <img src="/public/images/cont.png" alt="cont" /> -->
-<!--         </div> -->
+        <div class="cont_right padd20">
+            <h1>CONTENT NAME</h1>
+            <div class="cont_description">
+                <p>CONTENT DESCRIPTION</p>
+                <img src="/public/images/cont.png" alt="cont" />
+            </div>
+        </div>
         <!-- cont_left END -->
 
         <div class="cont_right padd20">
@@ -72,6 +77,57 @@
             <div class="cont_description"><?php echo $info["body_text"];?></div>
         </div>
         <!-- cont_right END -->
+    </section>
+
+    <section id="reaction-area">
+        <div class="cont_right padd20-0">
+            <!-- <div class="cont_description"> -->
+                <div class="react_area padd10">
+                    <img src="/public/images/icon/icon_heart.png" alt="icon_heart" class="icon_heart">
+                    <img src="/public/images/icon/icon_comment.png" alt="icon_comment" class="icon_comment">
+                </div>
+                <div class="comments_area padd10">
+                    <div class="comment_box">
+                        <span class="c_name">dwave_it</span>
+                        <span class="c_text">우와~</span>
+                        <span class="delete"><i class="fa-solid fa-minus"></i></span>
+                    </div>
+                    <div class="comment_box">
+                        <span class="c_name">dwave_it</span>
+                        <span class="c_text">우와~</span>
+                        <span class="delete"><i class="fa-solid fa-minus"></i></span>
+                    </div>
+                    <div class="comment_box">
+                        <span class="c_name">dwave_itdwave_it</span>
+                        <span class="c_text">우와~</span>
+                        <span class="delete"><i class="fa-solid fa-minus"></i></span>
+                    </div>
+                    <!-- <div class="comment_box">
+                        <span class="c_name">dwave_it</span>
+                        <span class="c_text">우와~</span>
+                        <span class="delete"><i class="fa-solid fa-minus"></i></span>
+                    </div>
+                    <div class="comment_box">
+                        <span class="c_name">dwave_it</span>
+                        <span class="c_text">우와~</span>
+                        <span class="delete"><i class="fa-solid fa-minus"></i></span>
+                    </div>
+                    <div class="comment_box">
+                        <span class="c_name">dwave_it</span>
+                        <span class="c_text">우와~</span>
+                        <span class="delete"><i class="fa-solid fa-minus"></i></span>
+                    </div> -->
+                    
+                </div>
+                <button type="button" class="btn_more">더보기 +</button>
+                <button type="button" class="btn_fold">댓글 접기 ↑</button>
+                <div class="enter_c_box flex_SB_center padd10">
+                    <textarea name="c_box" id="c_box" placeholder="댓글 달기..." class="c_box" rows="1" onkeyup="resize(this)" onkeydown="resize(this)"></textarea>
+                    <button type="button" class="btn_chat">입력</button>
+                </div>
+                
+            <!-- </div> -->
+        </div>
     </section>
     <!-- contentBox END -->
     

@@ -89,17 +89,28 @@ h1 {
 .padd10 {
     padding: 10px;
 }
+
 .padd20 {
     padding: 20px;
 }
+.padd0-20 {
+    padding: 0 20px;
+}
+.padd20-0 {
+    padding: 20px 0;
+}
+.padd20-10 {
+    padding: 20px 10px;
+}
+
 .padd30 {
     padding: 30px;
 }
 .padd60 {
     padding: 60px;
 }
-.padd0-20 {
-    padding: 0 20px;
+.padd0-60 {
+    padding: 0 60px;
 }
 
 /* header */

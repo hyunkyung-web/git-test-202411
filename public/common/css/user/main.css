@@ -210,13 +210,14 @@ article
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    padding-bottom: 0;
 }
 
 #article-node div {
     min-height: 400px;
 }
 .cont_left {
-    width: 50%;
+    width: 100%;
     text-align: center;
     border-radius: 10px;
     border: 1px solid #ddd;
@@ -228,7 +229,7 @@ article
 }
 
 .cont_right {
-    width: 50%;
+    width: 90%;
     height: 100%;
     line-height: 2;
     font-size: 1em;
@@ -264,6 +265,105 @@ article
     letter-spacing: -0.7px;
 
     display: block;
+}
+
+#reaction-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.react_area {
+    width: 100%;
+    /* height: 35px; */
+    border-top: 1px solid #eee;
+}
+
+.react_area img {
+    width: 32px;
+    height: 32px;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.comment_box {
+    display: none;
+}
+
+.comment_box.show {
+    display: flex;
+}
+
+.comment_box span {
+    margin-right: 10px;
+}
+
+.comment_box span.c_name {
+    font-weight: 900;
+}
+
+.comment_box span.delete {
+    /* width: 5%; */
+    padding: 0 1em;
+    text-align: right;
+    margin-left: auto;
+}
+
+.btn_more {
+    width: 100%;
+    height: 45px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    line-height: 2;
+}
+
+.btn_fold {
+    display: none;
+    width: 100%;
+    height: 45px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    line-height: 2;
+}
+
+.enter_c_box {
+    width: 100%;
+    /* max-height: 80px; */
+    border-top: 1px solid #ddd;
+    /* display: flex; */
+}
+
+textarea {
+    width: 90%;
+    line-height: 1;
+    font-size: 1em;
+    border: 0;
+    outline: 0;
+}
+
+textarea::-webkit-scrollbar {
+    display: none;
+}
+
+textarea::placeholder {
+    color: #aaa;
+}
+
+.enter_c_box button {
+    width: 10%;
+    font-weight: 900;
+    font-size: 1em;
+    color: #aaa;
+}
+
+.btn_chat.on {
+    color: black;
 }
 
 /* media query */
@@ -382,7 +482,7 @@ article
     }
 
     .cont_right {
-        background-color: #f5f5f5;
+        /* background-color: #f5f5f5; */
         padding: 40px 30px;
     }
 }
