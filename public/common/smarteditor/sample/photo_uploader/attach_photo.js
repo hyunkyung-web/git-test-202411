@@ -7,7 +7,7 @@
 	var rFilter2 = /^(bmp|gif|jpg|jpeg|png)$/i; 
 	var nTotalSize = 0;
 	var nMaxImageSize = 10*1024*1024;
-	var nMaxTotalImageSize = 50*1024*1024;
+	var nMaxTotalImageSize = 30*1024*1024;
 	var nMaxImageCount = 10;
 	var nImageFileCount = 0;
 	var bSupportDragAndDropAPI = false;
@@ -309,7 +309,7 @@
 		bExceedLimitTotalSize = checkTotalImageSize(ofile.size);
 
 		if( !!bExceedLimitTotalSize ){
-			alert("전체 이미지 용량이 50MB를 초과하여 등록할 수 없습니다. \n\n (파일명 : "+sFileName+", 사이즈 : "+sFileSize+")");
+			alert("전체 이미지 용량이 30MB를 초과하여 등록할 수 없습니다. \n\n (파일명 : "+sFileName+", 사이즈 : "+sFileSize+")");
 		} else {
 			//이미지 정보 저장							
 			htImageInfo['img'+nImageInfoCnt] = ofile;

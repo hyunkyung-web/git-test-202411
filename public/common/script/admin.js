@@ -14,10 +14,23 @@ $(function () {
 		}
 	});
 
+	
+	
 	if ($("#smarteditor").length) {
-		startEditor();
+		
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef: oEditor,
+			elPlaceHolder: "body_text",
+			sSkinURI: "/public/common/smarteditor/SmartEditor2Skin.html",
+			fCreator: "createSEditor2",
+		});
 	}
+	
+
 });
+
+//스마트 에디터 오브젝트
+var oEditor = [];
 
 // Mobile burger
 document.addEventListener("DOMContentLoaded", function () {
@@ -30,15 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 });
 
-function startEditor() {
-	var oEditor = [];
-	nhn.husky.EZCreator.createInIFrame({
-		oAppRef: oEditor,
-		elPlaceHolder: "context",
-		sSkinURI: "/public/common/smarteditor/SmartEditor2Skin.html",
-		fCreator: "createSEditor2",
-	});
-}
 
 function updateFileName() {
 	const fileInput = $("#attach_file").get(0);
@@ -120,7 +124,7 @@ function returnList(){
 	history.go(-1);
 }
 
-function contentsList(page) {
+function contentsList(page=1) {
 	let postUrl = "/admin/contents_list/" + page;
 
 	$("#frmSearch").attr("action", postUrl).submit();
@@ -131,6 +135,8 @@ function contentsList(page) {
  *	기능: 템플릿 저장
  ******************************************************************/
 function contentsSave(editMode) {
+	
+	oEditor.getById["body_text"].exec("UPDATE_CONTENTS_FIELD", []);
 	//	var reqArr = ["txtNm", "txtDate", "txtTime", "txtRuntime", "txtAgenda", "txtSpeaker", "txtPasskey"];
 	//	var chkReq = false;
 	//
@@ -172,10 +178,10 @@ function contentsSave(editMode) {
 			if (editMode != "D") {
 				$("#idx").val(data.rtn_idx);
 				if(data.result=="ok"){
-					location.replace("/admin/template_form/"+data.idx);	
+					location.replace("/admin/contents_form/"+data.idx);	
 				}				
 			} else {
-				templateList("main");
+				contentsList();
 			}
 			return;
 		},
@@ -186,7 +192,7 @@ function contentsSave(editMode) {
 	});
 }
 
-function templateList(page) {
+function templateList(page=1) {
 	let postUrl = "/admin/template_list/" + page;
 
 	$("#frmSearch").attr("action", postUrl).submit();
@@ -253,7 +259,7 @@ function templateSave(editMode) {
 }
 
 
-function memberList(page) {
+function memberList(page=1) {
 	let postUrl = "/admin/member_list/" + page;
 
 	$("#frmSearch").attr("action", postUrl).submit();
@@ -314,7 +320,7 @@ function memberSave(editMode){
 	});
 }
 
-function userList(page) {
+function userList(page=1) {
 	let postUrl = "/admin/user_list/" + page;
 
 	$("#frmSearch").attr("action", postUrl).submit();

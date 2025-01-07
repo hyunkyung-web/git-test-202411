@@ -88,7 +88,7 @@ class Admin extends CI_Controller {
 	    
 	    $info = [];
 	    $keyVal = [
-	        "idx", "contents_type", "title", "context", "attach_file"
+	        "idx", "contents_type", "title", "body_text", "attach_file"
 	    ];
 
 	    $query = $this->contentsModel->contents_info(["idx"=>$idx]);
@@ -112,15 +112,36 @@ class Admin extends CI_Controller {
 	    
 	}
 	
-	public function contents_save(){	    
+	public function contents_save(){
 	    
+
+	    
+	    $uploadPath = "/public/data/attach/";
+	    $webPath = "/public/data/attach/";	    
+	    $customFileNm = date('ymd').rand(0001, 9999);
+	    
+	    $rawFile = $_FILES["attach_file"];
+	    
+	    if(!empty($rawFile["tmp_name"])){
+	        $chkFile = chkStoreFile($rawFile, "", 10, "", "", "");
+	        if($chkFile != "ok"){
+	            echo json_encode(['result' => "file_check_error", "msg"=>$chkFile]);
+	            exit;
+	        }else {
+	            $webPath .= $customFileNm.'.'.pathinfo($rawFile["name"], PATHINFO_EXTENSION);
+	            $storeResult = storeFile($rawFile, $uploadPath, $customFileNm);
+	        }
+	    }else {
+	        $webPath = "";
+	    }
+	   
 	    $query = $this->contentsModel->contents_save([
-	        "editMode"=> getPost("editMode", "C"),
+	        "editMode"=> getPost("editMode", "N"),
 	        "idx"=> getPost("idx", -1),
 	        "contents_type" => getPost("contents_type", "article"),
-	        "title" => getPost("title", "hcp"),
-	        "context" => getPost("context", ""),
-	        "attach_file" => $_POST["attach_file"]	        
+	        "title" => getPost("title", ""),
+	        "body_text" => getPost("body_text", ""),
+	        "attach_file" => $webPath
 	    ]);
 	    
 	    if ( $query["result"] == "ok") {

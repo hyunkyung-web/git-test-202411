@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>사용자 추가</title>
+	<title>Contents Information</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="닥터웨이브" />
@@ -78,7 +78,7 @@
             <!-- flex 2 -->
             <main class="main-content">
                 <div>
-                    <form>
+                    <form name="frm1" id="frm1">
                         <table class="form-table">
                             <colgroup>
                                 <col style="width: 20%;">
@@ -113,16 +113,17 @@
                                 <tr>
                                     <td colspan="2">
                                         <div id="smarteditor">
-                                            <textarea name="context" id="context" cols="30" rows="10" style="width: 100%; height: 300px"><?php echo $info["context"];?></textarea>
+                                            <textarea name="body_text" id="body_text" cols="30" rows="10" style="width: 100%; height: 300px"><?php echo $info["body_text"];?></textarea>
                                         </div>
                                     </td>
                                 </tr>
                             </tfoot>
                         </table>
+                        <input type="hidden" name="editMode" id="editMode" value="<?php echo $editMode;?>"/>
                     </form>
 
                     <div class="btn-wrap">
-                        <button type="button" class="save-user form-btn" onclick="javascript: contentsSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
+                        <button type="button" class="save-user form-btn" onclick="javasctipt: contentsSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
                         <button type="button" class="cancel-user form-btn" onclick="javascript: openMenu(100);"><i class="fa-solid fa-circle-minus"></i> cancel</button>
                     </div>
                 </div>

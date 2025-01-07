@@ -96,6 +96,14 @@
                     </header>
                     
                     <table class="list-table">
+                    	<colgroup>
+                    		<col width="5%"/>
+                    		<col width="5%"/>
+                    		<col width="20%"/>
+                    		<col width="50%"/>
+                    		<col width="10%"/>
+                    		<col width="10%"/>
+                    	</colgroup>
                         <thead>
                             <tr>
                                 <th align="center">
@@ -123,7 +131,7 @@
                                 </td>
                                 <td><?php echo $row["idx"];?></td>
                                 <td><?php echo $row["contents_type"];?></td>
-                                <td class="align_left"><?php echo $row["title"];?></td>
+                                <td class="align_left"><a href="/admin/contents_form/<?php echo $row["idx"];?>"><?php echo $row["title"];?></a></td>
                                 <td><?php echo $row["wuser"];?></td>
                                 <td><?php echo date('Y-m-d', strtotime($row["wdate"]));?></td>
                             </tr><?php 

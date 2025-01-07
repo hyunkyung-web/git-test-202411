@@ -74,71 +74,20 @@ class Contents_model extends CI_Model {
         
         if($opt["editMode"] == "N") {
             
-            $sql = "insert into tb_msg_template (";
-            $sql.= "template_type, template_cd, template_nm, img_url, img_link, template_msg, profile_type, profile_key, wdate, wuser, use_yn) values (";
-            $sql.= "'".$opt["template_type"]."', '".$opt["template_cd"]."', '".$opt["template_nm"]."', ";
-            $sql.= "'".$opt["img_url"]."', '".$opt["img_link"]."', ";
-            $sql.= "'".$opt["template_msg"]."', '".$opt["profile_type"]."', '".$opt["profile_key"]."', ";
-            $sql.= "now(), '".$session_id."', 'Y') ";
+            $sql = "insert into tb_contents (";
+            $sql.= "contents_type, title, body_text, attach_file, wdate, wuser) values (";
+            $sql.= "'".$opt["contents_type"]."', '".$opt["title"]."', '".$opt["body_text"]."', '".$opt["attach_file"]."', ";
+            $sql.= "now(), '".$session_id."') ";
             
             $data = $this->db->query($sql);
             $rtn_idx = $this->db->insert_id();
-
-            if(is_array($opt["btn_type"])){
-                $col_num = 1;
-                $sql = "update tb_msg_template set ";
-                
-                for($i=0; $i<count($opt["btn_type"]); $i++){
-                    if($opt["btn_type"][$i]!="" && $opt["btn_name"][$i]!="" && $opt["btn_link"][$i]!=""){
-                        $sql.= "btn_type_".$col_num." = '".$opt["btn_type"][$i]."', ";
-                        $sql.= "btn_name_".$col_num." = '".$opt["btn_name"][$i]."', ";
-                        $sql.= "btn_link_".$col_num." = '".$opt["btn_link"][$i]."', ";
-                        $sql.= "btn_cnt = ".$col_num.", ";
-                        $col_num++;
-                    }                    
-                }
-                for($j=$col_num; $j<=5; $j++){
-                    $sql.= "btn_type_".$j." = NULL, ";
-                    $sql.= "btn_name_".$j." = NULL, ";
-                    $sql.= "btn_link_".$j." = NULL, ";
-                }
-                $sql.= "udate = now(), ";
-                $sql.= "uuser = '".$session_id."' ";
-                $sql.= "where idx = ".$rtn_idx;
-                
-                $data = $this->db->query($sql);
-            }
             
         } elseif($opt["editMode"]=="U"){
-            $sql = "update tb_msg_template set ";            
-            $sql.= "template_type = '".$opt["template_type"]."', ";
-            $sql.= "template_cd = '".$opt["template_cd"]."', ";
-            $sql.= "template_nm = '".$opt["template_nm"]."', ";
-            $sql.= "img_url = '".$opt["img_url"]."', ";
-            $sql.= "img_link = '".$opt["img_link"]."', ";
-            $sql.= "template_msg = '".$opt["template_msg"]."', ";
-            $sql.= "profile_type = '".$opt["profile_type"]."', ";
-            $sql.= "profile_key = '".$opt["profile_key"]."', ";
-            
-            if(is_array($opt["btn_type"])){
-                $col_num = 1;
-                
-                for($i=0; $i<count($opt["btn_type"]); $i++){
-                    if($opt["btn_type"][$i]!="" && $opt["btn_name"][$i]!="" && $opt["btn_link"][$i]!=""){
-                        $sql.= "btn_type_".$col_num." = '".$opt["btn_type"][$i]."', ";
-                        $sql.= "btn_name_".$col_num." = '".$opt["btn_name"][$i]."', ";
-                        $sql.= "btn_link_".$col_num." = '".$opt["btn_link"][$i]."', ";
-                        $sql.= "btn_cnt = ".$col_num.", ";
-                        $col_num++;
-                    }
-                } 
-                for($j=$col_num; $j<=5; $j++){
-                    $sql.= "btn_type_".$j." = NULL, ";
-                    $sql.= "btn_name_".$j." = NULL, ";
-                    $sql.= "btn_link_".$j." = NULL, ";
-                }
-            }
-            
+            $sql = "update tb_contents set ";            
+            $sql.= "contents_type = '".$opt["contents_type"]."', ";
+            $sql.= "title = '".$opt["title"]."', ";
+            $sql.= "body_text = '".$opt["body_text"]."', ";
+            $sql.= "attach_file = '".$opt["attach_file"]."', ";            
             $sql.= "udate = now(), ";
             $sql.= "uuser = '".$session_id."' ";
             $sql.= "where idx=".$opt["idx"]." ";
@@ -147,7 +96,7 @@ class Contents_model extends CI_Model {
             $rtn_idx = $opt["idx"];
             
         } elseif($opt["editMode"]=="D"){
-            $sql = "update tb_msg_template set ";
+            $sql = "update tb_contents set ";
             $sql.= "use_yn = 'N', ";            
             $sql.= "udate = now(), ";
             $sql.= "uuser = '".$session_id."' ";            
