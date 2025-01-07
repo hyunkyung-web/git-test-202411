@@ -68,15 +68,14 @@
                 <img src="/public/common/images/dwave_pro_logo.png" alt="dwave_pro_logo">
             </div>
             
-            <div class="member-container">
-                <h1>SIGN UP</h1>
+            <div class="member-container">                
                 <form class="signup-form" id="frm1" name="frm1">
                     <div class="form_item user">
                         <input type="text" name="member_nm" id="member_nm" placeholder="이름" required />
                     </div>
 
                     <div class="form_item phone">
-                        <input type="tel"  name="cellphone" id="cellphone" placeholder="휴대전화번호" maxlength="16" onkeyup="javascript: cmmOnNumber(this);" required />
+                        <input type="tel"  name="cellphone" id="cellphone" placeholder="휴대전화번호(숫자만 입력하세요)" maxlength="16" onkeyup="javascript: cmmOnNumber(this);" required />
                     </div>
 
                     <div class="form_item email">
@@ -91,7 +90,7 @@
                         <input type="text"  name="specialty" id="specialty" placeholder="진료과목" required />
                     </div>
 
-                    <button type="button">Sign Up</button>
+                    <button type="button">가입하기</button>
                 </form>
             </div>
         </div>

@@ -21,6 +21,9 @@
     <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
+    
+    <script defer type="text/javascript" src="/public/common/script/common.js"></script>
+    
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -65,16 +68,15 @@
             </div>
             
             <div class="member-container">
-                <h1>SIGN IN</h1>
                 <form action="#">
                     <div class="form_item user" id="divName">
-                        <input type="text" id="name" name="name" placeholder="이름" class="input" value="" maxlength="40" />
+                        <input type="text" id="name" name="name" placeholder="이름" class="input" value="" maxlength="10"/>
                     </div>
 
                     <div class="form_item phone" id="divPhoneNo">
-                        <input type="tel" id="phoneNo" name="phoneNo" placeholder="휴대전화번호" class="input" value="" maxlength="16" />
+                        <input type="tel" id="phoneNo" name="phoneNo" placeholder="휴대전화번호(숫자만 입력하세요)" class="input" maxlength="16" onkeyup="javascript: cmmOnNumber(this);"/>
                     </div>
-                    <button type="button">Sign IN</button>
+                    <button type="button">인증하기</button>
                 </form>
             </div>
         </div>

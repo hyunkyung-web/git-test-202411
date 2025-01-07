@@ -106,8 +106,8 @@
             				<td class="full_line"><input type="text" name="user_email" id="user_email" value="<?php echo $info["user_email"];?>" placeholder="이메일" onblur="javsascript: cmmOnEmail(this);"/></td>
             			</tr>
             			<tr>
-            				<th class="full_line">핸드폰</th>
-            				<td class="full_line"><input type="text" name="cellphone" id="cellphone" value="<?php echo $info["cellphone"];?>" placeholder="핸드폰(숫자만 입력하세요)" onkeyup="javascript: cmmOnNumber(this);"/></td>
+            				<th class="full_line">휴대전화번호</th>
+            				<td class="full_line"><input type="text" name="cellphone" id="cellphone" value="<?php echo $info["cellphone"];?>" placeholder="휴대전화번호(숫자만 입력하세요)" onkeyup="javascript: cmmOnNumber(this);"/></td>
             			</tr>
             			<tr>
             				<th class="full_line">소속</th>
