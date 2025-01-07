@@ -114,25 +114,45 @@ class Admin extends CI_Controller {
 	
 	public function contents_save(){
 	    
-
-	    
 	    $uploadPath = "/public/data/attach/";
 	    $webPath = "/public/data/attach/";	    
 	    $customFileNm = date('ymd').rand(0001, 9999);
 	    
 	    $rawFile = $_FILES["attach_file"];
 	    
-	    if(!empty($rawFile["tmp_name"])){
-	        $chkFile = chkStoreFile($rawFile, "", 10, "", "", "");
-	        if($chkFile != "ok"){
-	            echo json_encode(['result' => "file_check_error", "msg"=>$chkFile]);
-	            exit;
+	    if(getPost("editMode", "N")=="N"){
+	        
+	        if(!empty($rawFile["tmp_name"])){
+	            $chkFile = chkStoreFile($rawFile, "", 10, "", "", "");
+	            if($chkFile != "ok"){
+	                echo json_encode(['result' => "file_check_error", "msg"=>$chkFile]);
+	                exit;
+	            }else {
+	                $webPath .= $customFileNm.'.'.pathinfo($rawFile["name"], PATHINFO_EXTENSION);
+	                $storeResult = storeFile($rawFile, $uploadPath, $customFileNm);
+	            }
 	        }else {
-	            $webPath .= $customFileNm.'.'.pathinfo($rawFile["name"], PATHINFO_EXTENSION);
-	            $storeResult = storeFile($rawFile, $uploadPath, $customFileNm);
+	            $webPath = "";
 	        }
-	    }else {
-	        $webPath = "";
+	        
+	    } else{
+	        
+	        $foreData = $this->contentsModel->contents_info(["idx"=>getPost("idx", -1)]);
+	        $foreWebPath = $foreData[0]["attach_file"];
+
+	        if(!empty($rawFile["tmp_name"])){
+	            $chkFile = chkStoreFile($rawFile, "", 10, "", "", "");
+	            if($chkFile != "ok"){
+	                echo json_encode(['result' => "file_check_error", "msg"=>$chkFile]);
+	                exit;
+	            }else {
+	                unlinkFile($foreWebPath);
+	                $webPath .= $customFileNm.'.'.pathinfo($rawFile["name"], PATHINFO_EXTENSION);
+	                $storeResult = storeFile($rawFile, $uploadPath, $customFileNm);
+	            }
+	        }else {
+	            $webPath = $foreWebPath;
+	        }
 	    }
 	   
 	    $query = $this->contentsModel->contents_save([

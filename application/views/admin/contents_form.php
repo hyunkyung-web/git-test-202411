@@ -101,11 +101,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>첨부 파일</th>
+                                    <th>첨부파일<?php echo !empty($info["attach_file"]) ? '&nbsp;<a href="'.$info["attach_file"].'" target="_blank">💾</a>': '';?></th>
                                     <td class="add-file">
                                         <label for="attach_file"> <i class="fa-solid fa-circle-check"></i> 파일추가</label>
                                         <input type="file" name="attach_file" id="attach_file" style="display: none" onchange="updateFileName()" />
-                                        <input class="upload-name" value="<?php echo $info["attach_file"];?>" placeholder="" readonly />
+                                        <input class="upload-name" value="" placeholder="" readonly />
                                     </td>
                                 </tr>
                             </tbody>
