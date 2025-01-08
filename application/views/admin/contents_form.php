@@ -101,6 +101,10 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <th><label for="title">컨텐츠설명</label></th>
+                                    <td><textarea name="description" id="description" cols="20" rows="2" style="width: 100%;"><?php echo $info["description"];?></textarea></td>
+                                </tr>
+                                <tr>
                                     <th>첨부파일<?php echo !empty($info["attach_file"]) ? '&nbsp;<a href="'.$info["attach_file"].'" target="_blank">💾</a>': '';?></th>
                                     <td class="add-file">
                                         <label for="attach_file"> <i class="fa-solid fa-circle-check"></i> 파일추가</label>
@@ -113,7 +117,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div id="smarteditor">
-                                            <textarea name="body_text" id="body_text" cols="30" rows="10" style="width: 100%; height: 300px"><?php echo $info["body_text"];?></textarea>
+                                            <textarea name="body_text" id="body_text" cols="20" rows="30" style="width: 100%;"><?php echo $info["body_text"];?></textarea>
                                         </div>
                                     </td>
                                 </tr>

@@ -88,7 +88,7 @@ class Admin extends CI_Controller {
 	    
 	    $info = [];
 	    $keyVal = [
-	        "idx", "contents_type", "title", "body_text", "attach_file"
+	        "idx", "contents_type", "description", "title", "body_text", "attach_file"
 	    ];
 
 	    $query = $this->contentsModel->contents_info(["idx"=>$idx]);
@@ -159,6 +159,7 @@ class Admin extends CI_Controller {
 	        "editMode"=> getPost("editMode", "N"),
 	        "idx"=> getPost("idx", -1),
 	        "contents_type" => getPost("contents_type", "article"),
+	        "description" => getPost("description", ""),
 	        "title" => getPost("title", ""),
 	        "body_text" => getPost("body_text", ""),
 	        "attach_file" => $webPath

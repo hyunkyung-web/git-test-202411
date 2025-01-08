@@ -75,8 +75,8 @@ class Contents_model extends CI_Model {
         if($opt["editMode"] == "N") {
             
             $sql = "insert into tb_contents (";
-            $sql.= "contents_type, title, body_text, attach_file, wdate, wuser) values (";
-            $sql.= "'".$opt["contents_type"]."', '".$opt["title"]."', '".$opt["body_text"]."', '".$opt["attach_file"]."', ";
+            $sql.= "contents_type, title, description, body_text, attach_file, wdate, wuser) values (";
+            $sql.= "'".$opt["contents_type"]."', '".$opt["description"]."', '".$opt["title"]."', '".$opt["body_text"]."', '".$opt["attach_file"]."', ";
             $sql.= "now(), '".$session_id."') ";
             
             $data = $this->db->query($sql);
@@ -86,6 +86,7 @@ class Contents_model extends CI_Model {
             $sql = "update tb_contents set ";            
             $sql.= "contents_type = '".$opt["contents_type"]."', ";
             $sql.= "title = '".$opt["title"]."', ";
+            $sql.= "description = '".$opt["description"]."', ";
             $sql.= "body_text = '".$opt["body_text"]."', ";
             $sql.= "attach_file = '".$opt["attach_file"]."', ";            
             $sql.= "udate = now(), ";
