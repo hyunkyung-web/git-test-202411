@@ -40,9 +40,13 @@ class Admin extends CI_Controller {
     }
 
 
-	public function index(){
-	    $this->main();
-	}
+    public function index(){
+        if(isset($this->session->userdata["user_id"])){
+            header('Location:/admin/main');
+        } else {
+            $this->login();
+        }
+    }
 	
 	public function login(){
 	    $this->load->view('/admin/login');
@@ -352,7 +356,7 @@ class Admin extends CI_Controller {
 	        "use_yn" => getPost("use_yn", "Y")
 	    ]);
 	    
-	    echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"]]);
+	    echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"], 'idx'=>$query["idx"]]);
 	    exit;
 	}
 	

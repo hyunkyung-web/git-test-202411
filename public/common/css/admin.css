@@ -658,6 +658,13 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 #item-list {
 	margin-bottom: 20px;
 }
+.no_overflow{    
+    display: block;
+    max-height: 2.7em;
+    overflow: hidden;    
+    border: 0;
+    text-align: left!important;
+}
 
 .item {
 	padding: 10px;
@@ -794,7 +801,7 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	width: 300px;
 	border-radius: 8px;
 	border: solid 1px #f1f1f1;
-	margin: 1.5em 0;
+/*	margin: 2.5em 0;*/
 }
 #tabs-2 .mobile_screen div {
 	width: 100%;
@@ -1003,4 +1010,5 @@ a.ui-button:active,
 		position: absolute;
 		top: 10%;
 	}
+
 }

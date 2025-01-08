@@ -83,11 +83,7 @@
                         
 						<form name="frmSearch" id="frmSearch" style="width: 100%;">
                         <div class="search-bar">
-                            <select class="category-select list-select" name="sch_1">
-                                <option value="">성명</option>
-                                <option value="000">아이디</option>
-                                <option value="010">소속/부서</option>
-                            </select>
+                            <input type="hidden" name="sch_1">
                             <input type="text" name="sch_2" placeholder="Search..." class="search-input" autocomplet="off" value="<?php echo $schData["sch_2"];?>" />
                             <button type="button" class="search-button" onclick="javascript:userList(1);">Search</button>
                         </div>

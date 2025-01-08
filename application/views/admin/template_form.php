@@ -167,15 +167,19 @@
                 	</div>
 
                 	<div id="tabs-2">
-            			<div class="mobile_screen">
-                			<div><?php echo !empty($info["img_url"])?'<img src="'.$info["img_url"].'"/>' : '';?></div>
-                			<div><?php echo nl2br($info["template_msg"]);?></div>
-                			<div><?php
-                			for($i=1; $i<=$info["btn_cnt"]; $i++){?>
-                			     <a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php 
-                			}?>
-							</div>
-            			</div>
+                		<table class="form-table">
+                			<tr><td>
+                    			<div class="mobile_screen">
+                        			<div><?php echo !empty($info["img_url"])?'<img src="'.$info["img_url"].'"/>' : '';?></div>
+                        			<div><?php echo nl2br($info["template_msg"]);?></div>
+                        			<div><?php
+                        			for($i=1; $i<=$info["btn_cnt"]; $i++){?>
+                        			     <a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php 
+                        			}?>
+        							</div>
+                    			</div>
+                			</td></tr>
+            			</table>
                 	</div>
 
             	</div>
@@ -194,6 +198,12 @@
             		</div>
             	</div>
             </main>
+            
+            <script>
+            	$(window).on("load", function(){
+            		adjustHeight('#template_msg');
+            	});
+            </script>
 
         </div>
         <!-- //main-content-wrap -->

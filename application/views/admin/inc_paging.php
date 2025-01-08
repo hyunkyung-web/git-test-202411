@@ -13,16 +13,16 @@ if ($pagingEnd >= $totalPage) { $pagingEnd = $totalPage; }
 
 <div id="pagination">
     <ul class="pagination">
-    	<li class="page-item first"><a href="javascript:<?php echo $listFnc.'(1)';;?>" class="page-link">First</a></li><?php 
+    	<a href="javascript: <?php echo $listFnc.'(1)';;?>" class="page-link"><li class="page-item first">First</li></a><?php 
         if($prevPage>0){?>    
-    		<li class="page-item prev"><a href="javascript:<?php echo $listFnc.'('.$prevPage.')';;?>" class="page-link">Prev</a></li><?php
+    		<a href="javascript: <?php echo $listFnc.'('.$prevPage.')';;?>" class="page-link"><li class="page-item prev">Prev</li></a><?php
         }?><?php 
         for ($i=$pagingStart; $i<=$pagingEnd; $i++) {?>
-    		<li class="page-item <?php echo $page==$i ? 'active' : '';?>"><a href="javascript:<?php echo $listFnc.'('.$i.')';?>" class="page-link"><?php echo $i;?></a></li><?php 
+    		<a href="javascript: <?php echo $listFnc.'('.$i.')';?>" class="page-link"><li class="page-item <?php echo $page==$i ? 'active' : '';?>"><?php echo $i;?></li></a><?php 
         }?><?php 
         if($totalPage > $pagingEnd){?>    	
-    	<li class="page-item next"><a href="javascript:<?php echo $listFnc.'('.$nextPage.')';;?>" class="page-link">next</a></li><?php 
+    	<a href="javascript: <?php echo $listFnc.'('.$nextPage.')';;?>" class="page-link"><li class="page-item next">next</li></a><?php 
         }?>
-    	<li class="page-item last"><a href="javascript:<?php echo $listFnc.'('.$totalPage.')';;?>" class="page-link">End</a></li>
+    	<a href="javascript: <?php echo $listFnc.'('.$totalPage.')';;?>" class="page-link"><li class="page-item last">End</li></a>
     </ul>
 </div>

@@ -130,7 +130,7 @@
                                     </label>
                                 </td>
                                 <td style="text-align: left;"><a href="/admin/template_form/<?php echo $row["idx"];?>"><?php echo $row["template_nm"].'('.$row["template_cd"].')';?></a></td>
-                                <td style="text-align: left;"><?php echo $row["template_msg"];?></td>
+                                <td><div  class="no_overflow"><?php echo $row["template_msg"];?></div></td>
                                 <td><?php echo date('Y-m-d', strtotime($row["wdate"]));?></td>
                                 <td><?php echo getExist($row["wuser"], 'noname');?></td>                                
                             </tr><?php 
