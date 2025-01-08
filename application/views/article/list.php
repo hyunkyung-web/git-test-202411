@@ -66,31 +66,22 @@
         <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p>
         <div id="article-each" class="flex_SB_center">
             <div class="contents-list article-each">
-                <img src="/public/images/work_sign_thumb.png" alt="article 1" class="cont-thumb article-thumb" onclick="callData(11)" />
+                <a href="/article/node/1"><img src="/public/images/work_sign_thumb.png" alt="article 1" class="cont-thumb article-thumb"/></a>
                 <p class="name">Login</p>
             </div>
 
             <div class="contents-list article-each">
-                <img src="/public/images/work_account.png" alt="article 2" class="cont-thumb article-thumb" onclick="callData(12)"/>
+                <a href="/article/node/1"><img src="/public/images/work_account.png" alt="article 2" class="cont-thumb article-thumb"/></a>
                 <p class="name">Create Account</p>
             </div>
 
             <div class="contents-list article-each">
-                <img src="/public/images/work3.png" alt="article 3" class="cont-thumb article-thumb" onclick="callData(21)"/>
+                <a href="/article/node/1"><img src="/public/images/work3.png" alt="article 3" class="cont-thumb article-thumb"/></a>
                 <p class="name">voluptatem</p>
             </div>
 
             <div class="contents-list article-each">
-                <img src="/public/images/work_contact.png" alt="article 4" class="cont-thumb article-thumb" onclick="callData(21)"/>
-                <p class="name">voluptatem</p>
-            </div>
-            
-            <div class="contents-list article-each">
-                <img src="/public/images/work1.png" alt="article 4" class="cont-thumb article-thumb" onclick="callData(21)"/>
-                <p class="name">voluptatem</p>
-            </div>
-            <div class="contents-list article-each">
-                <img src="/public/images/work2.png" alt="article 4" class="cont-thumb article-thumb" onclick="callData(21)"/>
+                <a href="/article/node/1"><img src="/public/images/work_contact.png" alt="article 4" class="cont-thumb article-thumb"/></a>
                 <p class="name">voluptatem</p>
             </div>
         </div>

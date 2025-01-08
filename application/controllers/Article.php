@@ -43,6 +43,8 @@ class Article extends CI_Controller {
 	                $info+= [$col => $row[$col]];
 	            }
 	        }
+	    }else {
+	        header('Location:/article/list');
 	    }
 	    
 	    $viewData = ["info"=>$info];
