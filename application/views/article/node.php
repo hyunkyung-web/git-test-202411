@@ -63,13 +63,16 @@
     <?php include_once APPPATH.'views/header.php'; ?>
     
     <section id="article-node" class="padd60">
-        <!-- <div class="cont_right padd20">
+        <button type="button" class="return_list">Article로 돌아가기</button>
+        <div class="cont_right padd20">
             <h1>CONTENT NAME</h1>
             <div class="cont_description">
                 <p>CONTENT DESCRIPTION</p>
+                <p>CONTENT DESCRIPTION</p>
+                <p>CONTENT DESCRIPTION</p>
                 <img src="/public/images/cont.png" alt="cont" />
             </div>
-        </div> -->
+        </div>
         <!-- cont_left END -->
 
         <div class="cont_right padd20">
@@ -79,28 +82,30 @@
         <!-- cont_right END -->
     </section>
 
-    <section id="reaction-area">
-        <div class="cont_right padd20-0">
+    <section id="reaction-area" class="padd60">
+        <div class="cont_right padd20">
             <!-- <div class="cont_description"> -->
                 <div class="react_area padd10">
                     <img src="/public/images/icon/icon_heart.png" alt="icon_heart" class="icon_heart">
+                    <span>좋아요 4개</span>
                     <img src="/public/images/icon/icon_comment.png" alt="icon_comment" class="icon_comment">
+                    <span>댓글 3개</span>
                 </div>
                 <div class="comments_area padd10">
                     <div class="comment_box">
                         <span class="c_name">dwave_it</span>
-                        <span class="c_text">우와~</span>
                         <span class="delete"><i class="fa-solid fa-minus"></i></span>
+                        <span class="c_text">우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와~</span>
                     </div>
                     <div class="comment_box">
                         <span class="c_name">dwave_it</span>
-                        <span class="c_text">우와~</span>
                         <span class="delete"><i class="fa-solid fa-minus"></i></span>
+                        <span class="c_text">우와~</span>
                     </div>
                     <div class="comment_box">
                         <span class="c_name">dwave_itdwave_it</span>
-                        <span class="c_text">우와~</span>
                         <span class="delete"><i class="fa-solid fa-minus"></i></span>
+                        <span class="c_text">우와~</span>
                     </div>
                 </div>
                 <button type="button" class="btn_more">더보기 +</button>
@@ -109,9 +114,9 @@
                     <textarea name="c_box" id="c_box" placeholder="댓글 달기..." class="c_box" rows="1" onkeyup="resize(this)" onkeydown="resize(this)"></textarea>
                     <button type="button" class="btn_chat">입력</button>
                 </div>
-                
             <!-- </div> -->
         </div>
+        <button type="button" class="return_list">목록</button>
     </section>
     <!-- contentBox END -->
     

@@ -15,6 +15,7 @@
             </nav>
 
             <!-- mobile -->
+            
             <div class="menu-toggle">
                 <!-- <input type="checkbox" /> -->
                 <span></span>
@@ -22,8 +23,9 @@
                 <span></span>
             </div>
             <div class="hamburger-menu">
+                <div class="signup" onclick="callData(12)">Sign Up</div>
                 <ul>
-                    <li onclick="callData(12)">Sign Up</li>
+                    <!-- <li onclick="callData(12)">Sign Up</li> -->
                     <li onclick="callData(1)">Home</li>
                     <li>About</li>
                     <li>Services</li>

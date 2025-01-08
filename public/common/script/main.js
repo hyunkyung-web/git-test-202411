@@ -1,4 +1,7 @@
 $(function () {
+    // 모바일 메뉴
+    mobileMenu();
+
     // 댓글 버튼 눌렀을때 입력창 활성화
     $(".icon_comment").click(function () {
         $("#c_box").focus();
@@ -21,15 +24,17 @@ $(function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const hamburgerMenu = document.querySelector(".hamburger-menu");
-    const navLinks = document.querySelector(".menu-toggle");
-
-    navLinks.addEventListener("click", function () {
-        hamburgerMenu.classList.toggle("active");
-        navLinks.classList.toggle("active");
+function mobileMenu() {
+    const hamburgerMenu = $(".hamburger-menu");
+    const signupLink = $(".signup");
+    const navLinks = $(".menu-toggle");
+    navLinks.click(function () {
+        hamburgerMenu.toggleClass("active");
+        signupLink.toggleClass("active");
+        navLinks.toggleClass("active");
     });
-});
+}
+// document.addEventListener("DOMContentLoaded", function () {});
 
 // 페이지 이동
 function callData(pageNum) {
