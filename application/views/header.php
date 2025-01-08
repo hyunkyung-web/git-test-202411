@@ -10,7 +10,7 @@
                     <li onclick="callData(1)">Home</li>
                     <li>About</li>
                     <li>Services</li>
-                    <li onclick="callData(2)">List</li>
+                    <li onclick="callData(2)">Article</li>
                 </ul>
             </nav>
 
@@ -29,7 +29,7 @@
                     <li onclick="callData(1)">Home</li>
                     <li>About</li>
                     <li>Services</li>
-                    <li onclick="callData(2)">List</li>
+                    <li onclick="callData(2)">Article</li>
                 </ul>
             </div>
         </div>

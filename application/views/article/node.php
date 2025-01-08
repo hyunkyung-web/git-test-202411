@@ -63,8 +63,8 @@
     <?php include_once APPPATH.'views/header.php'; ?>
     
     <section id="article-node" class="padd60">
-        <button type="button" class="return_list">Article로 돌아가기</button>
-        <div class="cont_right padd20">
+        <button type="button" class="return_list">← Article로 돌아가기</button>
+        <!-- <div class="cont_right padd20">
             <h1>CONTENT NAME</h1>
             <div class="cont_description">
                 <p>CONTENT DESCRIPTION</p>
@@ -72,7 +72,7 @@
                 <p>CONTENT DESCRIPTION</p>
                 <img src="/public/images/cont.png" alt="cont" />
             </div>
-        </div>
+        </div> -->
         <!-- cont_left END -->
 
         <div class="cont_right padd20">
@@ -80,6 +80,13 @@
             <div class="cont_description"><?php echo $info["body_text"];?></div>
         </div>
         <!-- cont_right END -->
+        <!-- 첨부파일 박스 -->
+        <div class="file_box flex_SB_center">
+            <img src="/public/images/icon/icon_folder.png" alt="icon_folder" class="icon_folder">
+            <span>attached_file.file</span>
+            <button type="button" class="btn_down"><img src="/public/images/icon/icon_down.png" alt="icon_down" class="icon_down"></button>
+        </div>
+        <button type="button" class="return_list list_bottom">목록</button>
     </section>
 
     <section id="reaction-area" class="padd60">
@@ -116,7 +123,7 @@
                 </div>
             <!-- </div> -->
         </div>
-        <button type="button" class="return_list">목록</button>
+        
     </section>
     <!-- contentBox END -->
     
