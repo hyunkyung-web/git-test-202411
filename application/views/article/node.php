@@ -63,13 +63,13 @@
     <?php include_once APPPATH.'views/header.php'; ?>
     
     <section id="article-node" class="padd60">
-        <div class="cont_right padd20">
+        <!-- <div class="cont_right padd20">
             <h1>CONTENT NAME</h1>
             <div class="cont_description">
                 <p>CONTENT DESCRIPTION</p>
                 <img src="/public/images/cont.png" alt="cont" />
             </div>
-        </div>
+        </div> -->
         <!-- cont_left END -->
 
         <div class="cont_right padd20">
@@ -102,22 +102,6 @@
                         <span class="c_text">우와~</span>
                         <span class="delete"><i class="fa-solid fa-minus"></i></span>
                     </div>
-                    <!-- <div class="comment_box">
-                        <span class="c_name">dwave_it</span>
-                        <span class="c_text">우와~</span>
-                        <span class="delete"><i class="fa-solid fa-minus"></i></span>
-                    </div>
-                    <div class="comment_box">
-                        <span class="c_name">dwave_it</span>
-                        <span class="c_text">우와~</span>
-                        <span class="delete"><i class="fa-solid fa-minus"></i></span>
-                    </div>
-                    <div class="comment_box">
-                        <span class="c_name">dwave_it</span>
-                        <span class="c_text">우와~</span>
-                        <span class="delete"><i class="fa-solid fa-minus"></i></span>
-                    </div> -->
-                    
                 </div>
                 <button type="button" class="btn_more">더보기 +</button>
                 <button type="button" class="btn_fold">댓글 접기 ↑</button>

@@ -7,15 +7,16 @@ $(function () {
     // 댓글 더보기
     showMore(".btn_more");
 
-    // 좋아요 버튼 클릭시 빨간 하트 변경
+    // 좋아요 버튼
     $(".icon_heart").click(function () {
-        // controlImg(".icon_heart");
         const img_src = $(".icon_heart").attr("src");
-        // console.log(img_src);
-        if (img_src == "/public/images/icon/icon_heart.png") {
-            $(".icon_heart").attr("src", "/public/images/icon/icon_heart_full.png");
-        } else if (img_src == "/public/images/icon/icon_heart_full.png") {
-            $(".icon_heart").attr("src", "/public/images/icon/icon_heart.png");
+        const icon_like = "/public/images/icon/icon_heart.png";
+        const icon_full = "/public/images/icon/icon_heart_full.png";
+
+        if (img_src == icon_like) {
+            $(".icon_heart").attr("src", icon_full);
+        } else if (img_src == icon_full) {
+            $(".icon_heart").attr("src", icon_like);
         }
     });
 });
@@ -30,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// 페이지 이동
 function callData(pageNum) {
     var callUrl;
 
@@ -43,7 +45,7 @@ function callData(pageNum) {
             callUrl = "/member/verify";
             break;
         case 12:
-            callUrl = "member/sign_up";
+            callUrl = "/member/signup";
             break;
         // article
         case 2:
@@ -93,21 +95,11 @@ function showMore(obj) {
         });
     }
 
+    // 댓글 접기 버튼
     $(".btn_fold").click(function () {
         $(".comment_box").removeClass("show");
         $(".comment_box").slice(0, 5).addClass("show");
         $(this).hide(); // 댓글 접기 버튼 사라짐
         $(obj).show(); // 더보기 버튼 활성화
     });
-}
-
-// 좋아요 버튼
-function controlImg(obj) {
-    const img_src = obj.attr("src");
-    console.log(img_src);
-    if (img_src == "/public/images/icon/icon_heart.png") {
-        obj.attr("src", "/public/images/icon/icon_heart_full.png");
-    } else if (img_src == "/public/images/icon/icon_heart_full.png") {
-        obj.attr("src", "/public/images/icon/icon_heart.png");
-    }
 }

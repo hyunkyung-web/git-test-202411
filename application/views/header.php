@@ -6,6 +6,7 @@
 
             <nav>
                 <ul class="nav-links">
+                    <li onclick="callData(12)">Sign Up</li>
                     <li onclick="callData(1)">Home</li>
                     <li>About</li>
                     <li>Services</li>
@@ -22,6 +23,7 @@
             </div>
             <div class="hamburger-menu">
                 <ul>
+                    <li onclick="callData(12)">Sign Up</li>
                     <li onclick="callData(1)">Home</li>
                     <li>About</li>
                     <li>Services</li>
