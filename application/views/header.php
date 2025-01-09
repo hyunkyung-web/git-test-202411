@@ -5,7 +5,12 @@
             </div>
 
             <nav>
+                <!-- <ul class="signup">
+                    <li onclick="callData(11)">Verify</li>
+                    <li onclick="callData(12)">Sign Up</li>
+                </ul> -->
                 <ul class="nav-links">
+                    <li onclick="callData(11)">Verify</li>
                     <li onclick="callData(12)">Sign Up</li>
                     <li onclick="callData(1)">Home</li>
                     <li>About</li>
@@ -23,7 +28,10 @@
                 <span></span>
             </div>
             <div class="hamburger-menu">
-                <div class="signup" onclick="callData(12)">Sign Up</div>
+                <div class="signup">
+                    <span onclick="callData(11)">Verify</span>
+                    <span onclick="callData(12)">Sign Up</span>
+                </div>
                 <ul>
                     <!-- <li onclick="callData(12)">Sign Up</li> -->
                     <li onclick="callData(1)">Home</li>

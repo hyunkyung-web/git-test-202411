@@ -1,6 +1,14 @@
 $(function () {
+    //
+    member_height(".member-wrap + footer");
+
     // 모바일 메뉴
     mobileMenu();
+
+    // Article 페이지로 돌아가기
+    $(".return_list").click(function () {
+        callData(2);
+    });
 
     // 댓글 버튼 눌렀을때 입력창 활성화
     $(".icon_comment").click(function () {
@@ -107,4 +115,27 @@ function showMore(obj) {
         $(this).hide(); // 댓글 접기 버튼 사라짐
         $(obj).show(); // 더보기 버튼 활성화
     });
+}
+
+// member 높이 조정
+function member_height(obj) {
+    const wrap_h = $(".member-wrap").height();
+    const container_h = $(".container").height();
+    const window_h = $(window).height();
+    const wrap_h_re = window_h - 200;
+    const wrap_h_half = (wrap_h_re - container_h) / 2.5;
+    console.log(container_h);
+
+    if (wrap_h < wrap_h_re) {
+        $(obj).addClass("fix");
+
+        $(".member-wrap").height(wrap_h_re);
+        $(".member-wrap").css("padding-top", wrap_h_half);
+
+        // $("body").css("background-color", "#fff");
+    } else if (wrap_h > wrap_h_re) {
+        $(".member-wrap").height(wrap_h_re);
+        $(".member-wrap").addClass("scroll");
+        $(".member-wrap").css("padding", "0 0 20px");
+    }
 }

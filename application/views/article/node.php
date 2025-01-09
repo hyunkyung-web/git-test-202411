@@ -83,7 +83,7 @@
         <!-- 첨부파일 박스 -->
         <div class="file_box flex_SB_center">
             <img src="/public/images/icon/icon_folder.png" alt="icon_folder" class="icon_folder">
-            <span>attached_file.file</span>
+            <a href="attached_file.file" download="">attached_file.file</a>
             <button type="button" class="btn_down"><img src="/public/images/icon/icon_down.png" alt="icon_down" class="icon_down"></button>
         </div>
         <button type="button" class="return_list list_bottom">목록</button>

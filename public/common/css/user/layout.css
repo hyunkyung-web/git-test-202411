@@ -149,9 +149,12 @@ nav ul li {
     margin-right: 20px;
     cursor: pointer;
 }
-nav ul li:first-child {
+nav ul li:nth-child(2) {
     padding-right: 20px;
     border-right: 2px solid #fff;
+}
+nav ul li:last-child {
+    margin: 0;
 }
 
 nav ul li a {
@@ -160,14 +163,14 @@ nav ul li a {
 }
 
 /* mobile menu */
-.signup {
+/* .signup {
     display: none;
     position: relative;
     right: -100%;
     height: 80px;
     line-height: 80px;
     padding-left: 10px;
-}
+} */
 
 .menu-toggle {
     display: none;
@@ -211,6 +214,9 @@ nav ul li a {
 
 /* footer */
 footer {
+    /* position: absolute;
+    bottom: 0;
+    width: 100%; */
     background-color: var(--background-color-navy);
     color: #fff;
     text-align: center;
@@ -223,6 +229,13 @@ footer p {
 }
 footer a {
     color: #fff;
+}
+
+.member-wrap + footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
 }
 
 /* media query */
@@ -300,10 +313,17 @@ footer a {
         transition: all 0.8s ease 0.1s;
     }
     .signup {
-        display: block;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 90px;
+
         z-index: 900;
         right: 100%;
         right: 0;
+    }
+    .signup span {
+        padding: 0 10px;
     }
     .hamburger-menu ul {
         position: absolute;
@@ -321,4 +341,11 @@ footer a {
         opacity: 1;
         right: 0%;
     }
+
+    /* .member-wrap + footer.fix {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 120px;
+    } */
 }

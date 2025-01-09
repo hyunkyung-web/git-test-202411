@@ -69,74 +69,84 @@
         </div>
     </div>
 
-    <section id="contents" class="flex_SB_center">
+    <section id="contents" class="flex_SB_center padd60">
         <h2 class="font_blue">Contents List 1</h2>
         <h3 class="padd10">Lorem ipsum dolor</h3>
         <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
         <div id="contents-list" class="flex_SB_center">
             <div class="contents-list" onclick="callData(21)">
                 <img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" />
-                <p class="name">Alice</p>
+                <div class="cont_descript">
+                    <p class="name">Node1</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                </div>
             </div>
             <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/profile2.png" alt="List 2" class="cont-thumb" />
-                <p class="name">Bob</p>
+                <img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" />
+            <div class="cont_descript">
+                    <p class="name">Node2</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                </div>
+            </div>
+        </div>
+        <div id="contents-list" class="flex_SB_center">
+            <div class="contents-list" onclick="callData(21)">
+                <img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" />
+                <div class="cont_descript">
+                    <p class="name">Node1</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                </div>
             </div>
             <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/profile1.png" alt="List 3" class="cont-thumb" />
-                <p class="name">Charlie</p>
-            </div>
-            <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/profile2.png" alt="List 4" class="cont-thumb" />
-                <p class="name">Diana</p>
+                <img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" />
+            <div class="cont_descript">
+                    <p class="name">Node2</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contents" class="flex_SB_center">
+    <section id="contents" class="flex_SB_center padd60">
         <h2 class="font_blue">Contents List 2</h2>
         <h3 class="padd10">Lorem ipsum dolor</h3>
         <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
         <div id="contents-list" class="flex_SB_center">
             <div class="contents-list" onclick="callData(21)">
                 <img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" />
-                <p class="name">Alice</p>
+                <div class="cont_descript">
+                    <p class="name">Node1</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                </div>
             </div>
             <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/profile2.png" alt="List 2" class="cont-thumb" />
-                <p class="name">Bob</p>
-            </div>
-            <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/profile1.png" alt="List 3" class="cont-thumb" />
-                <p class="name">Charlie</p>
-            </div>
-            <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/profile2.png" alt="List 4" class="cont-thumb" />
-                <p class="name">Diana</p>
+                <img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" />
+                <div class="cont_descript">
+                    <p class="name">Node1</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contents" class="flex_SB_center">
+    <section id="contents" class="flex_SB_center padd60">
         <h2 class="font_blue">Contents List 3</h2>
         <h3 class="padd10">Lorem ipsum dolor</h3>
         <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
         <div id="contents-list" class="flex_SB_center">
             <div class="contents-list" onclick="callData(21)">
                 <img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" />
-                <p class="name">Alice</p>
+                <div class="cont_descript">
+                    <p class="name">Node1</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                </div>
             </div>
             <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/profile2.png" alt="List 2" class="cont-thumb" />
-                <p class="name">Bob</p>
-            </div>
-            <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/profile1.png" alt="List 3" class="cont-thumb" />
-                <p class="name">Charlie</p>
-            </div>
-            <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/profile2.png" alt="List 4" class="cont-thumb" />
-                <p class="name">Diana</p>
+                <img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" />
+            <div class="cont_descript">
+                    <p class="name">Node2</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                </div>
             </div>
         </div>
     </section>

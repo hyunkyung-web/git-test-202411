@@ -62,28 +62,27 @@
     <?php include_once APPPATH.'views/header.php'; ?>
     
     <section id="article" class="flex_SB_center padd60">
-        <h2>Contents Lists</h2>
+        <h1>Articles</h1>
         <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p>
         <div id="article-each" class="flex_SB_center">
             <div class="contents-list article-each">
                 <a href="/article/node/1"><img src="/public/images/work_sign_thumb.png" alt="article 1" class="cont-thumb article-thumb"/></a>
-                <p class="name">Login</p>
+                <div class="cont_descript article_descript">
+                    <p class="name">Node1</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                </div>
+                
             </div>
 
             <div class="contents-list article-each">
-                <a href="/article/node/1"><img src="/public/images/work_account.png" alt="article 2" class="cont-thumb article-thumb"/></a>
-                <p class="name">Create Account</p>
+                <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="article 2" class="cont-thumb article-thumb"/></a>
+                <div class="cont_descript article_descript">
+                    <p class="name">Node2</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                </div>
             </div>
 
-            <div class="contents-list article-each">
-                <a href="/article/node/1"><img src="/public/images/work3.png" alt="article 3" class="cont-thumb article-thumb"/></a>
-                <p class="name">voluptatem</p>
-            </div>
-
-            <div class="contents-list article-each">
-                <a href="/article/node/1"><img src="/public/images/work_contact.png" alt="article 4" class="cont-thumb article-thumb"/></a>
-                <p class="name">voluptatem</p>
-            </div>
+            
         </div>
     </section>
     
