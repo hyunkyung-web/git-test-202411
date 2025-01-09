@@ -162,6 +162,11 @@ main
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
+.contents-list a {
+    color: #000;
+    text-decoration: none;
+}
+
 /* 콘텐츠 썸네일 스타일 */
 .cont-thumb {
     width: 150px;
@@ -193,7 +198,6 @@ main
 .name {
     font-size: 1em;
     font-weight: bold;
-    color: #333;
     margin: 0;
 }
 .cont_descript p:not(.name) {

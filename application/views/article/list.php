@@ -68,7 +68,7 @@
             <div class="contents-list article-each">
                 <a href="/article/node/1"><img src="/public/images/work_sign_thumb.png" alt="article 1" class="cont-thumb article-thumb"/></a>
                 <div class="cont_descript article_descript">
-                    <p class="name">Node1</p>
+                    <a href="/article/node/1"><p class="name">Node1</p></a>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
                 
@@ -77,7 +77,7 @@
             <div class="contents-list article-each">
                 <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="article 2" class="cont-thumb article-thumb"/></a>
                 <div class="cont_descript article_descript">
-                    <p class="name">Node2</p>
+                    <a href="/article/node/1"><p class="name">Node2</p></a>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
             </div>

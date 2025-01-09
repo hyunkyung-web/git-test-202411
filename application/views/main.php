@@ -74,33 +74,33 @@
         <h3 class="padd10">Lorem ipsum dolor</h3>
         <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
         <div id="contents-list" class="flex_SB_center">
-            <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" />
+            <div class="contents-list">
+                <a href="/article/node/1"><img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" /></a>
                 <div class="cont_descript">
-                    <p class="name">Node1</p>
+                    <a href="/article/node/1"><p class="name">Node1</p></a>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
             </div>
-            <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" />
+            <div class="contents-list">
+                <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" /</a>>
             <div class="cont_descript">
-                    <p class="name">Node2</p>
+<a href="/article/node/1">                    <p class="name">Node2</p></a>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
             </div>
         </div>
         <div id="contents-list" class="flex_SB_center">
-            <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" />
+            <div class="contents-list">
+                <a href="/article/node/1"><img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" /></a>
                 <div class="cont_descript">
-                    <p class="name">Node1</p>
+                    <a href="/article/node/1"><p class="name">Node1</p></a>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
             </div>
-            <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" />
+            <div class="contents-list">
+                <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" /</a>>
             <div class="cont_descript">
-                    <p class="name">Node2</p>
+<a href="/article/node/1">                    <p class="name">Node2</p></a>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
             </div>
@@ -112,17 +112,17 @@
         <h3 class="padd10">Lorem ipsum dolor</h3>
         <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
         <div id="contents-list" class="flex_SB_center">
-            <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" />
+            <div class="contents-list">
+                <a href="/article/node/1"><img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" /></a>
                 <div class="cont_descript">
-                    <p class="name">Node1</p>
+                    <a href="/article/node/1"><p class="name">Node1</p></a>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
             </div>
-            <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" />
+            <div class="contents-list">
+                <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" /</a>>
                 <div class="cont_descript">
-                    <p class="name">Node1</p>
+<a href="/article/node/1">                    <p class="name">Node1</p></a>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
             </div>
@@ -134,17 +134,17 @@
         <h3 class="padd10">Lorem ipsum dolor</h3>
         <!-- <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p> -->
         <div id="contents-list" class="flex_SB_center">
-            <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" />
+            <div class="contents-list">
+                <a href="/article/node/1"><img src="/public/images/profile1.png" alt="List 1" class="cont-thumb" /></a>
                 <div class="cont_descript">
-                    <p class="name">Node1</p>
+                    <a href="/article/node/1"><p class="name">Node1</p></a>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
             </div>
-            <div class="contents-list" onclick="callData(21)">
-                <img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" />
+            <div class="contents-list">
+                <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" /</a>>
             <div class="cont_descript">
-                    <p class="name">Node2</p>
+<a href="/article/node/1">                    <p class="name">Node2</p></a>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
             </div>
