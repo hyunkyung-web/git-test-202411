@@ -76,7 +76,7 @@
                         <div class="main-header-firstLine">                            
                             <!-- button 추가 -->
                             <div>
-                                <button type="button" class="add-user btn1" onclick="javascript: openMenu(810);"><i class="fa-solid fa-circle-plus"></i> New</button>
+                                <button type="button" class="add-user btn1" onclick="javascript: openMenu(502);"><i class="fa-solid fa-circle-plus"></i> New</button>
                                 <button type="button" class="delete-user btn2" onclick="#"><i class="fa-solid fa-circle-minus"></i> Del</button>
                             </div>
                         </div>

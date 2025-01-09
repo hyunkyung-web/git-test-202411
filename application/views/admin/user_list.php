@@ -76,7 +76,7 @@
                         <div class="main-header-firstLine">                            
                             <!-- button 추가 -->
                             <div>
-                                <button type="button" class="add-user btn1" onclick="javascript: openMenu(910);"><i class="fa-solid fa-circle-plus"></i> New</button>
+                                <button type="button" class="add-user btn1" onclick="javascript: openMenu(602);"><i class="fa-solid fa-circle-plus"></i> New</button>
                                 <button type="button" class="delete-user btn2" onclick="#"><i class="fa-solid fa-circle-minus"></i> Del</button>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                         <div class="search-bar">
                             <input type="hidden" name="sch_1">
                             <input type="text" name="sch_2" placeholder="Search..." class="search-input" autocomplet="off" value="<?php echo $schData["sch_2"];?>" />
-                            <button type="button" class="search-button" onclick="javascript:userList(1);">Search</button>
+                            <button type="button" class="search-button" onclick="javascript: userList(1);">Search</button>
                         </div>
                         </form>
                         

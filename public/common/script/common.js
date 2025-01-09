@@ -61,6 +61,31 @@ function cmmValidHandPhone(phone){
 	return(regex.test(phone));
 }
 
+
+/******************************************************************
+*	함수명: setCookie()
+*	기능: 쿠키저장(쿠키명, 쿠키값, 보존기간)
+******************************************************************/
+function setCookie(name, value, expiredays) {
+	var todayDate = new Date();
+	todayDate.setDate( todayDate.getDate() + expiredays )
+	document.cookie = name+"=" + encodeURIComponent(value) + "; expires=" + todayDate.toGMTString() + ";"
+//	alert ('쿠키저장 완료');
+}
+
+
+/******************************************************************
+*	함수명: unSetCookie()
+*	기능: 쿠키해제
+******************************************************************/
+function unSetCookie(name) {
+
+	document.cookie =  name+"=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+//	document.cookie =  "sampleId=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+//	document.cookie =  "sampleName=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+//	alert ('쿠키해제 완료');
+}
+
 function chkCookie() {
 	
 	let userCookie = document.cookie;

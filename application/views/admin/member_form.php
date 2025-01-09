@@ -137,7 +137,7 @@
 
                     <div class="btn-wrap">
                             <button type="button" class="save-user form-btn" onclick="javascript:memberSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
-                            <button type="button" class="cancel-user form-btn" onclick="javascript: returnList();"><i class="fa-solid fa-circle-minus"></i> cancel</button>
+                            <a href="<?php echo get_cookie("callback_url");?>"><button type="button" class="cancel-user form-btn"><i class="fa-solid fa-circle-minus"></i> cancel</button></a>
                         </div>
                 </div>
             </main>

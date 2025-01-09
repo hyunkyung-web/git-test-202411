@@ -1,19 +1,5 @@
-<?php
-    $menuList = [
-        "100"=>"Contents-List",
-        "110"=>"Contents-Informaton",
-        "200"=>"Template-List",
-        "210"=>"Template-Information",
-        "800"=>"HCP-List",
-        "810"=>"HCP-Information",
-        "900"=>"Internal User-List",
-        "910"=>"Internal User-Information",
-    ];
-?>
-
-
 <div class="main-content-top">
-        <h3><?php echo $menuList[$menuNum];?></h3>
+        <h3><?php echo $menu_title;?></h3>
         <nav>
             <ul class="nav-links">
                 <!-- 검색, 로그아웃, user -->

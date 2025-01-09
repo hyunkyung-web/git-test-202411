@@ -1,52 +1,67 @@
+<?php 
 
+$arrMenu_1 = [
+    ["name"=>"CMS", "menu_num"=>"100"],
+    ["name"=>"Message Template", "menu_num"=>"200"],
+    ["name"=>"Notice Board", "menu_num"=>"300"],
+    ["name"=>"Member", "menu_num"=>"500"],
+    ["name"=>"Users", "menu_num"=>"600"],
+    ["name"=>"REPORT", "menu_num"=>"800"],
+];
+
+$arrMenu_2 = [
+    ["name"=>"Contents List", "menu_num"=>"101", "pr_menu_num"=>"100"],
+    ["name"=>"Contents New", "menu_num"=>"102", "pr_menu_num"=>"100"],
+    ["name"=>"Template List", "menu_num"=>"201", "pr_menu_num"=>"200"],
+    ["name"=>"Template New", "menu_num"=>"202", "pr_menu_num"=>"200"],
+    ["name"=>"Notice List", "menu_num"=>"301", "pr_menu_num"=>"300"],
+    ["name"=>"Notice New", "menu_num"=>"302", "pr_menu_num"=>"300"],
+    ["name"=>"Member List", "menu_num"=>"501", "pr_menu_num"=>"500"],
+    ["name"=>"Member New", "menu_num"=>"502", "pr_menu_num"=>"500"],
+    ["name"=>"Internal User List", "menu_num"=>"601", "pr_menu_num"=>"600"],
+    ["name"=>"Internal User New", "menu_num"=>"602", "pr_menu_num"=>"600"],
+    ["name"=>"Report List", "menu_num"=>"901", "pr_menu_num"=>"800"],
+];
+
+$view_menu = $menu_num;
+$view_menu_array_num = array_search($view_menu, array_column($arrMenu_2, "menu_num"));
+$view_pr_menu = $arrMenu_2[$view_menu_array_num]["pr_menu_num"];
+
+?>
 <aside class="sidebar">
     <ul>
         <li class="logo">
             <img src="/public/images/main/logo01.png" alt="">
         </li>
+        <?php 
+        foreach($arrMenu_1 as $row){?>
+        	<li class="nav-item">
+            	<span class="sub-list-toggle" <?php echo $row["menu_num"]==$view_pr_menu ? 'style="color: #fff;"' : '';?>><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; <?php echo $row["name"].'('.$row["menu_num"].')';?> <i class="fas fa-chevron-down"></i></span><?php
+            	if(array_search($row["menu_num"], array_column($arrMenu_2, "pr_menu_num"))>=0){
+            	    echo $row["menu_num"]==$view_pr_menu ? '<ul class="sub-list" style="display: block">' : '<ul class="sub-list">';
+            	    foreach($arrMenu_2 as $row2){
+            	        if($row["menu_num"]==$row2["pr_menu_num"]){
+            	            echo '<li onclick="javascript: openMenu('.$row2["menu_num"].');" ';
+            	            echo $row2["menu_num"]==$menu_num ? 'style="color: #fff">' : '>';
+                            echo $row2["name"].'('.$row2["menu_num"].')'.'</li>';
+            	        }
+            	    }
+            	    echo '</ul>';
+            	}?>
+        	</li><?php 
+        }?>
+        
+        <!-- 
         <li class="nav-item">
             <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; CMS <i class="fas fa-chevron-down"></i></span>
-            <!-- <i class="fas fa-chevron-up"></i> -->
-            <ul class="sub-list" <?php echo in_array($menuNum, [100, 110]) ? 'style="display: block;"' : '';?>>
+            <!**i class="fas fa-chevron-up"></i**>
+            <ul class="sub-list">
                 <li onclick="javascript: openMenu(100);">Contents List</li>
                 <li onclick="javascript: openMenu(110);">Contents New</li>
             </ul>
         </li>
-
-        <li class="nav-item">
-            <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Message Template <i class="fas fa-chevron-down"></i></span>
-            <ul class="sub-list" <?php echo in_array($menuNum, [200, 210]) ? 'style="display: block;"' : '';?>>
-                <li onclick="javascript: openMenu(200);">Template List</li>
-                <li onclick="javascript: openMenu(210);">Template New</li>
-            </ul>
-        </li>
-
-        <li class="nav-item">
-            <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Notice Board </span>
-
-        </li>
-
-        <li class="nav-item">
-            <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; HCP <i class="fas fa-chevron-down"></i></span>
-            <ul class="sub-list" <?php echo in_array($menuNum, [800, 810]) ? 'style="display: block;"' : '';?>>
-                <li onclick="javascript: openMenu(800);">HCP List</li>
-                <li onclick="javascript: openMenu(810);">HCP New</li>
-            </ul>
-        </li>
-
-        <li class="nav-item">
-            <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Users <i class="fas fa-chevron-down"></i></span>
-            <ul class="sub-list" <?php echo in_array($menuNum, [900, 910]) ? 'style="display: block;"' : '';?>>
-                <li onclick="javascript: openMenu(900);">Internal User List</li>
-                <li onclick="javascript: openMenu(910);">Internal User New</li>
-            </ul>
-        </li>
-
-
-        <li>
-            <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Report </span>
-        </li>
-
+         -->
+        
     </ul>
     <!-- <button class="sidebar-toggle"><i class="fas fa-chevron-left"></i></button> -->
 <!--     <button class="sidebar-toggle"><i class="fas fa-bars"></i></button> -->
@@ -58,50 +73,38 @@
         <span></span>
         <span></span>
     </div>
+    
     <div class="hamburger-menu">
         <ul>
+        
+        <?php 
+        foreach($arrMenu_1 as $row){?>
+        	<li class="nav-item">
+            	<span class="sub-list-toggle" <?php echo $row["menu_num"]==$view_pr_menu ? 'style="color: #fff;"' : '';?>><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; <?php echo $row["name"].'('.$row["menu_num"].')';?> <i class="fas fa-chevron-down"></i></span><?php
+            	if(array_search($row["menu_num"], array_column($arrMenu_2, "pr_menu_num"))>=0){
+            	    echo $row["menu_num"]==$view_pr_menu ? '<ul class="sub-list" style="display: block">' : '<ul class="sub-list">';
+            	    foreach($arrMenu_2 as $row2){
+            	        if($row["menu_num"]==$row2["pr_menu_num"]){
+            	            echo '<li onclick="javascript: openMenu('.$row2["menu_num"].');" ';
+            	            echo $row2["menu_num"]==$menu_num ? 'style="color: #fff">' : '>';
+                            echo $row2["name"].'('.$row2["menu_num"].')'.'</li>';
+            	        }
+            	    }
+            	    echo '</ul>';
+            	}?>
+        	</li><?php 
+        }?>
+        
+			<!--                 
             <li class="nav-item">
                 <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; CMS <i class="fas fa-chevron-down"></i></span>
-                <!-- <i class="fas fa-chevron-up"></i> -->
+                <!** <i class="fas fa-chevron-up"></i> **>
                 <ul class="sub-list" <?php echo in_array($menuNum, [100, 110]) ? 'style="display: block;"' : '';?>>
                     <li onclick="javascript: openMenu(100);">Contents List</li>
                     <li onclick="javascript: openMenu(110);">Contents New</li>
                 </ul>
             </li>
-
-            <li class="nav-item">
-                <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Message Template <i class="fas fa-chevron-down"></i></span>
-                <ul class="sub-list" <?php echo in_array($menuNum, [200, 210]) ? 'style="display: block;"' : '';?>>
-                    <li onclick="javascript: openMenu(200);">Template List</li>
-                    <li onclick="javascript: openMenu(210);">Template New</li>
-                </ul>
-            </li>
-
-            <li class="nav-item">
-                <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Notice Board </span>
-
-            </li>
-
-            <li class="nav-item">
-                <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; HCP <i class="fas fa-chevron-down"></i></span>
-                <ul class="sub-list" <?php echo in_array($menuNum, [800, 810]) ? 'style="display: block;"' : '';?>>
-                    <li onclick="javascript: openMenu(800);">HCP List</li>
-                    <li onclick="javascript: openMenu(810);">HCP New</li>
-                </ul>
-            </li>
-
-            <li class="nav-item">
-                <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Users <i class="fas fa-chevron-down"></i></span>
-                <ul class="sub-list" <?php echo in_array($menuNum, [900, 910]) ? 'style="display: block;"' : '';?>>
-                    <li onclick="javascript: openMenu(900);">Internal User List</li>
-                    <li onclick="javascript: openMenu(910);">Internal User New</li>
-                </ul>
-            </li>
-
-
-            <li>
-                <span class="sub-list-toggle"><i class="fa-solid fa-file-excel"></i>&nbsp;&nbsp; Report </span>
-            </li>
+             -->
         </ul>
     </div>
 

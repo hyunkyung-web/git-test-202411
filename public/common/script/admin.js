@@ -55,28 +55,28 @@ function updateFileName() {
 
 function openMenu(menuNum = 0) {
 	switch (menuNum) {
-		case 100:
+		case 101:
 			location.href = "/admin/contents_list";
 			break;
-		case 110:
+		case 102:
 			location.href = "/admin/contents_form";
 			break;
-		case 200:
+		case 201:
 			location.href = "/admin/template_list";
 			break;
-		case 210:
+		case 202:
 			location.href = "/admin/template_form";
 			break;
-		case 800:
+		case 501:
 			location.href = "/admin/member_list";
 			break;
-		case 810:
+		case 502:
 			location.href = "/admin/member_form";
 			break;
-		case 900:
+		case 901:
 			location.href = "/admin/user_list";
 			break;
-		case 910:
+		case 902:
 			location.href = "/admin/user_form";
 			break;
 	}

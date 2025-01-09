@@ -798,7 +798,7 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 
 /* tabs-2 : mobile_screen */
 #tabs-2 .mobile_screen {
-	width: 300px;
+	width: 360px;
 	border-radius: 8px;
 	border: solid 1px #f1f1f1;
 /*	margin: 2.5em 0;*/
@@ -807,7 +807,8 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	width: 100%;
 	border-radius: 8px;
 	padding: 1em;
-	font-size: 0.8em;
+	font-size: 0.9em;
+	color: #000!important;
 }
 #tabs-2 .mobile_screen img {
 	width: 100%;
@@ -815,13 +816,13 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 }
 #tabs-2 .mobile_screen button {
 	width: 95%;
-	font-size: 0.8em;
+	font-size: 0.9em;
 	padding: 1em;
 	border-radius: 4px;
-	background: #f1f1f1;
-	color: #000;
+	background: #f1f1f1;	
 	text-align: center;
 	font-weight: 400;
+	margin-bottom: 0.5em;
 }
 
 /* tab - library */
@@ -843,9 +844,9 @@ html .ui-button.ui-state-disabled:active {
 a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover {
-	border: 1px solid #003eff;
-	background: #007fff;
-	font-weight: normal;
+	border: 1px solid #4c91d7;
+	background: #4c91d7;
+	font-weight: bold;
 	color: #ffffff;
 }
 

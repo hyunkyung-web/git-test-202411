@@ -79,8 +79,11 @@
                 <div id="tabs">
                 	<div>
                         <ul>
-                            <li><a href="#tabs-1">form</a></li>
-                            <li><a href="#tabs-2">Preview</a></li>
+                            <li><a href="#tabs-1">템플릿설정</a></li>
+                            <li><a href="#tabs-2">미리보기</a></li>
+                            <li><a href="#tabs-3">친구톡발송</a></li>
+                            <li><a href="#tabs-4">이메일발송</a></li>
+                            <li><a href="#tabs-5">LMS발송</a></li>
         				</ul>
     				</div>
 
@@ -162,7 +165,7 @@
 
                         <div class="btn-wrap">
                             <button type="button" class="save-user form-btn" onclick="javascript:templateSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
-                            <button type="button" class="cancel-user form-btn" onclick="javascript: returnList();"><i class="fa-solid fa-circle-minus"></i> cancel</button>
+                            <a href="<?php echo get_cookie("callback_url");?>"><button type="button" class="cancel-user form-btn"><i class="fa-solid fa-circle-minus"></i> cancel</button></a>
                         </div>
                 	</div>
 
@@ -170,7 +173,13 @@
                 		<table class="form-table">
                 			<tr><td>
                     			<div class="mobile_screen">
-                        			<div><?php echo !empty($info["img_url"])?'<img src="'.$info["img_url"].'"/>' : '';?></div>
+                        			<div><?php 
+                        			if(!empty($info["img_link"])){
+                        			    echo '<a href="'.$info["img_link"].'" target="_black"><img src="'.$info["img_url"].'"/></a>';
+                        			}else {
+                        			    echo !empty($info["img_url"])?'<img src="'.$info["img_url"].'"/>' : '';
+                        			}?>
+                        			</div>
                         			<div><?php echo nl2br($info["template_msg"]);?></div>
                         			<div><?php
                         			for($i=1; $i<=$info["btn_cnt"]; $i++){?>
@@ -180,9 +189,47 @@
                     			</div>
                 			</td></tr>
             			</table>
-                	</div>
-
-            	</div>
+                	</div>            	
+            	
+                	<div id="tabs-3">
+                    	<form name="frm_kakao" id="frm_kakao">
+    						<table class="form-table">
+    							<colgroup>
+    								<col width="25%" />
+    								<col width="75%" />
+    							</colgroup>
+    							<tbody>
+    							</tbody>
+    						</table>
+    					</form>
+    				</div>
+    				<div id="tabs-4">
+                    	<form name="frm_email" id="frm_email">
+    						<table class="form-table">
+    							<colgroup>
+    								<col width="25%" />
+    								<col width="75%" />
+    							</colgroup>
+    							<tbody>
+    							</tbody>
+    						</table>
+    					</form>
+    				</div>
+    				<div id="tabs-5">
+                    	<form name="frm_lms" id="frm_lms">
+    						<table class="form-table">
+    							<colgroup>
+    								<col width="25%" />
+    								<col width="75%" />
+    							</colgroup>
+    							<tbody>
+    							</tbody>
+    						</table>
+    					</form>
+    				</div>
+    				
+				</div>
+    				
 
             	<div class="pop_img">
             		<div class="btn_pop_close">
@@ -191,7 +238,7 @@
             		<div class="img_list"><?php
             		foreach($img_data as $row){ ?>
             			<div>
-            				<img src="<?php echo $row["img_url"]?>" onclick="javascript:imgUrlView(this.src);" />
+            				<img src="<?php echo $row["img_url"]?>" onclick="javascript: imgUrlView(this.src);" />
             				<h5><?php echo $row["img_name"]?></h5>
             			</div><?php
             		}?>
