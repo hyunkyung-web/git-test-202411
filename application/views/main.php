@@ -82,9 +82,9 @@
                 </div>
             </div>
             <div class="contents-list">
-                <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" /</a>>
+                <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" /></a>
             <div class="cont_descript">
-<a href="/article/node/1">                    <p class="name">Node2</p></a>
+                    <a href="/article/node/1"><p class="name">Node2</p></a>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
             </div>
@@ -98,9 +98,9 @@
                 </div>
             </div>
             <div class="contents-list">
-                <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" /</a>>
+                <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" /></a>
             <div class="cont_descript">
-<a href="/article/node/1">                    <p class="name">Node2</p></a>
+                    <a href="/article/node/1"><p class="name">Node2</p></a>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
             </div>
@@ -120,9 +120,9 @@
                 </div>
             </div>
             <div class="contents-list">
-                <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" /</a>>
+                <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" /></a>
                 <div class="cont_descript">
-<a href="/article/node/1">                    <p class="name">Node1</p></a>
+                    <a href="/article/node/1"><p class="name">Node1</p></a>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
             </div>
@@ -142,9 +142,9 @@
                 </div>
             </div>
             <div class="contents-list">
-                <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" /</a>>
+                <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="List 2" class="cont-thumb" /></a>
             <div class="cont_descript">
-<a href="/article/node/1">                    <p class="name">Node2</p></a>
+                    <a href="/article/node/1"><p class="name">Node2</p></a>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
             </div>
