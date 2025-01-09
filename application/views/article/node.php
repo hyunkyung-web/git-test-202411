@@ -92,7 +92,7 @@
     <section id="reaction-area" class="padd60">
         <div class="cont_right padd20">
             <!-- <div class="cont_description"> -->
-                <div class="react_area padd10">
+                <div class="react_area">
                     <img src="/public/images/icon/icon_heart.png" alt="icon_heart" class="icon_heart">
                     <span>좋아요 4개</span>
                     <img src="/public/images/icon/icon_comment.png" alt="icon_comment" class="icon_comment">
@@ -117,7 +117,7 @@
                 </div>
                 <button type="button" class="btn_more">더보기 +</button>
                 <button type="button" class="btn_fold">댓글 접기 ↑</button>
-                <div class="enter_c_box flex_SB_center padd10">
+                <div class="enter_c_box flex_SB_center">
                     <textarea name="c_box" id="c_box" placeholder="댓글 달기..." class="c_box" rows="1" onkeyup="resize(this)" onkeydown="resize(this)"></textarea>
                     <button type="button" class="btn_chat">입력</button>
                 </div>
