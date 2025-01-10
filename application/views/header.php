@@ -12,10 +12,8 @@
                 <ul class="nav-links">
                     <li onclick="callData(11)">Verify</li>
                     <li onclick="callData(12)">Sign Up</li>
-                    <li onclick="callData(1)">Home</li>
-                    <li>About</li>
-                    <li>Services</li>
                     <li onclick="callData(2)">Article</li>
+                    <li onclick="callData(3)">Support</li>
                 </ul>
             </nav>
 
@@ -34,10 +32,9 @@
                 </div>
                 <ul>
                     <!-- <li onclick="callData(12)">Sign Up</li> -->
-                    <li onclick="callData(1)">Home</li>
-                    <li>About</li>
-                    <li>Services</li>
                     <li onclick="callData(2)">Article</li>
+                    <li onclick="callData(3)">Support</li>
+                    
                 </ul>
             </div>
         </div>

@@ -30,6 +30,12 @@ $(function () {
             $(".icon_heart").attr("src", icon_like);
         }
     });
+
+    // support
+    $("input[name=type]").click(function () {
+        supportCall();
+    });
+    chkData();
 });
 
 function mobileMenu() {
@@ -66,6 +72,10 @@ function callData(pageNum) {
             break;
         case 21:
             callUrl = "/article/node";
+            break;
+        //support
+        case 3:
+            callUrl = "/support/call";
             break;
     }
 
@@ -122,7 +132,7 @@ function member_height(obj) {
     const wrap_h = $(".member-wrap").height();
     const container_h = $(".container").height();
     const window_h = $(window).height();
-    const wrap_h_re = window_h - 200;
+    const wrap_h_re = window_h - 240;
     const wrap_h_half = (wrap_h_re - container_h) / 2.5;
     console.log(container_h);
 
@@ -132,10 +142,54 @@ function member_height(obj) {
         $(".member-wrap").height(wrap_h_re);
         $(".member-wrap").css("padding-top", wrap_h_half);
 
+        if ($(".member-wrap").hasClass("support-wrap")) {
+            $(obj).removeClass("fix");
+            $(".member-wrap").addClass("scroll");
+            $(".member-wrap").css("padding", "60px 0");
+        }
+
         // $("body").css("background-color", "#fff");
     } else if (wrap_h > wrap_h_re) {
         $(".member-wrap").height(wrap_h_re);
         $(".member-wrap").addClass("scroll");
-        $(".member-wrap").css("padding", "0 0 20px");
+        $(".member-wrap").css("padding", "20px 0");
     }
+}
+
+// support call
+
+function supportCall() {
+    const chkVisit = $("#call_visit").prop("checked");
+    const chkDoc = $("#call_doc").prop("checked");
+    const chkEtc = $("#call_etc").prop("checked");
+
+    $(".inform_box").hide();
+    if (chkVisit == true) {
+        $("#partner").removeClass("warn");
+        $(".visit_box").show();
+    } else if (chkDoc == true || chkEtc == true) {
+        $("#type").removeClass("warn");
+        $(".doc_box").show();
+    }
+}
+
+function chkData() {
+    const valPartner = $("#partner").val();
+    const valCall = $(".call_box input").prop("checked");
+    const valDate = $("#visit").val();
+    const valDocText = $("#doc_detail").val();
+    // const valCall = $("#")
+    console.log(valPartner);
+    // 요청하기 버튼 클릭시 필수 입력값 강조
+    $(".btn_request").click(function () {
+        if (valPartner == "") {
+            $("#partner").addClass("warn");
+        } else if (valCall == false) {
+            $("#type").addClass("warn");
+        } else if (valDate == "") {
+            $("#date").addClass("warn");
+        } else if (valCall == true && valDocText == "") {
+            $("#doc_detail").addClass("warn");
+        }
+    });
 }

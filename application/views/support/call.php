@@ -64,35 +64,94 @@
 
     <?php include_once APPPATH.'views/header.php'; ?>
 
-    <div class="member-wrap">
+    <div class="member-wrap support-wrap">
         <div class="container">
-            <div class="member_logo">
-                <h1>회원가입</h1>
+            <div class="member_logo support">
+                <h1>고객 지원</h1>
             </div>
             
-            <div class="member-container">                
-                <form class="signup-form" id="frm1" name="frm1">
-                    <div class="form_item user">
-                        <input type="text" name="member_nm" id="member_nm" placeholder="이름" required />
+            <div class="member-container call-container">
+                <p class="btn_request">* 방문 요청, 자료 요청 등을 할 수 있습니다.</p>           
+                <form class="signup-form call-form" id="frm1" name="frm1">
+                    <div class="form_item call_item">
+                        <div class="chatBot">
+                            <img src="/public/images/icon/icon_face.png" alt="icon_bot" class="icon_bot">
+                            <input type="text"  name="partner" id="partner" placeholder="담당자를 선택해주세요." required readonly="readonly" value="dwave"/>
+                        </div>
+                        <div class="select_contact">담당자 검색</div>
+                        <div class="partner_list">
+                            <table>
+                                
+                            </table>
+                        </div>
                     </div>
 
-                    <div class="form_item phone">
-                        <input type="tel"  name="cellphone" id="cellphone" placeholder="휴대전화번호(숫자만 입력하세요)" maxlength="16" onkeyup="javascript: cmmOnNumber(this);" required />
+                    <div class="form_item call_item">
+                        <div class="chatBot">
+                            <img src="/public/images/icon/icon_face.png" alt="icon_bot" class="icon_bot">
+                            <span id="type">요청 사항을 선택해주세요.</span>
+                        </div>
+                        <div class="call_box">
+                            <label for="call_visit">
+                                <input type="radio" name="type" id="call_visit" value="" class="chk_type">
+                                <span class="chk_img"></span>
+                                <span class="type_val">방문요청</span>
+                            </label>
+                            
+                            <label for="call_doc">
+                                <input type="radio" name="type" id="call_doc" value="" class="chk_type">
+                                <span class="chk_img"></span>
+                                <span class="type_val">자료요청</span>
+                            </label>
+                            
+                            <label for="call_etc">
+                                <input type="radio" name="type" id="call_etc" value="" class="chk_type">
+                                <span class="chk_img"></span>
+                                <span class="type_val">기타</span>
+                            </label>
+                        </div>
                     </div>
 
-                    <div class="form_item email">
-                        <input type="email" name="member_email" id="member_email" placeholder="Email" onblur="javsascript: cmmOnEmail(this);" required />
+                    <div class="form_item call_item inform_box visit_box">
+                        <div class="chatBot">
+                            <img src="/public/images/icon/icon_face.png" alt="icon_bot" class="icon_bot">
+                            <span>아래 정보를 입력해주세요.</span>
+                        </div>
+                        <div class="informs visit">
+                            <!-- 날짜 시간 요청내용 -->
+                            <div class="inform date">
+                                <span>날짜</span>
+                                <input type="date" id="date" name="date" placeholder="날짜 선택" />
+                            </div>
+
+                            <div class="inform time">
+                                <span>시간</span>
+                                <input type="time" id="time" name="time" />
+                            </div>
+                            
+                            <div class="inform text">
+                                <span>요청 내용</span>
+                                <textarea name="detail" id="call_detail" rows="4" placeholder="요청 내용을 입력하세요." ></textarea>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="form_item call_item inform_box doc_box">
+                        <div class="chatBot">
+                            <img src="/public/images/icon/icon_face.png" alt="icon_bot" class="icon_bot">
+                            <span>아래 정보를 입력해주세요.</span>
+                        </div>
+                        <div class="informs doc">
+                            <!-- 요청내용 -->
+                            <div class="inform text">
+                                <span>요청 내용</span>
+                                <textarea name="detail" id="doc_detail" rows="4" placeholder="요청 내용을 입력하세요." ></textarea>
+                            </div>
+                            
+                        </div>
                     </div>
 
-                    <div class="form_item Hosp">
-                        <input type="text"  name="biz_nm" id="biz_nm" placeholder="병원명" required />
-                    </div>
-
-                    <div class="form_item Dept">
-                        <input type="text"  name="specialty" id="specialty" placeholder="진료과목" required />
-                    </div>
-
-                    <button type="button">가입하기</button>
+                    <button type="button" class="btn_request">요청하기</button>
                 </form>
             </div>
         </div>
