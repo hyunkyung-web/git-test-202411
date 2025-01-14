@@ -127,7 +127,7 @@
                                 </td>
                                 <td><?php echo $row["idx"];?></td>
                                 <td><?php echo $row["contents_type"];?></td>
-                                <td class="align_left"><a href="/admin/contents_form/<?php echo $row["idx"];?>"><?php echo $row["title"];?></a></td>
+                                <td class="align_left"><a href="/admin/notice_form/<?php echo $row["idx"];?>"><?php echo $row["title"];?></a></td>
                                 <td><?php echo $row["wuser"];?></td>
                                 <td><?php echo date('Y-m-d', strtotime($row["wdate"]));?></td>
                             </tr><?php 
