@@ -32,7 +32,7 @@ button.detail-btn {
 	border: none;
 	font-size: 0.9em;
 	text-align: left;
-	margin-left: 0;
+	margin-left: 5px;
 }
 
 .blind {
@@ -142,18 +142,14 @@ li {
 
 .remember-me {
 	display: flex;
+	flex-direction: row;
 	align-items: top;
 	margin-bottom: 15px;
 }
 
 .remember-me input {
 	width: auto;
-	margin-top: 6px;
 	margin-right: 5px;
-	margin-bottom: 30px;
-}
-.remember-me input[type="checkbox"] {
-	display: inline-block;
 }
 
 .btn-login {
@@ -442,14 +438,13 @@ span.sub-list-toggle.active {
 textarea {
 	border: none;
 	width: 100%;
-	padding: 4px;
 }
 form th,
 form td {
 	border: 1px solid #ddd;
 	text-align: left;
 	height: 3em;
-	padding: 5px;
+	padding: 4px;
 }
 form th {
 	/* color: #b5b5b8; */
@@ -462,12 +457,16 @@ form th.require {
 }
 
 form td.userId_wrap {
-	border: 1px solid red;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	border: none;
+	border-top: 1px solid #ddd;
 	border-right: 1px solid #ddd;
+}
+form td.userId_wrap input {
+	width: 60%;
+	margin
 }
 .validate-userId {
 	flex: none;
@@ -493,8 +492,8 @@ td.add-file .upload-name {
 td.add-file label {
 	display: inline-block;
 	padding: 8px 15px;
+	margin-right: 0;
 	border-radius: 5px;
-	margin-left: 5px;
 	font-weight: bold;
 	font-size: 0.9em;
 	background: #c7f8f5;
@@ -530,7 +529,6 @@ form input {
 	border: none;
 	width: 60%;
 	height: 100%;
-	padding: 4px;
 	color: #6c716e;
 	font-size: 0.9em;
 	border-radius: 5px;
@@ -574,14 +572,23 @@ input[type="radio"] {
 }
 
 /******************** 체크박스 스타일 변경 ********************/
-/* 체크박스 -- 기본 타입 */
-/* input[type="checkbox"] {
+
+/* 체크박스 - 기본 타입
+input[type="checkbox"] {
 	width: 18px;
 	background: #ecedf4;
 	border: none;
-} */
+}
+*/
 
-input[type="checkbox"] {
+/* 체스박스 컴스텀  --- 기본 체크박스는 display: none
+<label>
+	<input type="checkbox" class="display-none">
+	<span class="custom-checkbox"></span>
+</label>
+*/
+
+input.display-none {
 	display: none;
 }
 
@@ -596,13 +603,13 @@ input[type="checkbox"] {
 	cursor: pointer;
 }
 
-/* 박스 checked */
+/* 체크 박스 */
 input[type="checkbox"]:checked + .custom-checkbox {
 	background-color: #4caf50;
 	border-color: #4caf50;
 }
 
-/* 체크 */
+/* 체크 표시 */
 .custom-checkbox:after {
 	border: 1px soid red;
 	content: "";
@@ -658,12 +665,12 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 #item-list {
 	margin-bottom: 20px;
 }
-.no_overflow{    
-    display: block;
-    max-height: 2.7em;
-    overflow: hidden;    
-    border: 0;
-    text-align: left!important;
+.no_overflow {
+	display: block;
+	max-height: 2.7em;
+	overflow: hidden;
+	border: 0;
+	text-align: left !important;
 }
 
 .item {
@@ -801,14 +808,14 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	width: 360px;
 	border-radius: 8px;
 	border: solid 1px #f1f1f1;
-/*	margin: 2.5em 0;*/
+	/*	margin: 2.5em 0;*/
 }
 #tabs-2 .mobile_screen div {
 	width: 100%;
 	border-radius: 8px;
 	padding: 1em;
 	font-size: 0.9em;
-	color: #000!important;
+	color: #000 !important;
 }
 #tabs-2 .mobile_screen img {
 	width: 100%;
@@ -819,7 +826,7 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	font-size: 0.9em;
 	padding: 1em;
 	border-radius: 4px;
-	background: #f1f1f1;	
+	background: #f1f1f1;
 	text-align: center;
 	font-weight: 400;
 	margin-bottom: 0.5em;
@@ -1011,5 +1018,4 @@ a.ui-button:active,
 		position: absolute;
 		top: 10%;
 	}
-
 }

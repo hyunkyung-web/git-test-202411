@@ -15,6 +15,7 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
+	<link rel="stylesheet" href="/public/common/css/reset.css" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
 
 	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -77,8 +78,8 @@
             			</colgroup>
             			<tbody>
             			<tr>
-            				<th class="full_line require">아이디</th>
-            				<td class="full_line">
+            				<th class="full_line require"><label for="user_id">아이디</label></th>
+            				<td class="full_line userId_wrap">
             					<input type="text" name="user_id" id="user_id"  value="<?php echo $info["user_id"];?>" placeholder="아이디" <?php echo $editMode=="U" ? 'readonly' : '';?>/>
             					<?php if($editMode=="N") { ?><button type="button" class="form-btn detail-btn" onclick="userDuplicateCheck();return(false);"><i class="fa-solid fa-circle-check"></i> 중복확인</button><?php }?>
             					<?php if($editMode=="U") { ?><button type="button" id="btnChgPw" class="form-btn detail-btn"  onclick="userPasswordChange();return(false);"><i class="fa-solid fa-circle-check"></i> 암호변경</button><?php }?>
@@ -86,50 +87,50 @@
             				</td>
             			</tr>
             			<tr class="user-password" <?php echo $editMode=="U" ? 'style="display: none;"' : '';?>>
-            				<th class="full_line require">비밀번호</th>
+            				<th class="full_line require"><label for="user_pw">비밀번호</label></th>
             				<td class="full_line">
             					<input type="password" name="user_pw" id="user_pw" placeholder="비밀번호" />
             				</td>
             			</tr>
             			<tr class="user-password" <?php echo $editMode=="U" ? 'style="display: none;"' : '';?>>
-            				<th class="full_line require">비밀번호(확인)</th>
+            				<th class="full_line require"><label for="user_pw_2">비밀번호(확인)</label></th>
             				<td class="full_line">
             					<input type="password" name="user_pw_2" id="user_pw_2" placeholder="비밀번호 확인" />
             				</td>
             			</tr>
             			<tr>
-            				<th class="full_line require">성명</th>
+            				<th class="full_line require"><label for="user_nm">성명</label></th>
             				<td class="full_line"><input type="text" name="user_nm" id="user_nm" value="<?php echo $info["user_nm"];?>" placeholder="성명" /></td>
             			</tr>
             			<tr>
-            				<th class="full_line">이메일</th>
+            				<th class="full_line"><label for="user_email">이메일</label></th>
             				<td class="full_line"><input type="text" name="user_email" id="user_email" value="<?php echo $info["user_email"];?>" placeholder="이메일" onblur="javsascript: cmmOnEmail(this);"/></td>
             			</tr>
             			<tr>
-            				<th class="full_line">휴대전화번호</th>
+            				<th class="full_line"><label for="cellphone">휴대전화번호</label></th>
             				<td class="full_line"><input type="text" name="cellphone" id="cellphone" value="<?php echo $info["cellphone"];?>" placeholder="휴대전화번호(숫자만 입력하세요)" onkeyup="javascript: cmmOnNumber(this);"/></td>
             			</tr>
             			<tr>
-            				<th class="full_line">소속</th>
+            				<th class="full_line"><label for="company">소속</label></th>
             				<td class="full_line">
             					<input type="text" name="company" id="company" value="<?php echo $info["company"];?>" placeholder="소속"/>
             				</td>
             			</tr>
             			<tr>
-            				<th class="full_line">부서</th>
+            				<th class="full_line"><label for="dept">부서</label></th>
             				<td class="full_line">
             					<input type="text" name="dept" id="dept" value="<?php echo $info["dept"];?>" placeholder="부서"/>
             				</td>
             			</tr>
             			<tr>
-            				<th class="full_line require">권한분류</th>
+            				<th class="full_line require"><label>권한분류</label></th>
             				<td class="full_line">
             					<input type="radio" name="user_type" id="user_type_1" value="user" <?php echo $info["user_type"]=="user" ? "checked" : '';?>/><label for="userType_1">일반</label>
             					<input type="radio" name="user_type" id="user_type_2" value="admin" <?php echo $info["user_type"]=="admin" ? "checked" : '';?>/><label for="userType_2">관리자</label>
             				</td>
             			</tr>
             			<tr>
-            				<th class="full_line require">정보수신</th>
+            				<th class="full_line require"><label>정보수신</label></th>
             				<td class="full_line">
             					<input type="radio" name="optin" id="optin_2" value="N" <?php echo $info["optin"]!="Y" ? "checked" : '';?>/><label for="optin_2">동의안함</label>
             					<input type="radio" name="optin" id="optin_1" value="Y" <?php echo $info["optin"]=="Y" ? "checked" : '';?>/><label for="optin_1">동의함</label><?php
@@ -141,7 +142,7 @@
             				</td>
             			</tr>
             			<tr>
-            				<th class="full_line require">사용여부</th>
+            				<th class="full_line require"><label>사용여부</label></th>
             				<td class="full_line">
             					<label><input type="radio" name="use_yn" id="use_yn_1" value="Y" <?php echo $info["use_yn"]=="Y" ? "checked" : '';?>/>사용</label>
             					<label><input type="radio" name="use_yn" id="use_yn_2" value="N" <?php echo $info["use_yn"]!="Y" ? "checked" : '';?>/>사용안함</label>
