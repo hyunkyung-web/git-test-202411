@@ -175,6 +175,8 @@ class Admin extends CI_Controller {
 	        "contents_type"=>"notice", "keyword"=>$keyword, "start"=>$startPage, "end"=>$endPage
 	    ]);
 	    
+	    
+	    
 	    $totalRecord = $query["listCount"];
 	    $totalPage = ceil($totalRecord/$pageSize);
 	    

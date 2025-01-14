@@ -21,7 +21,7 @@ class Contents_model extends CI_Model {
                 $andKeyword = explode("+", $opt["keyword"]);
                 
                 foreach($andKeyword as $row){
-                    $strWhere.= "and (title like '%".trim($row)."%' or context like '%".trim($row)."%') ";
+                    $strWhere.= "and (title like '%".trim($row)."%' or body_text like '%".trim($row)."%') ";
                 }
             } elseif(mb_strpos(trim($opt["keyword"]), ',')){
                 $andKeyword = explode(",", $opt["keyword"]);
@@ -32,13 +32,13 @@ class Contents_model extends CI_Model {
                     } else{
                         $strWhere.= 'or ';
                     }
-                    $strWhere.= "(title like '%".trim($row)."%' or context like '%".trim($row)."%') ";
+                    $strWhere.= "(title like '%".trim($row)."%' or body_text like '%".trim($row)."%') ";
                     
                     $rowCnt++;
                 }
                 
             }else{
-                $strWhere.= "and (title like '%".trim($opt["keyword"])."%' or context like '%".trim($opt["keyword"])."%') ";
+                $strWhere.= "and (title like '%".trim($opt["keyword"])."%' or body_text like '%".trim($opt["keyword"])."%') ";
             }
         }
         
