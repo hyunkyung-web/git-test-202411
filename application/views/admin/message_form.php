@@ -147,6 +147,7 @@
 								</tbody>
 							</table>
 							<input type="hidden" name="idx" id="idx" value="<?php echo $idx;?>"/>
+							<input type="hidden" name="msg_target" id="msg_target"/>
                 		</form>
 
                         <div class="btn-wrap"></div>
@@ -154,23 +155,35 @@
 
                 	<div id="tabs-2">
                 		<table class="form-table">
-                			<tr><td>
-                    			<div class="mobile_screen">
-                        			<div><?php 
-                        			if(!empty($info["img_link"])){
-                        			    echo '<a href="'.$info["img_link"].'" target="_black"><img src="'.$info["img_url"].'"/></a>';
-                        			}else {
-                        			    echo !empty($info["img_url"])?'<img src="'.$info["img_url"].'"/>' : '';
-                        			}?>
+                			<colgroup>
+                				<col width="50%">
+                				<col width="50%">
+                			</colgroup>
+                			<tr>
+                				<td style="vertical-align: top;">
+                        			<div class="mobile_screen">
+                            			<div><?php 
+                            			if(!empty($info["img_link"])){
+                            			    echo '<a href="'.$info["img_link"].'" target="_black"><img src="'.$info["img_url"].'"/></a>';
+                            			}else {
+                            			    echo !empty($info["img_url"])?'<img src="'.$info["img_url"].'"/>' : '';
+                            			}?>
+                            			</div>
+                            			<div><?php echo nl2br($info["title"].'<br/><br/>'.$info["template_msg"]);?></div>
+                            			<div style="text-align: center;"><?php
+                            			for($i=1; $i<=$info["btn_cnt"]; $i++){?>
+                            			     <a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php 
+                            			}?>
+            							</div>
                         			</div>
-                        			<div><?php echo nl2br($info["title"].'<br/><br/>'.$info["template_msg"]);?></div>
-                        			<div><?php
-                        			for($i=1; $i<=$info["btn_cnt"]; $i++){?>
-                        			     <a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php 
-                        			}?>
-        							</div>
-                    			</div>
-                			</td></tr>
+                				</td>
+                				<td style="vertical-align: top; text-align: left;">
+                					<div>
+                						<input type="text" name="kakako_target" id="kakako_target" style="width: 90%;" />
+                						<button onclick="javascript: sendKakaoTalk('ft');">친구톡 발송</button>
+									</div>
+            					</td>
+            				</tr>
             			</table>
                 	</div>            	
             	

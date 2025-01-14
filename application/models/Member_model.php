@@ -187,11 +187,12 @@ class member_model extends CI_Model {
         exit;
     }
     
-    public function get_idx($opt) {
+    public function get_idx($cellphone) {
         
-        $sql = "select * from tb_member ";
-        $sql.= "where member_status <> 'expire' and cellphone=?";        
-        $list = $this->db->query($sql, $opt)->result_array();
+        $sql = "select idx from tb_member ";
+        $sql.= "where member_status <> 'expire' and cellphone='".$cellphone."' ";
+        $sql.= "order by idx desc limit 1 ";
+        $list = $this->db->query($sql)->result_array();
         
         return $list;
         exit;

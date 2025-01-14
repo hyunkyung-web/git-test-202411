@@ -6,9 +6,6 @@ class Bizmsg extends CI_Controller {
     {
         parent::__construct();
         
-        $this->load->model('user_model', 'userModel');
-        $this->load->model('event_model', 'eventModel');
-        $this->load->model('visit_model', 'visitModel');
         $this->load->model('member_model', 'memberModel');
         $this->load->model('msg_model', 'msgModel');
         
@@ -20,21 +17,12 @@ class Bizmsg extends CI_Controller {
         //         $this->load->helper('request');
     }
     
-    public function session_chk($type){
-        if($type=="admin"){
-            if(!isset($this->session->userdata["user_id"]) || $this->session->userdata["user_type"] != "admin"){
-                $errMsg = '<script>alert("관리자 로그인이 필요합니다.");';
-                $errMsg.= 'location.href="/admin/login";</script>';
-                echo $errMsg;
-                exit;
-            }
-        } else {
-            if(!isset($this->session->userdata["user_id"])){
-                $errMsg = '<script>alert("관리자 로그인이 필요합니다.");';
-                $errMsg.= 'location.href="/";</script>';
-                echo $errMsg;
-                exit;
-            }
+    private function session_chk(){
+        if(!isset($this->session->userdata["user_id"])){
+            $errMsg = '<script>alert("로그인이 필요합니다.");';
+            $errMsg.= 'location.href="/admin/login";</script>';
+            echo $errMsg;
+            exit;
         }
     }
     
@@ -117,11 +105,11 @@ class Bizmsg extends CI_Controller {
         
     }
     
-    private function get_member_id($cell_phone){
+    private function get_member_id($cell_phone){        
         
-        $query = $this->memberModel->get_member_id($cell_phone);
-        if(count($query)>0){
-            return($query[0]["member_id"]);
+        $result = $this->memberModel->get_idx($cell_phone);
+        if(count($result)>0){
+            return($result[0]["idx"]);
         }else {
             return("no_member");
         }
@@ -226,39 +214,38 @@ class Bizmsg extends CI_Controller {
     
     public function push_contents_msg(){
         
-        $this->session_chk("admin");
+        $this->session_chk();
         
         $access_token = $this->get_access_token();
-        $secPassKey = "0901";
-        $secKey = getPost("talk_seckey", "");
-        $msg_type = getPost("msg_type", "ft");
-        $from_phone = "025402256";
-        $to_phone = getPost("to_phone", "");
-        $arr_target = explode(",", $to_phone);
+        $from_phone = "025402256";        
+        
         $template_idx = getPost("template_idx", "");
-        $talk_msg = getPost("talk_msg", "");
-        $ref_key = $msg_type."_".time();
+        $template_type = getPost("template_type", "ft");   
+        $msg_target = getPost("msg_target", "");  
+        $arr_target = explode(",", $msg_target);
+        $img_url = getPost("img_url", "");
+        $img_link = getPost("img_link", "");
+        $template_title = getPost("title", "");
+        $template_msg = getPost("template_msg", "");
+        $final_msg = $template_title."\n\n".$template_msg;
         $btn_type = $_POST["btn_type"];
         $btn_name = $_POST["btn_name"];
         $btn_link = $_POST["btn_link"];
-        
-        $img_url = getPost("img_url", "");
-        $img_link = getPost("img_link", "");
-        //         $rawFile = $_FILES["file_img"];
-        //         $uploadPath = "/public/data/biz/";
+
+        $ref_key = $template_type."_".time();
         $exec_cnt = 0;
         $ok_cnt = 0;
         
-        foreach($arr_target as $row){
-        
+        foreach($arr_target as $row){            
+            
             $img_data = [];
             $btn_data = [];
             $member_id = "";
             $add_utm="";
             
             $member_id = $this->get_member_id($row);
-            
-            $add_utm = 'utm_source='.$member_id.'&utm_medium=KAKAO&utm_campaign='.$template_idx;
+
+            $add_utm = 'utm_source='.$member_id.'&utm_medium='.$template_type.'&utm_campaign='.$template_idx;
             
             if(!empty($img_url)){
                 if($img_link!=""){
@@ -274,7 +261,6 @@ class Bizmsg extends CI_Controller {
                     $img_data = ["img_url"=>$img_url];
                 }
             }
-
             
             if(is_array($btn_type)){
 
@@ -289,12 +275,13 @@ class Bizmsg extends CI_Controller {
                     array_push($btn_data, $tmpArr);
                 }
             }
+            
                 
             if(!empty($img_url) && !empty($btn_type)){
                 $content_data = [
                     "ft"=>[
                         "senderkey"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af",
-                        "message"=>$talk_msg, "adflag"=>"Y",
+                        "message"=>$final_msg, "adflag"=>"Y",
                         "button"=>$btn_data,
                         "image"=>$img_data
                     ]
@@ -303,7 +290,7 @@ class Bizmsg extends CI_Controller {
                 $content_data = [
                     "ft"=>[
                         "senderkey"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af",
-                        "message"=>$talk_msg, "adflag"=>"Y",
+                        "message"=>$final_msg, "adflag"=>"Y",
                         "image"=>$img_data
                     ]
                 ];
@@ -311,7 +298,7 @@ class Bizmsg extends CI_Controller {
                 $content_data = [
                     "ft"=>[
                         "senderkey"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af",
-                        "message"=>$talk_msg, "adflag"=>"Y",
+                        "message"=>$final_msg, "adflag"=>"Y",
                         "button"=>$btn_data
                     ]
                 ];
@@ -319,20 +306,15 @@ class Bizmsg extends CI_Controller {
                 $content_data = [
                     "ft"=>[
                         "senderkey"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af",
-                        "message"=>$talk_msg, "adflag"=>"Y"
+                        "message"=>$final_msg, "adflag"=>"Y"
                     ]
                 ];
             }
-            
+                        
             $postData = [
-                "account"=>"dwave2014", "refkey"=>$ref_key, "type"=>$msg_type, "from"=>$from_phone, "to"=>$row,
+                "account"=>"dwave2014", "refkey"=>$ref_key, "type"=>$template_type, "from"=>$from_phone, "to"=>$row,
                 "content"=>$content_data
             ];
-            
-            if($secPassKey != $secKey){
-                echo json_encode(["result"=>"fail", "msg"=>"비밀번호가 일치하지 않습니다."]);
-                exit;
-            }
             
             $restUrl = "https://api.bizppurio.com/v3/message";
             $curl = curl_init();
@@ -353,7 +335,7 @@ class Bizmsg extends CI_Controller {
                 //             CURLOPT_POSTFIELDS => json_encode($postData),
             ));
             
-            $response = curl_exec($curl);
+            $response = curl_exec($curl);            
             $err = curl_error($curl);
             curl_close($curl);
             
@@ -362,7 +344,7 @@ class Bizmsg extends CI_Controller {
             if($err) {
 //                 echo json_encode(["result"=>"fail", "msg"=>$err]);
                 $save_log = $this->msgModel->save_biztalk_log([
-                    "template_idx"=>$template_idx, "cellphone"=>$row, "member_id"=>$member_id, "ref_key"=>"", "message_key"=>"",
+                    "template_idx"=>$template_idx, "template_type"=>$template_type, "cellphone"=>$row, "member_id"=>$member_id, "ref_key"=>"", "message_key"=>"",
                     "result_code"=>'curl error',"result_desc"=>$err
                 ]);
             } else {
@@ -374,7 +356,7 @@ class Bizmsg extends CI_Controller {
                 //             $result->code; $result->description; $result->refkey; $result->messagekey; <== 전송결과 인덱스키와 비교해서 최종 전송결과 매칭가능
                 
                 $save_log = $this->msgModel->save_biztalk_log([
-                    "template_idx"=>$template_idx, "cellphone"=>$row, "member_nm"=>"", "member_id"=>$member_id, "ref_key"=>$result->refkey, "message_key"=>$result->messagekey,
+                    "template_idx"=>$template_idx, "template_type"=>$template_type, "cellphone"=>$row, "member_nm"=>"", "member_id"=>$member_id, "ref_key"=>$result->refkey, "message_key"=>$result->messagekey,
                     "result_code"=>$result->code,"result_desc"=>$result->description
                 ]);
             }
@@ -515,10 +497,10 @@ class Bizmsg extends CI_Controller {
         if($secPassKey != $secKey){
             echo json_encode(["result"=>"fail", "msg"=>"비밀번호가 일치하지 않습니다."]);
             exit;
-        }    
+        }
         
         $restUrl = "https://api.bizppurio.com/v3/message";
-        $curl = curl_init();        
+        $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => $restUrl,
             CURLOPT_CUSTOMREQUEST => "POST",

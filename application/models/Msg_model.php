@@ -29,7 +29,7 @@ class Msg_model extends CI_Model {
                 $andKeyword = explode("+", $opt["keyword"]);
                 
                 foreach($andKeyword as $row){
-                    $strWhere.= "and (template_cd like '%".trim($row)."%' or template_nm like '%".trim($row)."%') ";
+                    $strWhere.= "and (template_cd like '%".trim($row)."%' or title like '%".trim($row)."%') ";
                 }
             } elseif(mb_strpos(trim($opt["keyword"]), ',')){
                 $andKeyword = explode(",", $opt["keyword"]);
@@ -40,13 +40,13 @@ class Msg_model extends CI_Model {
                     } else{
                         $strWhere.= 'or ';
                     }
-                    $strWhere.= "(template_cd like '%".trim($row)."%' or template_nm like '%".trim($row)."%') ";
+                    $strWhere.= "(template_cd like '%".trim($row)."%' or title like '%".trim($row)."%') ";
                     
                     $rowCnt++;
                 }
                 
             }else{
-                $strWhere.= "and (template_cd like '%".trim($opt["keyword"])."%' or template_nm like '%".trim($opt["keyword"])."%') ";
+                $strWhere.= "and (template_cd like '%".trim($opt["keyword"])."%' or title like '%".trim($opt["keyword"])."%') ";
             }
         }
         
@@ -258,8 +258,8 @@ class Msg_model extends CI_Model {
         
         $this->db->trans_begin();
         
-        $sql = "insert into tb_biztalk_log (template_idx, cellphone, member_nm, member_id, ref_key, message_key, result_code, result_desc, wdate) values (";
-        $sql.= "'".$opt["template_idx"]."', '".$opt["cellphone"]."', '".$opt["member_nm"]."', '".$opt["member_id"]."', ";
+        $sql = "insert into tb_biztalk_log (template_idx, template_type, cellphone, member_nm, member_id, ref_key, message_key, result_code, result_desc, wdate) values (";
+        $sql.= "'".$opt["template_idx"]."', '".$opt["template_type"]."', '".$opt["cellphone"]."', '".$opt["member_nm"]."', '".$opt["member_id"]."', ";
         $sql.= "'".$opt["ref_key"]."', '".$opt["message_key"]."', '".$opt["result_code"]."', '".$opt["result_desc"]."', now() ) ";
         
         $data = $this->db->query($sql);

@@ -376,6 +376,34 @@ function messageList(page=1) {
 	$("#frmSearch").attr("action", postUrl).submit();
 }
 
+function sendKakaoTalk(msgType){
+	
+	$("#msg_target").val($("#kakako_target").val());
+	
+	
+	let postData = new FormData($("#frm1")[0]);
+	
+	$.ajax({
+		type: "POST",
+		enctype: 'multipart/form-data',
+		contentType : false,
+		processData : false,
+		url: "/bizmsg/push_contents_msg",		
+		dataType: "json",
+		data: postData,
+		beforeSend:function(){			
+		},
+		success: function(data){
+			alert(data.msg);
+		},
+		error: function(request, status, err){
+			alert("Server Error Occured:"+ err);
+			return;
+		}
+	});
+		
+}
+
 
 function memberList(page=1) {
 	let postUrl = "/admin/member_list/" + page;
