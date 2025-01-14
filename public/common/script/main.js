@@ -202,7 +202,7 @@ function schPartner() {
     // 다음 클릭 시 data check & $("#partner")에 data 입력
     var p_list = "";
     // var emailList = "";
-    $(".btn_select").click(function (element) {
+    $(".btn_select").click(function () {
         const checkbox = $("input[name=chk_p]:checked");
 
         checkbox.each(function (i) {
@@ -303,7 +303,7 @@ function callRequest() {
         $("textarea").removeClass("warn");
     });
 
-    // 모든 입력값 입력 완료 후 alert창 띄우기 + 원래 상태로 돌아가기
+    // 모든 입력값 입력 완료 -> alert창 띄우기 + 원래 상태로 돌아가기
     if (chkPartner == false && chkType == true && chkDate == false && chkCallDetail == false && chkDocDetail == false) {
         alert("요청 완료되었습니다.");
         $("input, textarea").val("");
