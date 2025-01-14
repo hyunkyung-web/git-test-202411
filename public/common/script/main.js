@@ -1,6 +1,6 @@
 $(function () {
     //
-    member_height(".member-wrap + footer");
+    // member_height(".member-wrap + footer");
 
     // 모바일 메뉴
     mobileMenu();
@@ -31,11 +31,21 @@ $(function () {
         }
     });
 
-    // support
+    // support;
+    $(".select_contact").click(function () {
+        $(".blind, .p_list").show();
+    });
+    $(".close").click(function () {
+        $(".blind, .p_list").hide();
+    });
+
     $("input[name=type]").click(function () {
         supportCall();
     });
+
+    // $(".btn_request").click(function () {
     chkData();
+    // });
 });
 
 function mobileMenu() {
@@ -48,7 +58,6 @@ function mobileMenu() {
         navLinks.toggleClass("active");
     });
 }
-// document.addEventListener("DOMContentLoaded", function () {});
 
 // 페이지 이동
 function callData(pageNum) {
@@ -157,39 +166,91 @@ function member_height(obj) {
 }
 
 // support call
+// // 담당자 선택 여부
+// let valPartner;
+// // 요청 type 선택 여부
+// let chkVisit;
+// let chkDoc;
+// let chkEtc;
+// // 방문요청 - 날짜 선택 여부
+// let valDate;
+// // 자료요청, 기타 요청 내용 입력 여부
+// let valDocText;
+// // chatBot 말풍선 선택자
+// let chatBot;
+// console.log(valPartner);
 
 function supportCall() {
+    // 요청 type 선택 여부
     const chkVisit = $("#call_visit").prop("checked");
     const chkDoc = $("#call_doc").prop("checked");
     const chkEtc = $("#call_etc").prop("checked");
 
+    // 상세 정보 입력 박스 hide
     $(".inform_box").hide();
+
     if (chkVisit == true) {
-        $("#partner").removeClass("warn");
+        // 요청 type - 방문요청 선택 시 해당 상세 정보 입력 박스 show
         $(".visit_box").show();
     } else if (chkDoc == true || chkEtc == true) {
-        $("#type").removeClass("warn");
+        // 자료요청, 기타 선택 시 해당 박스 show
         $(".doc_box").show();
+    }
+
+    if (chkVisit == true || chkDoc == true || chkEtc == true) {
+        $("#call_type").removeClass("warn");
     }
 }
 
 function chkData() {
+    // 담당자 선택 여부
     const valPartner = $("#partner").val();
-    const valCall = $(".call_box input").prop("checked");
-    const valDate = $("#visit").val();
+
+    // 자료요청, 기타 요청 내용 입력 여부
     const valDocText = $("#doc_detail").val();
-    // const valCall = $("#")
-    console.log(valPartner);
+
+    // 방문요청 - 날짜 선택 여부
+    let valDate;
+    $("input[name=date]").change(function () {
+        valDate = $("#date").val();
+
+        console.log(valDate);
+    });
+    console.log(valDate);
+
     // 요청하기 버튼 클릭시 필수 입력값 강조
     $(".btn_request").click(function () {
+        // 모든 말풍선 강조 효과 제거
+        const chatBot = $(".form_item input, .form_item textarea");
+        chatBot.removeClass("warn");
+
+        // 담당자 선택 안 했을 때
         if (valPartner == "") {
             $("#partner").addClass("warn");
-        } else if (valCall == false) {
-            $("#type").addClass("warn");
-        } else if (valDate == "") {
+        }
+
+        // 요청 타입 선택 안 했을 때
+        $(".chk_type").each(function () {
+            if ($(this).prop("checked") == false) {
+                $("#call_type").addClass("warn");
+            } else {
+                $("#call_type").removeClass("warn");
+            }
+        });
+
+        // 방문 요청 - 날짜 선택 안 했을 때
+        if ($("#call_visit").is(":checked") && valDate == undefined) {
+            $("#call_type").removeClass("warn");
             $("#date").addClass("warn");
-        } else if (valCall == true && valDocText == "") {
+        }
+
+        if (($("#call_doc").is(":checked") || $("#call_etc").is(":checked")) && valDocText == "") {
+            $("#call_type").removeClass("warn");
             $("#doc_detail").addClass("warn");
         }
+
+        $("#date").focus(function () {
+            $("#date").removeClass("warn");
+        });
     });
 }

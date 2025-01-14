@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Sign up</title>
+	<title>Support - Call</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="닥터웨이브" />
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>    
     <script src="/public/common/script/fontawesome.all.min.js"></script>
     <script type="text/javascript" src="/public/common/script/main.js"></script>
-                 
+
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -40,20 +40,17 @@
   	function gtag(){dataLayer.push(arguments);}
   	gtag('js', new Date());	
   	gtag('config', 'G-NMXDBRXH4Y');
-  
+    
 	gtag('event', 'screen_view', {
 		'app_name': 'dr-wave.co.kr',
 		'screen_name': 'Home'
 	});
-	
 	
 // 	$(function(){
 // 		$("#btnGtag").click(function(){
 // 			gtag('event', 'click_GTAG_BTN');
 // 		});
 // 	});
-	
-  
 </script>
 
 <body>    
@@ -76,37 +73,32 @@
                     <div class="form_item call_item">
                         <div class="chatBot">
                             <img src="/public/images/icon/icon_face.png" alt="icon_bot" class="icon_bot">
-                            <input type="text"  name="partner" id="partner" placeholder="담당자를 선택해주세요." required readonly="readonly" value="dwave"/>
+                            <input type="text"  name="partner" id="partner" placeholder="담당자를 선택해주세요." readonly="readonly" value="dwave"/>
                         </div>
                         <div class="select_contact">담당자 검색</div>
-                        <div class="partner_list">
-                            <table>
-                                
-                            </table>
-                        </div>
                     </div>
 
                     <div class="form_item call_item">
                         <div class="chatBot">
                             <img src="/public/images/icon/icon_face.png" alt="icon_bot" class="icon_bot">
-                            <span id="type">요청 사항을 선택해주세요.</span>
+                            <input type="text" name="call_type"  id="call_type" placeholder="요청 사항을 선택해주세요." readonly="readonly" />
                         </div>
                         <div class="call_box">
                             <label for="call_visit">
                                 <input type="radio" name="type" id="call_visit" value="" class="chk_type">
-                                <span class="chk_img"></span>
+                                <span class="radio_img"></span>
                                 <span class="type_val">방문요청</span>
                             </label>
                             
                             <label for="call_doc">
                                 <input type="radio" name="type" id="call_doc" value="" class="chk_type">
-                                <span class="chk_img"></span>
+                                <span class="radio_img"></span>
                                 <span class="type_val">자료요청</span>
                             </label>
                             
                             <label for="call_etc">
                                 <input type="radio" name="type" id="call_etc" value="" class="chk_type">
-                                <span class="chk_img"></span>
+                                <span class="radio_img"></span>
                                 <span class="type_val">기타</span>
                             </label>
                         </div>
@@ -115,7 +107,7 @@
                     <div class="form_item call_item inform_box visit_box">
                         <div class="chatBot">
                             <img src="/public/images/icon/icon_face.png" alt="icon_bot" class="icon_bot">
-                            <span>아래 정보를 입력해주세요.</span>
+                            <input type="text" name="inform"  id="inform" placeholder="아래 정보를 입력해주세요." readonly="readonly" />
                         </div>
                         <div class="informs visit">
                             <!-- 날짜 시간 요청내용 -->
@@ -154,7 +146,106 @@
                     <button type="button" class="btn_request">요청하기</button>
                 </form>
             </div>
+
+            <!-- 담당자 list -->
+            <div class="p_list padd20">
+                <div class="p_list_header flex_SB_center">
+                    <p>* 담당자를 선택해주세요.</p>
+                    <span class="close"><i class="fa-regular fa-circle-xmark" style="color: #181c32;"></i></span>
+                </div>
+                
+                <div class="search_box flex_SB_center">
+                    <select name="sch_p" id="sch_p" class="list_select">
+                        <option value="">성명</option>
+                        <option value="">이메일</option>
+                        <option value="">연락처</option>
+                        <option value="">부서</option>
+                    </select>
+                    <input type="text" name="sch_bar" id="sch_bar" class="sch_bar" placeholder="검색어를 입력하세요.">
+                    <button type="button" class="btn_sch">검색</button>
+                </div>
+                <table class="list_table">
+                    <colgroup>
+                        <col width="5%">
+                        <col width="15%">
+                        <col width="40%">
+                        <col width="20%">
+                        <col width="20%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" class="checkbox" name="chk_all" id="chk_all">
+                            </th>
+                            <th>이름</th>
+                            <th>이메일</th>
+                            <th>연락처</th>
+                            <th>부서</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" name="chk_p" id="chk_p">
+                            </td>
+                            <td>홍길동</td>
+                            <td>dwave_it@d-wave.co.kr</td>
+                            <td>010-1111-2222</td>
+                            <td>XX부서</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" name="chk_p" id="chk_p">
+                            </td>
+                            <td>홍길동</td>
+                            <td>dwave_it@d-wave.co.kr</td>
+                            <td>010-1111-2222</td>
+                            <td>XX부서</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" name="chk_p" id="chk_p">
+                            </td>
+                            <td>홍길동</td>
+                            <td>dwave_it@d-wave.co.kr</td>
+                            <td>010-1111-2222</td>
+                            <td>XX부서</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" name="chk_p" id="chk_p">
+                            </td>
+                            <td>홍길동</td>
+                            <td>dwave_it@d-wave.co.kr</td>
+                            <td>010-1111-2222</td>
+                            <td>XX부서</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" name="chk_p" id="chk_p">
+                            </td>
+                            <td>홍길동</td>
+                            <td>dwave_it@d-wave.co.kr</td>
+                            <td>010-1111-2222</td>
+                            <td>XX부서</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" name="chk_p" id="chk_p">
+                            </td>
+                            <td>홍길동</td>
+                            <td>dwave_it@d-wave.co.kr</td>
+                            <td>010-1111-2222</td>
+                            <td>XX부서</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="p_list_footer">
+                    <button type="button" class="btn_select">다음</button>
+                </div>
+            </div>
         </div>
+        <div class="blind"></div>
     </div>
     
     <?php include_once APPPATH.'views/footer.php'; ?>

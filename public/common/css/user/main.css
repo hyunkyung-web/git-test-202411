@@ -9,14 +9,13 @@ member
     color: #181c32;
     font-family: "Noto Sans KR", sans-serif;
 
-    /* height: 80vh; */
-    padding: 60px 0;
-
     width: 100%;
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
+    min-height: 70vh;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .member-wrap.scroll {
     position: unset;
@@ -33,7 +32,6 @@ member
     border-radius: 4px;
     background-color: #181c32;
     color: #ffffff;
-    font-size: var(--font-size--normal);
     font-weight: bold;
     padding: 12px 45px;
     margin: 20px 0;
@@ -459,6 +457,9 @@ textarea:focus {
 }
 
 /* Support - call */
+.support-wrap .container {
+    max-width: 640px;
+}
 .support {
     margin-bottom: 0;
 }
@@ -506,7 +507,7 @@ textarea:focus {
 }
 
 #partner.warn::placeholder,
-#type.warn,
+#call_type.warn::placeholder,
 #date.warn,
 #doc_detail.warn::placeholder {
     color: #f44d5f;
@@ -539,19 +540,19 @@ textarea:focus {
     height: 0;
 }
 
-.chk_img {
+.radio_img {
     width: 15px;
     height: 15px;
     background: url(/public/images/icon/icon_radio.png) no-repeat center;
     background-size: 100%;
 }
-.chk_type:checked + .chk_img {
+.chk_type:checked + .radio_img {
     /* width: 15px; */
     /* height: 15px; */
     background: url(/public/images/icon/icon_check.png) no-repeat 0 0;
     background-size: 100%;
 }
-.chk_type:checked:disabled + .chk_img {
+.chk_type:checked:disabled + .radio_img {
     /* width: 15px; */
     /* height: 15px; */
     background: url(/public/images/icon/icon_check.png) no-repeat 0 0;
@@ -614,6 +615,114 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     height: 100%;
     background: transparent;
     color: transparent;
+}
+
+/* 담당자 list */
+.blind {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.p_list {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: #fff;
+    border-radius: 10px;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    overflow: scroll;
+    font-size: 0.9em;
+}
+.p_list p {
+    margin-bottom: 10px;
+}
+.p_list button {
+    width: unset;
+    margin: 0;
+    border: 0;
+    padding: 5px 15px;
+}
+/* header - 문구, 닫기 버튼 */
+.p_list_header {
+    align-items: flex-end;
+}
+.p_list_header span {
+    font-size: 2em;
+}
+
+/* 담당자 검색 */
+.search_box {
+    width: 80%;
+    height: 30px;
+    margin: 5px 0;
+}
+.search_box * {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+    margin: 0;
+    padding: 5px;
+}
+.search_box select {
+    width: 25%;
+}
+.search_box input {
+    width: 60%;
+    background: #fff;
+    margin-left: 5px;
+}
+.search_box button {
+    width: 15%;
+    margin-left: 5px;
+    background: #e1f1ff;
+    color: #4c91d7;
+    border: 1px solid #e1f1ff;
+}
+
+/* 담당자 list table */
+.list_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.list_table th,
+.list_table td {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+.list_table th {
+    background-color: #f2f2f2;
+    font-weight: 900;
+    text-align: center;
+}
+.list_table td {
+    text-align: left;
+}
+
+input.checkbox {
+    accent-color: #4c91d7;
+    /* color: #fff; */
+}
+
+/* footer - 선택 버튼 */
+.p_list_footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+button.btn_select {
+    width: 12%;
+    margin-top: 10px;
 }
 
 /* media query */
@@ -733,14 +842,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 @media screen and (max-width: 480px) {
-    /* member */
-    /* .member-wrap {
-        width: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-    } */
-
     .member-container {
         padding: 0 20px;
     }
