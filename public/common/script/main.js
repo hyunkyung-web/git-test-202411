@@ -182,31 +182,38 @@ function schPartner() {
     });
     // 체크 해제 시 check all 해제
     $("input[name=chk_p]").click(function () {
-        const total = $("input[name=chk_p]").length;
-        const checked = $("input[name=chk_p]:checked").length;
+        let checkbox = $("input[name=chk_p]");
+        let total = checkbox.length;
+        let checked = $("input[name=chk_p]:checked").length;
 
         if (total != checked) {
             $("#chk_all").prop("checked", false);
         } else {
             $("#chk_all").prop("checked", true);
         }
+
+        // 체크박스 하나씩만 선택되게 하기
+        if ($(this).prop("checked")) {
+            checkbox.prop("checked", false);
+            $(this).prop("checked", true);
+        }
     });
 
-    // 다음 클릭 시 data check & $("#partener")에 data 입력
+    // 다음 클릭 시 data check & $("#partner")에 data 입력
     var p_list = "";
-    var emailList = "";
+    // var emailList = "";
     $(".btn_select").click(function () {
-        var checkbox = $("input[name=chk_p]:checked");
+        const checkbox = $("input[name=chk_p]:checked");
 
         checkbox.each(function (i) {
             var tr = checkbox.parent().parent().eq(i);
             var td = tr.children();
 
             var p_name = td.eq(1).text();
-            // var p_email = td.eq(2).text();
+            var p_email = td.eq(2).text();
 
-            p_list += p_name + " / ";
-            // p_list += p_name + "(" + p_email + ") / ";
+            // p_list += p_name + " / ";
+            p_list += p_name + "(" + p_email + ") / ";
         });
 
         // 마지막 "/ " 제거
@@ -240,50 +247,67 @@ function supportCall() {
 
 // 요청하기 버튼 클릭 시 입력사항 체크
 function callRequest() {
+    /* ******* 값 구하기 ******* */
     // 담당자 선택 여부
     const valPartner = $("#partner").val();
     // 요청 type 선택 여부
     const chkVisit = $("#call_visit").prop("checked");
     const chkDoc = $("#call_doc").prop("checked");
     const chkEtc = $("#call_etc").prop("checked");
-    // console.log(chkVisit);
-
     // 방문요청 - 날짜 선택 여부
     const valDate = $("#date").val();
-    // console.log(valDate);
-
-    // 자료요청, 기타 요청 내용 입력 여부
+    // 방문요청 - 요청 내용 입력 여부
+    const valCallText = $("#call_detail").val();
+    // 자료요청, 기타 - 요청 내용 입력 여부
     const valDocText = $("#doc_detail").val();
 
+    /* ******* data check ******* */
+    // true : 날짜 or 내용 입력 X / false: 날짜 or 내용 입력 O
+    let chkPartner = valPartner == "";
+
+    let chkDate = chkVisit == true && (valDate == "" || valDate == null || valDate == undefined);
+    let chkCallDetail = chkVisit == true && valCallText == "";
+    let chkDocDetail = (chkDoc == true || chkEtc == true) && valDocText == "";
+
+    // true : type 선택 / false: type 선택 X
+    let chkType = chkVisit == true || chkDoc == true || chkEtc == true;
+
+    /* ******* data check -> 값이 없을 경우 warn class 추가 ******* */
     // 담당자
-    if (valPartner == "") {
+    if (chkPartner) {
         $("#partner").addClass("warn");
     }
 
     // 요청 타입
-    if (chkVisit == true || chkDoc == true || chkEtc == true) {
+    if (chkType) {
         $("#call_type").removeClass("warn");
-    } else if (chkVisit == false && chkDoc == false && chkEtc == false) {
+    } else {
         $("#call_type").addClass("warn");
     }
 
     // 방문요청 - 날짜
-    if (chkVisit == true && (valDate == "" || valDate == null || valDate == undefined)) {
+    if (chkDate) {
         $("#date").addClass("warn");
+    } else if (chkCallDetail) {
+        $("#call_detail").addClass("warn");
     }
     $("#date").focus(function () {
         $("#date").removeClass("warn");
     });
 
     // 자료요청/기타 - 요청 내용 입력
-    if ((chkDoc == true || chkEtc == true) && valDocText == "") {
+    if (chkDocDetail) {
         $("#doc_detail").addClass("warn");
     }
     $("textarea").focus(function () {
-        $("#doc_detail").removeClass("warn");
+        $("textarea").removeClass("warn");
     });
 
-    if ((valPartner != "" && (chkVisit == true || chkDoc == true || chkEtc == true) && chkVisit == true && (valDate !== "" || valDate !== null || valDate !== undefined)) || ((chkDoc == true || chkEtc == true) && valDocText !== "")) {
+    // 모든 입력값 입력 완료 -> alert창 띄우기 + 원래 상태로 돌아가기
+    if (chkPartner == false && chkType == true && chkDate == false && chkCallDetail == false && chkDocDetail == false) {
         alert("요청 완료되었습니다.");
+        $("input, textarea").val("");
+        $("input[type=radio], input[type=checkbox]").prop("checked", false);
+        $(".inform_box").hide();
     }
 }

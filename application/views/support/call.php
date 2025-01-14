@@ -42,10 +42,10 @@
   	gtag('config', 'G-NMXDBRXH4Y');
     
 	gtag('event', 'screen_view', {
-		'app_name': 'dr-wave.co.kr',
-		'screen_name': 'Home'
+		'2pp_name': 'dr-wave.co.kr',
+		'3creen_name': 'Home'
 	});
-	
+4
 // 	$(function(){
 // 		$("#btnGtag").click(function(){
 // 			gtag('event', 'click_GTAG_BTN');
@@ -115,11 +115,6 @@
                                 <span>날짜</span>
                                 <input type="date" id="date" name="date" placeholder="날짜 선택" />
                             </div>
-
-                            <div class="inform time">
-                                <span>시간</span>
-                                <input type="time" id="time" name="time" />
-                            </div>
                             
                             <div class="inform text">
                                 <span>요청 내용</span>
@@ -164,64 +159,57 @@
                     <input type="text" name="sch_bar" id="sch_bar" class="sch_bar" placeholder="검색어를 입력하세요.">
                     <button type="button" class="btn_sch">검색</button>
                 </div>
-                <table class="list_table">
-                    <colgroup>
-                        <col width="5%">
-                        <col width="15%">
-                        <col width="40%">
-                        <col width="20%">
-                        <col width="20%">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th>
-                                <input type="checkbox" class="checkbox" name="chk_all" id="chk_all">
-                            </th>
-                            <th>이름</th>
-                            <th>이메일</th>
-                            <th>연락처</th>
-                            <th>부서</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
+                <div class="list_table">
+                    <div class="table_head">
+                        <div class="th th1">
+                            <!-- <input type="checkbox" class="checkbox" name="chk_all" id="chk_all"> -->
+                        </div>
+                        <div class="th th2">이름</div>
+                        <div class="th th3">이메일</div>
+                        <div class="th th4">연락처</div>
+                        <div class="th th5">부서</div>
+                    </div>
+
+                    <div class="table_body">
+                        <div class="table_row">
+                            <div class="td td1">
                                 <input type="checkbox" class="checkbox" name="chk_p">
-                            </td>
-                            <td class="p_name">홍길동</td>
-                            <td class="p_email">dwave_it@d-wave.co.kr</td>
-                            <td>010-1111-2222</td>
-                            <td>XX부서</td>
-                        </tr>
-                        <tr>
-                            <td>
+                            </div>
+                            <div class="td td2 p_name">홍길동</div>
+                            <div class="td td3 p_email">dwave_it@d-wave.co.kr</div>
+                            <div class="td td4">010-1111-2222</div>
+                            <div class="td td5">XX부서</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="td td1">
                                 <input type="checkbox" class="checkbox" name="chk_p">
-                            </td>
-                            <td class="p_name">네이버</td>
-                            <td class="p_email">naver@naver.com</td>
-                            <td>010-1234-1234</td>
-                            <td>YY부서</td>
-                        </tr>
-                        <tr>
-                            <td>
+                            </div>
+                            <div class="td td2 p_name">네이버</div>
+                            <div class="td td3 p_email">naver@naver.com</div>
+                            <div class="td td4">010-1234-1234</div>
+                            <div class="td td5">YY부서</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="td td1">
                                 <input type="checkbox" class="checkbox" name="chk_p">
-                            </td>
-                            <td class="p_name">김구글</td>
-                            <td class="p_email">google@gmail.com</td>
-                            <td>010-2222-3333</td>
-                            <td>AA부서</td>
-                        </tr>
-                        <tr>
-                            <td>
+                            </div>
+                            <div class="td td2 p_name">김구글</div>
+                            <div class="td td3 p_email">google@gmail.com</div>
+                            <div class="td td4">010-2222-3333</div>
+                            <div class="td td5">AA부서</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="td td1">
                                 <input type="checkbox" class="checkbox" name="chk_p">
-                            </td>
-                            <td class="p_name">이다음</td>
-                            <td class="p_email">daum@daum.net</td>
-                            <td>010-3333-4444</td>
-                            <td>DD부서</td>
-                        </tr>
-                    </tbody>
-                </table>
+                            </div>
+                            <div class="td td2 p_name">이다음</div>
+                            <div class="td td3 p_email">daum@daum.net</div>
+                            <div class="td td4">010-3333-4444</div>
+                            <div class="td td5">DD부서</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="p_list_footer">
                     <button type="button" class="btn_select">다음</button>
                 </div>
