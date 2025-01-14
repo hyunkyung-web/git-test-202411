@@ -15,6 +15,7 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
+	<link rel="stylesheet" href="/public/common/css/reset.css" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
 
 	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -73,66 +74,66 @@
             		<table class="form-table">
             			<colgroup>
             				<col width="25%" />
-            				<col width="75%" />				
+            				<col width="75%" />
             			</colgroup>
             			<tbody>
             			<tr>
-            				<th class="full_line">회원번호</th>
+            				<th class="full_line"><label for="idx">회원번호</label></th>
             				<td class="full_line">
             					<input type="text" name="idx" id="idx" style="max-width: 25%;" value="<?php echo $info["idx"];?>" placeholder="회원번호" readonly/>
             				</td>
             			</tr>
             			<tr>
-            				<th class="full_line">성명</th>
+            				<th class="full_line"><label for="member_nm">성명</label></th>
             				<td class="full_line"><input type="text" name="member_nm" id="member_nm" value="<?php echo $info["member_nm"];?>" placeholder="성명" /></td>
             			</tr>
             			<tr>
-            				<th class="full_line">휴대전화번호</th>
+            				<th class="full_line"><label for="cellphone">휴대전화번호</label></th>
             				<td class="full_line"><input type="text" name="cellphone" id="cellphone" value="<?php echo $info["cellphone"];?>" placeholder="휴대전화번호(숫자만 입력하세요)" onkeyup="javascript: cmmOnNumber(this);"/></td>
             			</tr>
             			<tr>
-            				<th class="full_line">이메일</th>
+            				<th class="full_line"><label for="member_email">이메일</label></th>
             				<td class="full_line"><input type="text" name="member_email" id="member_email" value="<?php echo $info["member_email"];?>" placeholder="이메일" onblur="javsascript: cmmOnEmail(this);"/></td>
             			</tr>
-            			
+
             			<tr>
-            				<th class="full_line">회원구분</th>
+            				<th class="full_line"><label>회원구분</label></th>
             				<td class="full_line">
             					<label><input type="radio" name="member_type" id="member_type_1" value="hcp" <?php echo $info["member_type"]=="hcp" ? "checked" : '';?>/>HCP</label>
             					<label><input type="radio" name="member_type" id="member_type_2" value="pharm" <?php echo $info["member_type"]=="pharm" ? "checked" : '';?>/>Pharm</label>
-            					<label><input type="radio" name="member_type" id="member_type_3" value="etc" <?php echo $info["member_type"]=="etc" ? "checked" : '';?>/>Etc</label>            					
+            					<label><input type="radio" name="member_type" id="member_type_3" value="etc" <?php echo $info["member_type"]=="etc" ? "checked" : '';?>/>Etc</label>
             				</td>
             			</tr>
             			<tr>
-            				<th class="full_line">근무처</th>
+            				<th class="full_line"><label for="biz_nm">근무처</label></th>
             				<td class="full_line">
             					<input type="text" name="biz_nm" id="biz_nm" value="<?php echo $info["biz_nm"];?>" placeholder="근무처"/>
             				</td>
             			</tr>
             			<tr>
-            				<th class="full_line">부서/전공</th>
+            				<th class="full_line"><label for="specialty">부서/전공</label></th>
             				<td class="full_line">
             					<input type="text" name="specialty" id="specialty" value="<?php echo $info["specialty"];?>" placeholder="부서/전공"/>
             				</td>
-            			</tr>	            			
+            			</tr>
             			<tr>
-            				<th class="full_line">계정상태</th>
+            				<th class="full_line"><label>계정상태</label></th>
             				<td class="full_line">
             					<label><input type="radio" name="member_status" id="member_status_1" value="hold" <?php echo $info["member_status"]=="hold" ? "checked" : '';?>/>보류</label>
             					<label><input type="radio" name="member_status" id="member_status_2" value="active" <?php echo $info["member_status"]=="active" ? "checked" : '';?>/>활동</label>
             					<label><input type="radio" name="member_status" id="member_status_3" value="expire" <?php echo $info["member_status"]=="expire" ? "checked" : '';?>/>만료</label>
             					<input type="hidden" name="before_status" value="<?php echo $info["member_status"];?>"/>
             				</td>
-            			</tr>	
+            			</tr>
             			<tr>
-            				<th class="full_line">UUID</th>
+            				<th class="full_line"><label for="uuid">UUID</label></th>
             				<td class="full_line">
             					<input type="text" name="uuid" id="uuid" value="<?php echo $info["uuid"];?>" placeholder="UUID"/>
             				</td>
-            			</tr>		
-            			</tbody>		
+            			</tr>
+            			</tbody>
             		</table>
-            		<input type="hidden" name="editMode" id="editMode" value="<?php echo $editMode;?>"/>		
+            		<input type="hidden" name="editMode" id="editMode" value="<?php echo $editMode;?>"/>
             		</form>
 
                     <div class="btn-wrap">

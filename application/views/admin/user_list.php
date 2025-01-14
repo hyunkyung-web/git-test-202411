@@ -72,15 +72,15 @@
             <!-- flex 2 -->
             <main class="main-content">
                 <div>
-                    <header class="main-header">                    	
-                        <div class="main-header-firstLine">                            
+                    <header class="main-header">
+                        <div class="main-header-firstLine">
                             <!-- button 추가 -->
                             <div>
                                 <button type="button" class="add-user btn1" onclick="javascript: openMenu(601);"><i class="fa-solid fa-circle-plus"></i> New</button>
                                 <button type="button" class="delete-user btn2" onclick="#"><i class="fa-solid fa-circle-minus"></i> Del</button>
                             </div>
                         </div>
-                        
+
 						<form name="frmSearch" id="frmSearch" style="width: 100%;">
                         <div class="search-bar">
                             <input type="hidden" name="sch_1">
@@ -88,9 +88,9 @@
                             <button type="button" class="search-button" onclick="javascript: userList(1);">Search</button>
                         </div>
                         </form>
-                        
+
                     </header>
-                    
+
                     <table class="list-table">
                     	<colgroup>
                     		<col width="5%"/>
@@ -103,7 +103,7 @@
                             <tr>
                                 <th align="center">
                                     <label>
-                                        <input type="checkbox">
+                                        <input type="checkbox" class="display-none">
                                         <span class="custom-checkbox"></span>
                                     </label>
                                 </th>
@@ -113,23 +113,23 @@
                                 <th>이메일</th>
                             </tr>
                         </thead>
-                        <tbody id="item-list"><?php 
+                        <tbody id="item-list"><?php
                         if(count($data)>0){
                             foreach($data as $row){?>
                                 <tr>
                                     <td align="center">
                                         <label>
-                                            <input type="checkbox">
+                                            <input type="checkbox" class="display-none">
                                             <span class="custom-checkbox"></span>
                                         </label>
                                     </td>
                                     <td style="text-align: left;"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_nm"];?></a></td>
                                     <td style="text-align: left;"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_id"];?></a></td>
                                     <td style="text-align: left;"><?php echo $row["company"].'-'.$row["dept"];?></td>
-                                    <td style="text-align: left;"><?php echo $row["user_email"];?></td>                               
-                                </tr><?php 
+                                    <td style="text-align: left;"><?php echo $row["user_email"];?></td>
+                                </tr><?php
                             }
-                        } else { 
+                        } else {
                             echo '<tr><td align="center" style="height: 5em; border: none;" colspan="20">검색결과가 없습니다.</td></tr>';
                         }?>
                         </tbody>
@@ -139,7 +139,7 @@
                 </div>
 
 
- 
+
             </main>
 
         </div>

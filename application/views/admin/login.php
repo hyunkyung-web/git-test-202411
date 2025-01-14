@@ -69,7 +69,7 @@
             <input type="text" id="user_id" name="user_id" placeholder="아이디" value="<?php echo get_cookie("login_id");?>" required>
             <input type="password" id="user_pw" name="user_pw" placeholder="비밀번호" value="<?php echo get_cookie("login_pw");?>" required>
             <div class="remember-me">
-                <input type="checkbox" id="chk_save_info" name="chk_save_info" value="Y" <?php echo get_cookie("login_id")!="" ? 'checked' : '';?>><label for="remember">로그인 저장</label>
+                <input type="checkbox" id="chk_save_info" name="chk_save_info" value="Y" <?php echo get_cookie("login_id")!="" ? 'checked' : '';?>><label for="chk_save_info">로그인 저장</label>
             </div>
             <button type="button" class="btn-login">로그인</button>
         </form>

@@ -19,10 +19,10 @@
     <link rel="stylesheet" href="/public/common/css/admin.css" />
 
 
-    <script src="/public/common/script/fontawesome.all.min.js"></script>    
+    <script src="/public/common/script/fontawesome.all.min.js"></script>
     <script type="text/javascript" src="/public/common/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-    
-    
+
+
 	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   	<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 
@@ -90,7 +90,7 @@
                                     <td><input type="text" id="title" name="title" value="<?php echo $info["title"];?>"/></td>
                                 </tr>
                                 <tr>
-                                    <th><label for="category">컨텐츠타입</label></th>
+                                    <th><label for="contents_type">컨텐츠타입</label></th>
                                     <td>
                                         <select class="category-select form-select" id="contents_type" name="contents_type">
                                             <option value="">선택</option>
@@ -101,11 +101,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th><label for="title">컨텐츠설명</label></th>
+                                    <th><label for="description">컨텐츠설명</label></th>
                                     <td><textarea name="description" id="description" cols="20" rows="2" style="width: 100%;"><?php echo $info["description"];?></textarea></td>
                                 </tr>
                                 <tr>
-                                    <th>첨부파일<?php echo !empty($info["attach_file"]) ? '&nbsp;<a href="'.$info["attach_file"].'" target="_blank">💾</a>': '';?></th>
+                                    <th><label>첨부파일<?php echo !empty($info["attach_file"]) ? '&nbsp;<a href="'.$info["attach_file"].'" target="_blank">💾</a>': '';?></label></th>
                                     <td class="add-file">
                                         <label for="attach_file"> <i class="fa-solid fa-circle-check"></i> 파일추가</label>
                                         <input type="file" name="attach_file" id="attach_file" style="display: none" onchange="updateFileName()" />
