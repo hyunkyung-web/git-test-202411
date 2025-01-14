@@ -73,7 +73,7 @@
                     <div class="form_item call_item">
                         <div class="chatBot">
                             <img src="/public/images/icon/icon_face.png" alt="icon_bot" class="icon_bot">
-                            <input type="text"  name="partner" id="partner" placeholder="담당자를 선택해주세요." readonly="readonly" value="dwave"/>
+                            <input type="text"  name="partner" id="partner" placeholder="담당자를 선택해주세요." readonly="readonly" value=""/>
                         </div>
                         <div class="select_contact">담당자 검색</div>
                     </div>
@@ -186,57 +186,39 @@
                     <tbody>
                         <tr>
                             <td>
-                                <input type="checkbox" class="checkbox" name="chk_p" id="chk_p">
+                                <input type="checkbox" class="checkbox" name="chk_p">
                             </td>
-                            <td>홍길동</td>
-                            <td>dwave_it@d-wave.co.kr</td>
+                            <td class="p_name">홍길동</td>
+                            <td class="p_email">dwave_it@d-wave.co.kr</td>
                             <td>010-1111-2222</td>
                             <td>XX부서</td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox" class="checkbox" name="chk_p" id="chk_p">
+                                <input type="checkbox" class="checkbox" name="chk_p">
                             </td>
-                            <td>홍길동</td>
-                            <td>dwave_it@d-wave.co.kr</td>
-                            <td>010-1111-2222</td>
-                            <td>XX부서</td>
+                            <td class="p_name">네이버</td>
+                            <td class="p_email">naver@naver.com</td>
+                            <td>010-1234-1234</td>
+                            <td>YY부서</td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox" class="checkbox" name="chk_p" id="chk_p">
+                                <input type="checkbox" class="checkbox" name="chk_p">
                             </td>
-                            <td>홍길동</td>
-                            <td>dwave_it@d-wave.co.kr</td>
-                            <td>010-1111-2222</td>
-                            <td>XX부서</td>
+                            <td class="p_name">김구글</td>
+                            <td class="p_email">google@gmail.com</td>
+                            <td>010-2222-3333</td>
+                            <td>AA부서</td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox" class="checkbox" name="chk_p" id="chk_p">
+                                <input type="checkbox" class="checkbox" name="chk_p">
                             </td>
-                            <td>홍길동</td>
-                            <td>dwave_it@d-wave.co.kr</td>
-                            <td>010-1111-2222</td>
-                            <td>XX부서</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" class="checkbox" name="chk_p" id="chk_p">
-                            </td>
-                            <td>홍길동</td>
-                            <td>dwave_it@d-wave.co.kr</td>
-                            <td>010-1111-2222</td>
-                            <td>XX부서</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" class="checkbox" name="chk_p" id="chk_p">
-                            </td>
-                            <td>홍길동</td>
-                            <td>dwave_it@d-wave.co.kr</td>
-                            <td>010-1111-2222</td>
-                            <td>XX부서</td>
+                            <td class="p_name">이다음</td>
+                            <td class="p_email">daum@daum.net</td>
+                            <td>010-3333-4444</td>
+                            <td>DD부서</td>
                         </tr>
                     </tbody>
                 </table>
