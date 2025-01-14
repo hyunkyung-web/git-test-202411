@@ -9,7 +9,7 @@ class Msg_model extends CI_Model {
     
     public function template_list($opt) {
         
-        $strWhere = "where (use_yn is null or use_yn != 'N') ";
+        $strWhere = "where idx > 0 ";
         
         if($opt["profile_type"] != ''){
             $strWhere.= "and (profile_type = '".$opt["profile_type"]."') ";
@@ -17,6 +17,10 @@ class Msg_model extends CI_Model {
         
         if($opt["template_type"] != ''){
             $strWhere.= "and (template_type = '".$opt["template_type"]."') ";
+        }
+        
+        if($opt["use_yn"] != ''){
+            $strWhere.= "and (use_yn = '".$opt["use_yn"]."') ";
         }
         
         if(trim($opt["keyword"]) != ""){
@@ -83,11 +87,11 @@ class Msg_model extends CI_Model {
         if($opt["editMode"] == "N") {
             
             $sql = "insert into tb_msg_template (";
-            $sql.= "template_type, template_cd, template_nm, img_url, img_link, template_msg, profile_type, profile_key, wdate, wuser, use_yn) values (";
-            $sql.= "'".$opt["template_type"]."', '".$opt["template_cd"]."', '".$opt["template_nm"]."', ";
+            $sql.= "template_type, template_cd, title, img_url, img_link, template_msg, profile_type, profile_key, use_yn, wdate, wuser) values (";
+            $sql.= "'".$opt["template_type"]."', '".$opt["template_cd"]."', '".$opt["title"]."', ";
             $sql.= "'".$opt["img_url"]."', '".$opt["img_link"]."', ";
-            $sql.= "'".$opt["template_msg"]."', '".$opt["profile_type"]."', '".$opt["profile_key"]."', ";
-            $sql.= "now(), '".$session_id."', 'Y') ";
+            $sql.= "'".$opt["template_msg"]."', '".$opt["profile_type"]."', '".$opt["profile_key"]."', '".$opt["use_yn"]."', ";
+            $sql.= "now(), '".$session_id."') ";
             
             $data = $this->db->query($sql);
             $rtn_idx = $this->db->insert_id();
@@ -121,7 +125,7 @@ class Msg_model extends CI_Model {
             $sql = "update tb_msg_template set ";            
             $sql.= "template_type = '".$opt["template_type"]."', ";
             $sql.= "template_cd = '".$opt["template_cd"]."', ";
-            $sql.= "template_nm = '".$opt["template_nm"]."', ";
+            $sql.= "title = '".$opt["title"]."', ";
             $sql.= "img_url = '".$opt["img_url"]."', ";
             $sql.= "img_link = '".$opt["img_link"]."', ";
             $sql.= "template_msg = '".$opt["template_msg"]."', ";
@@ -146,7 +150,7 @@ class Msg_model extends CI_Model {
                     $sql.= "btn_link_".$j." = NULL, ";
                 }
             }
-            
+            $sql.= "use_yn = '".$opt["use_yn"]."', ";
             $sql.= "udate = now(), ";
             $sql.= "uuser = '".$session_id."' ";
             $sql.= "where idx=".$opt["idx"]." ";

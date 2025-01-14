@@ -11,6 +11,10 @@ class Contents_model extends CI_Model {
         
         $strWhere = "where idx > -1 ";
         
+        if(trim($opt["contents_type"]!="")){
+            $strWhere.= "and contents_type='".$opt["contents_type"]."' ";
+        }
+        
         if(trim($opt["keyword"]) != ""){
             if(mb_strpos(trim($opt["keyword"]), '+')){
                 

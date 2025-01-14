@@ -79,18 +79,14 @@
                         <div class="main-header-firstLine">                            
                             <!-- button 추가 -->
                             <div>
-                                <button type="button" class="add-user btn1" onclick="javascript: openMenu(202);"><i class="fa-solid fa-circle-plus"></i> New</button>
+                                <button type="button" class="add-user btn1" onclick="javascript: openMenu(201);"><i class="fa-solid fa-circle-plus"></i> New</button>
                                 <button type="button" class="delete-user btn2" onclick="#"><i class="fa-solid fa-circle-minus"></i> Del</button>
                             </div>
                         </div>
                         
 						<form name="frmSearch" id="frmSearch" style="width: 100%;">
                         <div class="search-bar">
-                            <select class="category-select list-select" name="sch_1">
-                                <option value="">구분</option>
-                                <option value="000">공지사항</option>
-                                <option value="010">뉴스</option>
-                            </select>
+                            <input type="hidden" name="sch_1">
                             <input type="text" name="sch_2" placeholder="Search..." class="search-input" autocomplet="off" value="<?php echo $schData["sch_2"];?>" />
                             <button type="button" class="search-button" onclick="javascript:templateList(1);">Search</button>
                         </div>
@@ -100,39 +96,29 @@
                     
                     <table class="list-table">
                     	<colgroup>
-                    		<col width="5%"/>
                     		<col width="25%"/>
                     		<col width="50%"/>
                     		<col width="10%"/>
                     		<col width="10%"/>
+                    		<col width="5%"/>
                     	</colgroup>
                         <thead>
                             <tr>
-                                <th align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </th>
-                                <th>템플릿명/코드</th>
-                                <th>메세지</th>
+                                <th>템플릿코드</th>
+                                <th>제목/메세지</th>
                                 <th>등록일자</th>
                                 <th>작성자</th>
+                                <th>사용</th>
                             </tr>
                         </thead>
                         <tbody id="item-list"><?php 
                         foreach($data as $row){?>
                             <tr>
-                                <td align="center">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                </td>
                                 <td style="text-align: left;"><a href="/admin/template_form/<?php echo $row["idx"];?>"><?php echo $row["template_nm"].'('.$row["template_cd"].')';?></a></td>
-                                <td><div  class="no_overflow"><?php echo $row["template_msg"];?></div></td>
+                                <td><div  class="no_overflow"><?php echo '<strong>'.$row["title"].'</strong><br/>'.$row["template_msg"];?></div></td>
                                 <td><?php echo date('Y-m-d', strtotime($row["wdate"]));?></td>
-                                <td><?php echo getExist($row["wuser"], 'noname');?></td>                                
+                                <td><?php echo getExist($row["wuser"], 'noname');?>
+                                <td><?php echo $row["use_yn"];?></td>                                
                             </tr><?php 
                         }?>                            
                         </tbody>

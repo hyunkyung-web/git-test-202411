@@ -79,11 +79,10 @@
                 <div id="tabs">
                 	<div>
                         <ul>
-                            <li><a href="#tabs-1">템플릿설정</a></li>
-                            <li><a href="#tabs-2">미리보기</a></li>
-                            <li><a href="#tabs-3">친구톡발송</a></li>
-                            <li><a href="#tabs-4">이메일발송</a></li>
-                            <li><a href="#tabs-5">LMS발송</a></li>
+                            <li><a href="#tabs-1">메세지정보</a></li>
+                            <li><a href="#tabs-2">카카오톡</a></li>
+                            <li><a href="#tabs-3">이메일</a></li>
+                            <li><a href="#tabs-4">LMS</a></li>
         				</ul>
     				</div>
 
@@ -96,63 +95,44 @@
 								</colgroup>
 								<tbody>
 								<tr>
-									<th class="full_line require">발신키구분</th>
-									<td class="full_line">
-										<select class="form-select" name="profile_key" id="profile_key"><?php
-											foreach($dataProfile as $row){?>
-											<option value="<?php echo $row["key"];?>" <?php echo $info["profile_key"]==$row["key"] ? "selected" : "";?>><?php echo $row["profile_nm"];?></option><?php
-										}?>
-										</select>
-										<input type="hidden" name="profile_type" id="profile_type" value="<?php echo $info["profile_type"];?>"/>
-									</td>
-								</tr>
-								<tr>
 									<th class="full_line require">발송구분</th>
 									<td class="full_line">
 										<!-- <label><input type="radio" name="template_type" id="msg_type_1" value="at" <?php echo $info["template_type"]=="at" ? "checked" : "";?>/><span>알림톡</span></label> -->
 										<label><input type="radio" name="template_type" id="msg_type_2" value="ft" <?php echo $info["template_type"]=="ft" ? "checked" : "";?>/><span>친구톡</span></label>
-									</td>
-								</tr>
-								<tr>
-									<th class="full_line require">사용여부</th>
-									<td class="full_line">
-										<label><input type="radio" name="use_yn" id="use_yn_1" value="Y" <?php echo $info["use_yn"]=="Y" ? "checked" : "";?>/><span>사용</span></label>
-										<label><input type="radio" name="use_yn" id="use_yn_2" value="N" <?php echo $info["use_yn"]=="N" ? "checked" : "";?>/><span>사용안함</span></label>
+										<input type="hidden" name="profile_key" id="profile_key" value="<?php echo $info["profile_key"];?>"/>
 									</td>
 								</tr>
 								<tr>
 									<th class="full_line require">템플릿코드</th>
-									<td class="full_line"><input type="text" name="template_cd" id="template_cd" value="<?php echo $info["template_cd"];?>" placeholder="템플릿코드" /></td>
+									<td class="full_line"><input type="text" name="template_cd" id="template_cd" value="<?php echo $info["template_cd"];?>" placeholder="템플릿코드" readonly/></td>
 								</tr>
 								<tr>
 									<th class="full_line require">제목</th>
-									<td class="full_line"><input type="text" name="title" id="title" value="<?php echo $info["title"];?>" placeholder="템플릿명" /></td>
+									<td class="full_line"><input type="text" name="title" id="title" value="<?php echo $info["title"];?>" placeholder="템플릿명" readonly/></td>
 								</tr>
 								<tr>
-									<th onclick="javascript:cmmOpenPop('.pop_img');" style="cursor: pointer;">이미지선택</th>
+									<th onclick="javascript:cmmOpenPop('.pop_img');" style="cursor: pointer;">이미지</th>
 									<td>
-										<input type="text" name="img_url" id="img_url" value="<?php echo $info["img_url"];?>" readonly />
+										<input type="text" name="img_url" id="img_url" value="<?php echo $info["img_url"];?>" readonly/>
 									</td>
 								</tr>
 								<tr>
 									<th>이미지링크</th>
-									<td><input type="text" name="img_link" id="img_link" value="<?php echo $info["img_link"];?>"/></td>
+									<td><input type="text" name="img_link" id="img_link" value="<?php echo $info["img_link"];?>" readonly/></td>
 								</tr>
 								<tr>
 									<th class="full_line require">메세지내용</th>
 									<td class="full_line">
-										<textarea name="template_msg" id="template_msg" placeholder="템플릿 메세지를 입력해주세요" onkeyup="javascript: adjustHeight('#template_msg');"><?php echo $info["template_msg"];?></textarea>
+										<textarea name="template_msg" id="template_msg" placeholder="템플릿 메세지를 입력해주세요" readonly><?php echo $info["template_msg"];?></textarea>
 									</td>
 								</tr>
 								<tr>
-									<th class="full_line" onclick="javascript:msgBtnAdd();" style="cursor: pointer;">버튼추가+</th>
-									<td class="full_line"></td>
+									<th colspan="2">버튼 정보</th>
 								</tr>
 								<tfoot class="item ft" id="ftButton"><?php
 								for($i=1; $i<=$info["btn_cnt"]; $i++){?>
 									<tr>
 										<td>
-											<button type="button" class="btn_remove" onclick="msgBtnRemove(this);">X</button>&nbsp;&nbsp;
 											<select class="category-select form-select" name="btn_type[]">
 												<option value="WL" <?php echo $info["btn_type_".$i] == "WL" ? "selected" : "";?>>웹버튼</option>
 											</select>
@@ -166,14 +146,10 @@
 								</tfoot>
 								</tbody>
 							</table>
-							<input type="hidden" name="editMode" id="editMode" value="<?php echo $editMode;?>"/>
 							<input type="hidden" name="idx" id="idx" value="<?php echo $idx;?>"/>
                 		</form>
 
-                        <div class="btn-wrap">
-                            <button type="button" class="save-user form-btn" onclick="javascript:templateSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
-                            <a href="<?php echo get_cookie("callback_url");?>"><button type="button" class="cancel-user form-btn"><i class="fa-solid fa-circle-minus"></i> cancel</button></a>
-                        </div>
+                        <div class="btn-wrap"></div>
                 	</div>
 
                 	<div id="tabs-2">
@@ -222,19 +198,6 @@
     						</table>
     					</form>
     				</div>
-    				<div id="tabs-5">
-                    	<form name="frm_lms" id="frm_lms">
-    						<table class="form-table">
-    							<colgroup>
-    								<col width="25%" />
-    								<col width="75%" />
-    							</colgroup>
-    							<tbody>
-    							</tbody>
-    						</table>
-    					</form>
-    				</div>
-    				
 				</div>
     				
 

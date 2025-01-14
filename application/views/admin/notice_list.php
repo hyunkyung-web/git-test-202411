@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Internal User List</title>
+	<title>Notice List</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="Dr-Round" />
@@ -76,7 +76,7 @@
                         <div class="main-header-firstLine">                            
                             <!-- button 추가 -->
                             <div>
-                                <button type="button" class="add-user btn1" onclick="javascript: openMenu(601);"><i class="fa-solid fa-circle-plus"></i> New</button>
+                                <button type="button" class="add-user btn1" onclick="javascript: openMenu(301);"><i class="fa-solid fa-circle-plus"></i> New</button>
                                 <button type="button" class="delete-user btn2" onclick="#"><i class="fa-solid fa-circle-minus"></i> Del</button>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                         <div class="search-bar">
                             <input type="hidden" name="sch_1">
                             <input type="text" name="sch_2" placeholder="Search..." class="search-input" autocomplet="off" value="<?php echo $schData["sch_2"];?>" />
-                            <button type="button" class="search-button" onclick="javascript: userList(1);">Search</button>
+                            <button type="button" class="search-button" onclick="javascript: noticeList(1);">Search</button>
                         </div>
                         </form>
                         
@@ -94,10 +94,11 @@
                     <table class="list-table">
                     	<colgroup>
                     		<col width="5%"/>
-                    		<col width="25%"/>
+                    		<col width="5%"/>
                     		<col width="20%"/>
-                    		<col width="25%"/>
-                    		<col width="25%"/>
+                    		<col width="50%"/>
+                    		<col width="10%"/>
+                    		<col width="10%"/>
                     	</colgroup>
                         <thead>
                             <tr>
@@ -107,29 +108,31 @@
                                         <span class="custom-checkbox"></span>
                                     </label>
                                 </th>
-                                <th>성명</th>
-                                <th>아이디</th>
-                                <th>소속/부서</th>
-                                <th>이메일</th>
+                                <th>No</th>
+                                <th>구분</th>
+                                <th>제목</th>
+                                <th>작성자</th>
+                                <th>작성일</th>
                             </tr>
                         </thead>
                         <tbody id="item-list"><?php 
                         if(count($data)>0){
                             foreach($data as $row){?>
-                                <tr>
-                                    <td align="center">
-                                        <label>
-                                            <input type="checkbox">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                    </td>
-                                    <td style="text-align: left;"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_nm"];?></a></td>
-                                    <td style="text-align: left;"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_id"];?></a></td>
-                                    <td style="text-align: left;"><?php echo $row["company"].'-'.$row["dept"];?></td>
-                                    <td style="text-align: left;"><?php echo $row["user_email"];?></td>                               
-                                </tr><?php 
+                            <tr>
+                                <td align="center">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span class="custom-checkbox"></span>
+                                    </label>
+                                </td>
+                                <td><?php echo $row["idx"];?></td>
+                                <td><?php echo $row["contents_type"];?></td>
+                                <td class="align_left"><a href="/admin/contents_form/<?php echo $row["idx"];?>"><?php echo $row["title"];?></a></td>
+                                <td><?php echo $row["wuser"];?></td>
+                                <td><?php echo date('Y-m-d', strtotime($row["wdate"]));?></td>
+                            </tr><?php 
                             }
-                        } else { 
+                        } else {
                             echo '<tr><td align="center" style="height: 5em; border: none;" colspan="20">검색결과가 없습니다.</td></tr>';
                         }?>
                         </tbody>

@@ -13,15 +13,15 @@
 	<meta property="og:image" content="https://dr-wave.co.kr/public/images/logo.png"/>
 	<meta property="og:url" content="" />
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
-    <script type="text/javascript" src="/public/common/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery.touchSwipe.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>
-    <script type="text/javascript" src="/public/common/common.js?ver=2205031000"></script>
+
+	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  	<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+
+    <script src="/public/common/script/fontawesome.all.min.js"></script>
+    <script defer type="text/javascript" src="/public/common/script/common.js"></script>
     <script defer type="text/javascript" src="/public/common/script/admin.js"></script>
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -65,14 +65,13 @@
         <div class="logo">
             <img src="/public/common/images/dwave_pro_logo.png" alt="dwave_kakao">
         </div>
-        <form class="login-form">
-            <input type="text" placeholder="아이디" required>
-            <input type="password" placeholder="비밀번호" required>
+        <form class="login-form" id="frm1" name="frm1">
+            <input type="text" id="user_id" name="user_id" placeholder="아이디" required>
+            <input type="password" id="user_pw" name="user_pw" placeholder="비밀번호" required>
             <div class="remember-me">
-                <input type="checkbox" id="remember">
-                <label for="remember">로그인 저장</label>
+                <input type="checkbox" id="chk_save_info" name="chk_save_info" value="Y"><label for="remember">로그인 저장</label>
             </div>
-            <button type="button" class="btn-login" onclick="javascript: openMenu(100);">로그인</button>
+            <button type="button" class="btn-login">로그인</button>
         </form>
     </div>
 

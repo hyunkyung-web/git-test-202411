@@ -75,7 +75,7 @@ class User_model extends CI_Model {
         exit;
     }
     
-    public function chk_user_duple($user_id){
+    public function user_duplicate_check($user_id){
         
         $sql = "select * from tb_user where user_id='".$user_id."' ";   
         $dataCnt = $this->db->query($sql)->num_rows();
@@ -95,7 +95,7 @@ class User_model extends CI_Model {
         if($opt["editMode"] == "N") {
             
             //신규등록 시 기존 사용자와의 아이디 중복여부 확인
-            $chkDuple = $this->chk_user_duple($opt["user_id"]);
+            $chkDuple = $this->user_duplicate_check($opt["user_id"]);
             
             if($chkDuple["result"] != "ok"){
                 return ["result"=>$chkDuple["result"], "msg"=>$chkDuple["msg"]];
@@ -169,6 +169,28 @@ class User_model extends CI_Model {
             return ["result"=>"ok", "msg"=>$msg, "idx"=>$rtnIdx];
         }
         exit;        
+    }
+    
+    public function admin_login_verify($opt){
+        
+        $strWhere_1 = "where use_yn='Y' and user_id='".$opt["user_id"]."' ";
+        $strWhere_2 = "and user_pw='".$opt["user_pw"]."' " ;
+        
+        $sql = "select * from tb_user ";
+        
+        $id_cnt = $this->db->query($sql.$strWhere_1)->num_rows();
+        $verify_pass = $this->db->query($sql.$strWhere_1.$strWhere_2)->num_rows();
+        $info = $this->db->query($sql.$strWhere_1.$strWhere_2)->result_array();
+        
+        return ["id_cnt" => $id_cnt, "result"=>$verify_pass, "info"=>$info];
+        exit;
+        
+    }
+    
+    public function record_user_log($opt){
+        $sql = "insert into tb_user_log (log_type, user_id, user_device, device_info, connect_ip, wdate) values ( ";
+        $sql.= "'".$opt["log_type"]."', '".$opt["user_id"]."', '".$opt["user_device"]."', '".$opt["device_info"]."', '".$opt["connect_ip"]."', now() )";
+        $this->db->query($sql);
     }
     
     

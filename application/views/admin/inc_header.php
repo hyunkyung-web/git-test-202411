@@ -4,7 +4,7 @@
             <ul class="nav-links">
                 <!-- 검색, 로그아웃, user -->
                 <li><i class="fa-solid fa-magnifying-glass"></i></li>
-                <li><i class="fa-solid fa-power-off"></i></li>
+                <li><a href="/admin/logout"><i class="fa-solid fa-power-off"></i></a></li>
                 <li><span style="color: #c6c5cd ">Hi</span>, <span>디웨이브</span></li>
             </ul>
         </nav>

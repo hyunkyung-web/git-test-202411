@@ -10,17 +10,18 @@ $arrMenu_1 = [
 ];
 
 $arrMenu_2 = [
-    ["name"=>"Contents List", "menu_num"=>"101", "pr_menu_num"=>"100"],
-    ["name"=>"Contents New", "menu_num"=>"102", "pr_menu_num"=>"100"],
-    ["name"=>"Template List", "menu_num"=>"201", "pr_menu_num"=>"200"],
-    ["name"=>"Template New", "menu_num"=>"202", "pr_menu_num"=>"200"],
-    ["name"=>"Notice List", "menu_num"=>"301", "pr_menu_num"=>"300"],
-    ["name"=>"Notice New", "menu_num"=>"302", "pr_menu_num"=>"300"],
-    ["name"=>"Member List", "menu_num"=>"501", "pr_menu_num"=>"500"],
-    ["name"=>"Member New", "menu_num"=>"502", "pr_menu_num"=>"500"],
-    ["name"=>"Internal User List", "menu_num"=>"601", "pr_menu_num"=>"600"],
-    ["name"=>"Internal User New", "menu_num"=>"602", "pr_menu_num"=>"600"],
-    ["name"=>"Report List", "menu_num"=>"901", "pr_menu_num"=>"800"],
+    ["name"=>"Contents Create", "menu_num"=>"101", "pr_menu_num"=>"100"], 
+    ["name"=>"Contents List", "menu_num"=>"102", "pr_menu_num"=>"100"],       
+    ["name"=>"Template Create", "menu_num"=>"201", "pr_menu_num"=>"200"],
+    ["name"=>"Template List", "menu_num"=>"202", "pr_menu_num"=>"200"],
+    ["name"=>"Message List", "menu_num"=>"210", "pr_menu_num"=>"200"],
+    ["name"=>"Notice Create", "menu_num"=>"301", "pr_menu_num"=>"300"],
+    ["name"=>"Notice List", "menu_num"=>"302", "pr_menu_num"=>"300"],    
+    ["name"=>"Member Create", "menu_num"=>"501", "pr_menu_num"=>"500"],
+    ["name"=>"Member List", "menu_num"=>"502", "pr_menu_num"=>"500"],    
+    ["name"=>"Internal User New", "menu_num"=>"601", "pr_menu_num"=>"600"],
+    ["name"=>"Internal User List", "menu_num"=>"602", "pr_menu_num"=>"600"],    
+    ["name"=>"Report_1", "menu_num"=>"901", "pr_menu_num"=>"800"],
 ];
 
 $view_menu = $menu_num;
@@ -31,7 +32,7 @@ $view_pr_menu = $arrMenu_2[$view_menu_array_num]["pr_menu_num"];
 <aside class="sidebar">
     <ul>
         <li class="logo">
-            <img src="/public/images/main/logo01.png" alt="">
+            <a href="/admin/main/"><img src="/public/images/main/logo01.png" alt=""></a>
         </li>
         <?php 
         foreach($arrMenu_1 as $row){?>

@@ -76,18 +76,14 @@
                         <div class="main-header-firstLine">                            
                             <!-- button 추가 -->
                             <div>
-                                <button type="button" class="add-user btn1" onclick="javascript: openMenu(502);"><i class="fa-solid fa-circle-plus"></i> New</button>
+                                <button type="button" class="add-user btn1" onclick="javascript: openMenu(501);"><i class="fa-solid fa-circle-plus"></i> New</button>
                                 <button type="button" class="delete-user btn2" onclick="#"><i class="fa-solid fa-circle-minus"></i> Del</button>
                             </div>
                         </div>
                         
 						<form name="frmSearch" id="frmSearch" style="width: 100%;">
                         <div class="search-bar">
-                            <select class="category-select list-select" name="sch_1">
-                                <option value="">성명</option>
-                                <option value="000">연락처</option>
-                                <option value="010">이메일</option>
-                            </select>
+                            <input type="hidden" name="sch_1">
                             <input type="text" name="sch_2" placeholder="Search..." class="search-input" autocomplet="off" value="<?php echo $schData["sch_2"];?>" />
                             <button type="button" class="search-button" onclick="javascript: memberList(1);">Search</button>
                         </div>

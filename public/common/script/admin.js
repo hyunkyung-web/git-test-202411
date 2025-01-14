@@ -13,6 +13,10 @@ $(function () {
 			icon.attr("class", "fas fa-chevron-down");
 		}
 	});
+	
+	$(".btn-login").click(function(){
+		loginVerify();
+	});
 
 	
 	
@@ -32,17 +36,52 @@ $(function () {
 //스마트 에디터 오브젝트
 var oEditor = [];
 
-// Mobile burger
-document.addEventListener("DOMContentLoaded", function () {
-	const hamburgerMenu = document.querySelector(".hamburger-menu");
-	const navLinks = document.querySelector(".menu-toggle");
+//// Mobile burger
+//document.addEventListener("DOMContentLoaded", function () {
+//	const hamburgerMenu = document.querySelector(".hamburger-menu");
+//	const navLinks = document.querySelector(".menu-toggle");
+//
+//	navLinks.addEventListener("click", function () {
+//		hamburgerMenu.classList.toggle("active");
+//		navLinks.classList.toggle("active");
+//	});
+//});
 
-	navLinks.addEventListener("click", function () {
-		hamburgerMenu.classList.toggle("active");
-		navLinks.classList.toggle("active");
+function loginVerify(){
+	
+	if ( $.trim($("#user_id").val()).length == 0 ) {
+		alert ('아이디를 입력하세요');
+		$("#user_id").focus();
+		return;					
+	}
+	if ( $.trim($("#user_pw").val()).length == 0 ) {
+		alert ('비밀번호를 입력하세요');
+		$("#user_pw").focus();
+		return;					
+	}
+	
+	var postData = $("#frm1").serialize();
+	
+	$.ajax({
+		type: "POST",
+		url: "/admin/login_verify",
+		data: postData,
+		dataType: "json",
+		beforeSend:function(){			
+		},
+		success: function(data){
+			if(data.result=="ok"){
+				location.replace("/admin/main");
+			}else {
+				alert(data.msg);				
+			}
+		},
+		error: function(request, status, err){
+			alert("Server Error Occured:"+ err);
+			return;
+		}
 	});
-});
-
+}
 
 function updateFileName() {
 	const fileInput = $("#attach_file").get(0);
@@ -56,29 +95,39 @@ function updateFileName() {
 function openMenu(menuNum = 0) {
 	switch (menuNum) {
 		case 101:
+			location.href = "/admin/contents_form";
+		break;
+		case 102:
 			location.href = "/admin/contents_list";
 			break;
-		case 102:
-			location.href = "/admin/contents_form";
-			break;
 		case 201:
-			location.href = "/admin/template_list";
-			break;
-		case 202:
 			location.href = "/admin/template_form";
 			break;
-		case 501:
-			location.href = "/admin/member_list";
+		case 202:
+			location.href = "/admin/template_list";
 			break;
-		case 502:
+		case 210:
+			location.href = "/admin/message_list";
+			break;
+		case 301:
+			location.href = "/admin/notice_form";
+		break;
+		case 302:
+			location.href = "/admin/notice_list";
+			break;
+		case 501:
 			location.href = "/admin/member_form";
 			break;
-		case 901:
-			location.href = "/admin/user_list";
+		case 502:
+			location.href = "/admin/member_list";
 			break;
-		case 902:
+		case 601:
 			location.href = "/admin/user_form";
 			break;
+		case 602:
+			location.href = "/admin/user_list";
+			break;
+		
 	}
 }
 
@@ -124,10 +173,74 @@ function returnList(){
 	history.go(-1);
 }
 
+function noticeList(page=1) {
+	let postUrl = "/admin/notice_list/" + page;
+
+	$("#frmSearch").attr("action", postUrl).submit();
+}
+
 function contentsList(page=1) {
 	let postUrl = "/admin/contents_list/" + page;
 
 	$("#frmSearch").attr("action", postUrl).submit();
+}
+
+function noticeSave(editMode) {
+	
+	oEditor.getById["body_text"].exec("UPDATE_CONTENTS_FIELD", []);
+	//	var reqArr = ["txtNm", "txtDate", "txtTime", "txtRuntime", "txtAgenda", "txtSpeaker", "txtPasskey"];
+	//	var chkReq = false;
+	//
+	//	if(editMode == "D"){
+	//		if(!confirm('데이터를 삭제하시겠습니까?')){
+	//			return;
+	//		}
+	//		imgDelete('event', $("#txtIdx").val(), "delete");
+	//	} else {
+	//		$.each(reqArr, function(idx, item){
+	//			if($.trim($("#"+item).val()).length == 0){
+	//				cmmShowMsg ($("#"+item).prop("placeholder")+' 필수입력 누락입니다.');
+	//				$("#"+item).focus();
+	//				chkReq = true;
+	//				return false;
+	//			}
+	//		});
+	//		if(chkReq){
+	//			console.log('필수입력 누락');
+	//			return;
+	//		}
+	//	}
+
+	$("#editMode").val(editMode);
+	var postData = new FormData($("#frm1")[0]);
+	//	var postData = $("#frm1").serialize();
+
+	$.ajax({
+		type: "POST",
+		enctype: "multipart/form-data",
+		contentType: false,
+		processData: false,
+		url: "/admin/contents_save",
+		data: postData,
+		dataType: "json",
+		beforeSend: function () {},
+		success: function (data) {
+			alert(data.msg);
+			if (editMode != "D") {
+				$("#idx").val(data.rtn_idx);
+				if(data.result=="ok"){
+					location.replace("/admin/notice_form/"+data.idx);	
+				}				
+			} else {
+				contentsList();
+			}
+			return;
+		},
+		error: function (request, status, err) {
+			console.log(err);
+			return;
+		},
+	});
 }
 
 /******************************************************************
@@ -255,6 +368,12 @@ function templateSave(editMode) {
 			return;
 		},
 	});
+}
+
+function messageList(page=1) {
+	let postUrl = "/admin/message_list/" + page;
+
+	$("#frmSearch").attr("action", postUrl).submit();
 }
 
 
@@ -386,6 +505,7 @@ function userSave(editMode){
 		beforeSend:function(){
 		},
 		success: function(data){
+			alert(data.msg);
 			if(data.result=="ok"){
 				location.replace("/admin/user_form/"+data.idx);
 			}			
