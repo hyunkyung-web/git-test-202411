@@ -15,6 +15,7 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/common/css/reset.css" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
 
 	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -162,7 +163,7 @@
                 			<tr>
                 				<td style="vertical-align: top;">
                         			<div class="mobile_screen">
-                            			<div><?php 
+                            			<div><?php
                             			if(!empty($info["img_link"])){
                             			    echo '<a href="'.$info["img_link"].'" target="_black"><img src="'.$info["img_url"].'"/></a>';
                             			}else {
@@ -172,21 +173,81 @@
                             			<div><?php echo nl2br($info["title"].'<br/><br/>'.$info["template_msg"]);?></div>
                             			<div style="text-align: center;"><?php
                             			for($i=1; $i<=$info["btn_cnt"]; $i++){?>
-                            			     <a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php 
+                            			     <a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php
                             			}?>
             							</div>
                         			</div>
                 				</td>
                 				<td style="vertical-align: top; text-align: left;">
                 					<div class="mobile_screen">
-                						<input type="text" name="kakako_target" id="kakako_target" style="width: 90%;" />
-                						<button onclick="javascript: sendKakaoTalk('ft');">친구톡 발송</button>
+										<div class="address_list">
+											<form name="frmSearch" id="frmSearch" >
+												<div class="search-bar">
+													<input type="hidden" name="sch_1">
+													<input type="text" name="sch_2" placeholder="Search..." class="search-input" autocomplet="off" value="<?php echo $schData["sch_2"];?>" />
+													<button type="button" class="search-button" onclick="javascript: noticeList(1);">Search</button>
+												</div>
+											</form>
+											<div class="list_table_wrap">
+												<table class="list-table">
+													<colgroup>
+														<col width="5%"/>
+														<col width="95%"/>
+													</colgroup>
+													<thead>
+														<tr>
+															<th align="center">
+																<label>
+																	<input type="checkbox" class="display-none">
+																	<span class="custom-checkbox"></span>
+																</label>
+															</th>
+															<th>성명(이메일, 연락처, 소속/부서)</th>
+
+														</tr>
+													</thead>
+													<tbody id="item-list">
+														<tr>
+															<td align="center">
+																<label>
+																	<input type="checkbox" class="display-none">
+																	<span class="custom-checkbox"></span>
+																</label>
+															</td>
+															<td class="left">홍길동(test@ddd.com)</td>
+														</tr>
+														<tr>
+															<td align="center">
+																<label>
+																	<input type="checkbox" class="display-none">
+																	<span class="custom-checkbox"></span>
+																</label>
+															</td>
+															<td class="left">황지니(test@ddd.com)</td>
+														</tr>
+
+													</tbody>
+												</table>
+											</div>
+											<div class="address_selected_wrap">
+												<p class="address_selected"><span>황지니</span></p>
+											</div>
+
+											<input type="text" name="kakako_target" id="kakako_target" style="width: 90%;" />
+											<div class="btn_send_message flex_row flex_between">
+												<button onclick="javascript: sendKakaoTalk('ft');" class="detail-btn">선택 발송</button>
+												<button onclick="javascript: sendKakaoTalk('ft');" class="detail-btn"">전체 발송</button>
+											</div>
+										</div>
+									<!-- //address_list -->
+
 									</div>
+
             					</td>
             				</tr>
             			</table>
-                	</div>            	
-            	
+                	</div>
+
                 	<div id="tabs-3">
 						<table class="form-table">
 							<colgroup>
@@ -198,7 +259,7 @@
 								<td></td>
 							</tr>
 							</tbody>
-						</table>    					
+						</table>
     				</div>
     				<div id="tabs-4">
                     	<table class="form-table">
@@ -214,7 +275,7 @@
 						</table>
     				</div>
 				</div>
-    				
+
 
             	<div class="pop_img">
             		<div class="btn_pop_close">
@@ -230,7 +291,7 @@
             		</div>
             	</div>
             </main>
-            
+
             <script>
             	$(window).on("load", function(){
             		adjustHeight('#template_msg');

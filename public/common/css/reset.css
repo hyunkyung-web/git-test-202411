@@ -111,17 +111,21 @@ th label {
 }
 
 /* flex요소 설정 */
-.flex-row {
+.flex-row,
+.flex_row {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 }
-.flex-end {
+.flex-end,
+.flex_end {
 	justify-content: flex-end;
 }
-.flex-start {
+.flex-start,
+.flex_start {
 	justify-content: flex-start;
 }
-.flex-between {
+.flex-between,
+.flex_between {
 	justify-content: space-between;
 }

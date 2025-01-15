@@ -27,9 +27,9 @@ button {
 	cursor: pointer;
 }
 button.detail-btn {
-	background: #c7f8f5;
-	color: #19c5bb;
-	border: none;
+	background: #c7f8f5 !important;
+	color: #19c5bb !important;
+	border: none !important;
 	font-size: 0.9em;
 	text-align: left;
 	margin-left: 5px;
@@ -412,13 +412,14 @@ span.sub-list-toggle.active {
 .search-bar select,
 .search-bar input {
 	border: 1px solid #eee;
+	padding: 5px;
 }
 
 .search-button {
 	margin-left: 10px;
-	background: #e1f1ff;
-	color: #4c91d7;
-	border: 1px solid #dfeefc;
+	background: #e1f1ff !important;
+	color: #4c91d7 !important;
+	border: 1px solid #dfeefc !important;
 }
 ::placeholder {
 	color: #999;
@@ -558,7 +559,7 @@ input#userId {
 	/* border: 1px solid red; */
 }
 label {
-	margin-right: 5px;
+	/* margin-right: 5px; */
 	vertical-align: middle;
 }
 label > span {
@@ -647,6 +648,7 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	border: 1px solid #ddd;
 	padding: 5px;
 	text-align: center;
+	font-weight: normal;
 }
 .list-table td {
 	font-size: 0.9em;
@@ -808,10 +810,12 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	/*width: 360px;*/
 	width: 95%;
 	border-radius: 8px;
-	border: solid 1px #f1f1f1;
-	/*	margin: 2.5em 0;*/
+	/* border: solid 1px #f1f1f1;
+	 */
+	border: 1px solid red;
+	min-height: 600px;
 }
-#tabs-2 .mobile_screen div {
+#tabs-2 .mobile_screen > div {
 	width: 100%;
 	border-radius: 8px;
 	padding: 1em;
@@ -822,19 +826,51 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	width: 100%;
 	border-radius: 8px;
 }
-#tabs-2 .mobile_screen button {
+.mobile_screen button {
 	width: 98%;
 	font-size: 0.9em;
-	padding: 1em;
 	border-radius: 4px;
 	background: #f1f1f1;
 	text-align: center;
 	font-weight: 400;
-	margin-bottom: 0.5em;
 }
 
-/*	주소록 팝업	*/
 
+/*	주소록 팝업	*/
+.address_list{
+
+}
+
+.address_selected_wrap{
+	min-height: 50px;
+	max-height:100px;
+	border: 1px solid red;
+	margin-top: 10px;
+	border: 1px solid #eee;
+	overflow:overlay;
+}
+.address_selected{
+
+}
+
+.address_list .list_table_wrap{
+	max-height: 300px;
+	overflow: overlay;
+}
+.address_list .btn_send_message{
+
+}
+.address_list .btn_send_message > button{
+	width: 48%;
+	margin-left: 0;
+}
+#tabs-2 .mobile_screen .search-bar{
+	width: 100%;
+	margin-bottom: 10px;
+}
+#tabs-2 .mobile_screen button.search-button{
+	width: auto;
+}
 
 /* tab - library */
 .ui-state-default,
