@@ -276,40 +276,49 @@ class Bizmsg extends CI_Controller {
                 }
             }
             
+            $content_data = [
+                "ft"=>[
+                    "senderkey"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af",
+                    "message"=>$final_msg, "adflag"=>"Y",
+                    "button"=>$btn_data,
+                    "image"=>$img_data
+                ]
+            ];
+            
                 
-            if(!empty($img_url) && !empty($btn_type)){
-                $content_data = [
-                    "ft"=>[
-                        "senderkey"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af",
-                        "message"=>$final_msg, "adflag"=>"Y",
-                        "button"=>$btn_data,
-                        "image"=>$img_data
-                    ]
-                ];
-            } elseif(!empty($img_url) && empty($btn_type)) {
-                $content_data = [
-                    "ft"=>[
-                        "senderkey"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af",
-                        "message"=>$final_msg, "adflag"=>"Y",
-                        "image"=>$img_data
-                    ]
-                ];
-            } elseif(empty($img_url) && !empty($btn_type)) {
-                $content_data = [
-                    "ft"=>[
-                        "senderkey"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af",
-                        "message"=>$final_msg, "adflag"=>"Y",
-                        "button"=>$btn_data
-                    ]
-                ];
-            } else {
-                $content_data = [
-                    "ft"=>[
-                        "senderkey"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af",
-                        "message"=>$final_msg, "adflag"=>"Y"
-                    ]
-                ];
-            }
+//             if(!empty($img_url) && !empty($btn_type)){
+//                 $content_data = [
+//                     "ft"=>[
+//                         "senderkey"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af",
+//                         "message"=>$final_msg, "adflag"=>"Y",
+//                         "button"=>$btn_data,
+//                         "image"=>$img_data
+//                     ]
+//                 ];
+//             } elseif(!empty($img_url) && empty($btn_type)) {
+//                 $content_data = [
+//                     "ft"=>[
+//                         "senderkey"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af",
+//                         "message"=>$final_msg, "adflag"=>"Y",
+//                         "image"=>$img_data
+//                     ]
+//                 ];
+//             } elseif(empty($img_url) && !empty($btn_type)) {
+//                 $content_data = [
+//                     "ft"=>[
+//                         "senderkey"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af",
+//                         "message"=>$final_msg, "adflag"=>"Y",
+//                         "button"=>$btn_data
+//                     ]
+//                 ];
+//             } else {
+//                 $content_data = [
+//                     "ft"=>[
+//                         "senderkey"=>"71f2b61aeb5a6c01fd9f10dd0a34e55d9f07d3af",
+//                         "message"=>$final_msg, "adflag"=>"Y"
+//                     ]
+//                 ];
+//             }
                         
             $postData = [
                 "account"=>"dwave2014", "refkey"=>$ref_key, "type"=>$template_type, "from"=>$from_phone, "to"=>$row,

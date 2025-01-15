@@ -805,7 +805,8 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 
 /* tabs-2 : mobile_screen */
 #tabs-2 .mobile_screen {
-	width: 360px;
+	/*width: 360px;*/
+	width: 95%;
 	border-radius: 8px;
 	border: solid 1px #f1f1f1;
 	/*	margin: 2.5em 0;*/
@@ -822,7 +823,7 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	border-radius: 8px;
 }
 #tabs-2 .mobile_screen button {
-	width: 95%;
+	width: 98%;
 	font-size: 0.9em;
 	padding: 1em;
 	border-radius: 4px;
@@ -831,6 +832,9 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	font-weight: 400;
 	margin-bottom: 0.5em;
 }
+
+/*	주소록 팝업	*/
+
 
 /* tab - library */
 .ui-state-default,

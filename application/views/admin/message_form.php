@@ -146,7 +146,7 @@
 								</tfoot>
 								</tbody>
 							</table>
-							<input type="hidden" name="idx" id="idx" value="<?php echo $idx;?>"/>
+							<input type="hidden" name="template_idx" id="template_idx" value="<?php echo $idx;?>"/>
 							<input type="hidden" name="msg_target" id="msg_target"/>
                 		</form>
 
@@ -178,7 +178,7 @@
                         			</div>
                 				</td>
                 				<td style="vertical-align: top; text-align: left;">
-                					<div>
+                					<div class="mobile_screen">
                 						<input type="text" name="kakako_target" id="kakako_target" style="width: 90%;" />
                 						<button onclick="javascript: sendKakaoTalk('ft');">친구톡 발송</button>
 									</div>
@@ -188,28 +188,30 @@
                 	</div>            	
             	
                 	<div id="tabs-3">
-                    	<form name="frm_kakao" id="frm_kakao">
-    						<table class="form-table">
-    							<colgroup>
-    								<col width="25%" />
-    								<col width="75%" />
-    							</colgroup>
-    							<tbody>
-    							</tbody>
-    						</table>
-    					</form>
+						<table class="form-table">
+							<colgroup>
+								<col width="50%" />
+								<col width="50%" />
+							</colgroup>
+							<tr>
+								<td></td>
+								<td></td>
+							</tr>
+							</tbody>
+						</table>    					
     				</div>
     				<div id="tabs-4">
-                    	<form name="frm_email" id="frm_email">
-    						<table class="form-table">
-    							<colgroup>
-    								<col width="25%" />
-    								<col width="75%" />
-    							</colgroup>
-    							<tbody>
-    							</tbody>
-    						</table>
-    					</form>
+                    	<table class="form-table">
+							<colgroup>
+								<col width="50%" />
+								<col width="50%" />
+							</colgroup>
+							<tr>
+								<td></td>
+								<td></td>
+							</tr>
+							</tbody>
+						</table>
     				</div>
 				</div>
     				
