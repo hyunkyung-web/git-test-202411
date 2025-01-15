@@ -162,7 +162,7 @@
                 <div class="list_table">
                     <div class="table_head">
                         <div class="th th1">
-                            <!-- <input type="checkbox" class="checkbox" name="chk_all" id="chk_all"> -->
+                            <input type="checkbox" class="checkbox" name="chk_all" id="chk_all">
                         </div>
                         <div class="th th2">이름</div>
                         <div class="th th3">이메일</div>

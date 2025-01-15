@@ -40,6 +40,11 @@ $(function () {
         $(".blind, .p_list").hide();
     });
 
+    // 담당자 검색 -> 다음
+    $(".btn_select").click(function () {
+        selectManager();
+    });
+
     // 요청 타입 선택
     $("input[name=type]").click(function () {
         supportCall();
@@ -198,13 +203,21 @@ function schPartner() {
             $(this).prop("checked", true);
         }
     });
+}
 
+// 담당자 검색 -> 다음
+function selectManager() {
     // 다음 클릭 시 data check & $("#partner")에 data 입력
     var p_list = "";
     // var emailList = "";
-    $(".btn_select").click(function () {
-        const checkbox = $("input[name=chk_p]:checked");
 
+    const checkbox = $("input[name=chk_p]:checked");
+
+    if (checkbox.length == 0) {
+        alert("담당자를 선택해 주세요.");
+    } else if (checkbox.length > 1) {
+        alert("담당자는 한 명만 선택할 수 있습니다.");
+    } else {
         checkbox.each(function (i) {
             var tr = checkbox.parent().parent().eq(i);
             var td = tr.children();
@@ -221,7 +234,7 @@ function schPartner() {
         // p_list = p_list.substring(0, p_list.length - 3);
         $(".blind, .p_list").hide();
         $("#partner").val(p_list);
-    });
+    }
 }
 
 // 요청 타입 선택에 따른 상세 입력 박스 show-hide
