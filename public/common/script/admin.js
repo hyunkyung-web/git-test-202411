@@ -36,16 +36,16 @@ $(function () {
 //스마트 에디터 오브젝트
 var oEditor = [];
 
-//// Mobile burger
-//document.addEventListener("DOMContentLoaded", function () {
-//	const hamburgerMenu = document.querySelector(".hamburger-menu");
-//	const navLinks = document.querySelector(".menu-toggle");
-//
-//	navLinks.addEventListener("click", function () {
-//		hamburgerMenu.classList.toggle("active");
-//		navLinks.classList.toggle("active");
-//	});
-//});
+// Mobile burger
+document.addEventListener("DOMContentLoaded", function () {
+	const hamburgerMenu = document.querySelector(".hamburger-menu");
+	const navLinks = document.querySelector(".menu-toggle");
+
+	navLinks.addEventListener("click", function () {
+		hamburgerMenu.classList.toggle("active");
+		navLinks.classList.toggle("active");
+	});
+});
 
 function loginVerify(){
 	
