@@ -13,15 +13,74 @@ $(function () {
 			icon.attr("class", "fas fa-chevron-down");
 		}
 	});
-	
-	$(".btn-login").click(function(){
+
+	$(".btn-login").click(function () {
 		loginVerify();
 	});
 
-	
-	
+	// 체크박스 선택시 작동
+	$(".checkbox-select-all").change(function () {
+		$(".address_selected").empty();
+		const isChecked = $(this).is(":checked");
+		$('#item-list input[type="checkbox"]').prop("checked", isChecked);
+		$('#item-list input[type="checkbox"]')
+			.next(".custom-checkbox")
+			.toggleClass("checked", isChecked);
+
+		// 체크박스 전체 선택시 - .address_selected에 모든 라벨 추가
+		if (isChecked) {
+			$('#item-list input[type="checkbox"]:checked').each(function () {
+				const labelText = $(this).closest("input").attr("title");
+				const id = $(this).attr("id");
+				$(".address_selected").append(
+					`<label for="${id}"><span>${labelText} X</span></label>`
+				);
+			});
+		} else {
+			$(".address_selected").empty();
+		}
+
+		//kakao_target 으로 데이터 전송
+		let phoneNumbers = [];
+		$('input[name="chk_address"]:checked').each(function () {
+			phoneNumbers.push($(this).data("phone"));
+		});
+
+		$("#kakako_target").val(phoneNumbers.join(","));
+	});
+
+	$('#item-list input[type="checkbox"]').change(function () {
+		const allChecked =
+			$('#item-list input[type="checkbox"]').length ===
+			$('#item-list input[type="checkbox"]:checked').length;
+		$(".checkbox-select-all").prop("checked", allChecked);
+		$(".checkbox-select-all")
+			.next(".custom-checkbox")
+			.toggleClass("checked", allChecked);
+
+		// 체크박스 선택시 - .address_selected에 라벨 추가
+		if ($(this).is(":checked")) {
+			//
+			const labelText = $(this).closest("input").attr("title");
+			const id = $(this).attr("id");
+			$(".address_selected").append(
+				`<label for="${id}"><span>${labelText} X</span></label>`
+			);
+		} else {
+			const id = $(this).attr("id");
+			$(`.address_selected label[for="${id}"]`).remove();
+		}
+
+		//kakao_target 으로 데이터 전송
+		let phoneNumbers = [];
+		$('input[name="chk_address"]:checked').each(function () {
+			phoneNumbers.push($(this).data("phone"));
+		});
+
+		$("#kakako_target").val(phoneNumbers.join(","));
+	});
+
 	if ($("#smarteditor").length) {
-		
 		nhn.husky.EZCreator.createInIFrame({
 			oAppRef: oEditor,
 			elPlaceHolder: "body_text",
@@ -29,8 +88,6 @@ $(function () {
 			fCreator: "createSEditor2",
 		});
 	}
-	
-
 });
 
 //스마트 에디터 오브젝트
@@ -47,39 +104,37 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 });
 
-function loginVerify(){
-	
-	if ( $.trim($("#user_id").val()).length == 0 ) {
-		alert ('아이디를 입력하세요');
+function loginVerify() {
+	if ($.trim($("#user_id").val()).length == 0) {
+		alert("아이디를 입력하세요");
 		$("#user_id").focus();
-		return;					
+		return;
 	}
-	if ( $.trim($("#user_pw").val()).length == 0 ) {
-		alert ('비밀번호를 입력하세요');
+	if ($.trim($("#user_pw").val()).length == 0) {
+		alert("비밀번호를 입력하세요");
 		$("#user_pw").focus();
-		return;					
+		return;
 	}
-	
+
 	var postData = $("#frm1").serialize();
-	
+
 	$.ajax({
 		type: "POST",
 		url: "/admin/login_verify",
 		data: postData,
 		dataType: "json",
-		beforeSend:function(){			
-		},
-		success: function(data){
-			if(data.result=="ok"){
+		beforeSend: function () {},
+		success: function (data) {
+			if (data.result == "ok") {
 				location.replace("/admin/main");
-			}else {
-				alert(data.msg);				
+			} else {
+				alert(data.msg);
 			}
 		},
-		error: function(request, status, err){
-			alert("Server Error Occured:"+ err);
+		error: function (request, status, err) {
+			alert("Server Error Occured:" + err);
 			return;
-		}
+		},
 	});
 }
 
@@ -96,7 +151,7 @@ function openMenu(menuNum = 0) {
 	switch (menuNum) {
 		case 101:
 			location.href = "/admin/contents_form";
-		break;
+			break;
 		case 102:
 			location.href = "/admin/contents_list";
 			break;
@@ -111,7 +166,7 @@ function openMenu(menuNum = 0) {
 			break;
 		case 301:
 			location.href = "/admin/notice_form";
-		break;
+			break;
 		case 302:
 			location.href = "/admin/notice_list";
 			break;
@@ -127,7 +182,6 @@ function openMenu(menuNum = 0) {
 		case 602:
 			location.href = "/admin/user_list";
 			break;
-		
 	}
 }
 
@@ -169,24 +223,23 @@ function msgBtnRemove(e) {
 	return;
 }
 
-function returnList(){
+function returnList() {
 	history.go(-1);
 }
 
-function noticeList(page=1) {
+function noticeList(page = 1) {
 	let postUrl = "/admin/notice_list/" + page;
 
 	$("#frmSearch").attr("action", postUrl).submit();
 }
 
-function contentsList(page=1) {
+function contentsList(page = 1) {
 	let postUrl = "/admin/contents_list/" + page;
 
 	$("#frmSearch").attr("action", postUrl).submit();
 }
 
 function noticeSave(editMode) {
-	
 	oEditor.getById["body_text"].exec("UPDATE_CONTENTS_FIELD", []);
 	//	var reqArr = ["txtNm", "txtDate", "txtTime", "txtRuntime", "txtAgenda", "txtSpeaker", "txtPasskey"];
 	//	var chkReq = false;
@@ -228,9 +281,9 @@ function noticeSave(editMode) {
 			alert(data.msg);
 			if (editMode != "D") {
 				$("#idx").val(data.rtn_idx);
-				if(data.result=="ok"){
-					location.replace("/admin/notice_form/"+data.idx);	
-				}				
+				if (data.result == "ok") {
+					location.replace("/admin/notice_form/" + data.idx);
+				}
 			} else {
 				contentsList();
 			}
@@ -248,7 +301,6 @@ function noticeSave(editMode) {
  *	기능: 템플릿 저장
  ******************************************************************/
 function contentsSave(editMode) {
-	
 	oEditor.getById["body_text"].exec("UPDATE_CONTENTS_FIELD", []);
 	//	var reqArr = ["txtNm", "txtDate", "txtTime", "txtRuntime", "txtAgenda", "txtSpeaker", "txtPasskey"];
 	//	var chkReq = false;
@@ -290,9 +342,9 @@ function contentsSave(editMode) {
 			alert(data.msg);
 			if (editMode != "D") {
 				$("#idx").val(data.rtn_idx);
-				if(data.result=="ok"){
-					location.replace("/admin/contents_form/"+data.idx);	
-				}				
+				if (data.result == "ok") {
+					location.replace("/admin/contents_form/" + data.idx);
+				}
 			} else {
 				contentsList();
 			}
@@ -305,7 +357,7 @@ function contentsSave(editMode) {
 	});
 }
 
-function templateList(page=1) {
+function templateList(page = 1) {
 	let postUrl = "/admin/template_list/" + page;
 
 	$("#frmSearch").attr("action", postUrl).submit();
@@ -355,9 +407,9 @@ function templateSave(editMode) {
 		success: function (data) {
 			alert(data.msg);
 			if (editMode != "D") {
-				if(data.result=="ok"){
-					location.replace("/admin/template_form/"+data.idx);	
-				}				
+				if (data.result == "ok") {
+					location.replace("/admin/template_form/" + data.idx);
+				}
 			} else {
 				templateList("main");
 			}
@@ -370,218 +422,208 @@ function templateSave(editMode) {
 	});
 }
 
-function messageList(page=1) {
+function messageList(page = 1) {
 	let postUrl = "/admin/message_list/" + page;
 
 	$("#frmSearch").attr("action", postUrl).submit();
 }
 
-function sendKakaoTalk(msgType){
-	
+function sendKakaoTalk(msgType) {
 	$("#msg_target").val($("#kakako_target").val());
-	
-	
+
 	let postData = new FormData($("#frm1")[0]);
-	
+
 	$.ajax({
 		type: "POST",
-		enctype: 'multipart/form-data',
-		contentType : false,
-		processData : false,
-		url: "/bizmsg/push_contents_msg",		
+		enctype: "multipart/form-data",
+		contentType: false,
+		processData: false,
+		url: "/bizmsg/push_contents_msg",
 		dataType: "json",
 		data: postData,
-		beforeSend:function(){			
-		},
-		success: function(data){
+		beforeSend: function () {},
+		success: function (data) {
 			alert(data.msg);
 		},
-		error: function(request, status, err){
-			alert("Server Error Occured:"+ err);
+		error: function (request, status, err) {
+			alert("Server Error Occured:" + err);
 			return;
-		}
+		},
 	});
-		
 }
 
-
-function memberList(page=1) {
+function memberList(page = 1) {
 	let postUrl = "/admin/member_list/" + page;
 
 	$("#frmSearch").attr("action", postUrl).submit();
 }
 
 /******************************************************************
-*	함수명: memberSave()
-*	기능: 사용자 저장
-******************************************************************/
-function memberSave(editMode){
-	
-//	var reqArr = ["userId", "userPw", "userNm"];
-//	var chkReq = false;
-//	
-//	if(editMode=="N"){
-//		$.each(reqArr, function(idx, item){
-//			if($.trim($("#"+item).val()).length == 0){
-//				cmmShowMsg ($("#"+item).prop("placeholder")+' 필수입력 누락입니다.');
-//				$("#"+item).focus();
-//				chkReq = true;
-//				return false;
-//			}			
-//		});
-//		
-//		if(chkReq){
-//			console.log('필수입력 누락');
-//			return;
-//		}
-//		if($.trim($("#userPw").val()) != $.trim($("#userPw_2").val())){
-//			cmmShowMsg('비밀번호가 일치하지 않습니다.');
-//			return;
-//		}
-//	}
-	
+ *	함수명: memberSave()
+ *	기능: 사용자 저장
+ ******************************************************************/
+function memberSave(editMode) {
+	//	var reqArr = ["userId", "userPw", "userNm"];
+	//	var chkReq = false;
+	//
+	//	if(editMode=="N"){
+	//		$.each(reqArr, function(idx, item){
+	//			if($.trim($("#"+item).val()).length == 0){
+	//				cmmShowMsg ($("#"+item).prop("placeholder")+' 필수입력 누락입니다.');
+	//				$("#"+item).focus();
+	//				chkReq = true;
+	//				return false;
+	//			}
+	//		});
+	//
+	//		if(chkReq){
+	//			console.log('필수입력 누락');
+	//			return;
+	//		}
+	//		if($.trim($("#userPw").val()) != $.trim($("#userPw_2").val())){
+	//			cmmShowMsg('비밀번호가 일치하지 않습니다.');
+	//			return;
+	//		}
+	//	}
+
 	$("#editMode").val(editMode);
-	
+
 	var postData = $("#frm1").serialize();
-	
+
 	$.ajax({
 		type: "POST",
 		url: "/admin/member_save/",
 		data: postData,
 		dataType: "json",
-		beforeSend:function(){
-		},
-		success: function(data){			
+		beforeSend: function () {},
+		success: function (data) {
 			alert(data.msg);
 
-			if(data.result=="ok"){
-				location.replace("/admin/member_form/"+data.idx);	
+			if (data.result == "ok") {
+				location.replace("/admin/member_form/" + data.idx);
 			}
-			
 		},
-		error: function(request, status, err){
+		error: function (request, status, err) {
 			console.log(err);
 			return;
-		}
+		},
 	});
 }
 
-function userList(page=1) {
+function userList(page = 1) {
 	let postUrl = "/admin/user_list/" + page;
 
 	$("#frmSearch").attr("action", postUrl).submit();
 }
 
 /******************************************************************
-*	함수명: userSave()
-*	기능: 사용자 저장
-******************************************************************/
-function userSave(editMode){
-//	var reqArr = ["user_id", "user_pw", "user_nm"];
-//	var chkReq = false;
-//	
-//	if(editMode=="N"){
-//		$.each(reqArr, function(idx, item){
-//			if($.trim($("#"+item).val()).length == 0){
-//				cmmShowMsg ($("#"+item).prop("placeholder")+' 필수입력 누락입니다.');
-//				$("#"+item).focus();
-//				chkReq = true;
-//				return false;
-//			}			
-//		});
-//		
-//		if(chkReq){
-//			console.log('필수입력 누락');
-//			return;
-//		}
-//		if($.trim($("#user_pw").val()) != $.trim($("#user_pw_2").val())){
-//			cmmShowMsg('비밀번호가 일치하지 않습니다.');
-//			return;
-//		}
-//	}
-//	
-//	if(editMode=="U"){
-//		if($(".user_pw").css("display")!="none"){
-//			if($.trim($("#user_pw").val()).length == 0){
-//				cmmShowMsg('비밀번호를 입력하세요.');
-//				$("#user_pw").focus();
-//				return;
-//			}
-//			if($.trim($("#user_pw").val()) != $.trim($("#user_pw_2").val())){
-//				cmmShowMsg('비밀번호가 일치하지 않습니다.');
-//				$("#user_pw").focus();
-//				return;
-//			}
-//		}
-//		
-//		for(i=2; i<reqArr.length; i++){
-//			if($.trim($("#"+reqArr[i]).val()).length == 0){
-//				cmmShowMsg ($("#"+reqArr[i]).prop("placeholder")+' 필수입력 누락입니다.');
-//				$("#"+reqArr[i]).focus();
-//				return;
-//			}
-//		}
-//	}
-	
+ *	함수명: userSave()
+ *	기능: 사용자 저장
+ ******************************************************************/
+function userSave(editMode) {
+	//	var reqArr = ["user_id", "user_pw", "user_nm"];
+	//	var chkReq = false;
+	//
+	//	if(editMode=="N"){
+	//		$.each(reqArr, function(idx, item){
+	//			if($.trim($("#"+item).val()).length == 0){
+	//				cmmShowMsg ($("#"+item).prop("placeholder")+' 필수입력 누락입니다.');
+	//				$("#"+item).focus();
+	//				chkReq = true;
+	//				return false;
+	//			}
+	//		});
+	//
+	//		if(chkReq){
+	//			console.log('필수입력 누락');
+	//			return;
+	//		}
+	//		if($.trim($("#user_pw").val()) != $.trim($("#user_pw_2").val())){
+	//			cmmShowMsg('비밀번호가 일치하지 않습니다.');
+	//			return;
+	//		}
+	//	}
+	//
+	//	if(editMode=="U"){
+	//		if($(".user_pw").css("display")!="none"){
+	//			if($.trim($("#user_pw").val()).length == 0){
+	//				cmmShowMsg('비밀번호를 입력하세요.');
+	//				$("#user_pw").focus();
+	//				return;
+	//			}
+	//			if($.trim($("#user_pw").val()) != $.trim($("#user_pw_2").val())){
+	//				cmmShowMsg('비밀번호가 일치하지 않습니다.');
+	//				$("#user_pw").focus();
+	//				return;
+	//			}
+	//		}
+	//
+	//		for(i=2; i<reqArr.length; i++){
+	//			if($.trim($("#"+reqArr[i]).val()).length == 0){
+	//				cmmShowMsg ($("#"+reqArr[i]).prop("placeholder")+' 필수입력 누락입니다.');
+	//				$("#"+reqArr[i]).focus();
+	//				return;
+	//			}
+	//		}
+	//	}
+
 	var postData = $("#frm1").serialize();
-	
+
 	$.ajax({
 		type: "POST",
 		url: "/admin/user_save/",
 		data: postData,
 		dataType: "json",
-		beforeSend:function(){
-		},
-		success: function(data){
+		beforeSend: function () {},
+		success: function (data) {
 			alert(data.msg);
-			if(data.result=="ok"){
-				location.replace("/admin/user_form/"+data.idx);
-			}			
+			if (data.result == "ok") {
+				location.replace("/admin/user_form/" + data.idx);
+			}
 		},
-		error: function(request, status, err){
+		error: function (request, status, err) {
 			console.log(err);
 			return;
-		}
+		},
 	});
 }
 
-function userDuplicateCheck(){
-	
-	if($.trim($("#user_id").val()).length == 0) {
+function userDuplicateCheck() {
+	if ($.trim($("#user_id").val()).length == 0) {
 		alert("아이디를 입력하세요.");
 		return;
 	}
-	
+
 	var userId = $("#user_id").val();
-	
-	$.ajax({	
-		  type: "POST",
-		  url: "/admin/user_duplicate_check",
-		  data: {user_id:userId},
-		  dataType: "json",
-		  success: function(data){
+
+	$.ajax({
+		type: "POST",
+		url: "/admin/user_duplicate_check",
+		data: { user_id: userId },
+		dataType: "json",
+		success: function (data) {
 			alert(data.msg);
 			return;
-		  },
-		  error: function(request, status, err){
-			alert("Server Error Occured:"+ err);
+		},
+		error: function (request, status, err) {
+			alert("Server Error Occured:" + err);
 			return;
-		  }
+		},
 	});
 }
 
 /******************************************************************
-*	함수명: admChgUserPw()
-*	기능: 사용자 암호변경 모드 전환
-******************************************************************/
-function userPasswordChange(){
+ *	함수명: admChgUserPw()
+ *	기능: 사용자 암호변경 모드 전환
+ ******************************************************************/
+function userPasswordChange() {
 	var chgMod = $(".user-password").css("display");
 	//암호변경 모드가 아님
-	if(chgMod == "none"){
+	if (chgMod == "none") {
 		$(".user-password").show();
-		$("#btnChgPw").text('변경취소');
-	} else {			
+		$("#btnChgPw").text("변경취소");
+	} else {
 		$(".user-password").hide();
-		$("#btnChgPw").text('암호변경');
+		$("#btnChgPw").text("암호변경");
 	}
 }

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1, width=device-width" />
 	<title>Template List</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
@@ -75,15 +75,15 @@
             <!-- flex 2 -->
             <main class="main-content">
                 <div>
-                    <header class="main-header">                    	
-                        <div class="main-header-firstLine">                            
+                    <header class="main-header">
+                        <div class="main-header-firstLine">
                             <!-- button 추가 -->
                             <div>
                                 <button type="button" class="add-user btn1" onclick="javascript: openMenu(201);"><i class="fa-solid fa-circle-plus"></i> New</button>
                                 <button type="button" class="delete-user btn2" onclick="#"><i class="fa-solid fa-circle-minus"></i> Del</button>
                             </div>
                         </div>
-                        
+
 						<form name="frmSearch" id="frmSearch" style="width: 100%;">
                         <div class="search-bar">
                             <input type="hidden" name="sch_1">
@@ -91,9 +91,9 @@
                             <button type="button" class="search-button" onclick="javascript:templateList(1);">Search</button>
                         </div>
                         </form>
-                        
+
                     </header>
-                    
+
                     <table class="list-table">
                     	<colgroup>
                     		<col width="25%"/>
@@ -111,16 +111,16 @@
                                 <th>사용</th>
                             </tr>
                         </thead>
-                        <tbody id="item-list"><?php 
+                        <tbody id="item-list"><?php
                         foreach($data as $row){?>
                             <tr>
                                 <td style="text-align: left;"><a href="/admin/template_form/<?php echo $row["idx"];?>"><?php echo $row["template_nm"].'('.$row["template_cd"].')';?></a></td>
                                 <td><div  class="no_overflow"><?php echo '<strong>'.$row["title"].'</strong><br/>'.$row["template_msg"];?></div></td>
                                 <td><?php echo date('Y-m-d', strtotime($row["wdate"]));?></td>
                                 <td><?php echo getExist($row["wuser"], 'noname');?>
-                                <td><?php echo $row["use_yn"];?></td>                                
-                            </tr><?php 
-                        }?>                            
+                                <td><?php echo $row["use_yn"];?></td>
+                            </tr><?php
+                        }?>
                         </tbody>
                     </table>
 
@@ -128,7 +128,7 @@
                 </div>
 
 
- 
+
             </main>
 
         </div>

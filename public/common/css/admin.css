@@ -806,23 +806,22 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 }
 
 /* tabs-2 : mobile_screen */
-#tabs-2 .mobile_screen {
+ .mobile_screen {
 	/*width: 360px;*/
-	width: 95%;
+	width: 100%;
 	border-radius: 8px;
 	/* border: solid 1px #f1f1f1;
 	 */
-	border: 1px solid red;
 	min-height: 600px;
 }
-#tabs-2 .mobile_screen > div {
+ .mobile_screen > div {
 	width: 100%;
 	border-radius: 8px;
 	padding: 1em;
 	font-size: 0.9em;
 	color: #000 !important;
 }
-#tabs-2 .mobile_screen img {
+ .mobile_screen img {
 	width: 100%;
 	border-radius: 8px;
 }
@@ -838,19 +837,36 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 
 /*	주소록 팝업	*/
 .address_list{
-
+	text-align: left;
 }
 
 .address_selected_wrap{
 	min-height: 50px;
 	max-height:100px;
-	border: 1px solid red;
 	margin-top: 10px;
-	border: 1px solid #eee;
+	padding: 5px;
+	padding-top: 0;
+	padding-left: 0;
+	border: 1px solid #ddd;
 	overflow:overlay;
 }
-.address_selected{
+p.address_selected{
+	text-align: left;
+}
+.address_selected span{
+	border: 1px solid red;
+	padding: 5px;
+	margin: 5px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	display: inline-block;
 
+	/* search-btn 동일 속성 */
+	background: #e1f1ff;
+    color: #4c91d7 ;
+    border: 1px solid #dfeefc ;
+	cursor:pointer;
+	border-radius: 4px;
 }
 
 .address_list .list_table_wrap{
@@ -858,17 +874,17 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	overflow: overlay;
 }
 .address_list .btn_send_message{
-
+	margin-top: 10px;
 }
 .address_list .btn_send_message > button{
 	width: 48%;
 	margin-left: 0;
 }
-#tabs-2 .mobile_screen .search-bar{
+ .mobile_screen .search-bar{
 	width: 100%;
 	margin-bottom: 10px;
 }
-#tabs-2 .mobile_screen button.search-button{
+ .mobile_screen button.search-button{
 	width: auto;
 }
 

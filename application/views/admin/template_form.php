@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1, width=device-width" />
 	<title>Template Information</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
@@ -180,7 +180,7 @@
                 		<table class="form-table">
                 			<tr><td>
                     			<div class="mobile_screen">
-                        			<div><?php 
+                        			<div><?php
                         			if(!empty($info["img_link"])){
                         			    echo '<a href="'.$info["img_link"].'" target="_black"><img src="'.$info["img_url"].'"/></a>';
                         			}else {
@@ -190,14 +190,14 @@
                         			<div><?php echo nl2br($info["title"].'<br/><br/>'.$info["template_msg"]);?></div>
                         			<div><?php
                         			for($i=1; $i<=$info["btn_cnt"]; $i++){?>
-                        			     <a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php 
+                        			     <a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php
                         			}?>
         							</div>
                     			</div>
                 			</td></tr>
             			</table>
-                	</div>            	
-            	
+                	</div>
+
                 	<div id="tabs-3">
                     	<form name="frm_kakao" id="frm_kakao">
     						<table class="form-table">
@@ -234,9 +234,9 @@
     						</table>
     					</form>
     				</div>
-    				
+
 				</div>
-    				
+
 
             	<div class="pop_img">
             		<div class="btn_pop_close">
@@ -252,7 +252,7 @@
             		</div>
             	</div>
             </main>
-            
+
             <script>
             	$(window).on("load", function(){
             		adjustHeight('#template_msg');

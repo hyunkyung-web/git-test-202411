@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1, width=device-width" />
 	<title>Template Information</title>
 	<meta property="og:author" content="d'wave">
 	<meta property="og:type" content="website">
@@ -161,7 +161,7 @@
                 				<col width="50%">
                 			</colgroup>
                 			<tr>
-                				<td style="vertical-align: top;">
+                				<td>
                         			<div class="mobile_screen">
                             			<div><?php
                             			if(!empty($info["img_link"])){
@@ -178,7 +178,7 @@
             							</div>
                         			</div>
                 				</td>
-                				<td style="vertical-align: top; text-align: left;">
+                				<td>
                 					<div class="mobile_screen">
 										<div class="address_list">
 											<form name="frmSearch" id="frmSearch" >
@@ -198,7 +198,7 @@
 														<tr>
 															<th align="center">
 																<label>
-																	<input type="checkbox" class="display-none">
+																	<input type="checkbox" class="display-none checkbox-select-all">
 																	<span class="custom-checkbox"></span>
 																</label>
 															</th>
@@ -210,7 +210,16 @@
 														<tr>
 															<td align="center">
 																<label>
-																	<input type="checkbox" class="display-none">
+																	<input type="checkbox" class="display-none" name="chk_address" id="chk_address_1" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01077672992" title="고현경">
+																	<span class="custom-checkbox"></span>
+																</label>
+															</td>
+															<td class="left">고현경(test@ddd.com)</td>
+														</tr>
+														<tr>
+															<td align="center">
+																<label>
+																	<input type="checkbox" class="display-none" name="chk_address" id="chk_address_2" data-email="kk.kkk@d-wave.co.kr" data-phone="01012345678"" title="홍길동">
 																	<span class="custom-checkbox"></span>
 																</label>
 															</td>
@@ -219,21 +228,40 @@
 														<tr>
 															<td align="center">
 																<label>
-																	<input type="checkbox" class="display-none">
+																	<input type="checkbox" class="display-none" name="chk_address" id="chk_address_4" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01048586666" title="김성언">
+																	<span class="custom-checkbox"></span>
+																</label>
+															</td>
+															<td class="left">김성언(test@ddd.com)</td>
+														</tr>
+														<tr>
+															<td align="center">
+																<label>
+																	<input type="checkbox" class="display-none" name="chk_address" id="chk_address_5" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01098986666" title="조장운">
+																	<span class="custom-checkbox"></span>
+																</label>
+															</td>
+															<td class="left">조장운(test@ddd.com)</td>
+														</tr>
+														<tr>
+															<td align="center">
+																<label>
+																	<input type="checkbox" class="display-none" name="chk_address" id="chk_address_6" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01033336565" title="황지니">
 																	<span class="custom-checkbox"></span>
 																</label>
 															</td>
 															<td class="left">황지니(test@ddd.com)</td>
 														</tr>
-
 													</tbody>
 												</table>
 											</div>
 											<div class="address_selected_wrap">
-												<p class="address_selected"><span>황지니</span></p>
+												<p class="address_selected">
+													<!-- <label for="chk_address_1"><span>고현경 X</span></label> -->
+												</p>
 											</div>
 
-											<input type="text" name="kakako_target" id="kakako_target" style="width: 90%;" />
+											<input type="text" name="kakako_target" id="kakako_target"  />
 											<div class="btn_send_message flex_row flex_between">
 												<button onclick="javascript: sendKakaoTalk('ft');" class="detail-btn">선택 발송</button>
 												<button onclick="javascript: sendKakaoTalk('ft');" class="detail-btn"">전체 발송</button>
