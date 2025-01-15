@@ -36,6 +36,17 @@ class Member extends CI_Controller {
 	    $this->load->view('/member/signup');
 	}
 	
+	public function term()
+	{
+	    
+	    $this->load->view('/member/term');
+	}
+	public function privacy()
+	{
+	    
+	    $this->load->view('/member/privacy');
+	}
+	
 	
 	
 	
