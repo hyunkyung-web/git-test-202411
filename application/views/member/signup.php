@@ -24,6 +24,7 @@
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>    
     <script src="/public/common/script/fontawesome.all.min.js"></script>
     <script type="text/javascript" src="/public/common/script/main.js"></script>
+    <script type="text/javascript" src="/public/common/script/common.js"></script>
                  
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -73,23 +74,23 @@
             <div class="member-container">                
                 <form class="signup-form" id="frm1" name="frm1">
                     <div class="form_item user">
-                        <input type="text" name="member_nm" id="member_nm" placeholder="이름" required />
+                        <input type="text" name="member_nm" id="member_nm" placeholder="이름(*필수입력)" required />
                     </div>
 
                     <div class="form_item phone">
-                        <input type="tel"  name="cellphone" id="cellphone" placeholder="휴대전화번호(숫자만 입력하세요)" maxlength="16" onkeyup="javascript: cmmOnNumber(this);" required />
+                        <input type="tel"  name="cellphone" id="cellphone" placeholder="휴대전화번호(*필수입력)" maxlength="16" onkeyup="javascript: cmmOnNumber(this);" required />
                     </div>
 
                     <div class="form_item email">
-                        <input type="email" name="member_email" id="member_email" placeholder="Email" onblur="javsascript: cmmOnEmail(this);" required />
+                        <input type="email" name="member_email" id="member_email" placeholder="Email(*필수입력)" onblur="javsascript: cmmOnEmail(this);" required />
                     </div>
 
                     <div class="form_item Hosp">
-                        <input type="text"  name="biz_nm" id="biz_nm" placeholder="병원명" required />
+                        <input type="text"  name="biz_nm" id="biz_nm" placeholder="병원명(*필수입력)" required />
                     </div>
 
                     <div class="form_item Dept">
-                        <input type="text"  name="specialty" id="specialty" placeholder="진료과목" required />
+                        <input type="text"  name="specialty" id="specialty" placeholder="진료과목(*필수입력)" required />
                     </div>
 
                     <button type="button">가입하기</button>
