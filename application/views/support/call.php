@@ -62,13 +62,18 @@
     <?php include_once APPPATH.'views/header.php'; ?>
 
     <div class="member-wrap support-wrap">
-        <div class="container">
+        <div class="folder-index">
+            <div class="index index_1 active">고객 지원</div>
+            <div class="index index_2">요청 내역</div>
+        </div>
+        <div class="container request-container">
             <div class="member_logo support">
                 <h1>고객 지원</h1>
             </div>
             
             <div class="member-container call-container">
-                <p class="btn_request">* 방문 요청, 자료 요청 등을 할 수 있습니다.</p>           
+                <p>* 방문 요청, 자료 요청 등을 할 수 있습니다.</p>
+                <!-- <p style="font-size: 0.9em; color: #aaa">요청 내역을 보시려면 <span style="text-decoration: underline">여기</span>를 클릭해주세요.</p> -->
                 <form class="signup-form call-form" id="frm1" name="frm1">
                     <div class="form_item call_item">
                         <div class="chatBot">
@@ -214,6 +219,9 @@
                     <button type="button" class="btn_select">다음</button>
                 </div>
             </div>
+        </div>
+        <div class="container request-history">
+
         </div>
         <div class="blind"></div>
     </div>

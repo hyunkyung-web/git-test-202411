@@ -1,10 +1,8 @@
 $(function () {
-    //
-    // member_height(".member-wrap + footer");
-
     // 모바일 메뉴
     mobileMenu();
 
+    // article
     // Article 페이지로 돌아가기
     $(".return_list").click(function () {
         callData(2);
@@ -14,10 +12,8 @@ $(function () {
     $(".icon_comment").click(function () {
         $("#c_box").focus();
     });
-
     // 댓글 더보기
     showMore(".btn_more");
-
     // 좋아요 버튼
     $(".icon_heart").click(function () {
         const img_src = $(".icon_heart").attr("src");
@@ -32,6 +28,8 @@ $(function () {
     });
 
     // support
+    // 고객지원 - 폴더 타입 메뉴
+    supportMenu();
     // 담당자 검색 - 닫기
     $(".select_contact").click(function () {
         schPartner();
@@ -56,6 +54,7 @@ $(function () {
     });
 });
 
+// 모바일 메뉴
 function mobileMenu() {
     const hamburgerMenu = $(".hamburger-menu");
     const signupLink = $(".signup");
@@ -127,7 +126,7 @@ function showMore(obj) {
         $(".comment_box").slice(0, 5).addClass("show");
         $(obj).click(function (e) {
             e.preventDefault();
-            $(".comment_box:hidden").slice(0, 5).addClass("show"); // 클릭시 more 갯수 지저정
+            $(".comment_box:hidden").slice(0, 5).addClass("show"); // 클릭시 more 갯수 지정
             if ($(".comment_box:hidden").length == 0) {
                 // 컨텐츠 남아있는지 확인
                 $(obj).hide(); // 컨텐츠 없을 시 더보기 버튼 사라짐
@@ -146,30 +145,45 @@ function showMore(obj) {
 }
 
 // member 높이 조정
-function member_height(obj) {
-    const wrap_h = $(".member-wrap").height();
-    const container_h = $(".container").height();
-    const window_h = $(window).height();
-    const wrap_h_re = window_h - 240;
-    const wrap_h_half = (wrap_h_re - container_h) / 2.5;
-    console.log(container_h);
+// function member_height(obj) {
+//     const wrap_h = $(".member-wrap").height();
+//     const container_h = $(".container").height();
+//     const window_h = $(window).height();
+//     const wrap_h_re = window_h - 240;
+//     const wrap_h_half = (wrap_h_re - container_h) / 2.5;
+//     console.log(container_h);
 
-    if (wrap_h < wrap_h_re) {
-        $(obj).addClass("fix");
+//     if (wrap_h < wrap_h_re) {
+//         $(obj).addClass("fix");
 
-        $(".member-wrap").height(wrap_h_re);
-        $(".member-wrap").css("padding-top", wrap_h_half);
+//         $(".member-wrap").height(wrap_h_re);
+//         $(".member-wrap").css("padding-top", wrap_h_half);
 
-        if ($(".member-wrap").hasClass("support-wrap")) {
-            $(obj).removeClass("fix");
-            $(".member-wrap").addClass("scroll");
-            $(".member-wrap").css("padding", "60px 0");
-        }
-    } else if (wrap_h > wrap_h_re) {
-        $(".member-wrap").height(wrap_h_re);
-        $(".member-wrap").addClass("scroll");
-        $(".member-wrap").css("padding", "20px 0");
-    }
+//         if ($(".member-wrap").hasClass("support-wrap")) {
+//             $(obj).removeClass("fix");
+//             $(".member-wrap").addClass("scroll");
+//             $(".member-wrap").css("padding", "60px 0");
+//         }
+//     } else if (wrap_h > wrap_h_re) {
+//         $(".member-wrap").height(wrap_h_re);
+//         $(".member-wrap").addClass("scroll");
+//         $(".member-wrap").css("padding", "20px 0");
+//     }
+// }
+
+// 고객지원 페이지 폴더 형식 메뉴
+function supportMenu() {
+    const folderIndex1 = $(".index_1");
+    const folderIndex2 = $(".index_2");
+
+    folderIndex1.click(function () {
+        $(".index").removeClass("active");
+        $(this).addClass("active");
+    });
+    folderIndex2.click(function () {
+        $(".index").removeClass("active");
+        $(this).addClass("active");
+    });
 }
 
 // 담당자 검색

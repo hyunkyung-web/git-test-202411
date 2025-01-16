@@ -457,8 +457,50 @@ textarea:focus {
 }
 
 /* Support - call */
+/* 폴더 모양 메뉴 */
+.folder-index {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 640px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    /* background-color: #f1fbff; */
+    /* border: 1px solid #ddd; */
+    margin-left: 10px;
+}
+
+.index {
+    /* width: 15%; */
+    /* background-color: #ddd;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
+    background-color: #d1dadf;
+    color: #7e869e;
+    padding: 8px 20px;
+    text-align: center;
+    border-radius: 25px;
+    /* color: #888; */
+    margin-right: 2px;
+    font-size: 1.1em;
+}
+
+.index.active {
+    /* background: #fff;
+    color: #000;
+    padding: 8px 20px;
+    z-index: 99; */
+    font-weight: 900;
+    /* background-color: #fff; */
+    color: #fff;
+    background-color: #3a60f4;
+    /* border-bottom: 3px solid #00c6ae; */
+}
+
 .support-wrap .container {
     max-width: 640px;
+    /* border-top-left-radius: 0; */
 }
 .support {
     margin-bottom: 0;
