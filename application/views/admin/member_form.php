@@ -78,9 +78,9 @@
             			</colgroup>
             			<tbody>
             			<tr>
-            				<th class="full_line"><label for="idx">회원번호</label></th>
+            				<th class="full_line"><label for="">회원번호</label></th>
             				<td class="full_line">
-            					<input type="text" name="idx" id="idx" style="max-width: 25%;" value="<?php echo $info["idx"];?>" placeholder="회원번호" readonly/>
+            					<input type="text" name="idx" id="idx" value="<?php echo $info["idx"];?>" placeholder="회원번호" readonly onfocus="this.blur()"/>
             				</td>
             			</tr>
             			<tr>

@@ -10,7 +10,6 @@ body {
 	color: #5c5d5e;
 }
 
-
 a {
 	text-decoration: none;
 	cursor: pointer;
@@ -454,13 +453,13 @@ textarea {
 }
 form th,
 form td {
+	/* form의 th, td 공통 */
 	border: 1px solid #ddd;
 	text-align: left;
 	height: 3em;
 	padding: 4px;
 }
 form th {
-	/* color: #b5b5b8; */
 	font-weight: bold;
 	padding-left: 10px;
 	background: #f9f9f9;
@@ -479,7 +478,6 @@ form td.userId_wrap {
 }
 form td.userId_wrap input {
 	width: 60%;
-	margin
 }
 .validate-userId {
 	flex: none;
@@ -542,7 +540,6 @@ form input {
 	width: 60%;
 	border: none;
 	height: 100%;
-	color: #6c716e;
 }
 
 .form-btn {
@@ -571,6 +568,9 @@ input#userId {
 label {
 	/* margin-right: 5px; */
 	vertical-align: middle;
+}
+td > label {
+	margin-right: 5px;
 }
 label > span {
 	vertical-align: middle;
@@ -820,7 +820,7 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 }
 
 /* tabs-2 : mobile_screen */
- .mobile_screen {
+.mobile_screen {
 	/*width: 360px;*/
 	width: 100%;
 	border-radius: 8px;
@@ -828,16 +828,16 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	 */
 	min-height: 600px;
 }
-#tabs .mobile_screen td{
+#tabs .mobile_screen td {
 	vertical-align: middle;
 }
- .mobile_screen > div {
+.mobile_screen > div {
 	width: 100%;
 	border-radius: 8px;
 	padding: 1em;
 	color: #000 !important;
 }
- .mobile_screen img {
+.mobile_screen img {
 	width: 100%;
 	border-radius: 8px;
 }
@@ -845,29 +845,27 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	width: 100%;
 	background: #f1f1f1;
 	text-align: center;
-
 }
 
-
 /*	주소록 팝업	*/
-.address_list{
+.address_list {
 	text-align: left;
 }
 
-.address_selected_wrap{
+.address_selected_wrap {
 	min-height: 50px;
-	max-height:100px;
+	max-height: 100px;
 	margin-top: 10px;
 	padding: 5px;
 	padding-top: 0;
 	padding-left: 0;
 	border: 1px solid #ddd;
-	overflow:overlay;
+	overflow: overlay;
 }
-p.address_selected{
+p.address_selected {
 	text-align: left;
 }
-.address_selected span{
+.address_selected span {
 	border: 1px solid red;
 	padding: 5px;
 	margin: 5px;
@@ -877,35 +875,35 @@ p.address_selected{
 
 	/* search-btn 동일 속성 */
 	background: #e1f1ff;
-    color: #4c91d7 ;
-    border: 1px solid #dfeefc ;
-	cursor:pointer;
+	color: #4c91d7;
+	border: 1px solid #dfeefc;
+	cursor: pointer;
 	border-radius: 4px;
 }
 
-.address_list .list_table_wrap{
+.address_list .list_table_wrap {
 	max-height: 300px;
 	overflow: overlay;
 }
-.address_list .btn_send_message{
+.address_list .btn_send_message {
 	margin-top: 10px;
 }
-.address_list .btn_send_message > button{
+.address_list .btn_send_message > button {
 	width: 48%;
 	margin-left: 0;
 }
-.address_list .btn_send_message_type2 > button{
+.address_list .btn_send_message_type2 > button {
 	width: auto;
 	margin-top: 5px;
 }
-.address_list .btn_send_message_type2_big > button{
+.address_list .btn_send_message_type2_big > button {
 	margin-top: 5px;
 }
- .mobile_screen .search-bar{
+.mobile_screen .search-bar {
 	width: 100%;
 	margin-bottom: 10px;
 }
- .mobile_screen button.search-button{
+.mobile_screen button.search-button {
 	width: auto;
 }
 
