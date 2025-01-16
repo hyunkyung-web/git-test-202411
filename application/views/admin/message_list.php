@@ -117,8 +117,8 @@
                         <tbody id="item-list"><?php
                         foreach($data as $row){?>
                             <tr>
-                                <td style="text-align: left;"><a href="/admin/message_form/<?php echo $row["idx"];?>"><?php echo $row["template_nm"].'('.$row["template_cd"].')';?></a></td>
-                                <td><div  class="no_overflow"><?php echo '<strong>'.$row["title"].'</strong><br/>'.$row["template_msg"];?></div></td>
+                                <td class="txt_left"><a href="/admin/message_form/<?php echo $row["idx"];?>"><?php echo $row["template_nm"].'('.$row["template_cd"].')';?></a></td>
+                                <td><div class="txt_left no_overflow"><?php echo '<strong>'.$row["title"].'</strong><br/>'.$row["template_msg"];?></div></td>
                                 <td><?php echo date('Y-m-d', strtotime($row["wdate"]));?></td>
                                 <td><?php echo getExist($row["wuser"], 'noname');?>
                                 <td><?php echo $row["use_yn"];?></td>

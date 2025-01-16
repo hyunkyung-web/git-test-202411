@@ -124,9 +124,9 @@
                                             <span class="custom-checkbox"></span>
                                         </label>
                                     </td>
-                                    <td style="text-align: left;"><a href="/admin/member_form/<?php echo $row["idx"];?>"><?php echo $row["member_nm"];?></a></td>
-                                    <td style="text-align: left;"><a href="/admin/member_form/<?php echo $row["idx"];?>"><?php echo $row["member_email"];?></a></td>
-                                    <td style="text-align: left;"><?php echo $row["cellphone"];?></td>
+                                    <td><a href="/admin/member_form/<?php echo $row["idx"];?>"><?php echo $row["member_nm"];?></a></td>
+                                    <td class="txt_left"><a href="/admin/member_form/<?php echo $row["idx"];?>"><?php echo $row["member_email"];?></a></td>
+                                    <td><?php echo $row["cellphone"];?></td>
                                     <td style="text-align: left;"><?php echo $row["biz_nm"].'('.$row["specialty"].')';?></td>
                                 </tr><?php
                             }

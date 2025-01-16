@@ -124,10 +124,10 @@
                                             <span class="custom-checkbox"></span>
                                         </label>
                                     </td>
-                                    <td style="text-align: left;"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_nm"];?></a></td>
-                                    <td style="text-align: left;"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_id"];?></a></td>
-                                    <td style="text-align: left;"><?php echo $row["company"].'-'.$row["dept"];?></td>
-                                    <td style="text-align: left;"><?php echo $row["user_email"];?></td>
+                                    <td><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_nm"];?></a></td>
+                                    <td class="txt_left"><a href="/admin/user_form/<?php echo $row["idx"];?>"><?php echo $row["user_id"];?></a></td>
+                                    <td class="txt_left"><?php echo $row["company"].'-'.$row["dept"];?></td>
+                                    <td class="txt_left"><?php echo $row["user_email"];?></td>
                                 </tr><?php
                             }
                         } else {

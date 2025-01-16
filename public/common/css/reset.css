@@ -104,13 +104,16 @@ th label {
 	box-sizing: border-box;
 }
 
-.center {
+.center,
+.txt_center {
 	text-align: center !important;
 }
-.left {
+.left,
+.txt_left {
 	text-align: left !important;
 }
-.right {
+.right,
+.txt_right {
 	text-align: right !important;
 }
 
