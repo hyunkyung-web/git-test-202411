@@ -110,6 +110,9 @@ th label {
 .left {
 	text-align: left !important;
 }
+.right {
+	text-align: right !important;
+}
 
 /* flex요소 설정 */
 .flex-row,

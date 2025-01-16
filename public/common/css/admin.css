@@ -828,7 +828,7 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	 */
 	min-height: 600px;
 }
-.mobile_screen td{
+#tabs .mobile_screen td{
 	vertical-align: middle;
 }
  .mobile_screen > div {
