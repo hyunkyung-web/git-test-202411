@@ -15,6 +15,7 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/common/css/reset.css" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
 
 	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -127,7 +128,7 @@
                                 </td>
                                 <td><?php echo $row["idx"];?></td>
                                 <td><?php echo $row["contents_type"];?></td>
-                                <td class="align_left"><a href="/admin/notice_form/<?php echo $row["idx"];?>"><?php echo $row["title"];?></a></td>
+                                <td class="left"><a href="/admin/notice_form/<?php echo $row["idx"];?>"><?php echo $row["title"];?></a></td>
                                 <td><?php echo $row["wuser"];?></td>
                                 <td><?php echo date('Y-m-d', strtotime($row["wdate"]));?></td>
                             </tr><?php

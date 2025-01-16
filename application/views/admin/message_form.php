@@ -184,7 +184,7 @@
 											<form name="frmSearch" id="frmSearch" >
 												<div class="search-bar">
 													<input type="hidden" name="sch_1">
-													<input type="text" name="sch_2" placeholder="Search..." class="search-input" autocomplet="off" value="<?php echo $schData["sch_2"];?>" />
+													<input type="text" name="sch_2" placeholder="성명, 이메일, 연락처, 소속/부서" class="search-input" autocomplet="off" value="<?php echo $schData["sch_2"];?>" />
 													<button type="button" class="search-button" onclick="javascript: noticeList(1);">Search</button>
 												</div>
 											</form>
@@ -196,7 +196,7 @@
 													</colgroup>
 													<thead>
 														<tr>
-															<th align="center">
+															<th>
 																<label>
 																	<input type="checkbox" class="display-none checkbox-select-all">
 																	<span class="custom-checkbox"></span>
@@ -208,7 +208,7 @@
 													</thead>
 													<tbody id="item-list">
 														<tr>
-															<td align="center">
+															<td>
 																<label>
 																	<input type="checkbox" class="display-none" name="chk_address" id="chk_address_1" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01077672992" title="고현경">
 																	<span class="custom-checkbox"></span>
@@ -217,7 +217,7 @@
 															<td class="left">고현경(test@ddd.com)</td>
 														</tr>
 														<tr>
-															<td align="center">
+															<td >
 																<label>
 																	<input type="checkbox" class="display-none" name="chk_address" id="chk_address_2" data-email="kk.kkk@d-wave.co.kr" data-phone="01012345678"" title="홍길동">
 																	<span class="custom-checkbox"></span>
@@ -226,7 +226,7 @@
 															<td class="left">홍길동(test@ddd.com)</td>
 														</tr>
 														<tr>
-															<td align="center">
+															<td>
 																<label>
 																	<input type="checkbox" class="display-none" name="chk_address" id="chk_address_4" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01048586666" title="김성언">
 																	<span class="custom-checkbox"></span>
@@ -235,7 +235,7 @@
 															<td class="left">김성언(test@ddd.com)</td>
 														</tr>
 														<tr>
-															<td align="center">
+															<td>
 																<label>
 																	<input type="checkbox" class="display-none" name="chk_address" id="chk_address_5" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01098986666" title="조장운">
 																	<span class="custom-checkbox"></span>
@@ -244,7 +244,7 @@
 															<td class="left">조장운(test@ddd.com)</td>
 														</tr>
 														<tr>
-															<td align="center">
+															<td>
 																<label>
 																	<input type="checkbox" class="display-none" name="chk_address" id="chk_address_6" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01033336565" title="황지니">
 																	<span class="custom-checkbox"></span>
@@ -262,9 +262,18 @@
 											</div>
 
 											<input type="text" name="kakako_target" id="kakako_target"  />
+											<!-- 발송 버튼 2개 -->
 											<div class="btn_send_message flex_row flex_between">
 												<button onclick="javascript: sendKakaoTalk('ft');" class="detail-btn">선택 발송</button>
 												<button onclick="javascript: sendKakaoTalk('ft');" class="detail-btn"">전체 발송</button>
+											</div>
+											<!-- 발송 버튼 1개 small-->
+											<div class="btn_send_message_type2 flex_row flex_end">
+												<button onclick="javascript: sendKakaoTalk('ft');" class="red"">발송</button>
+											</div>
+											<!-- 발송 버튼 1개 big-->
+											<div class="btn_send_message_type2_big flex_row flex_end">
+												<button onclick="javascript: sendKakaoTalk('ft');" class="red"">발송</button>
 											</div>
 										</div>
 									<!-- //address_list -->

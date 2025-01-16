@@ -15,6 +15,7 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/common/css/reset.css" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
 
 	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>

@@ -9,9 +9,7 @@ body {
 	font-size: 14px;
 	color: #5c5d5e;
 }
-table {
-	font-size: 1em;
-}
+
 
 a {
 	text-decoration: none;
@@ -30,9 +28,25 @@ button.detail-btn {
 	background: #c7f8f5 !important;
 	color: #19c5bb !important;
 	border: none !important;
-	font-size: 0.9em;
-	text-align: left;
 	margin-left: 5px;
+}
+button.mint {
+	background: #c7f8f5 !important;
+	color: #19c5bb !important;
+	border: none !important;
+}
+
+button.blue {
+	background: #e1f1ff !important;
+	color: #4c91d7 !important;
+	border: none !important;
+}
+
+button.red {
+	background: #fee3e5 !important;
+	color: #f44d5f !important;
+	border: none !important;
+	font-weight: bold;
 }
 
 .blind {
@@ -63,9 +77,7 @@ ul,
 li {
 	list-style: none;
 }
-.align_left {
-	text-align: left !important;
-}
+
 /******************** Menu Toggle ********************/
 
 .menu-toggle {
@@ -184,7 +196,7 @@ li {
 
 header {
 	background-color: var(--primary-color);
-	padding: 10px;
+	padding: 10px 0px;
 	position: relative;
 }
 header .header-container {
@@ -401,7 +413,7 @@ span.sub-list-toggle.active {
 	/* margin-left: auto; */
 	display: flex;
 	align-items: center;
-	width: 50%;
+	width: 40%;
 	height: 2.5em;
 }
 
@@ -527,12 +539,10 @@ td.radio input {
 	color: #6c716e;
 }
 form input {
-	border: none;
 	width: 60%;
+	border: none;
 	height: 100%;
 	color: #6c716e;
-	font-size: 0.9em;
-	border-radius: 5px;
 }
 
 .form-btn {
@@ -795,14 +805,18 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	opacity: 1;
 	cursor: pointer;
 }
-#tab > div:nth-of-type(1) {
+/* #tab > div:nth-of-type(1) {
 	width: 100%;
 	overflow: hidden;
-}
+} */
 #tabs li > a {
 	float: left;
 	padding: 0.5em 1em;
 	text-decoration: none;
+}
+#tabs td {
+	/* tabs 를 td로 나눈 상태라서 필요 */
+	vertical-align: top;
 }
 
 /* tabs-2 : mobile_screen */
@@ -814,11 +828,13 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	 */
 	min-height: 600px;
 }
+.mobile_screen td{
+	vertical-align: middle;
+}
  .mobile_screen > div {
 	width: 100%;
 	border-radius: 8px;
 	padding: 1em;
-	font-size: 0.9em;
 	color: #000 !important;
 }
  .mobile_screen img {
@@ -826,12 +842,10 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	border-radius: 8px;
 }
 .mobile_screen button {
-	width: 98%;
-	font-size: 0.9em;
-	border-radius: 4px;
+	width: 100%;
 	background: #f1f1f1;
 	text-align: center;
-	font-weight: 400;
+
 }
 
 
@@ -879,6 +893,13 @@ p.address_selected{
 .address_list .btn_send_message > button{
 	width: 48%;
 	margin-left: 0;
+}
+.address_list .btn_send_message_type2 > button{
+	width: auto;
+	margin-top: 5px;
+}
+.address_list .btn_send_message_type2_big > button{
+	margin-top: 5px;
 }
  .mobile_screen .search-bar{
 	width: 100%;
