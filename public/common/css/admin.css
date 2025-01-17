@@ -851,6 +851,9 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 .address_list {
 	text-align: left;
 }
+.address_list td > label {
+	margin-right: 0px;
+}
 
 .address_selected_wrap {
 	min-height: 50px;

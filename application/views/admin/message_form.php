@@ -198,7 +198,7 @@
 														<tr>
 															<th>
 																<label>
-																	<input type="checkbox" class="display-none checkbox-select-all">
+																	<input type="checkbox" class="display-none" id="chk_all">
 																	<span class="custom-checkbox"></span>
 																</label>
 															</th>
