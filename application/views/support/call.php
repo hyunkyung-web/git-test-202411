@@ -63,8 +63,8 @@
 
     <div class="member-wrap support-wrap">
         <div class="folder-index">
-            <div class="index index_1 active" onclick="javascript:swithchTab(this)">고객 지원</div>
-            <div class="index index_2" onclick="javascript:swithchTab(this)">요청 내역</div>
+            <div class="index index_1 active" onclick="swithchTab(this)">고객 지원</div>
+            <div class="index index_2" onclick="swithchTab(this)">요청 내역</div>
         </div>
         <div class="container request-container active">
             <div class="member_logo support">
@@ -143,7 +143,7 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn_request">요청하기</button>
+                    <button type="button" class="requestButton">요청하기</button>
                 </form>
             </div>
 
@@ -154,15 +154,15 @@
                     <span class="close"><i class="fa-regular fa-circle-xmark" style="color: #181c32;"></i></span>
                 </div>
                 
-                <div class="search_box flex_SB_center">
+                <div class="searchBox flex_SB_center">
                     <select name="sch_p" id="sch_p" class="list_select">
                         <option value="">성명</option>
                         <option value="">이메일</option>
                         <option value="">연락처</option>
                         <option value="">부서</option>
                     </select>
-                    <input type="text" name="sch_bar" id="sch_bar" class="sch_bar" placeholder="검색어를 입력하세요.">
-                    <button type="button" class="btn_sch">검색</button>
+                    <input type="text" name="searchInput" id="searchInput" class="searchInput" placeholder="검색어를 입력하세요.">
+                    <button type="button" class="searchButton">검색</button>
                 </div>
                 <div class="tableWrapper">
                     <div class="theadRow">
@@ -266,7 +266,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
         <div class="blind"></div>
     </div>
