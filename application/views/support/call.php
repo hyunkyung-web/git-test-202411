@@ -63,8 +63,8 @@
 
     <div class="member-wrap support-wrap">
         <div class="folder-index">
-            <div class="index index_1 active" onclick="javascript:swithchTab(this)">고객 지원</div>
-            <div class="index index_2" onclick="javascript:swithchTab(this)">요청 내역</div>
+            <div class="index index_1 active" onclick="swithchTab(this)">고객 지원</div>
+            <div class="index index_2" onclick="swithchTab(this)">요청 내역</div>
         </div>
         <div class="container request-container active">
             <div class="member_logo support">

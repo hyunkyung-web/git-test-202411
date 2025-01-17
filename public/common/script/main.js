@@ -27,6 +27,29 @@ $(function () {
         }
     });
 
+    // 댓글 달기 + 삭제
+    $(".btn_chat").click(function () {
+        // 댓글 입력값 가져오기
+        var commentText = $("#c_box").val();
+
+        // 댓글 내용이 비어 있으면 입력을 막고 알림
+        if (commentText === "") {
+            alert("댓글을 입력해주세요!");
+            return;
+        }
+
+        // 댓글 항목 추가
+        addComment(commentText);
+
+        // 댓글 입력창 초기화
+        $("#c_box").val("");
+        $("#c_box").css("height", "auto"); // 입력창 크기 초기화
+    });
+
+    $(".comments_area").on("click", ".delete", function () {
+        $(this).parent(".comment_box").remove();
+    });
+
     // support
 
     // 담당자 검색 - 닫기
@@ -113,22 +136,6 @@ function callData(pageNum) {
     window.location.href = callUrl;
 }
 
-// 댓글 textarea 자동 높이 조절 + 입력 버튼 활성화
-function resize(obj) {
-    if (obj.style.height == "0px" || obj.scrollHeight == 0) {
-        obj.style.height = "auto";
-    } else {
-        obj.style.height = "auto";
-        obj.style.height = obj.scrollHeight + "px";
-    }
-
-    if (obj.value.length > 0) {
-        $(".btn_chat").addClass("on");
-    } else {
-        $(".btn_chat").removeClass("on");
-    }
-}
-
 // 댓글 더보기
 function showMore(button, contentBox) {
     // 댓글 갯수 5이하 더보기 버튼 안보이기
@@ -164,32 +171,47 @@ function showMore(button, contentBox) {
     });
 }
 
-// member 높이 조정
-// function member_height(obj) {
-//     const wrap_h = $(".member-wrap").height();
-//     const container_h = $(".container").height();
-//     const window_h = $(window).height();
-//     const wrap_h_re = window_h - 240;
-//     const wrap_h_half = (wrap_h_re - container_h) / 2.5;
-//     console.log(container_h);
+// 댓글 textarea 자동 높이 조절 + 입력 버튼 활성화
+function resize(obj) {
+    obj.style.height = "auto"; // 기존 높이 값을 제거하고
+    obj.style.height = obj.scrollHeight + "px"; // 자동 크기 조정
 
-//     if (wrap_h < wrap_h_re) {
-//         $(obj).addClass("fix");
+    // 버튼 활성화/비활성화
+    if (obj.value.length > 0) {
+        $(".btn_chat").addClass("on");
+    } else {
+        $(".btn_chat").removeClass("on");
+    }
+}
 
-//         $(".member-wrap").height(wrap_h_re);
-//         $(".member-wrap").css("padding-top", wrap_h_half);
+// 댓글 달기
+var commentCount = 0; // 댓글 개수를 추적하는 변수
+function addComment(text) {
+    // 기존 댓글 개수 추적
+    commentCount = $(".comment_box").length;
+    // 댓글 HTML 생성
+    var newComment = $('<div class="comment_box show"></div>');
 
-//         if ($(".member-wrap").hasClass("support-wrap")) {
-//             $(obj).removeClass("fix");
-//             $(".member-wrap").addClass("scroll");
-//             $(".member-wrap").css("padding", "60px 0");
-//         }
-//     } else if (wrap_h > wrap_h_re) {
-//         $(".member-wrap").height(wrap_h_re);
-//         $(".member-wrap").addClass("scroll");
-//         $(".member-wrap").css("padding", "20px 0");
-//     }
-// }
+    // 댓글 작성자 이름, 텍스트 및 삭제 버튼 추가
+    var name = $('<span class="c_name"></span>').text("홍길동"); // 작성자 이름 임의 설정함.
+    var deleteButton = $('<span class="delete"><i class="fa-solid fa-minus"></i></span>');
+    var commentText = $('<span class="c_text"></span>').text(text);
+
+    // 댓글 요소에 name, deleteButton, text 추가
+    newComment.append(name).append(deleteButton).append(commentText);
+
+    console.log(commentCount);
+    // 댓글 목록에 추가
+    $(".comments_area").prepend(newComment);
+    commentCount++; // 댓글 개수 증가
+    console.log(commentCount);
+
+    // 댓글이 5개 이상이면 더보기 버튼 보이기
+    if (commentCount > 5) {
+        $(".btn_more").show();
+        $(".comment_box").slice(5).removeClass("show"); // 6번째 댓글부터 숨기기
+    }
+}
 
 // 고객지원 페이지 탭 메뉴
 function swithchTab(e) {
@@ -200,9 +222,6 @@ function swithchTab(e) {
         $(".request-container").addClass("active");
     } else if ($(e).hasClass("index_2")) {
         $(".request-history").addClass("active");
-
-        // 고객지원 - 탭 메뉴 - 요청 내역 더보기
-        // showMore(".btn_more", ".requestItem");
 
         // 요청 내역 유무에 따른 박스 구성
         const hasRequest = $(".tableBody.user .rowItem").length;

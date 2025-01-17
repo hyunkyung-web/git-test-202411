@@ -479,6 +479,7 @@ textarea:focus {
     border-radius: 25px;
     margin-right: 5px;
     font-size: 1.1em;
+    cursor: pointer;
 }
 
 .index.active {
@@ -556,6 +557,7 @@ textarea:focus {
     background: #c7f8f5;
     color: #19c5bb;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 /* 요청 사항 type 선택 */
@@ -581,6 +583,7 @@ textarea:focus {
     height: 15px;
     background: url(/public/images/icon/icon_radio.png) no-repeat center;
     background-size: 100%;
+    cursor: pointer;
 }
 .chk_type:checked + .radio_img {
     background: url(/public/images/icon/icon_check.png) no-repeat 0 0;
@@ -593,6 +596,7 @@ textarea:focus {
 
 .type_val {
     padding: 0 5px;
+    cursor: pointer;
 }
 
 /* 요청 박스 */
@@ -647,6 +651,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     height: 100%;
     background: transparent;
     color: transparent;
+    cursor: pointer;
 }
 
 /* 담당자 list */
