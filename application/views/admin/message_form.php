@@ -15,6 +15,7 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/common/css/reset.css" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
 
@@ -171,7 +172,7 @@
                             			}?>
                             			</div>
                             			<div><?php echo nl2br($info["title"].'<br/><br/>'.$info["template_msg"]);?></div>
-                            			<div style="text-align: center;"><?php
+                            			<div class="flex_col"><?php
                             			for($i=1; $i<=$info["btn_cnt"]; $i++){?>
                             			     <a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php
                             			}?>
@@ -264,16 +265,8 @@
 											<input type="text" name="kakako_target" id="kakako_target"  />
 											<!-- 발송 버튼 2개 -->
 											<div class="btn_send_message flex_row flex_between">
-												<button onclick="javascript: sendKakaoTalk('ft');" class="detail-btn">선택 발송</button>
-												<button onclick="javascript: sendKakaoTalk('ft');" class="detail-btn"">전체 발송</button>
-											</div>
-											<!-- 발송 버튼 1개 small-->
-											<div class="btn_send_message_type2 flex_row flex_end">
-												<button onclick="javascript: sendKakaoTalk('ft');" class="red"">발송</button>
-											</div>
-											<!-- 발송 버튼 1개 big-->
-											<div class="btn_send_message_type2_big flex_row flex_end">
-												<button onclick="javascript: sendKakaoTalk('ft');" class="red"">발송</button>
+												<button onclick="javascript: sendKakaoTalk('ft');" class="red">선택 발송</button>
+												<button onclick="javascript: sendKakaoTalk('ft');" class="red"">전체 발송</button>
 											</div>
 										</div>
 									<!-- //address_list -->
@@ -289,10 +282,10 @@
 						<table class="form-table">
 							<tr>
 								<td><input type="text" name="kakako_target" id="kakako_target"  placeholder="받는사람을 선택하세요"/></td>
-							</tr>								
+							</tr>
 							<tr>
 								<td>
-								<div class="mobile_screen">
+								<div class="mobile_screen" style="max-width: 480px;">
 									<div><?php echo $info["title"];?></div>
 									<div><?php
                         			if(!empty($info["img_link"])){
@@ -302,7 +295,7 @@
                         			}?>
                         			</div>
                         			<div><?php echo nl2br($info["template_msg"]);?></div>
-                        			<div style="text-align: center;"><?php
+                        			<div class="flex_col"><?php
                         			for($i=1; $i<=$info["btn_cnt"]; $i++){?>
                         			     <a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><input type="button"><?php echo $info["btn_name_".$i];?></button></a><?php
                         			}?>
@@ -326,14 +319,14 @@
 							</tbody>
 						</table>
     				</div>
-    				
+
     				<div class="주소록" style="width: 100%; position: absolute; top: 0; left: 0;">
     					<h1>주소록</h1>
     				</div>
-    				
+
 				</div>
-				
-				
+
+
             </main>
 
             <script>

@@ -5,9 +5,10 @@
 }
 body {
 	/* font-family: "Noto Sans KR", sans-serif; */
-	font-family: "Manjari", sans-serif;
+	/* font-family: "Manjari", sans-serif; */
+	font-family: "montserrat", sans-serif;
 	font-size: 14px;
-	color: #5c5d5e;
+	/* color: #5c5d5e; */
 }
 
 a {
@@ -20,8 +21,8 @@ button {
 	padding: 8px 15px;
 	border-radius: 5px;
 	border: none;
-	font-weight: bold;
 	cursor: pointer;
+	color: #333;
 }
 button.detail-btn {
 	background: #c7f8f5 !important;
@@ -45,7 +46,6 @@ button.red {
 	background: #fee3e5 !important;
 	color: #f44d5f !important;
 	border: none !important;
-	font-weight: bold;
 }
 
 .blind {
@@ -350,7 +350,7 @@ span.sub-list-toggle.active {
 
 .main-content-top h3 {
 	display: inline-block;
-	color: #3b3f47;
+	color: #333;
 }
 .main-content-top h3 span {
 	font-size: 0.7em;
@@ -444,7 +444,6 @@ span.sub-list-toggle.active {
 	width: 100%;
 	border-collapse: collapse;
 	margin: 0 0 20px;
-	color: #5c5d5e;
 }
 
 textarea {
@@ -821,12 +820,10 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 
 /* tabs-2 : mobile_screen */
 .mobile_screen {
-	/*width: 360px;*/
 	width: 100%;
 	border-radius: 8px;
-	/* border: solid 1px #f1f1f1;
-	 */
 	min-height: 600px;
+	text-align: left;
 }
 #tabs .mobile_screen td {
 	vertical-align: middle;
@@ -835,7 +832,6 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	width: 100%;
 	border-radius: 8px;
 	padding: 1em;
-	color: #000 !important;
 }
 .mobile_screen img {
 	width: 100%;
@@ -845,6 +841,13 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	width: 100%;
 	background: #f1f1f1;
 	text-align: center;
+	margin-top: 8px;
+}
+
+/* tabs-3 */
+#tabs-3 input[type="button"] {
+	width: 100%;
+	border: 1px solid red;
 }
 
 /*	주소록 팝업	*/
