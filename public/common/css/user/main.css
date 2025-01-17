@@ -472,35 +472,28 @@ textarea:focus {
 }
 
 .index {
-    /* width: 15%; */
-    /* background-color: #ddd;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px; */
     background-color: #d1dadf;
     color: #7e869e;
     padding: 8px 20px;
     text-align: center;
     border-radius: 25px;
-    /* color: #888; */
-    margin-right: 2px;
+    margin-right: 5px;
     font-size: 1.1em;
 }
 
 .index.active {
-    /* background: #fff;
-    color: #000;
-    padding: 8px 20px;
-    z-index: 99; */
     font-weight: 900;
-    /* background-color: #fff; */
     color: #fff;
     background-color: #3a60f4;
-    /* border-bottom: 3px solid #00c6ae; */
 }
 
 .support-wrap .container {
+    display: none;
     max-width: 640px;
     /* border-top-left-radius: 0; */
+}
+.support-wrap .container.active {
+    display: flex;
 }
 .support {
     margin-bottom: 0;
@@ -667,7 +660,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.p_list {
+.assigneeList {
     display: none;
     position: absolute;
     top: 0;
@@ -680,10 +673,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     overflow: hidden;
     font-size: 0.9em;
 }
-.p_list p {
+.assigneeList p {
     margin-bottom: 10px;
 }
-.p_list button {
+.assigneeList button {
     width: unset;
     margin: 0;
     border: 0;
@@ -691,10 +684,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 /* header - 문구, 닫기 버튼 */
-.p_list_header {
+.assigneeList_header {
     align-items: flex-end;
 }
-.p_list_header span {
+.assigneeList_header span {
     font-size: 2em;
 }
 
@@ -729,7 +722,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 /* 담당자 list table */
-.list_table {
+.tableWrapper {
     display: block;
     position: relative;
     width: 100%;
@@ -738,11 +731,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     /* border: 1px solid #ddd; */
     overflow: scroll;
 }
-.list_table::-webkit-scrollbar {
+.tableWrapper::-webkit-scrollbar {
     display: none;
 }
 
-.table_head {
+.theadRow {
     background-color: #f2f2f2;
     display: block;
     position: sticky;
@@ -752,8 +745,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     font-weight: 900;
 }
 
-.table_head,
-.table_row {
+.theadRow,
+.rowItem {
     width: 100%;
     display: flex;
     align-items: center;
@@ -761,60 +754,59 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     flex-wrap: nowrap;
     border: 1px solid #ddd;
 }
-.table_row {
+.rowItem {
     border-top: 0;
 }
-/* .table_row:last-child {
+/* .rowItem:last-child {
     border: 0;
 } */
 
-.th,
-.td {
+.headerCell,
+.tableCell {
     min-height: 30px;
     line-height: 30px;
-
     border-right: 1px solid #ddd;
 }
-.th:last-child,
-.td:last-child {
+.headerCell:last-child,
+.tableCell:last-child {
     border: 0;
 }
 
-.td {
+.tableCell {
     padding-left: 5px;
     white-space: nowrap;
     word-wrap: break-word;
     overflow: scroll;
     /* text-overflow: ellipsis; */
 }
-.td::-webkit-scrollbar {
+.tableCell::-webkit-scrollbar {
     display: none;
 }
 
-.th1,
-.td1 {
+.headerCell:first-child,
+.tableCell:first-child {
     width: 5%;
     padding: 0;
     text-align: center;
 }
-.th2,
-.td2 {
+.headerCell:nth-child(2),
+.tableCell:nth-child(2) {
     width: 20%;
 }
-.th3,
-.td3 {
+.headerCell:nth-child(3),
+.tableCell:nth-child(3) {
     width: 35%;
 }
-.th4,
-.td4 {
+.headerCell:nth-child(4),
+.tableCell:nth-child(4) {
     width: 25%;
 }
-.th5,
-.td5 {
+.headerCell:last-child,
+.tableCell:last-child {
     width: 15%;
 }
 
-.table_body {
+.tableBody {
     /* min-height: 250px; */
     /* overflow-x: hidden; */
     position: relative;
@@ -830,7 +822,7 @@ input.checkbox {
 }
 
 /* footer - 선택 버튼 */
-.p_list_footer {
+.assigneeList_footer {
     width: 100%;
     /* position: absolute;
     bottom: 10px;
@@ -841,6 +833,58 @@ input.checkbox {
 button.btn_select {
     width: 12%;
     margin-top: 10px;
+}
+
+/* 요청내역 request-history */
+.request-history {
+    display: none;
+}
+
+.requestList {
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 0.9em;
+}
+
+.requestNone {
+    width: 100%;
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+}
+
+.tableWrapper.user {
+    text-align: center;
+    /* display: none; */
+}
+.user .tableCell {
+    padding: 0;
+}
+
+.user .headerCell:first-child,
+.user .tableCell:first-child {
+    width: 10%;
+}
+.user .headerCell:nth-child(2),
+.user .tableCell:nth-child(2) {
+    width: 30%;
+}
+.user .headerCell:nth-child(3),
+.user .tableCell:nth-child(3) {
+    width: 30%;
+}
+.user .headerCell:last-child,
+.user .tableCell:last-child {
+    width: 30%;
 }
 
 /* media query */
@@ -959,14 +1003,14 @@ button.btn_select {
     }
 
     /* support - call */
-    .p_list {
+    .assigneeList {
         padding: 10px;
     }
     .search_box {
         width: 90%;
     }
 
-    .p_list button {
+    .assigneeList button {
         padding: 5px;
     }
 }

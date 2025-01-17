@@ -28,29 +28,30 @@ $(function () {
     });
 
     // support
-    // 고객지원 - 폴더 타입 메뉴
-    supportMenu();
+    // 고객지원 - 탭 메뉴
+    // swithchTab();
+
     // 담당자 검색 - 닫기
     $(".select_contact").click(function () {
-        schPartner();
+        getAssignee();
     });
     $(".close").click(function () {
-        $(".blind, .p_list").hide();
+        $(".blind, .assigneeList").hide();
     });
 
     // 담당자 검색 -> 다음
     $(".btn_select").click(function () {
-        selectManager();
+        selectAssignee();
     });
 
     // 요청 타입 선택
     $("input[name=type]").click(function () {
-        supportCall();
+        toggleFields();
     });
 
     // 요청하기 버튼 클릭
     $(".btn_request").click(function () {
-        callRequest();
+        validateRequest();
     });
 });
 
@@ -171,25 +172,31 @@ function showMore(obj) {
 //     }
 // }
 
-// 고객지원 페이지 폴더 형식 메뉴
-function supportMenu() {
-    const folderIndex1 = $(".index_1");
-    const folderIndex2 = $(".index_2");
+// 고객지원 페이지 탭 메뉴
+function swithchTab(e) {
+    $(".index, .container").removeClass("active");
+    $(e).addClass("active");
 
-    folderIndex1.click(function () {
-        $(".index").removeClass("active");
-        $(this).addClass("active");
-    });
-    folderIndex2.click(function () {
-        $(".index").removeClass("active");
-        $(this).addClass("active");
-    });
+    if ($(e).hasClass("index_1")) {
+        $(".request-container").addClass("active");
+    } else if ($(e).hasClass("index_2")) {
+        $(".request-history").addClass("active");
+
+        // 요청 내역 유무에 따른 박스 구성
+        if (hasRequest()) {
+            $(".requestNone").hide();
+            $(".tableWrapper.user").show();
+        } else {
+            $(".tableWrapper.user").hide();
+            $(".requestNone").show();
+        }
+    }
 }
 
 // 담당자 검색
-function schPartner() {
+function getAssignee() {
     // 담당자 목록 보여지기
-    $(".blind, .p_list").show();
+    $(".blind, .assigneeList").show();
 
     // check all
     $("#chk_all").click(function () {
@@ -220,9 +227,9 @@ function schPartner() {
 }
 
 // 담당자 검색 -> 다음
-function selectManager() {
+function selectAssignee() {
     // 다음 클릭 시 data check & $("#partner")에 data 입력
-    var p_list = "";
+    var assigneeList = "";
     // var emailList = "";
 
     const checkbox = $("input[name=chk_p]:checked");
@@ -239,20 +246,20 @@ function selectManager() {
             var p_name = td.eq(1).text();
             var p_email = td.eq(2).text();
 
-            // p_list += p_name + " / ";
-            p_list += p_name + "(" + p_email + ") / ";
+            // assigneeList += p_name + " / ";
+            assigneeList += p_name + "(" + p_email + ") / ";
         });
 
         // 마지막 "/ " 제거
-        p_list = p_list.substring(0, p_list.length - 2);
-        // p_list = p_list.substring(0, p_list.length - 3);
-        $(".blind, .p_list").hide();
-        $("#partner").val(p_list);
+        assigneeList = assigneeList.substring(0, assigneeList.length - 2);
+        // assigneeList = assigneeList.substring(0, assigneeList.length - 3);
+        $(".blind, .assigneeList").hide();
+        $("#partner").val(assigneeList);
     }
 }
 
 // 요청 타입 선택에 따른 상세 입력 박스 show-hide
-function supportCall() {
+function toggleFields() {
     // 요청 type 선택 여부
     const chkVisit = $("#call_visit").prop("checked");
     const chkDoc = $("#call_doc").prop("checked");
@@ -273,7 +280,7 @@ function supportCall() {
 }
 
 // 요청하기 버튼 클릭 시 입력사항 체크
-function callRequest() {
+function validateRequest() {
     /* ******* 값 구하기 ******* */
     // 담당자 선택 여부
     const valPartner = $("#partner").val();
@@ -337,4 +344,10 @@ function callRequest() {
         $("input[type=radio], input[type=checkbox]").prop("checked", false);
         $(".inform_box").hide();
     }
+}
+
+// 고객지원 페이지 요청내역 유무
+function hasRequest() {
+    // 요청 내역이 존재하는지 판별하는 로직
+    return $(".tableBody.user .rowItem").length > 0;
 }

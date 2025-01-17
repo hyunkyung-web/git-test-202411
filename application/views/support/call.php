@@ -63,10 +63,10 @@
 
     <div class="member-wrap support-wrap">
         <div class="folder-index">
-            <div class="index index_1 active">고객 지원</div>
-            <div class="index index_2">요청 내역</div>
+            <div class="index index_1 active" onclick="javascript:swithchTab(this)">고객 지원</div>
+            <div class="index index_2" onclick="javascript:swithchTab(this)">요청 내역</div>
         </div>
-        <div class="container request-container">
+        <div class="container request-container active">
             <div class="member_logo support">
                 <h1>고객 지원</h1>
             </div>
@@ -148,8 +148,8 @@
             </div>
 
             <!-- 담당자 list -->
-            <div class="p_list padd20">
-                <div class="p_list_header flex_SB_center">
+            <div class="assigneeList padd20">
+                <div class="assigneeList_header flex_SB_center">
                     <p>* 담당자를 선택해주세요.</p>
                     <span class="close"><i class="fa-regular fa-circle-xmark" style="color: #181c32;"></i></span>
                 </div>
@@ -164,64 +164,109 @@
                     <input type="text" name="sch_bar" id="sch_bar" class="sch_bar" placeholder="검색어를 입력하세요.">
                     <button type="button" class="btn_sch">검색</button>
                 </div>
-                <div class="list_table">
-                    <div class="table_head">
-                        <div class="th th1">
+                <div class="tableWrapper">
+                    <div class="theadRow">
+                        <div class="headerCell headerCell1">
                             <input type="checkbox" class="checkbox" name="chk_all" id="chk_all">
                         </div>
-                        <div class="th th2">이름</div>
-                        <div class="th th3">이메일</div>
-                        <div class="th th4">연락처</div>
-                        <div class="th th5">부서</div>
+                        <div class="headerCell headerCell2">이름</div>
+                        <div class="headerCell headerCell3">이메일</div>
+                        <div class="headerCell headerCell4">연락처</div>
+                        <div class="headerCell headerCell5">부서</div>
                     </div>
 
-                    <div class="table_body">
-                        <div class="table_row">
-                            <div class="td td1">
+                    <div class="tableBody">
+                        <div class="rowItem">
+                            <div class="tableCell tableCell1">
                                 <input type="checkbox" class="checkbox" name="chk_p">
                             </div>
-                            <div class="td td2 p_name">홍길동</div>
-                            <div class="td td3 p_email">dwave_it@d-wave.co.kr</div>
-                            <div class="td td4">010-1111-2222</div>
-                            <div class="td td5">XX부서</div>
+                            <div class="tableCell tableCell2 p_name">홍길동</div>
+                            <div class="tableCell tableCell3 p_email">dwave_it@d-wave.co.kr</div>
+                            <div class="tableCell tableCell4">010-1111-2222</div>
+                            <div class="tableCell tableCell5">XX부서</div>
                         </div>
-                        <div class="table_row">
-                            <div class="td td1">
+                        <div class="rowItem">
+                            <div class="tableCell tableCell1">
                                 <input type="checkbox" class="checkbox" name="chk_p">
                             </div>
-                            <div class="td td2 p_name">네이버</div>
-                            <div class="td td3 p_email">naver@naver.com</div>
-                            <div class="td td4">010-1234-1234</div>
-                            <div class="td td5">YY부서</div>
+                            <div class="tableCell tableCell2 p_name">네이버</div>
+                            <div class="tableCell tableCell3 p_email">naver@naver.com</div>
+                            <div class="tableCell tableCell4">010-1234-1234</div>
+                            <div class="tableCell tableCell5">YY부서</div>
                         </div>
-                        <div class="table_row">
-                            <div class="td td1">
+                        <div class="rowItem">
+                            <div class="tableCell tableCell1">
                                 <input type="checkbox" class="checkbox" name="chk_p">
                             </div>
-                            <div class="td td2 p_name">김구글</div>
-                            <div class="td td3 p_email">google@gmail.com</div>
-                            <div class="td td4">010-2222-3333</div>
-                            <div class="td td5">AA부서</div>
+                            <div class="tableCell tableCell2 p_name">김구글</div>
+                            <div class="tableCell tableCell3 p_email">google@gmail.com</div>
+                            <div class="tableCell tableCell4">010-2222-3333</div>
+                            <div class="tableCell tableCell5">AA부서</div>
                         </div>
-                        <div class="table_row">
-                            <div class="td td1">
+                        <div class="rowItem">
+                            <div class="tableCell tableCell1">
                                 <input type="checkbox" class="checkbox" name="chk_p">
                             </div>
-                            <div class="td td2 p_name">이다음</div>
-                            <div class="td td3 p_email">daum@daum.net</div>
-                            <div class="td td4">010-3333-4444</div>
-                            <div class="td td5">DD부서</div>
+                            <div class="tableCell tableCell2 p_name">이다음</div>
+                            <div class="tableCell tableCell3 p_email">daum@daum.net</div>
+                            <div class="tableCell tableCell4">010-3333-4444</div>
+                            <div class="tableCell tableCell5">DD부서</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="p_list_footer">
+                <div class="assigneeList_footer">
                     <button type="button" class="btn_select">다음</button>
                 </div>
             </div>
         </div>
-        <div class="container request-history">
 
+        <!-- 요청 내역 -->
+        <div class="container request-history">
+            <div class="member_logo support">
+                <h1>요청 내역</h1>
+            </div>
+            
+            <div class="requestList padd20">
+                <!-- 요청 내역 없음 -->
+                <div class="requestNone">
+                    <p>요청 내역이 없습니다.</p>
+                </div>
+
+                <!-- 요청내역 list -->
+                <div class="tableWrapper user">
+                    <!-- 요청 내역 Title -->
+                    <div class="theadRow user">
+                        <div class="headerCell numCol">번호</div>
+                        <div class="headerCell requestType">요청타입</div>
+                        <div class="headerCell assigned">담당자</div>
+                        <div class="headerCell requestDate">요청날짜</div>
+                    </div>
+
+                    <!-- 요청 내역 item -->
+                    <div class="tableBody user">
+                        <div class="rowItem requestItem">
+                            <div class="tableCell numCell">1</div>
+                            <div class="tableCell typeCell">방문요청</div>
+                            <div class="tableCell assignCell">홍길동</div>
+                            <div class="tableCell dateCell">2025-01-17</div>
+                        </div>
+                        <div class="rowItem requestItem">
+                            <div class="tableCell numCell">2</div>
+                            <div class="tableCell typeCell">자료요청</div>
+                            <div class="tableCell assignCell">김구글</div>
+                            <div class="tableCell dateCell">2025-01-17</div>
+                        </div>
+                        <div class="rowItem requestItem">
+                            <div class="tableCell numCell">3</div>
+                            <div class="tableCell typeCell">기타</div>
+                            <div class="tableCell assignCell">이다음</div>
+                            <div class="tableCell dateCell">2025-01-17</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
         <div class="blind"></div>
     </div>
