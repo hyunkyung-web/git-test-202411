@@ -13,7 +13,7 @@ $(function () {
         $("#c_box").focus();
     });
     // 댓글 더보기
-    showMore(".btn_more");
+    showMore(".btn_more", ".comment_box");
     // 좋아요 버튼
     $(".icon_heart").click(function () {
         const img_src = $(".icon_heart").attr("src");
@@ -28,8 +28,6 @@ $(function () {
     });
 
     // support
-    // 고객지원 - 탭 메뉴
-    // swithchTab();
 
     // 담당자 검색 - 닫기
     $(".select_contact").click(function () {
@@ -37,6 +35,21 @@ $(function () {
     });
     $(".close").click(function () {
         $(".blind, .assigneeList").hide();
+    });
+
+    // 담당자 검색 - 검색 버튼
+    // Enter 키 입력 시 검색 버튼 클릭
+    $("#searchInput").on("keypress", function (event) {
+        if (event.key === "Enter") {
+            $(".searchButton").click();
+        }
+    });
+
+    // 검색 버튼 클릭 시 검색 수행
+    $(".searchButton").click(function () {
+        var query = $("#searchInput").val();
+        console.log("검색어: " + query);
+        // 실제 검색 로직을 추가할 수 있습니다.
     });
 
     // 담당자 검색 -> 다음
@@ -50,7 +63,7 @@ $(function () {
     });
 
     // 요청하기 버튼 클릭
-    $(".btn_request").click(function () {
+    $(".requestButton").click(function () {
         validateRequest();
     });
 });
@@ -117,20 +130,26 @@ function resize(obj) {
 }
 
 // 댓글 더보기
-function showMore(obj) {
+function showMore(button, contentBox) {
     // 댓글 갯수 5이하 더보기 버튼 안보이기
-    if ($(".comment_box").length <= 5) {
-        $(obj).hide();
-        $(".comment_box").addClass("show");
+    if ($(contentBox).length <= 5) {
+        $(button).hide(); // 더보기 버튼 숨기기
+        $(contentBox).addClass("show"); // 모든 댓글 표시
     } else {
-        // 댓글 갯수 5이상 더보기 버튼 보이기
-        $(".comment_box").slice(0, 5).addClass("show");
-        $(obj).click(function (e) {
+        // 댓글 갯수 5개 이상일 때, 처음 5개만 표시
+        $(contentBox).slice(0, 5).addClass("show");
+
+        // 더보기 버튼 클릭 시 동작
+        $(button).click(function (e) {
             e.preventDefault();
-            $(".comment_box:hidden").slice(0, 5).addClass("show"); // 클릭시 more 갯수 지정
-            if ($(".comment_box:hidden").length == 0) {
-                // 컨텐츠 남아있는지 확인
-                $(obj).hide(); // 컨텐츠 없을 시 더보기 버튼 사라짐
+            // 숨겨진 댓글 중 5개를 표시
+            $(contentBox + ":hidden'")
+                .slice(0, 5)
+                .addClass("show");
+
+            // 더 이상 숨겨진 댓글이 없으면 더보기 버튼 숨기기
+            if ($(contentBox + ":hidden'").length === 0) {
+                $(button).hide(); // 더보기 버튼 숨김
                 $(".btn_fold").show(); // 댓글 접기 버튼 활성화
             }
         });
@@ -138,10 +157,10 @@ function showMore(obj) {
 
     // 댓글 접기 버튼
     $(".btn_fold").click(function () {
-        $(".comment_box").removeClass("show");
-        $(".comment_box").slice(0, 5).addClass("show");
+        $(contentBox).removeClass("show");
+        $(contentBox).slice(0, 5).addClass("show");
         $(this).hide(); // 댓글 접기 버튼 사라짐
-        $(obj).show(); // 더보기 버튼 활성화
+        $(button).show(); // 더보기 버튼 활성화
     });
 }
 
@@ -182,10 +201,15 @@ function swithchTab(e) {
     } else if ($(e).hasClass("index_2")) {
         $(".request-history").addClass("active");
 
+        // 고객지원 - 탭 메뉴 - 요청 내역 더보기
+        // showMore(".btn_more", ".requestItem");
+
         // 요청 내역 유무에 따른 박스 구성
-        if (hasRequest()) {
+        const hasRequest = $(".tableBody.user .rowItem").length;
+        if (hasRequest > 0) {
             $(".requestNone").hide();
             $(".tableWrapper.user").show();
+            // showMore(".btn_more", ".requestItem");
         } else {
             $(".tableWrapper.user").hide();
             $(".requestNone").show();
@@ -341,6 +365,7 @@ function validateRequest() {
     if (chkPartner == false && chkType == true && chkDate == false && chkCallDetail == false && chkDocDetail == false) {
         alert("요청 완료되었습니다.");
         $("input, textarea").val("");
+        $("input, textarea").removeClass("warn");
         $("input[type=radio], input[type=checkbox]").prop("checked", false);
         $(".inform_box").hide();
     }

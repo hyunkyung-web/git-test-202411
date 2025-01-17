@@ -404,7 +404,7 @@ article
     margin-left: auto;
 }
 
-.comments_area button {
+.comments_area ~ button {
     width: 100%;
     height: 45px;
     margin-bottom: 10px;
@@ -692,12 +692,12 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 /* 담당자 검색 */
-.search_box {
+.searchBox {
     width: 80%;
     height: 30px;
     margin: 5px 0;
 }
-.search_box * {
+.searchBox * {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1em;
@@ -705,15 +705,15 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     margin: 0;
     padding: 5px;
 }
-.search_box select {
+.searchBox select {
     width: 25%;
 }
-.search_box input {
+.searchBox input {
     width: 60%;
     background: #fff;
     margin-left: 5px;
 }
-.search_box button {
+.searchBox button {
     width: 15%;
     margin-left: 5px;
     background: #e1f1ff;
@@ -864,6 +864,7 @@ button.btn_select {
 
 .tableWrapper.user {
     text-align: center;
+    min-height: 250px;
     /* display: none; */
 }
 .user .tableCell {
@@ -885,6 +886,17 @@ button.btn_select {
 .user .headerCell:last-child,
 .user .tableCell:last-child {
     width: 30%;
+}
+
+/* 더보기 버튼 */
+
+.tableWrapper button {
+    width: 100%;
+    height: 45px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    line-height: 2;
 }
 
 /* media query */
@@ -1006,7 +1018,7 @@ button.btn_select {
     .assigneeList {
         padding: 10px;
     }
-    .search_box {
+    .searchBox {
         width: 90%;
     }
 
