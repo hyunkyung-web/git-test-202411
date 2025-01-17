@@ -373,6 +373,10 @@ article
     font-size: 0.9em;
     margin-right: 15px;
 }
+span.coountLike,
+span.countComment {
+    margin-right: 0;
+}
 
 .comment_box {
     display: none;
@@ -457,7 +461,11 @@ textarea:focus {
 }
 
 /* Support - call */
-/* 폴더 모양 메뉴 */
+.support-wrap {
+    justify-content: flex-start;
+    /* min-height: unset; */
+}
+/* 탭 모양 메뉴 */
 .folder-index {
     display: flex;
     justify-content: flex-start;
