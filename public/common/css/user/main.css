@@ -119,6 +119,9 @@ main
     /* max-width: 1200px; */
     margin: 0 auto;
 }
+#contents:nth-child(odd) {
+    background-color: #f1f3ff;
+}
 #contents > p {
     text-align: center;
     padding: 20px;
@@ -132,6 +135,7 @@ main
     margin: 20px 0 0;
     gap: 1.4em;
 }
+
 #contents h2 {
     display: block;
 }
