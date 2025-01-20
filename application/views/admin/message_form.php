@@ -163,7 +163,7 @@
 					<div id="tab_2" class="tab_content">
 						<div class="mobile_screen">
 							<div class="flex_row flex_end">
-								<button class="open_pop mint" onclick="openPopup('.mobile_screen_pop')">수신자 선택</button>
+								<button class="open_pop mint" onclick="openAddressBook('kakao')">수신자 선택</button>
 							</div>
 							<!-- 최종 발송 타겟 -->
 							<div class="address_selected_wrap">
@@ -192,7 +192,7 @@
 
 						<div class="mobile_screen">
 							<div class="flex_row flex_end">
-								<button class="open_pop mint" onclick="openPopup('.mobile_screen_pop')">수신자 선택</button>
+								<button class="open_pop mint" onclick="openAddressBook('email')">수신자 선택</button>
 							</div>
 
 							<div><?php
@@ -232,8 +232,9 @@
 
 					<!-- 주소록 popup -->
 					<div class="mobile_screen_pop popup">
-						<input type="text" name="kakako_target" id="kakako_target" placeholder="카카오 target" />
+						<input type="text" name="kakako_target" id="kakako_target" placeholder="카카오 target" />						
 						<input type="text" name="email_target" id="email_target" placeholder="email target" />
+						<input type="text" name="lms_target" id="lms_target" placeholder="LMS target" />
 
 
 						<div class="address_list">

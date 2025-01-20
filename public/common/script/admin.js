@@ -59,6 +59,15 @@ function closePopup() {
 	$(".popup").removeClass("active");
 }
 
+var TARGET_TYPE;
+
+function openAddressBook(send_type){
+	TARGET_TYPE = send_type;
+	openPopup('.mobile_screen_pop');
+	
+	console.log(TARGET_TYPE);
+}
+
 function toggleAllCheck() {
 	$(".address_selected").empty();
 	const isChecked = $("#chk_all").is(":checked");
@@ -117,7 +126,9 @@ function updateAllCheck() {
 	});
 
 	$("#kakako_target").val(phoneInfo.join(","));
+	$("#lms_target").val(phoneInfo.join(","));
 	$("#email_target").val(emailInfo.join(","));
+	
 }
 
 // Mobile burger
