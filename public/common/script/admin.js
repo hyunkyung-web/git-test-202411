@@ -34,6 +34,31 @@ $(function () {
 //스마트 에디터 오브젝트
 var oEditor = [];
 
+function openTab(event, currentTab) {
+	$(".popup").removeClass("active");
+	const tabContents = $(".tab_content");
+	const tabButtons = $(".btn_tab");
+
+	tabContents.each(function () {
+		$(this).removeClass("active");
+	});
+	tabButtons.each(function () {
+		$(this).removeClass("active");
+	});
+
+	$(`#${currentTab}`).addClass("active");
+	$(event.currentTarget).addClass("active");
+}
+
+function openPopup(obj) {
+	// $(obj).css("display", "block");
+	$(obj).addClass("active");
+	// $(".tab_content").removeClass("active");
+}
+function closePopup() {
+	$(".popup").removeClass("active");
+}
+
 function toggleAllCheck() {
 	$(".address_selected").empty();
 	const isChecked = $("#chk_all").is(":checked");
@@ -53,13 +78,16 @@ function toggleAllCheck() {
 		$(".address_selected").empty();
 	}
 
-	//kakao_target 으로 데이터 전송
-	let phoneNumbers = [];
+	//target 으로 데이터 전송
+	let phoneInfo = [];
+	let emailInfo = [];
 	$('input[name="chk_address"]:checked').each(function () {
-		phoneNumbers.push($(this).data("phone"));
+		phoneInfo.push($(this).data("phone"));
+		emailInfo.push($(this).data("email"));
 	});
 
-	$("#kakako_target").val(phoneNumbers.join(","));
+	$("#kakako_target").val(phoneInfo.join(","));
+	$("#email_target").val(emailInfo.join(","));
 }
 
 function updateAllCheck() {
@@ -80,13 +108,16 @@ function updateAllCheck() {
 		$(`.address_selected label[for="${id}"]`).remove();
 	}
 
-	//kakao_target 으로 데이터 전송
-	let phoneNumbers = [];
+	//target 으로 데이터 전송
+	let phoneInfo = [];
+	let emailInfo = [];
 	$('input[name="chk_address"]:checked').each(function () {
-		phoneNumbers.push($(this).data("phone"));
+		phoneInfo.push($(this).data("phone"));
+		emailInfo.push($(this).data("email"));
 	});
 
-	$("#kakako_target").val(phoneNumbers.join(","));
+	$("#kakako_target").val(phoneInfo.join(","));
+	$("#email_target").val(emailInfo.join(","));
 }
 
 // Mobile burger

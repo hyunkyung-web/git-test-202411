@@ -323,7 +323,7 @@ span.sub-list-toggle.active {
 .main-content > div {
 	background: #fff;
 	padding: 20px;
-	/* border-radius: 8px; */
+	border-radius: 8px;
 }
 
 /* main-content 에서 flex 로 상하 분할 */
@@ -804,41 +804,10 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	opacity: 1;
 	cursor: pointer;
 }
-
-/********************	Tab	****************/
-
-.tabs {
-	background: #edf1ff;
-}
-.btn_tab {
-	font-family: "montserrat", sans-serif;
-	/* flex: 1; */
-	padding: 15px;
-	/* background: #e0e0e0; */
-	border: none;
-	cursor: pointer;
-	transition: background 0.3s;
-}
-.btn_tab.active {
-	color: #007bff;
-	border-bottom: 4px solid #007bff;
-	border-radius: 0px;
-}
-
-.tab_content_wrap {
-	position: relative;
-	min-height: 800px;
-	/* .main-content > div 기본 padding : 20px */
-	padding-top: 10px !important;
-}
-.tab_content {
-	display: none;
-}
-.tab_content.active {
-	display: block;
-}
-.tab-button {
-}
+/* #tab > div:nth-of-type(1) {
+	width: 100%;
+	overflow: hidden;
+} */
 #tabs li > a {
 	float: left;
 	padding: 0.5em 1em;
@@ -846,44 +815,23 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 }
 #tabs td {
 	/* tabs 를 td로 나눈 상태라서 필요 */
-	/* vertical-align: top; */
-}
-
-.mobile_screen button.open_pop {
-	width: auto;
+	vertical-align: top;
 }
 
 /* tabs-2 : mobile_screen */
 .mobile_screen {
 	width: 100%;
 	border-radius: 8px;
+	min-height: 600px;
 	text-align: left;
-	max-width: 480px;
 }
-
-/* 기본 버튼 스타일 적용 */
-.mobile_screen input[type="button"] {
-	width: 100%;
-	background: #f1f1f1;
-	text-align: center;
-	padding: 8px 15px;
-	font-size: 0.9em;
-	color: #333;
-	text-align: center;
-	border: none;
-
-	cursor: pointer;
-	border-radius: 4px;
-}
-
 #tabs .mobile_screen td {
 	vertical-align: middle;
 }
 .mobile_screen > div {
 	width: 100%;
 	border-radius: 8px;
-	/* padding-bottom: 10px; */
-	margin-bottom: 10px;
+	padding: 1em;
 }
 .mobile_screen img {
 	width: 100%;
@@ -893,40 +841,7 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	width: 100%;
 	background: #f1f1f1;
 	text-align: center;
-	/* margin-top: 8px; */
-}
-.btn_send_message button {
-	margin-left: 5px;
-}
-
-/* popup */
-.mobile_screen_pop {
-	background: #fefefe;
-	/* tab_content_wrap 의 높이를 그대로 받음 */
-	width: 100%;
-	height: 90%;
-	max-width: 480px;
-	/* border: 1px solid red; */
-	padding: 20px;
-	display: none;
-	position: absolute;
-	top: 0;
-	left: 0;
-	box-sizing: content-box;
-}
-.mobile_screen_pop .address_list > div {
-	padding-bottom: 10px;
-}
-.mobile_screen_pop .search-bar {
-	width: 60%;
-}
-.mobile_screen_pop.active {
-	display: block;
-}
-.mobile_screen_pop .btn_close {
-	font-size: 2em;
-	padding-top: 0;
-	padding-right: 0;
+	margin-top: 8px;
 }
 
 /* tabs-3 */
@@ -946,6 +861,7 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 .address_selected_wrap {
 	min-height: 50px;
 	max-height: 100px;
+	margin-top: 10px;
 	padding: 5px;
 	padding-top: 0;
 	padding-left: 0;
@@ -978,7 +894,10 @@ p.address_selected {
 .address_list .btn_send_message {
 	margin-top: 10px;
 }
-
+.address_list .btn_send_message > button {
+	width: 48%;
+	margin-left: 0;
+}
 .address_list .btn_send_message_type2 > button {
 	width: auto;
 	margin-top: 5px;
