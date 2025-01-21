@@ -83,7 +83,7 @@
 
                     <div class="form_item email">
                         <input type="email" name="member_email" id="member_email" placeholder="Email(*필수입력)" onblur="javsascript: cmmOnEmail(this);" required  value="<?php echo $email;?>"/>
-                        <input type="hidden" name="member_uuid" id="member_uuid" value="<?php echo $uuid;?>"/>
+                        <input type="hidden" name="uuid" id="uuid" value="<?php echo $uuid;?>"/>
                     </div>
 
                     <div class="form_item Hosp">

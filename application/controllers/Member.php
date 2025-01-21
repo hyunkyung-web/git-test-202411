@@ -42,6 +42,40 @@ class Member extends CI_Controller {
 	    $this->load->view('/member/verify', $viewData);
 	}
 	
+	// 함수: 카카오 curl 통신
+	public function curl_kakao($url,$headers = array()){
+	    if(empty($url)){ return false ; }
+	    
+	    // URL에서 데이터를 추출하여 쿼리문 생성
+	    $purl = parse_url($url);
+	    $postfields = array();
+	    
+	    if( !empty($purl['query']) && trim($purl['query']) != ''){
+	        $postfields = explode("&",$purl['query']);
+	    }
+	    
+	    $ch = curl_init();
+	    curl_setopt($ch, CURLOPT_URL, $url);
+	    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+	    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+	    curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	    curl_setopt($ch, CURLOPT_POST, 1);
+	    curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
+	    if( count($headers) > 0){
+	        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	    }
+	    
+	    ob_start(); // prevent any output
+	    $data = curl_exec($ch);
+	    ob_end_clean(); // stop preventing output
+	    
+	    if (curl_error($ch)){ return false;}
+	    
+	    curl_close($ch);
+	    return $data;
+	}
+	
 	public function kakao_result(){
 	    $kakao=[
 	        "client_id"=>'2549f043e46bbd82676b804343560ca2',
@@ -101,55 +135,26 @@ class Member extends CI_Controller {
 	                "member_email"=>$is_member[0]["member_email"]
 	            ]);
 	        } else{
-	            $msg_str = '<script>alert("일치하는 회원정보가 없습니다. 회원가입으로 이동합니다.");</script>';
+	            $form_str = '<form name="frm1" id="frm1" action="/member/signup" method="post">';
+	            $form_str.= '<input type="text" name="uuid" value="'.$profile_info["uuid"].'" />';
+	            $form_str.= '<input type="text" name="name" value="'.$profile_info["name"].'" />';
+	            $form_str.= '<input type="text" name="cellphone" value="'.$profile_info["cellphone"].'" />';
+	            $form_str.= '<input type="text" name="email" value="'.$profile_info["email"].'" />';
+	            $form_str.= '</form><br/>';
+	            echo $form_str;
+	            
+	            $msg_str = '<script>';
+	            $msg_str.= 'document.getElementById("frm1").submit();';
+	            $msg_str.= 'alert("일치하는 회원정보가 없습니다. 회원가입으로 이동합니다.");';
+	            $msg_str.= '</script>';
 	            echo $msg_str;
-	            $this->signup($profile_info);
 	        }
 	    }
-	}
+	}	
 	
-	// 함수: 카카오 curl 통신
-	public function curl_kakao($url,$headers = array()){
-	    if(empty($url)){ return false ; }
+	public function signup(){
 	    
-	    // URL에서 데이터를 추출하여 쿼리문 생성
-	    $purl = parse_url($url);
-	    $postfields = array();
-	    
-	    if( !empty($purl['query']) && trim($purl['query']) != ''){
-	        $postfields = explode("&",$purl['query']);
-	    }
-	    
-	    $ch = curl_init();
-	    curl_setopt($ch, CURLOPT_URL, $url);
-	    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-	    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-	    curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	    curl_setopt($ch, CURLOPT_POST, 1);
-	    curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
-	    if( count($headers) > 0){
-	        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-	    }
-	    
-	    ob_start(); // prevent any output
-	    $data = curl_exec($ch);
-	    ob_end_clean(); // stop preventing output
-	    
-	    if (curl_error($ch)){ return false;}
-	    
-	    curl_close($ch);
-	    return $data;
-	}
-	
-	
-	
-	public function signup($opt=[]){
-	    if(count($opt)>0){
-	        $viewData = ["name"=>$opt["name"], "cellphone"=>$opt["cellphone"], "email"=>$opt["email"], "uuid"=>$opt["uuid"]];
-	    }else {
-	        $viewData = ["name"=>"", "cellphone"=>"", "email"=>"", "uuid"=>""];
-	    }
+	    $viewData = ["name"=>getPost("name", ""), "cellphone"=>getPost("cellphone", ""), "email"=>getPost("email", ""), "uuid"=>getPost("uuid", "")];
 	    
 	    $this->load->view('/member/signup', $viewData);
 	}
