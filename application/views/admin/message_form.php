@@ -153,7 +153,7 @@
 								</tbody>
 							</table>
 							<input type="hidden" name="template_idx" id="template_idx" value="<?php echo $idx;?>"/>
-							<input type="hidden" name="msg_target" id="msg_target"/>
+							<input type="text" name="msg_target" id="msg_target" style="border: solid"/>
 						</form>
 
 						<div class="btn-wrap"></div>

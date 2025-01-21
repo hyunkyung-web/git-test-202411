@@ -500,6 +500,7 @@ function messageList(page = 1) {
 }
 
 function sendKakaoTalk(msgType) {
+	
 	$("#msg_target").val($("#kakako_target").val());
 
 	let postData = new FormData($("#frm1")[0]);
