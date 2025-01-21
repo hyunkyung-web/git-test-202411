@@ -6,14 +6,7 @@ class Member extends CI_Controller {
     public function __construct(){
         parent::__construct();
         
-//         $this->load->model('event_model', 'eventModel');
-        
-//         if($_SERVER["HTTPS"]!="on"){
-//             $rtnUri = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-//             header('Location:'.$rtnUri);
-//             exit;
-//         }
-    
+        $this->load->model('member_model', 'memberModel');
     }
 
 	
@@ -50,99 +43,69 @@ class Member extends CI_Controller {
 	}
 	
 	public function kakao_result(){
-	    try{
-	        $kakao=[
-	            "client_id"=>'2549f043e46bbd82676b804343560ca2',
-	            "client_secret"=>'6wttiSwgMRVFTQL4MrxhtXEiTXs3i4En',
-	            "redirect_uri"=>'http://localhost:9090/member/kakao_result',
-	            "token_url"=>'https://kauth.kakao.com/oauth/token?grant_type=authorization_code',
-	            "profile_url"=>'https://kapi.kakao.com/v2/user/me'
-	        ];
-	        
-	        
-	        // 기본 응답 설정
-	        $res = ["result"=>"fail",'code'=>(__LINE__*-1),'msg'=>''];
-	        
-	        // code && state 체크
-	        if(empty($_GET['code']) || empty($_GET['state']) ||  $_GET['state'] != $_COOKIE['state']){
-	            throw new Exception("인증실패", (__LINE__*-1) );
-	            echo 'empty';
-	        }
-	        
-	        $token_url = $kakao["token_url"];
-	        $token_url.= '&client_id='.$kakao["client_id"].'&redirect_uri='.$kakao["redirect_uri"].'&client_secret='.$kakao["client_secret"].'&code='.getRequest("code", "");
-	        
-	        
-	        $token_result = json_decode($this->curl_kakao($token_url));
-	        
-	        print_r($token_result);
-	        
+	    $kakao=[
+	        "client_id"=>'2549f043e46bbd82676b804343560ca2',
+	        "client_secret"=>'6wttiSwgMRVFTQL4MrxhtXEiTXs3i4En',
+	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
+	        "token_url"=>'https://kauth.kakao.com/oauth/token?grant_type=authorization_code',
+	        "profile_url"=>'https://kapi.kakao.com/v2/user/me'
+	    ];
+	    
+	    
+	    // 기본 응답 설정
+	    $res = ["result"=>"fail",'code'=>(__LINE__*-1),'msg'=>''];
+	    
+	    // code && state 체크
+	    if(empty($_GET['code']) || empty($_GET['state']) ||  $_GET['state'] != $_COOKIE['state']){	        
+	        header('Location:/member/verify');
+	        exit;
+	    }
+	    
+	    $token_url = $kakao["token_url"];
+	    $token_url.= '&client_id='.$kakao["client_id"].'&redirect_uri='.$kakao["redirect_uri"].'&client_secret='.$kakao["client_secret"].'&code='.getRequest("code", "");
+	    
+            //프로필 데이터 요청을 위한 토큰 정보 가져오기
+	    $token_result = json_decode($this->curl_kakao($token_url));	    
+	    
+	    if( empty($token_result)){ throw new Exception("토큰요청 실패", (__LINE__*-1) ); }
+	    if( !empty($token_result->error) || empty($token_result->access_token) ){
 	        echo '<br/><br/>error=>'.$token_result->error;
-	        
-	        if( empty($token_result)){ throw new Exception("토큰요청 실패", (__LINE__*-1) ); }
-	        if( !empty($token_result->error) || empty($token_result->access_token) ){
-	            throw new Exception("토큰인증 에러", (__LINE__*-1) );
-	        }
-	        
-	        // 프로필 요청
-	        $header = ["Authorization: Bearer ".$token_result->access_token];
-	        $profile_data = json_decode($this->curl_kakao($kakao["profile_url"], $header));
-	        
-	        if( empty($profile_data) || empty($profile_data->id) ){
-	            throw new Exception("프로필요청 실패", (__LINE__*-1) );
-	        } else{
-	            // 최종 성공 처리
-	            $res["result"] = 'success';
-	        }
-	        
-	        // 프로필정보 저장 -- DB를 통해 저장하세요
-	        /*
-	         echo '<pre>';
-	         print_r($profile_data);
-	         echo '</pre>';
-	         exit;
-	         */
-	        
-	        $is_member = true; // 기존회원인지(true) / 비회원인지(false) db 체크
-	        
-	        // 로그인 회원일 경우
-	        if( $is_member === true){
-	            
-	        }
-	        
-	        // 새로 가입일 경우
-	        else{
-	            
-	        }
-	        
-	        
-	        
-	        // 성공처리
-	        if($res["result"] == 'success'){
-	            print_r($profile_data);
-	            echo '<br/><br/>'.$profile_data->id;
-	            echo '<br/>'.$profile_data->kakao_account->phone_number;
-	            echo '<br/>'.$profile_data->kakao_account->email;
-	        }
-	        
-	        // 실패처리
-	        else{
-	            
-	        }
-	        
-	        
-	        
-	    }
-	    catch(Exception $e){
-	        if(!empty($e->getMessage())){ $res['msg'] = $e->getMessage(); }
-	        if(!empty($e->getMessage())){ $res['code'] = $e->getCode(); }
 	    }
 	    
-	    
+	    // 프로필 요청
+	    $header = ["Authorization: Bearer ".$token_result->access_token];
+	    $profile_data = json_decode($this->curl_kakao($kakao["profile_url"], $header));
 	    
 	    // state 초기화
-	    	setcookie('state','',time()-60); // 300 초동안 유효
+	    setcookie('state','',time()-60); // 300 초동안 유효
 	    
+	    if( empty($profile_data) || empty($profile_data->id) ){
+	        echo '프로필 데이터 요청 실패';
+	    } else{
+// 	        print_r($profile_data);
+	        $res["result"] = 'success';
+	        $profile_info = [
+	            "uuid"=>$profile_data->id,
+	            "name"=>$profile_data->kakao_account->name,
+	            "cellphone"=>str_replace('-', '', str_replace('+82 ', '0', $profile_data->kakao_account->phone_number)),	            
+	            "email"=>$profile_data->kakao_account->email
+	            
+	        ];
+	        
+	        $is_member = $this->memberModel->get_idx($profile["cellphone"]);
+	        if(count($is_member)>0){
+	            $this->session->set_userdata([
+	                "member_id"=>$is_member[0]["idx"],
+	                "member_nm"=>$is_member[0]["member_nm"],
+	                "member_cellphone"=>$is_member[0]["cellphone"],
+	                "member_email"=>$is_member[0]["member_email"]
+	            ]);
+	        } else{
+	            $msg_str = '<script>alert("일치하는 회원정보가 없습니다. 회원가입으로 이동합니다.");</script>';
+	            echo $msg_str;
+	            $this->signup($profile_info);
+	        }
+	    }
 	}
 	
 	// 함수: 카카오 curl 통신
@@ -181,9 +144,14 @@ class Member extends CI_Controller {
 	
 	
 	
-	public function signup(){
+	public function signup($opt=[]){
+	    if(count($opt)>0){
+	        $viewData = ["name"=>$opt["name"], "cellphone"=>$opt["cellphone"], "email"=>$opt["email"], "uuid"=>$opt["uuid"]];
+	    }else {
+	        $viewData = ["name"=>"", "cellphone"=>"", "email"=>"", "uuid"=>""];
+	    }
 	    
-	    $this->load->view('/member/signup');
+	    $this->load->view('/member/signup', $viewData);
 	}
 	
 	public function term(){

@@ -74,15 +74,16 @@
             <div class="member-container">                
                 <form class="signup-form" id="frm1" name="frm1">
                     <div class="form_item user">
-                        <input type="text" name="member_nm" id="member_nm" placeholder="이름(*필수입력)" required />
+                        <input type="text" name="member_nm" id="member_nm" placeholder="이름(*필수입력)" required value="<?php echo $name;?>"/>
                     </div>
 
                     <div class="form_item phone">
-                        <input type="tel"  name="cellphone" id="cellphone" placeholder="휴대전화번호(*필수입력)" maxlength="16" onkeyup="javascript: cmmOnNumber(this);" required />
+                        <input type="tel"  name="cellphone" id="cellphone" placeholder="휴대전화번호(*필수입력)" maxlength="16" onkeyup="javascript: cmmOnNumber(this);" required  value="<?php echo $cellphone;?>"/>
                     </div>
 
                     <div class="form_item email">
-                        <input type="email" name="member_email" id="member_email" placeholder="Email(*필수입력)" onblur="javsascript: cmmOnEmail(this);" required />
+                        <input type="email" name="member_email" id="member_email" placeholder="Email(*필수입력)" onblur="javsascript: cmmOnEmail(this);" required  value="<?php echo $email;?>"/>
+                        <input type="hidden" name="member_uuid" id="member_uuid" value="<?php echo $uuid;?>"/>
                     </div>
 
                     <div class="form_item Hosp">

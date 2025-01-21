@@ -222,7 +222,7 @@ class Bizmsg extends CI_Controller {
         $template_idx = getPost("template_idx", "");
         $template_type = getPost("template_type", "ft");   
         $msg_target = getPost("msg_target", "");  
-        $arr_target = explode(",", $msg_target);
+        $final_target = explode(",", $msg_target);
         $img_url = getPost("img_url", "");
         $img_link = getPost("img_link", "");
         $template_title = getPost("title", "");
@@ -236,7 +236,7 @@ class Bizmsg extends CI_Controller {
         $exec_cnt = 0;
         $ok_cnt = 0;
         
-        foreach($arr_target as $row){            
+        foreach($final_target as $row){
             
             $img_data = [];
             $btn_data = [];
