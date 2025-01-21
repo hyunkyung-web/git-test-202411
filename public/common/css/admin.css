@@ -27,25 +27,30 @@ button {
 button.detail-btn {
 	background: #c7f8f5 !important;
 	color: #19c5bb !important;
-	border: none !important;
+	border: 1px solid #c7f8f5 !important;
 	margin-left: 5px;
 }
 button.mint {
 	background: #c7f8f5 !important;
 	color: #19c5bb !important;
-	border: none !important;
+	border: 1px solid #c7f8f5 !important;
 }
 
 button.blue {
 	background: #e1f1ff !important;
 	color: #4c91d7 !important;
-	border: none !important;
+	border: 1px solid #4c91d7 !important;
 }
 
 button.red {
 	background: #fee3e5 !important;
 	color: #f44d5f !important;
-	border: none !important;
+	border: 1px solid f44d5f !important;
+}
+button.white {
+	background: #fff !important;
+	color: #333 !important;
+	border: 1px solid #ddd !important;
 }
 
 .blind {
@@ -829,7 +834,6 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	position: relative;
 	min-height: 800px;
 	/* .main-content > div 기본 padding : 20px */
-	padding-top: 10px !important;
 }
 .tab_content {
 	display: none;
@@ -898,7 +902,9 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 .btn_send_message button {
 	margin-left: 5px;
 }
-
+.btn_confirm button {
+	margin-left: 5px;
+}
 /* popup */
 .mobile_screen_pop {
 	background: #fefefe;
@@ -915,10 +921,11 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	box-sizing: content-box;
 }
 .mobile_screen_pop .address_list > div {
-	padding-bottom: 10px;
+	/* padding-bottom: 10px; */
+	margin-bottom: 10px;
 }
 .mobile_screen_pop .search-bar {
-	width: 60%;
+	width: 100%;
 }
 .mobile_screen_pop.active {
 	display: block;
@@ -939,14 +946,20 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 .address_list {
 	text-align: left;
 }
+.address_list label {
+	font-size: 1em;
+}
 .address_list td > label {
 	margin-right: 0px;
 }
 
+.address_list td > div {
+	margin-right: 0px;
+}
 .address_selected_wrap {
 	min-height: 50px;
 	max-height: 100px;
-	padding: 5px;
+	/* padding: 5px; */
 	padding-top: 0;
 	padding-left: 0;
 	border: 1px solid #ddd;
@@ -979,19 +992,18 @@ p.address_selected {
 	margin-top: 10px;
 }
 
-.address_list .btn_send_message_type2 > button {
-	width: auto;
-	margin-top: 5px;
-}
-.address_list .btn_send_message_type2_big > button {
-	margin-top: 5px;
-}
 .mobile_screen .search-bar {
 	width: 100%;
 	margin-bottom: 10px;
 }
 .mobile_screen button.search-button {
 	width: auto;
+}
+button#delete_labelAll {
+	width: auto;
+	float: right;
+	margin-top: 3px;
+	margin-right: 3px;
 }
 
 /* tab - library */
@@ -1179,5 +1191,10 @@ a.ui-button:active,
 	.hamburger-menu.active > ul {
 		position: absolute;
 		top: 10%;
+	}
+}
+@media (max-width: 400px) {
+	.mobile_screen_pop {
+		box-sizing: border-box;
 	}
 }

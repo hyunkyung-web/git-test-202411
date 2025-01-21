@@ -18,8 +18,35 @@ $(function () {
 		loginVerify();
 	});
 
-	$("#chk_all").change(toggleAllCheck);
-	$('#item-list input[type="checkbox"]').change(updateAllCheck);
+	// tab - 체크박스 관련 내용
+	$("input[name=chk_all]").click(function () {
+		updateAllCheck();
+	});
+	$("input[name=chk_address]").click(function () {
+		updateEachCheck();
+	});
+	$(".address_selected_wrap").on("click", ".label_added", function () {
+		const checkboxId = $(this).attr("for");
+		// input - 체크제거
+		const checkbox = $(`#${checkboxId}`);
+		if (checkbox.length) {
+			checkbox.prop("checked", false);
+		}
+		// 라벨 저거
+		$(this).remove();
+		updateEachCheck();
+
+		sendData();
+	});
+	// 탭화면의 모든 label 제거
+	$(".address_selected_wrap").on("click", "#delete_labelAll", function () {
+		$(".address_selected").empty();
+	});
+
+	// $("#delete_labelAll").on("click", function () {
+	// 	alert("yes");
+	// 	$(".address_selected").empty();
+	// });
 
 	if ($("#smarteditor").length) {
 		nhn.husky.EZCreator.createInIFrame({
@@ -35,6 +62,7 @@ $(function () {
 var oEditor = [];
 
 function openTab(event, currentTab) {
+	resetAllCheck();
 	$(".popup").removeClass("active");
 	const tabContents = $(".tab_content");
 	const tabButtons = $(".btn_tab");
@@ -51,7 +79,6 @@ function openTab(event, currentTab) {
 }
 
 function openPopup(obj) {
-	// $(obj).css("display", "block");
 	$(obj).addClass("active");
 	// $(".tab_content").removeClass("active");
 }
@@ -61,75 +88,81 @@ function closePopup() {
 
 var TARGET_TYPE;
 
-function openAddressBook(send_type){
+//탭 클릭시, popup -- reset
+function openAddressBook(send_type) {
 	TARGET_TYPE = send_type;
-	openPopup('.mobile_screen_pop');
-	
+	openPopup(".mobile_screen_pop");
+
 	console.log(TARGET_TYPE);
 }
 
-function toggleAllCheck() {
+// 함수 통합
+function resetAllCheck() {
+	$("input[name=chk_address]").prop("checked", false);
+	$("input[name=chk_all]").prop("checked", false);
 	$(".address_selected").empty();
-	const isChecked = $("#chk_all").is(":checked");
-	$("#item-list input").prop("checked", isChecked);
-	$("#item-list input").next().toggleClass("checked", isChecked);
-
-	// 체크박스 전체 선택시 - .address_selected에 모든 라벨 추가
-	if (isChecked) {
-		$("#item-list input:checked").each(function () {
-			const labelText = $(this).closest("input").attr("title");
-			const id = $(this).attr("id");
-			$(".address_selected").append(
-				`<label for="${id}"><span>${labelText} X</span></label>`
-			);
-		});
+}
+function updateAllCheck() {
+	if ($("input[name=chk_all]").is(":checked")) {
+		$("input[name=chk_address]").prop("checked", true);
 	} else {
-		$(".address_selected").empty();
+		$("input[name=chk_address]").prop("checked", false);
 	}
 
-	//target 으로 데이터 전송
-	let phoneInfo = [];
-	let emailInfo = [];
-	$('input[name="chk_address"]:checked').each(function () {
-		phoneInfo.push($(this).data("phone"));
-		emailInfo.push($(this).data("email"));
-	});
-
-	$("#kakako_target").val(phoneInfo.join(","));
-	$("#email_target").val(emailInfo.join(","));
+	updateEachCheck();
 }
 
-function updateAllCheck() {
+function updateEachCheck() {
+	//전체체크 해제
+	// console.log($("input[name=chk_address]").length);
+	// console.log($("input[name=chk_address]:checked").length);
 	const allChecked =
-		$("#item-list input").length === $("#item-list input:checked").length;
+		$("input[name=chk_address]").length ===
+		$("input[name=chk_address]:checked").length;
+
 	$("#chk_all").prop("checked", allChecked);
-	$("#chk_all").next().toggleClass("checked", allChecked);
 
-	// 체크박스 선택시 - .address_selected에 라벨 추가
-	if ($(this).is(":checked")) {
-		const labelText = $(this).closest("input").attr("title");
-		const id = $(this).attr("id");
-		$(".address_selected").append(
-			`<label for="${id}"><span>${labelText} X</span></label>`
-		);
-	} else {
-		const id = $(this).attr("id");
-		$(`.address_selected label[for="${id}"]`).remove();
-	}
+	//confirm 버튼때문에 - 라벨추가, sendData 따로 분리
+}
+function confirmData() {
+	// let chkData = [];
+	let addStr = "";
+	$(".address_selected").empty();
 
-	//target 으로 데이터 전송
+	addStr += `<button id="delete_labelAll" class="white">reset</button>`;
+	$("input[name=chk_address]:checked").each(function () {
+		// chkData.push($(this).val());
+		addStr += `<label for="${this.id}" class="label_added"><span>${this.title} X</span></label>`;
+	});
+
+	$(".address_selected").append(addStr);
+
+	sendData();
+	closePopup();
+}
+
+function sendData() {
 	let phoneInfo = [];
 	let emailInfo = [];
 	$('input[name="chk_address"]:checked').each(function () {
-		phoneInfo.push($(this).data("phone"));
-		emailInfo.push($(this).data("email"));
+		let phone = $(this).data("phone");
+		let email = $(this).data("email");
+
+		if (phone) {
+			phoneInfo.push(phone);
+		}
+		if (email) {
+			emailInfo.push(email);
+		}
 	});
 
 	$("#kakako_target").val(phoneInfo.join(","));
 	$("#lms_target").val(phoneInfo.join(","));
 	$("#email_target").val(emailInfo.join(","));
-	
 }
+
+//확인버트 클릭시 -- 현재 데이터 업데이트
+//취소버튼 클릭시 -- 단순히 popup close
 
 // Mobile burger
 document.addEventListener("DOMContentLoaded", function () {

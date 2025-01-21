@@ -162,7 +162,14 @@
 					<!-- tab_2 카카오톡 -->
 					<div id="tab_2" class="tab_content">
 						<div class="mobile_screen">
-							<div class="flex_row flex_end">
+							<div class="flex_row flex_between">
+								<!-- 발송 버튼 2개 -->
+								<div class="btn_send_message flex_row">
+									<button onclick="javascript: sendKakaoTalk('ft');" class="red">선택 발송</button>
+									<button onclick="javascript: sendKakaoTalk('ft');" class="red"">전체 발송</button>
+								</div>
+
+								<!-- 주소록 popup -->
 								<button class="open_pop mint" onclick="openAddressBook('kakao')">수신자 선택</button>
 							</div>
 							<!-- 최종 발송 타겟 -->
@@ -191,8 +198,20 @@
 					<div id="tab_3" class="tab_content">
 
 						<div class="mobile_screen">
-							<div class="flex_row flex_end">
+							<div class="flex_row flex_between">
+								<!-- 발송 버튼 2개 -->
+								<div class="btn_send_message flex_row">
+									<button onclick="javascript: sendKakaoTalk('ft');" class="red">선택 발송</button>
+									<button onclick="javascript: sendKakaoTalk('ft');" class="red"">전체 발송</button>
+								</div>
+
 								<button class="open_pop mint" onclick="openAddressBook('email')">수신자 선택</button>
+							</div>
+							<!-- 최종 발송 타겟 -->
+							<div class="address_selected_wrap">
+								<p class="address_selected">
+									<!-- <label for="chk_address_1"><span>고현경 X</span></label> -->
+								</p>
 							</div>
 
 							<div><?php
@@ -232,7 +251,7 @@
 
 					<!-- 주소록 popup -->
 					<div class="mobile_screen_pop popup">
-						<input type="text" name="kakako_target" id="kakako_target" placeholder="카카오 target" />						
+						<input type="text" name="kakako_target" id="kakako_target" placeholder="카카오 target" />
 						<input type="text" name="email_target" id="email_target" placeholder="email target" />
 						<input type="text" name="lms_target" id="lms_target" placeholder="LMS target" />
 
@@ -247,7 +266,8 @@
 										<button type="button" class="search-button" onclick="javascript: noticeList(1);">Search</button>
 									</div>
 
-									<button type="button" class="btn_close" onclick="closePopup();">X</button>
+									<!-- 하위 삭제버튼 이용할 경우, search-bar -- width: 60% 로 조정 필요 -->
+									<!-- <button type="button" class="btn_close" onclick="closePopup();">X</button> -->
 								</form>
 							</div>
 							<div class="list_table_wrap">
@@ -260,7 +280,8 @@
 										<tr>
 											<th>
 												<label>
-													<input type="checkbox" class="display-none" id="chk_all">
+													<input type="checkbox" class="display-none"
+													name="chk_all" id="chk_all" >
 													<span class="custom-checkbox"></span>
 												</label>
 											</th>
@@ -276,7 +297,7 @@
 													<span class="custom-checkbox"></span>
 												</label>
 											</td>
-											<td class="left">고현경(test@ddd.com)</td>
+											<td class="left"><label for="chk_address_1">고현경(test@ddd.com)</label></td>
 										</tr>
 										<tr>
 											<td >
@@ -285,7 +306,7 @@
 													<span class="custom-checkbox"></span>
 												</label>
 											</td>
-											<td class="left">홍길동(test@ddd.com)</td>
+											<td class="left"><label for="chk_address_2">홍길동(test@ddd.com)</label></td>
 										</tr>
 										<tr>
 											<td>
@@ -294,7 +315,7 @@
 													<span class="custom-checkbox"></span>
 												</label>
 											</td>
-											<td class="left">김성언(test@ddd.com)</td>
+											<td class="left"><label for="chk_address_3">김성언(test@ddd.com)</label></td>
 										</tr>
 										<tr>
 											<td>
@@ -323,60 +344,24 @@
 											</td>
 											<td class="left">홍길동(test@ddd.com)</td>
 										</tr>
-										<tr>
-											<td>
-												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_8" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01077672992" title="BBB">
-													<span class="custom-checkbox"></span>
-												</label>
-											</td>
-											<td class="left">홍길동(test@ddd.com)</td>
-										</tr>
-										<tr>
-											<td>
-												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_9" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01077672992" title="DDD">
-													<span class="custom-checkbox"></span>
-												</label>
-											</td>
-											<td class="left">홍길동(test@ddd.com)</td>
-										</tr>
-										<tr>
-											<td>
-												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_10" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01077672992" title="NNN">
-													<span class="custom-checkbox"></span>
-												</label>
-											</td>
-											<td class="left">홍길동(test@ddd.com)</td>
-										</tr>
-										<tr>
-											<td>
-												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_11" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01077672992" title="RRR">
-													<span class="custom-checkbox"></span>
-												</label>
-											</td>
-											<td class="left">홍길동(test@ddd.com)</td>
-										</tr>
+
+
 									</tbody>
 								</table>
 							</div>
-							<div class="address_selected_wrap">
+							<!-- <div class="address_selected_wrap">
 								<p class="address_selected">
-									<!-- <label for="chk_address_1"><span>고현경 X</span></label> -->
+									<label for="chk_address_1" class="label_added"><span>고현경 X</span></label>
 								</p>
+							</div> -->
+
+							<!-- 버튼 2개  : 취소, 확인 -->
+							<div class="btn_confirm flex_row flex_end">
+								<button onclick="javascript: closePopup();" class="white">취소</button>
+								<button onclick="javascript: confirmData();" class="mint""> 확인</button>
 							</div>
 
-							<div class="btn_confirm flex_row flex_end">
-								<button onclick="javascript: sendKakaoTalk('ft');" class="mint">취소</button>
-								<button onclick="javascript: sendKakaoTalk('ft');" class="red"">전체 발송</button>
-							</div>
-							<!-- 발송 버튼 2개 -->
-							<div class="btn_send_message flex_row flex_end">
-								<button onclick="javascript: sendKakaoTalk('ft');" class="red">선택 발송</button>
-								<button onclick="javascript: sendKakaoTalk('ft');" class="red"">전체 발송</button>
-							</div>
+
 						</div>
 						<!-- //address_list -->
 
