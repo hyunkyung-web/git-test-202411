@@ -340,7 +340,7 @@
 													<span class="custom-checkbox"></span>
 												</label>
 											</td>
-											<td class="left">조장운(test@ddd.com)</td>
+											<td class="left"><label for="chk_address_4">조장운(test@ddd.com)</label></td>
 										</tr>
 										<tr>
 											<td>
@@ -349,7 +349,7 @@
 													<span class="custom-checkbox"></span>
 												</label>
 											</td>
-											<td class="left">황지니(test@ddd.com)</td>
+											<td class="left"><label for="chk_address_5">황지니(test@ddd.com)</label></td>
 										</tr>
 										<tr>
 											<td>
@@ -358,7 +358,7 @@
 													<span class="custom-checkbox"></span>
 												</label>
 											</td>
-											<td class="left">홍길동(test@ddd.com)</td>
+											<td class="left"><label for="chk_address_6">홍길동(test@ddd.com)</label></td>
 										</tr>
 
 
