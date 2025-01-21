@@ -487,12 +487,9 @@ form td.userId_wrap input {
 	flex: none;
 }
 /* 커스텀 input type="file" */
-/* form td.add-file {
-	display: flex;
-	align-items: center;
-	border: none;
-	border-right: 1px solid #ddd;
-} */
+form td.add-file {
+	height: auto;
+}
 /* 커스텀 input type file */
 
 td.add-file .upload-name {
@@ -865,13 +862,12 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	max-width: 480px;
 }
 
-/* 기본 버튼 스타일 적용 */
+/* 기본 버튼 스타일과 동일하게 적용 */
 .mobile_screen input[type="button"] {
 	width: 100%;
 	background: #f1f1f1;
 	text-align: center;
 	padding: 8px 15px;
-	font-size: 0.9em;
 	color: #333;
 	text-align: center;
 	border: none;

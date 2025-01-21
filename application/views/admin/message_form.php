@@ -165,8 +165,8 @@
 							<div class="flex_row flex_between">
 								<!-- 발송 버튼 2개 -->
 								<div class="btn_send_message flex_row">
-									<button onclick="javascript: sendKakaoTalk('ft');" class="red">선택 발송</button>
-									<button onclick="javascript: sendKakaoTalk('ft');" class="red"">전체 발송</button>
+									<button class="red">선택 발송</button>
+									<button class="red"">전체 발송</button>
 								</div>
 
 								<!-- 주소록 popup -->
@@ -201,8 +201,8 @@
 							<div class="flex_row flex_between">
 								<!-- 발송 버튼 2개 -->
 								<div class="btn_send_message flex_row">
-									<button onclick="javascript: sendKakaoTalk('ft');" class="red">선택 발송</button>
-									<button onclick="javascript: sendKakaoTalk('ft');" class="red"">전체 발송</button>
+									<button class="red">선택 발송</button>
+									<button class="red"">전체 발송</button>
 								</div>
 
 								<button class="open_pop mint" onclick="openAddressBook('email')">수신자 선택</button>
@@ -214,6 +214,7 @@
 								</p>
 							</div>
 
+    						<div><?php echo nl2br($info["title"]); ?></div>
 							<div><?php
 							if(!empty($info["img_link"])){
 								echo '<a href="'.$info["img_link"].'" target="_black"><img src="'.$info["img_url"].'"/></a>';
@@ -221,7 +222,7 @@
 								echo !empty($info["img_url"])?'<img src="'.$info["img_url"].'"/>' : '';
 							}?>
 							</div>
-							<div><?php echo nl2br($info["title"].'<br/><br/>'.$info["template_msg"]);?></div>
+							<div><?php echo nl2br($info["template_msg"]); ?></div>
 							<div class="flex_col"><?php
 							for($i=1; $i<=$info["btn_cnt"]; $i++){?>
 									<a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><input type="button" value="<?php echo $info["btn_name_".$i];?>"></a><?php
@@ -229,31 +230,46 @@
 							</div>
 						</div>
 
-
-
-
 					</div>
 
-					<div id="tabs_4" class="tab_content">
-						<table class="form-table">
-							<colgroup>
-								<col width="50%" />
-								<col width="50%" />
-							</colgroup>
-							<tr>
-								<td></td>
-								<td></td>
-							</tr>
-							</tbody>
-						</table>
+					<div id="tab_4" class="tab_content">
+						<div class="mobile_screen">
+							<div class="flex_row flex_between">
+								<!-- 발송 버튼 2개 -->
+								<div class="btn_send_message flex_row">
+									<button class="red">선택 발송</button>
+									<button class="red"">전체 발송</button>
+								</div>
+
+								<button class="open_pop mint" onclick="openAddressBook('lms')">수신자 선택</button>
+							</div>
+							<!-- 최종 발송 타겟 -->
+							<div class="address_selected_wrap">
+								<p class="address_selected">
+									<!-- <label for="chk_address_1"><span>고현경 X</span></label> -->
+								</p>
+							</div>
+
+    						<div><?php echo nl2br($info["title"]); ?></div>
+							<div><?php
+							if(!empty($info["img_link"])){
+								echo '<a href="'.$info["img_link"].'" target="_black"><img src="'.$info["img_url"].'"/></a>';
+							}else {
+								echo !empty($info["img_url"])?'<img src="'.$info["img_url"].'"/>' : '';
+							}?>
+							</div>
+							<div><?php echo nl2br($info["template_msg"]); ?></div>
+
+						</div>
 					</div>
 
 
 					<!-- 주소록 popup -->
 					<div class="mobile_screen_pop popup">
-						<input type="text" name="kakako_target" id="kakako_target" placeholder="카카오 target" />
-						<input type="text" name="email_target" id="email_target" placeholder="email target" />
-						<input type="text" name="lms_target" id="lms_target" placeholder="LMS target" />
+						<!-- hidden  -->
+						<input type="text" name="kakao_target" id="kakao_target" placeholder="카카오 target" class="target kakao" />
+						<input type="text" name="email_target" id="email_target" placeholder="email target" class="target email" />
+						<input type="text" name="lms_target" id="lms_target" placeholder="LMS target" class="target lms" />
 
 
 						<div class="address_list">
@@ -293,7 +309,7 @@
 										<tr>
 											<td>
 												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_1" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01077672992" title="고현경">
+													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_1" data-email="kkk_1.kho@d-wave.co.kr" data-phone="01077672992" title="고현경">
 													<span class="custom-checkbox"></span>
 												</label>
 											</td>
@@ -302,7 +318,7 @@
 										<tr>
 											<td >
 												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_2" data-email="kk.kkk@d-wave.co.kr" data-phone="01012345678"" title="홍길동">
+													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_2" data-email="kkk_2.kkk@d-wave.co.kr" data-phone="01012345678"" title="홍길동">
 													<span class="custom-checkbox"></span>
 												</label>
 											</td>
@@ -311,7 +327,7 @@
 										<tr>
 											<td>
 												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_4" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01048586666" title="김성언">
+													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_3" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01048586666" title="김성언">
 													<span class="custom-checkbox"></span>
 												</label>
 											</td>
@@ -320,7 +336,7 @@
 										<tr>
 											<td>
 												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_5" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01098986666" title="조장운">
+													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_4" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01098986666" title="조장운">
 													<span class="custom-checkbox"></span>
 												</label>
 											</td>
@@ -329,7 +345,7 @@
 										<tr>
 											<td>
 												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_6" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01033336565" title="황지니">
+													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_5" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01033336565" title="황지니">
 													<span class="custom-checkbox"></span>
 												</label>
 											</td>
@@ -338,7 +354,7 @@
 										<tr>
 											<td>
 												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_7" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01077672992" title="aaa">
+													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_6" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01099990000" title="aaa">
 													<span class="custom-checkbox"></span>
 												</label>
 											</td>
@@ -358,7 +374,7 @@
 							<!-- 버튼 2개  : 취소, 확인 -->
 							<div class="btn_confirm flex_row flex_end">
 								<button onclick="javascript: closePopup();" class="white">취소</button>
-								<button onclick="javascript: confirmData();" class="mint""> 확인</button>
+								<button onclick="javascript: createAddressTarget();" class="mint""> 확인</button>
 							</div>
 
 

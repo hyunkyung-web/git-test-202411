@@ -106,10 +106,13 @@
                                 </tr>
                                 <tr>
                                     <th><label>첨부파일<?php echo !empty($info["attach_file"]) ? '&nbsp;<a href="'.$info["attach_file"].'" target="_blank">💾</a>': '';?></label></th>
-                                    <td class="add-file">
+                                    <!-- <td class="add-file">
                                         <label for="attach_file"> <i class="fa-solid fa-circle-check"></i> 파일추가</label>
                                         <input type="file" name="attach_file" id="attach_file" class="display-none" onchange="updateFileName()" />
                                         <input class="upload-name" value="" placeholder="" readonly />
+                                    </td> -->
+                                    <td class="add-file">
+                                        <input type="file" name="attach_file" id="attach_file" />
                                     </td>
                                 </tr>
                             </tbody>

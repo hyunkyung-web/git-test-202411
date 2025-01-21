@@ -25,28 +25,44 @@ $(function () {
 	$("input[name=chk_address]").click(function () {
 		updateEachCheck();
 	});
+
 	$(".address_selected_wrap").on("click", ".label_added", function () {
-		const checkboxId = $(this).attr("for");
-		// input - 체크제거
-		const checkbox = $(`#${checkboxId}`);
-		if (checkbox.length) {
-			checkbox.prop("checked", false);
+		const thisCheckId = $(this).attr("for");
+		const thisCheckbox = $(`#${thisCheckId}`);
+		const thisPhone = thisCheckbox.data("phone");
+		const thisEmail = thisCheckbox.data("email");
+
+		// 체크박스 수동 삭제 - label 과 자동연결 불가
+		if (thisCheckbox.length) {
+			thisCheckbox.prop("checked", false);
 		}
-		// 라벨 저거
+
+		let targetType;
+		let targetValue;
+
+		if (TARGET_TYPE === "kakao") {
+			targetType = "kakao";
+			targetValue = thisPhone;
+		} else if (TARGET_TYPE === "email") {
+			targetType = "email";
+			targetValue = thisEmail;
+		} else {
+			targetType = "lms";
+			targetValue = thisPhone;
+		}
+
+		updateAddressTarget(targetType, targetValue);
+
+		// 라벨 제거
 		$(this).remove();
 		updateEachCheck();
-
-		sendData();
 	});
+
 	// 탭화면의 모든 label 제거
 	$(".address_selected_wrap").on("click", "#delete_labelAll", function () {
 		$(".address_selected").empty();
+		resetAllCheck();
 	});
-
-	// $("#delete_labelAll").on("click", function () {
-	// 	alert("yes");
-	// 	$(".address_selected").empty();
-	// });
 
 	if ($("#smarteditor").length) {
 		nhn.husky.EZCreator.createInIFrame({
@@ -56,6 +72,17 @@ $(function () {
 			fCreator: "createSEditor2",
 		});
 	}
+});
+
+// Mobile burger
+document.addEventListener("DOMContentLoaded", function () {
+	const hamburgerMenu = document.querySelector(".hamburger-menu");
+	const navLinks = document.querySelector(".menu-toggle");
+
+	navLinks.addEventListener("click", function () {
+		hamburgerMenu.classList.toggle("active");
+		navLinks.classList.toggle("active");
+	});
 });
 
 //스마트 에디터 오브젝트
@@ -87,20 +114,56 @@ function closePopup() {
 }
 
 var TARGET_TYPE;
-
-//탭 클릭시, popup -- reset
 function openAddressBook(send_type) {
 	TARGET_TYPE = send_type;
+	// testLabel();
 	openPopup(".mobile_screen_pop");
 
-	console.log(TARGET_TYPE);
+	// console.log(TARGET_TYPE);
+}
+// function testLabel() {
+// 	$(".label_added").each(function () {
+// 		const labelFor = $(this).attr("for");
+
+// 		$("input[name='chk_address']").each(function () {
+// 			const inputElement = $(this);
+// 			console.log("Label for:", labelFor);
+// 			console.log("Input ID:", inputElement.attr("id"));
+
+// 			if (inputElement.attr("id") === labelFor) {
+// 				inputElement.prop("checked", true).trigger("change");
+// 				console.log("Checked:", inputElement.attr("id"));
+// 			} else {
+// 				inputElement.prop("checked", false).trigger("change");
+// 			}
+// 		});
+// 	});
+// }
+
+function updateAddressTarget(TARGET_TYPE, thisValue) {
+	//data-phone, data-email
+	const currentValue = $(`.${TARGET_TYPE}`).val();
+	const updatedValue = currentValue
+		.split(",")
+		.reduce((acc, item) => {
+			const trimmedItem = item.trim();
+			if (item !== thisValue) {
+				acc.push(trimmedItem);
+			}
+
+			return acc;
+		}, [])
+		.join(", ");
+
+	$(`.${TARGET_TYPE}`).val(updatedValue);
 }
 
-// 함수 통합
 function resetAllCheck() {
 	$("input[name=chk_address]").prop("checked", false);
 	$("input[name=chk_all]").prop("checked", false);
 	$(".address_selected").empty();
+
+	$("input.target").val("");
 }
 function updateAllCheck() {
 	if ($("input[name=chk_all]").is(":checked")) {
@@ -124,11 +187,14 @@ function updateEachCheck() {
 
 	//confirm 버튼때문에 - 라벨추가, sendData 따로 분리
 }
-function confirmData() {
+
+// 라벨생성 + 데이터 보내기
+function createAddressTarget() {
 	// let chkData = [];
 	let addStr = "";
 	$(".address_selected").empty();
 
+	//tab화면 라벨 생성
 	addStr += `<button id="delete_labelAll" class="white">reset</button>`;
 	$("input[name=chk_address]:checked").each(function () {
 		// chkData.push($(this).val());
@@ -137,11 +203,7 @@ function confirmData() {
 
 	$(".address_selected").append(addStr);
 
-	sendData();
-	closePopup();
-}
-
-function sendData() {
+	//data 보내기
 	let phoneInfo = [];
 	let emailInfo = [];
 	$('input[name="chk_address"]:checked').each(function () {
@@ -156,24 +218,35 @@ function sendData() {
 		}
 	});
 
-	$("#kakako_target").val(phoneInfo.join(","));
+	$("#kakao_target").val(phoneInfo.join(","));
 	$("#lms_target").val(phoneInfo.join(","));
 	$("#email_target").val(emailInfo.join(","));
+
+	closePopup();
 }
+
+// function sendData() {
+// 	let phoneInfo = [];
+// 	let emailInfo = [];
+// 	$('input[name="chk_address"]:checked').each(function () {
+// 		let phone = $(this).data("phone");
+// 		let email = $(this).data("email");
+
+// 		if (phone) {
+// 			phoneInfo.push(phone);
+// 		}
+// 		if (email) {
+// 			emailInfo.push(email);
+// 		}
+// 	});
+
+// 	$("#kakao_target").val(phoneInfo.join(","));
+// 	$("#lms_target").val(phoneInfo.join(","));
+// 	$("#email_target").val(emailInfo.join(","));
+// }
 
 //확인버트 클릭시 -- 현재 데이터 업데이트
 //취소버튼 클릭시 -- 단순히 popup close
-
-// Mobile burger
-document.addEventListener("DOMContentLoaded", function () {
-	const hamburgerMenu = document.querySelector(".hamburger-menu");
-	const navLinks = document.querySelector(".menu-toggle");
-
-	navLinks.addEventListener("click", function () {
-		hamburgerMenu.classList.toggle("active");
-		navLinks.classList.toggle("active");
-	});
-});
 
 function loginVerify() {
 	if ($.trim($("#user_id").val()).length == 0) {
@@ -500,7 +573,6 @@ function messageList(page = 1) {
 }
 
 function sendKakaoTalk(msgType) {
-	
 	$("#msg_target").val($("#kakako_target").val());
 
 	let postData = new FormData($("#frm1")[0]);
