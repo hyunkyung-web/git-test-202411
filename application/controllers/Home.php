@@ -29,12 +29,12 @@ class Home extends CI_Controller {
 	
 	public function index()
 	{
-	    $this->session_chk();
+// 	    $this->session_chk();
 	    $this->main();
 	}
 	
 	public function main(){
-	    $this->session_chk();
+// 	    $this->session_chk();
 	    $this->load->view('/main');
 	}
 	
