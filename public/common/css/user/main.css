@@ -79,6 +79,17 @@ member
     height: 100%;
 }
 
+.member-container a {
+    width: 100%;
+}
+
+.member-container a button {
+    margin-top: 0;
+    background: url(/public/images/button/kakao_start.png) no-repeat center center, #fee501;
+    padding: 22px 0;
+    /* background-size: 100%; */
+}
+
 /***************************************
 main
 ***************************************/
@@ -543,7 +554,7 @@ textarea:focus {
 .chatBot > span {
     width: 100%;
     margin-left: 5px;
-    padding: 5px 1em;
+    padding: 7px 1em;
     background: #e1f1ff;
     color: #4c91d7;
     border-top-right-radius: 10px;
@@ -565,7 +576,7 @@ textarea:focus {
 /* 담당자 선택 */
 .select_contact {
     width: fit-content;
-    padding: 5px 1em;
+    padding: 7px 1em;
     background: #c7f8f5;
     color: #19c5bb;
     border-radius: 5px;
@@ -720,7 +731,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     font-size: 1em;
     outline: none;
     margin: 0;
-    padding: 5px;
+    padding: 6px;
+    max-height: 29px;
 }
 .searchBox select {
     width: 25%;
@@ -735,7 +747,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     margin-left: 5px;
     background: #e1f1ff;
     color: #4c91d7;
-    border: 1px solid #e1f1ff;
 }
 
 /* 담당자 list table */
@@ -780,8 +791,9 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .headerCell,
 .tableCell {
-    min-height: 30px;
-    line-height: 30px;
+    /* height: 30px;
+    line-height: 30px; */
+    padding: 7px 0;
     border-right: 1px solid #ddd;
 }
 .headerCell:last-child,
@@ -881,13 +893,11 @@ button.btn_select {
     min-height: 250px;
     /* display: none; */
 }
-.user .tableCell {
-    padding: 0;
-}
 
 .user .headerCell:first-child,
 .user .tableCell:first-child {
     width: 10%;
+    padding: 7px 0;
 }
 .user .headerCell:nth-child(2),
 .user .tableCell:nth-child(2) {

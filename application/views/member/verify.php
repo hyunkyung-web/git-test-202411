@@ -79,7 +79,7 @@
                         <input type="tel" id="phoneNo" name="phoneNo" placeholder="휴대전화번호(숫자만 입력하세요)" class="input" maxlength="16" onkeyup="javascript: cmmOnNumber(this);"/>
                     </div>
                     <button type="button">인증하기</button>
-                    <a href="<?php echo $login_auth_url;?>"><button type="button">가가오로 시작하기</button></a>
+                    <a href="<?php echo $login_auth_url;?>"><button type="button"></button></a>
                 </form>
             </div>
         </div>
