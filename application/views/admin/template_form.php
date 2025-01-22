@@ -177,27 +177,21 @@
 					</div>
 					<!-- 탭 2 -->
 					<div id="tab_2" class="tab_content">
-						<table class="form-table">
-                			<tr>
-								<td>
-									<div class="mobile_screen">
-										<div><?php
-										if(!empty($info["img_link"])){
-											echo '<a href="'.$info["img_link"].'" target="_black"><img src="'.$info["img_url"].'"/></a>';
-										}else {
-											echo !empty($info["img_url"])?'<img src="'.$info["img_url"].'"/>' : '';
-										}?>
-										</div>
-										<div><?php echo nl2br($info["title"].'<br/><br/>'.$info["template_msg"]);?></div>
-										<div><?php
-										for($i=1; $i<=$info["btn_cnt"]; $i++){?>
-											<a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php
-										}?>
-										</div>
-									</div>
-                				</td>
-							</tr>
-            			</table>
+						<div class="mobile_screen">
+							<div><?php
+							if(!empty($info["img_link"])){
+								echo '<a href="'.$info["img_link"].'" target="_black"><img src="'.$info["img_url"].'"/></a>';
+							}else {
+								echo !empty($info["img_url"])?'<img src="'.$info["img_url"].'"/>' : '';
+							}?>
+							</div>
+							<div><?php echo nl2br($info["title"].'<br/><br/>'.$info["template_msg"]);?></div>
+							<div><?php
+							for($i=1; $i<=$info["btn_cnt"]; $i++){?>
+								<a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php
+							}?>
+							</div>
+						</div>
 					</div>
 					<!-- 탭 3 -->
 					<div id="tab_3" class="tab_content">

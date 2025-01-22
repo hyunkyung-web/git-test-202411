@@ -177,7 +177,7 @@
 							}?>
 							</div>
 							<div><?php echo nl2br($info["title"].'<br/><br/>'.$info["template_msg"]);?></div>
-							<div class="flex_col"><?php
+							<div class="flex_col btn_wrap"><?php
 							for($i=1; $i<=$info["btn_cnt"]; $i++){?>
 									<a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php
 							}?>
@@ -215,7 +215,7 @@
 							<div><?php echo nl2br($info["template_msg"]); ?></div>
 							<div class="flex_col"><?php
 							for($i=1; $i<=$info["btn_cnt"]; $i++){?>
-									<a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><input type="button" value="<?php echo $info["btn_name_".$i];?>"></a><?php
+									<a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><input type="button" class="btn_link" value="<?php echo $info["btn_name_".$i];?>"></a><?php
 							}?>
 							</div>
 						</div>

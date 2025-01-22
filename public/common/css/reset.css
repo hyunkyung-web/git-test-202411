@@ -64,11 +64,11 @@ th {
 	background-color: #f2f2f2;
 }
 
-th,
+/* th,
 td {
 	border: 1px solid #ddd;
 	text-align: center;
-}
+} */
 
 input[type="text"],
 input[type="email"],

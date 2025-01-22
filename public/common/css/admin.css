@@ -6,7 +6,7 @@
 body {
 	/* font-family: "Noto Sans KR", sans-serif; */
 	/* font-family: "Manjari", sans-serif; */
-	font-family: "montserrat", sans-serif;
+	font-family: "montserrat", "Manjari", sans-serif;
 	font-size: 14px;
 	/* color: #5c5d5e; */
 }
@@ -882,6 +882,9 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	background: #f1f1f1;
 	text-align: center;
 	/* margin-top: 8px; */
+}
+.mobile_screen .btn_link {
+	margin-bottom: 8px;
 }
 .btn_send_message button {
 	margin-left: 5px;
