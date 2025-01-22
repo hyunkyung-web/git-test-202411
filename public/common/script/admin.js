@@ -18,47 +18,13 @@ $(function () {
 		loginVerify();
 	});
 
-	// tab - 체크박스 관련 내용
-	$("input[name=chk_all]").click(function () {
-		updateAllCheck();
-	});
-	$("input[name=chk_address]").click(function () {
-		updateEachCheck();
-	});
+	$("input[name=chk_all]").click(updateAllCheck);
+	$("input[name=chk_address]").click(updateEachCheck);
 
-	$(".address_selected_wrap").on("click", ".label_added", function () {
-		const thisCheckId = $(this).attr("for");
-		const thisCheckbox = $(`#${thisCheckId}`);
-		const thisPhone = thisCheckbox.data("phone");
-		const thisEmail = thisCheckbox.data("email");
+	// 탭화면 - 각 라벨 클릭 시 업데이트진행
+	$(".address_selected_wrap").on("click", ".label_added", deleteMsgLabel);
 
-		// 체크박스 수동 삭제 - label 과 자동연결 불가
-		if (thisCheckbox.length) {
-			thisCheckbox.prop("checked", false);
-		}
-
-		let targetType;
-		let targetValue;
-
-		if (TARGET_TYPE === "kakao") {
-			targetType = "kakao";
-			targetValue = thisPhone;
-		} else if (TARGET_TYPE === "email") {
-			targetType = "email";
-			targetValue = thisEmail;
-		} else {
-			targetType = "lms";
-			targetValue = thisPhone;
-		}
-
-		updateAddressTarget(targetType, targetValue);
-
-		// 라벨 제거
-		$(this).remove();
-		updateEachCheck();
-	});
-
-	// 탭화면의 모든 label 제거
+	// 탭화면 - 전체 라벨 삭제
 	$(".address_selected_wrap").on("click", "#delete_labelAll", function () {
 		$(".address_selected").empty();
 		resetAllCheck();
@@ -88,18 +54,13 @@ document.addEventListener("DOMContentLoaded", function () {
 //스마트 에디터 오브젝트
 var oEditor = [];
 
+// 팝업
 function openTab(event, currentTab) {
 	resetAllCheck();
 	$(".popup").removeClass("active");
-	const tabContents = $(".tab_content");
-	const tabButtons = $(".btn_tab");
 
-	tabContents.each(function () {
-		$(this).removeClass("active");
-	});
-	tabButtons.each(function () {
-		$(this).removeClass("active");
-	});
+	$(".tab_content").removeClass("active");
+	$(".btn_tab").removeClass("active");
 
 	$(`#${currentTab}`).addClass("active");
 	$(event.currentTarget).addClass("active");
@@ -107,108 +68,103 @@ function openTab(event, currentTab) {
 
 function openPopup(obj) {
 	$(obj).addClass("active");
-	// $(".tab_content").removeClass("active");
 }
+
 function closePopup() {
 	$(".popup").removeClass("active");
 }
 
+// 주소록
 var TARGET_TYPE;
+var savedCheckedState = [];
 function openAddressBook(send_type) {
 	TARGET_TYPE = send_type;
-	// testLabel();
 	openPopup(".mobile_screen_pop");
 
-	// console.log(TARGET_TYPE);
+	// 현재 체크상태를 저장
+	savedCheckedState = [];
+	$("input[name=chk_address]:checked").each(function () {
+		savedCheckedState.push(this.id);
+	});
+
+	console.log(savedCheckedState);
 }
-// function testLabel() {
-// 	$(".label_added").each(function () {
-// 		const labelFor = $(this).attr("for");
 
-// 		$("input[name='chk_address']").each(function () {
-// 			const inputElement = $(this);
-// 			console.log("Label for:", labelFor);
-// 			console.log("Input ID:", inputElement.attr("id"));
+// 최소 버튼 클릭 -- 이전 상태로 돌리기
+function restoreCheckedState() {
+	$("input[name=chk_address]").each(function () {
+		if (savedCheckedState.includes(this.id)) {
+			$(this).prop("checked", true);
+		} else {
+			$(this).prop("checked", false);
+		}
+	});
 
-// 			if (inputElement.attr("id") === labelFor) {
-// 				inputElement.prop("checked", true).trigger("change");
-// 				console.log("Checked:", inputElement.attr("id"));
-// 			} else {
-// 				inputElement.prop("checked", false).trigger("change");
-// 			}
-// 		});
-// 	});
-// }
+	updateEachCheck();
+	closePopup();
+}
 
-function updateAddressTarget(TARGET_TYPE, thisValue) {
-	//data-phone, data-email
-	const currentValue = $(`.${TARGET_TYPE}`).val();
-	const updatedValue = currentValue
-		.split(",")
-		.reduce((acc, item) => {
-			const trimmedItem = item.trim();
-			if (item !== thisValue) {
-				acc.push(trimmedItem);
-			}
+// 체크박스
+function updateAllCheck() {
+	const isChecked = $("input[name=chk_all]").is(":checked");
+	$("input[name=chk_address]").prop("checked", isChecked);
+	updateEachCheck();
+}
 
-			return acc;
-		}, [])
-		.join(", ");
-
-	$(`.${TARGET_TYPE}`).val(updatedValue);
+function updateEachCheck() {
+	const allChecked =
+		$("input[name=chk_address]").length ===
+		$("input[name=chk_address]:checked").length;
+	$("#chk_all").prop("checked", allChecked);
 }
 
 function resetAllCheck() {
 	$("input[name=chk_address]").prop("checked", false);
 	$("input[name=chk_all]").prop("checked", false);
 	$(".address_selected").empty();
-
 	$("input.target").val("");
 }
-function updateAllCheck() {
-	if ($("input[name=chk_all]").is(":checked")) {
-		$("input[name=chk_address]").prop("checked", true);
-	} else {
-		$("input[name=chk_address]").prop("checked", false);
-	}
 
+// 탭 라벨 선택시 - 업데이트
+function deleteMsgLabel() {
+	const thisCheckId = $(this).attr("for");
+	const thisCheckbox = $(`#${thisCheckId}`);
+	const thisPhone = thisCheckbox.data("phone");
+	const thisEmail = thisCheckbox.data("email");
+
+	// 체크박스 해제
+	thisCheckbox.prop("checked", false);
+
+	let targetType =
+		TARGET_TYPE === "kakao"
+			? "kakao"
+			: TARGET_TYPE === "email"
+			? "email"
+			: "lms";
+	let targetValue =
+		TARGET_TYPE === "kakao" || TARGET_TYPE === "lms" ? thisPhone : thisEmail;
+
+	updateMsgTarget(targetType, targetValue);
+
+	// 라벨 오류 관련, label 삭제
+	$(this).remove();
 	updateEachCheck();
 }
 
-function updateEachCheck() {
-	//전체체크 해제
-	// console.log($("input[name=chk_address]").length);
-	// console.log($("input[name=chk_address]:checked").length);
-	const allChecked =
-		$("input[name=chk_address]").length ===
-		$("input[name=chk_address]:checked").length;
-
-	$("#chk_all").prop("checked", allChecked);
-
-	//confirm 버튼때문에 - 라벨추가, sendData 따로 분리
-}
-
-// 라벨생성 + 데이터 보내기
-function createAddressTarget() {
-	// let chkData = [];
+// 수신자 라벨생서, 수신자 주소 업데이트
+function updateMsgTarget() {
+	console.log(TARGET_TYPE);
 	let addStr = "";
-	$(".address_selected").empty();
-
-	//tab화면 라벨 생성
-	addStr += `<button id="delete_labelAll" class="white">reset</button>`;
-	$("input[name=chk_address]:checked").each(function () {
-		// chkData.push($(this).val());
-		addStr += `<label for="${this.id}" class="label_added"><span>${this.title} X</span></label>`;
-	});
-
-	$(".address_selected").append(addStr);
-
-	//data 보내기
 	let phoneInfo = [];
 	let emailInfo = [];
-	$('input[name="chk_address"]:checked').each(function () {
-		let phone = $(this).data("phone");
-		let email = $(this).data("email");
+
+	// 라벨 생성 및 수신자 주소 정보 추출
+	$("input[name=chk_address]:checked").each(function () {
+		const phone = $(this).data("phone");
+		const email = $(this).data("email");
+		const name = this.title;
+
+		addStr += `<label for="${this.id}" class="label_added"><span>${name} X</span></label>`;
 
 		if (phone) {
 			phoneInfo.push(phone);
@@ -218,9 +174,20 @@ function createAddressTarget() {
 		}
 	});
 
-	$("#kakao_target").val(phoneInfo.join(","));
-	$("#lms_target").val(phoneInfo.join(","));
-	$("#email_target").val(emailInfo.join(","));
+	console.log(emailInfo);
+
+	if (TARGET_TYPE === "kakao" || TARGET_TYPE === "lms") {
+		$("#kakao_target").val(phoneInfo.join(","));
+		$("#lms_target").val(phoneInfo.join(","));
+	} else if (TARGET_TYPE === "email") {
+		$("#email_target").val(emailInfo.join(","));
+	}
+
+	// 내용 추가 - 라벨 + 버튼
+	$(".address_selected").empty().append(addStr);
+	$(".address_selected").prepend(
+		`<button id="delete_labelAll" class="white">reset</button>`
+	);
 
 	closePopup();
 }
@@ -244,9 +211,6 @@ function createAddressTarget() {
 // 	$("#lms_target").val(phoneInfo.join(","));
 // 	$("#email_target").val(emailInfo.join(","));
 // }
-
-//확인버트 클릭시 -- 현재 데이터 업데이트
-//취소버튼 클릭시 -- 단순히 popup close
 
 function loginVerify() {
 	if ($.trim($("#user_id").val()).length == 0) {

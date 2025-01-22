@@ -62,12 +62,6 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-	<script>
-    	$(function(){
-    		$("#tabs").tabs();
-    	});
-	</script>
-
     <!-- aside, button -->
     <div class="container">
     	<div class="blind"></div>
@@ -373,8 +367,8 @@
 
 							<!-- 버튼 2개  : 취소, 확인 -->
 							<div class="btn_confirm flex_row flex_end">
-								<button onclick="javascript: closePopup();" class="white">취소</button>
-								<button onclick="javascript: createAddressTarget();" class="mint""> 확인</button>
+								<button onclick="javascript: restoreCheckedState();" class="white">취소</button>
+								<button onclick="javascript: updateMsgTarget();" class="mint""> 확인</button>
 							</div>
 
 
