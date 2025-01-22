@@ -119,9 +119,9 @@
             			<tr>
             				<th class="full_line"><label>계정상태</label></th>
             				<td class="full_line">
-            					<label><input type="radio" name="member_status" id="member_status_1" value="hold" <?php echo $info["member_status"]=="hold" ? "checked" : '';?>/>보류</label>
+            					<label><input type="radio" name="member_status" id="member_status_1" value="hold" <?php echo $info["member_status"]=="hold" ? "checked" : '';?>/>대기</label>
             					<label><input type="radio" name="member_status" id="member_status_2" value="active" <?php echo $info["member_status"]=="active" ? "checked" : '';?>/>활동</label>
-            					<label><input type="radio" name="member_status" id="member_status_3" value="expire" <?php echo $info["member_status"]=="expire" ? "checked" : '';?>/>만료</label>
+            					<label><input type="radio" name="member_status" id="member_status_3" value="expire" <?php echo $info["member_status"]=="expire" ? "checked" : '';?>/>정지</label>
             					<input type="hidden" name="before_status" value="<?php echo $info["member_status"];?>"/>
             				</td>
             			</tr>

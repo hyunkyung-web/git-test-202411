@@ -75,7 +75,7 @@ class member_model extends CI_Model {
         
         $session_id = getExist($this->session->userdata["user_id"], 'noname');
         
-        if($opt["editMode"] == "N") {
+        if($opt["editMode"] == "N" || $opt["editMode"] == "C") {
             //신규등록 시 기존 사용자와의 아이디 중복여부 확인
             $valid_result = $this->signup_valid($opt["cellphone"]);
             
@@ -87,7 +87,7 @@ class member_model extends CI_Model {
         
         $idx = $opt["idx"];
         
-        if($opt["editMode"] == "N") {
+        if($opt["editMode"] == "N" || $opt["editMode"] == "C") {
             
             $sql = "insert into tb_member (member_nm, member_type, cellphone, member_email, biz_nm, specialty, uuid, signup_dt, optin, optin_dt, ";
             $sql.= "member_status, wuser, wdate) values (";
@@ -138,6 +138,9 @@ class member_model extends CI_Model {
                 case "N":
                     $msg = "회원가입 완료. 가입이 승인되면 가입하신 핸드폰으로 메세지가 발송됩니다.";
                     break;
+                case "C":
+                    $msg = "회원가입 완료. 가입이 승인되면 가입하신 핸드폰으로 메세지가 발송됩니다.";
+                    break;
                 case "U":
                     $msg = "업데이트 완료";
                     break;
@@ -157,7 +160,7 @@ class member_model extends CI_Model {
         $dataCnt = $this->db->query($sql)->num_rows();
         
         
-        return ["result"=>$dataCnt==0 ? "ok" : "error", "msg"=>$dataCnt==0 ? "사용 가능" : "사용중인 연락처입니다."];
+        return ["result"=>$dataCnt==0 ? "ok" : "error", "msg"=>$dataCnt==0 ? "사용 가능" : "이미 회원가입 된 연락처이거나 승인 대기 중입니다."];
         exit;
     }
     
@@ -192,6 +195,7 @@ class member_model extends CI_Model {
         $sql = "select * from tb_member ";
         $sql.= "where member_status <> 'expire' and cellphone='".$cellphone."' ";
         $sql.= "order by idx desc limit 1 ";
+        
         $list = $this->db->query($sql)->result_array();
         
         return $list;

@@ -94,7 +94,7 @@
                         <input type="text"  name="specialty" id="specialty" placeholder="진료과목(*필수입력)" required />
                     </div>
 
-                    <button type="button">가입하기</button>
+                    <button type="button" onclick="javascript: memberSave();">가입하기</button>
                 </form>
             </div>
         </div>

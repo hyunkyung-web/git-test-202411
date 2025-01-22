@@ -126,14 +126,27 @@ class Member extends CI_Controller {
 	            
 	        ];
 	        
-	        $is_member = $this->memberModel->get_idx($profile["cellphone"]);
+	        $is_member = $this->memberModel->get_idx($profile_info["cellphone"]);
+	        
+	        //회원인 경우 세션 설정하고 이동
 	        if(count($is_member)>0){
-	            $this->session->set_userdata([
-	                "member_id"=>$is_member[0]["idx"],
-	                "member_nm"=>$is_member[0]["member_nm"],
-	                "member_cellphone"=>$is_member[0]["cellphone"],
-	                "member_email"=>$is_member[0]["member_email"]
-	            ]);
+	            if($is_member[0]["member_status"]=='actice'){
+	                $this->session->set_userdata([
+	                    "member_id"=>$is_member[0]["idx"],
+	                    "member_nm"=>$is_member[0]["member_nm"],
+	                    "member_cellphone"=>$is_member[0]["cellphone"],
+	                    "member_email"=>$is_member[0]["member_email"]
+	                ]);
+	                
+	                header('Location:'.getget_cookie("target_url"));
+	                exit;
+	            } else{
+	                $msg_str = '<script>';	                
+	                $msg_str.= 'alert("승인 대기 중인 정보입니다. 승인이 완료되면 가입하신 핸드폰으로 메세지가 발송됩니다.");';
+	                $msg_str.= 'location.replace("/");';
+	                $msg_str.= '</script>';
+	                echo $msg_str;
+	            }	            
 	        } else{
 	            $form_str = '<form name="frm1" id="frm1" action="/member/signup" method="post">';
 	            $form_str.= '<input type="text" name="uuid" value="'.$profile_info["uuid"].'" />';
@@ -150,7 +163,39 @@ class Member extends CI_Controller {
 	            echo $msg_str;
 	        }
 	    }
-	}	
+	}
+	
+	public function member_save(){
+	    
+	    $before_status = "";
+	    $alarm_type = 'welcome';
+	    
+	    $query = $this->memberModel->member_save([
+	        "editMode"=> 'C',
+	        "idx"=> getPost("idx", -1),
+	        "member_nm" => getPost("member_nm", "Unknown"),
+	        "member_type" => getPost("member_type", "hcp"),
+	        "cellphone" => getPost("cellphone", ""),
+	        "member_email" => getPost("member_email", ""),
+	        "biz_nm" => getPost("biz_nm", ""),
+	        "specialty" => getPost("specialty", ""),
+	        "member_status" => getPost("member_status", "hold"),
+	        "uuid" => getPost("uuid", "")
+	    ]);
+	    
+	    if(($before_status=="hold" || $before_status=="expire") && getPost("member_status", "hold")=="active"){
+	        $alarm_type = "member_active";
+	    }elseif($before_status=="active" && getPost("member_status", "hold")=="expire"){
+	        $alarm_type = "member_expire";
+	    }
+	    
+	    if ( $query["result"] == "ok") {
+	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"], 'push_msg_type'=>$alarm_type, 'idx' => $query["idx"]]);
+	    } else {
+	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"]]);
+	    }
+	    
+	}
 	
 	public function signup(){
 	    
