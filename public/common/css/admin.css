@@ -5,8 +5,8 @@
 }
 body {
 	/* font-family: "Noto Sans KR", sans-serif; */
-	/* font-family: "Manjari", sans-serif; */
-	font-family: "montserrat", "Manjari", sans-serif;
+	/* font-family: "montserrat", "Manjari", "Arial", sans-serif; */
+	font-family: sans-serif;
 	font-size: 14px;
 	/* color: #5c5d5e; */
 }
@@ -23,6 +23,7 @@ button {
 	border: none;
 	cursor: pointer;
 	color: #333;
+	font-family: sans-serif;
 }
 button.detail-btn {
 	background: #c7f8f5 !important;
@@ -392,7 +393,7 @@ span.sub-list-toggle.active {
 	padding: 8px 15px;
 	border-radius: 5px;
 	border: none;
-	font-weight: bold;
+	/* font-weight: bold; */
 }
 .main-header-firstLine button.add-user,
 .save-user {
@@ -813,7 +814,6 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	background: #edf1ff;
 }
 .btn_tab {
-	font-family: "montserrat", sans-serif;
 	/* flex: 1; */
 	padding: 15px;
 	/* background: #e0e0e0; */
@@ -862,6 +862,7 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 
 	cursor: pointer;
 	border-radius: 4px;
+	font-family: sans-serif;
 }
 
 #tabs .mobile_screen td {
@@ -870,7 +871,6 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 .mobile_screen > div {
 	width: 100%;
 	border-radius: 8px;
-	/* padding-bottom: 10px; */
 	margin-bottom: 10px;
 }
 .mobile_screen img {
