@@ -807,7 +807,7 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	cursor: pointer;
 }
 
-/********************	Tab	****************/
+/******************** Tab ****************/
 
 .tabs {
 	background: #edf1ff;
@@ -838,23 +838,11 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 .tab_content.active {
 	display: block;
 }
-.tab-button {
-}
-#tabs li > a {
-	float: left;
-	padding: 0.5em 1em;
-	text-decoration: none;
-}
-#tabs td {
-	/* tabs 를 td로 나눈 상태라서 필요 */
-	/* vertical-align: top; */
-}
 
 .mobile_screen button.open_pop {
 	width: auto;
 }
 
-/* tabs-2 : mobile_screen */
 .mobile_screen {
 	width: 100%;
 	border-radius: 8px;
@@ -901,7 +889,8 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 .btn_confirm button {
 	margin-left: 5px;
 }
-/* popup */
+
+/******************** Tab - POPUP ****************/
 .mobile_screen_pop {
 	background: #fefefe;
 	/* tab_content_wrap 의 높이를 그대로 받음 */
@@ -930,12 +919,6 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	font-size: 2em;
 	padding-top: 0;
 	padding-right: 0;
-}
-
-/* tabs-3 */
-#tabs-3 input[type="button"] {
-	width: 100%;
-	border: 1px solid red;
 }
 
 /*	주소록 팝업	*/
@@ -1000,47 +983,6 @@ button#delete_labelAll {
 	float: right;
 	margin-top: 3px;
 	margin-right: 3px;
-}
-
-/* tab - library */
-.ui-state-default,
-.ui-widget-content .ui-state-default,
-.ui-widget-header .ui-state-default,
-.ui-button,
-html .ui-button.ui-state-disabled:hover,
-html .ui-button.ui-state-disabled:active {
-	border: 1px solid #c5c5c5;
-	background: #f6f6f6;
-	font-weight: normal;
-	color: #454545;
-}
-
-.ui-state-active,
-.ui-widget-content .ui-state-active,
-.ui-widget-header .ui-state-active,
-a.ui-button:active,
-.ui-button:active,
-.ui-button.ui-state-active:hover {
-	border: 1px solid #4c91d7;
-	background: #4c91d7;
-	font-weight: bold;
-	color: #ffffff;
-}
-
-.ui-tabs .ui-tabs-nav li {
-	list-style: none;
-	float: left;
-	position: relative;
-	top: 0;
-	margin: 1px 0.2em 0 0;
-	border-bottom-width: 0;
-	padding: 0;
-	white-space: nowrap;
-}
-
-.ui-corner-top {
-	border-top-right-radius: 5px;
-	border-top-left-radius: 5px;
 }
 
 @media (max-width: 1024px) {

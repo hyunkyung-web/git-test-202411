@@ -73,10 +73,6 @@
             <!-- flex 2 -->
             <main class="main-content">
 				<ul class="tabs flex_row">
-					<!-- <li><a href="#tabs-1">메세지정보</a></li>
-					<li><a href="#tabs-2">카카오톡</a></li>
-					<li><a href="#tabs-3">이메일</a></li>
-					<li><a href="#tabs-4">LMS</a></li> -->
 					<li><button class="btn_tab active" onclick="openTab(event,'tab_1')">메세지정보</button></li>
 					<li><button class="btn_tab" onclick="openTab(event,'tab_2')">KAKAO TALK</button></li>
 					<li><button class="btn_tab" onclick="openTab(event,'tab_3')">E-MAIL</button></li>
@@ -95,7 +91,7 @@
 								</colgroup>
 								<tbody>
 								<tr>
-									<th class="require">발송구분</th>
+									<th class="require"><label>발송구분</label></th>
 									<td>
 										<!-- <label><input type="radio" name="template_type" id="msg_type_1" value="at" <?php echo $info["template_type"]=="at" ? "checked" : "";?>/><span>알림톡</span></label> -->
 										<label><input type="radio" name="template_type" id="msg_type_2" value="ft" <?php echo $info["template_type"]=="ft" ? "checked" : "";?>/><span>친구톡</span></label>
@@ -103,31 +99,31 @@
 									</td>
 								</tr>
 								<tr>
-									<th class="require">템플릿코드</th>
+									<th class="require"><label>템플릿코드</label></th>
 									<td><input type="text" name="template_cd" id="template_cd" value="<?php echo $info["template_cd"];?>" placeholder="템플릿코드" readonly/></td>
 								</tr>
 								<tr>
-									<th class="require">제목</th>
+									<th class="require"><label>제목</label></th>
 									<td><input type="text" name="title" id="title" value="<?php echo $info["title"];?>" placeholder="템플릿명" readonly/></td>
 								</tr>
 								<tr>
-									<th onclick="javascript:cmmOpenPop('.pop_img');" style="cursor: pointer;">이미지</th>
+									<th onclick="javascript:cmmOpenPop('.pop_img');" style="cursor: pointer;"><label>이미지선택</label></th>
 									<td>
 										<input type="text" name="img_url" id="img_url" value="<?php echo $info["img_url"];?>" readonly/>
 									</td>
 								</tr>
 								<tr>
-									<th>이미지링크</th>
+									<th><label>이미지링크</label></th>
 									<td><input type="text" name="img_link" id="img_link" value="<?php echo $info["img_link"];?>" readonly/></td>
 								</tr>
 								<tr>
-									<th class="require">메세지내용</th>
+									<th class="require"><label>메세지내용</label></th>
 									<td>
 										<textarea name="template_msg" id="template_msg" placeholder="템플릿 메세지를 입력해주세요" readonly><?php echo $info["template_msg"];?></textarea>
 									</td>
 								</tr>
 								<tr>
-									<th colspan="2">버튼 정보</th>
+									<th colspan="2"><label>버튼 정보</label></th>
 								</tr>
 								<tfoot class="item ft" id="ftButton"><?php
 								for($i=1; $i<=$info["btn_cnt"]; $i++){?>
@@ -240,7 +236,7 @@
 							<!-- 최종 발송 타겟 -->
 							<div class="address_selected_wrap">
 								<p class="address_selected">
-									<!-- <label for="chk_address_1"><span>고현경 X</span></label> -->
+									<!-- <label for="chk_address_1"><span>홍길동 X</span></label> -->
 								</p>
 							</div>
 
@@ -379,6 +375,20 @@
 
 				</div>
 				<!-- //tab_content_wrap -->
+
+				<div class="pop_img">
+            		<div class="btn_pop_close">
+            			<a onclick="cmmClosePop('.pop_img');">Ⅹ</a>
+            		</div>
+            		<div class="img_list"><?php
+            		foreach($img_data as $row){ ?>
+            			<div>
+            				<img src="<?php echo $row["img_url"]?>" onclick="javascript: imgUrlView(this.src);" />
+            				<h5><?php echo $row["img_name"]?></h5>
+            			</div><?php
+            		}?>
+            		</div>
+            	</div>
 
             </main>
 

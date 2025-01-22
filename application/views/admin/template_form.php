@@ -15,6 +15,7 @@
 	<link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
     <link rel="stylesheet" href="/public/common/css/fontawesome.all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&Manjari:wght@100;400;700&display=swapp" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/common/css/reset.css" />
     <link rel="stylesheet" href="/public/common/css/admin.css" />
 
@@ -72,24 +73,22 @@
     	<div class="blind"></div>
         <?php include_once APPPATH.'views/admin/inc_aside.php'; ?>
         <div class="main-content-wrap">
-
             <!-- flex 1 -->
             <?php include_once APPPATH.'views/admin/inc_header.php'; ?>
             <!-- flex 2 -->
             <main class="main-content">
-                <div id="tabs">
-                	<div>
-                        <ul>
-                            <li><a href="#tabs-1">템플릿설정</a></li>
-                            <li><a href="#tabs-2">미리보기</a></li>
-                            <li><a href="#tabs-3">친구톡발송</a></li>
-                            <li><a href="#tabs-4">이메일발송</a></li>
-                            <li><a href="#tabs-5">LMS발송</a></li>
-        				</ul>
-    				</div>
+				<ul class="tabs flex_row">
+					<li><button class="btn_tab active" onclick="openTab(event,'tab_1')">템플릿설정</button></li>
+					<li><button class="btn_tab" onclick="openTab(event,'tab_2')">미리보기</button></li>
+					<li><button class="btn_tab" onclick="openTab(event,'tab_3')">친구톡발송</button></li>
+					<li><button class="btn_tab" onclick="openTab(event,'tab_4')">E-MAIL발송</button></li>
+					<li><button class="btn_tab" onclick="openTab(event,'tab_5')">LMS발송</button></li>
+				</ul>
 
-				    <div id="tabs-1">
-                    	<form name="frm1" id="frm1">
+				<!-- tab_content_wrap =  tab_content + popup -->
+				<div class="tab_content_wrap">
+					<div id="tab_1" class="tab_content active">
+						<form name="frm1" id="frm1">
 							<table class="form-table">
 								<colgroup>
 									<col width="25%" />
@@ -97,7 +96,7 @@
 								</colgroup>
 								<tbody>
 								<tr>
-									<th class="full_line require">발신키구분</th>
+									<th class="full_line require"><label for="profile_key">발신키구분</label></th>
 									<td class="full_line">
 										<select class="form-select" name="profile_key" id="profile_key"><?php
 											foreach($dataProfile as $row){?>
@@ -108,45 +107,45 @@
 									</td>
 								</tr>
 								<tr>
-									<th class="full_line require">발송구분</th>
+									<th class="full_line require"><label for="msg_type_2">발송구분</label></th>
 									<td class="full_line">
 										<!-- <label><input type="radio" name="template_type" id="msg_type_1" value="at" <?php echo $info["template_type"]=="at" ? "checked" : "";?>/><span>알림톡</span></label> -->
 										<label><input type="radio" name="template_type" id="msg_type_2" value="ft" <?php echo $info["template_type"]=="ft" ? "checked" : "";?>/><span>친구톡</span></label>
 									</td>
 								</tr>
 								<tr>
-									<th class="full_line require">사용여부</th>
+									<th class="full_line require"><label>사용여부</label></th>
 									<td class="full_line">
 										<label><input type="radio" name="use_yn" id="use_yn_1" value="Y" <?php echo $info["use_yn"]=="Y" ? "checked" : "";?>/><span>사용</span></label>
 										<label><input type="radio" name="use_yn" id="use_yn_2" value="N" <?php echo $info["use_yn"]=="N" ? "checked" : "";?>/><span>사용안함</span></label>
 									</td>
 								</tr>
 								<tr>
-									<th class="full_line require">템플릿코드</th>
+									<th class="full_line require"><label for="template_cd">템플릿코드</label></th>
 									<td class="full_line"><input type="text" name="template_cd" id="template_cd" value="<?php echo $info["template_cd"];?>" placeholder="템플릿코드" /></td>
 								</tr>
 								<tr>
-									<th class="full_line require">제목</th>
+									<th class="full_line require"><label for="title">제목</label></th>
 									<td class="full_line"><input type="text" name="title" id="title" value="<?php echo $info["title"];?>" placeholder="템플릿명" /></td>
 								</tr>
 								<tr>
-									<th onclick="javascript:cmmOpenPop('.pop_img');" style="cursor: pointer;">이미지선택</th>
+									<th onclick="javascript:cmmOpenPop('.pop_img');" style="cursor: pointer;"><label for="img_url">이미지선택</label></th>
 									<td>
 										<input type="text" name="img_url" id="img_url" value="<?php echo $info["img_url"];?>" readonly />
 									</td>
 								</tr>
 								<tr>
-									<th>이미지링크</th>
+									<th><label for="img_link">이미지링크</label></th>
 									<td><input type="text" name="img_link" id="img_link" value="<?php echo $info["img_link"];?>"/></td>
 								</tr>
 								<tr>
-									<th class="full_line require">메세지내용</th>
+									<th class="full_line require"><label for="template_msg">메세지내용</label></th>
 									<td class="full_line">
 										<textarea name="template_msg" id="template_msg" placeholder="템플릿 메세지를 입력해주세요" onkeyup="javascript: adjustHeight('#template_msg');"><?php echo $info["template_msg"];?></textarea>
 									</td>
 								</tr>
 								<tr>
-									<th class="full_line" onclick="javascript:msgBtnAdd();" style="cursor: pointer;">버튼추가+</th>
+									<th class="full_line" onclick="javascript:msgBtnAdd();" style="cursor: pointer;"><label>버튼추가+</label></th>
 									<td class="full_line"></td>
 								</tr>
 								<tfoot class="item ft" id="ftButton"><?php
@@ -175,32 +174,34 @@
                             <button type="button" class="save-user form-btn" onclick="javascript:templateSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
                             <a href="<?php echo get_cookie("callback_url");?>"><button type="button" class="cancel-user form-btn"><i class="fa-solid fa-circle-minus"></i> cancel</button></a>
                         </div>
-                	</div>
-
-                	<div id="tabs-2">
-                		<table class="form-table">
-                			<tr><td>
-                    			<div class="mobile_screen">
-                        			<div><?php
-                        			if(!empty($info["img_link"])){
-                        			    echo '<a href="'.$info["img_link"].'" target="_black"><img src="'.$info["img_url"].'"/></a>';
-                        			}else {
-                        			    echo !empty($info["img_url"])?'<img src="'.$info["img_url"].'"/>' : '';
-                        			}?>
-                        			</div>
-                        			<div><?php echo nl2br($info["title"].'<br/><br/>'.$info["template_msg"]);?></div>
-                        			<div><?php
-                        			for($i=1; $i<=$info["btn_cnt"]; $i++){?>
-                        			     <a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php
-                        			}?>
-        							</div>
-                    			</div>
-                			</td></tr>
+					</div>
+					<!-- 탭 2 -->
+					<div id="tab_2" class="tab_content">
+						<table class="form-table">
+                			<tr>
+								<td>
+									<div class="mobile_screen">
+										<div><?php
+										if(!empty($info["img_link"])){
+											echo '<a href="'.$info["img_link"].'" target="_black"><img src="'.$info["img_url"].'"/></a>';
+										}else {
+											echo !empty($info["img_url"])?'<img src="'.$info["img_url"].'"/>' : '';
+										}?>
+										</div>
+										<div><?php echo nl2br($info["title"].'<br/><br/>'.$info["template_msg"]);?></div>
+										<div><?php
+										for($i=1; $i<=$info["btn_cnt"]; $i++){?>
+											<a href="<?php echo $info["btn_link_".$i];?>" target="_blank"><button class="btn_link"><?php echo $info["btn_name_".$i];?></button></a><?php
+										}?>
+										</div>
+									</div>
+                				</td>
+							</tr>
             			</table>
-                	</div>
-
-                	<div id="tabs-3">
-                    	<form name="frm_kakao" id="frm_kakao">
+					</div>
+					<!-- 탭 3 -->
+					<div id="tab_3" class="tab_content">
+						<form name="frm_kakao" id="frm_kakao">
     						<table class="form-table">
     							<colgroup>
     								<col width="25%" />
@@ -210,9 +211,10 @@
     							</tbody>
     						</table>
     					</form>
-    				</div>
-    				<div id="tabs-4">
-                    	<form name="frm_email" id="frm_email">
+					</div>
+					<!-- 탭 4 -->
+					<div id="tab_4" class="tab_content">
+						<form name="frm_email" id="frm_email">
     						<table class="form-table">
     							<colgroup>
     								<col width="25%" />
@@ -222,9 +224,10 @@
     							</tbody>
     						</table>
     					</form>
-    				</div>
-    				<div id="tabs-5">
-                    	<form name="frm_lms" id="frm_lms">
+					</div>
+					<!-- 탭 5 -->
+					<div id="tab_5" class="tab_content">
+						<form name="frm_lms" id="frm_lms">
     						<table class="form-table">
     							<colgroup>
     								<col width="25%" />
@@ -234,12 +237,11 @@
     							</tbody>
     						</table>
     					</form>
-    				</div>
-
+					</div>
 				</div>
+				<!-- //tab_content_wrap -->
 
-
-            	<div class="pop_img">
+                <div class="pop_img">
             		<div class="btn_pop_close">
             			<a onclick="cmmClosePop('.pop_img');">Ⅹ</a>
             		</div>
