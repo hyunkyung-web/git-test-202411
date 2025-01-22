@@ -10,8 +10,8 @@ class Member extends CI_Controller {
     }
 
 	
-	public function index()
-	{	    
+	public function index(){
+	    echo 'index';
 	    
 // 	    $this->login();
 // 	    $this->load->view('/admin/login');
@@ -44,6 +44,7 @@ class Member extends CI_Controller {
 	
 	// 함수: 카카오 curl 통신
 	public function curl_kakao($url,$headers = array()){
+	    
 	    if(empty($url)){ return false ; }
 	    
 	    // URL에서 데이터를 추출하여 쿼리문 생성
@@ -77,6 +78,7 @@ class Member extends CI_Controller {
 	}
 	
 	public function kakao_result(){
+	    
 	    $kakao=[
 	        "client_id"=>'2549f043e46bbd82676b804343560ca2',
 	        "client_secret"=>'6wttiSwgMRVFTQL4MrxhtXEiTXs3i4En',
@@ -130,7 +132,7 @@ class Member extends CI_Controller {
 	        
 	        //회원인 경우 세션 설정하고 이동
 	        if(count($is_member)>0){
-	            if($is_member[0]["member_status"]=='actice'){
+	            if($is_member[0]["member_status"]=='active'){
 	                $this->session->set_userdata([
 	                    "member_id"=>$is_member[0]["idx"],
 	                    "member_nm"=>$is_member[0]["member_nm"],
@@ -138,8 +140,18 @@ class Member extends CI_Controller {
 	                    "member_email"=>$is_member[0]["member_email"]
 	                ]);
 	                
-	                header('Location:'.getget_cookie("target_url"));
-	                exit;
+	                $this->memberModel->record_member_log([
+	                    "member_id"=> $is_member[0]["idx"],
+	                    "log_type"=> 'login'
+	                ]);
+	                
+	                if(!empty(get_cookie("target_url"))){
+	                    header('Location:'.get_cookie("target_url"));
+	                }else {
+	                    header('Location:/');
+	                }
+	               
+	                
 	            } else{
 	                $msg_str = '<script>';	                
 	                $msg_str.= 'alert("승인 대기 중인 정보입니다. 승인이 완료되면 가입하신 핸드폰으로 메세지가 발송됩니다.");';
@@ -211,6 +223,24 @@ class Member extends CI_Controller {
 	public function privacy(){
 	    
 	    $this->load->view('/member/privacy');
+	}
+	
+	public function logout(){
+	    
+	    print_r($_SESSION);
+	    
+	    if(!empty($this->session->userdata["member_id"])){	        
+	        
+	        $this->memberModel->record_member_log([
+	            "member_id" => $this->session->userdata["member_id"],
+	            "log_type" => 'logout'
+	        ]);
+	        
+	        $this->session->sess_destroy();
+	    }
+	    
+	    header('Location:/');
+	    
 	}
 	
 	

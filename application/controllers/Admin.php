@@ -53,17 +53,6 @@ class Admin extends CI_Controller {
 	
 	public function login_verify(){
 	    
-	    $mobileDevice = ["iPhone", "iPod", "IEMobile", "Mobile", "lgtelecom", "PPC", "BlackBerry", "SCH-", "SPH-", "LG-", "CANU", "IM-" ,"EV-","Nokia"];
-	    $deviceInfo = $_SERVER['HTTP_USER_AGENT'];
-	    $userDevice = "PC";
-	    $connectIp = getRealClientIp();
-	    
-	    for ($i=0; $i <= count($mobileDevice)-1; $i++ ) {
-	        if ( strrpos($deviceInfo, $mobileDevice[$i]) > -1 ) {
-	            $userDevice = "MOBILE";
-	        }
-	    }
-	    
 	    if(getPost("chk_save_info", "N")=="Y"){
 	        $setValue = ["name"=>"login_id", "value"=>getPost("user_id", ""), "expire"=>86400*30, "path"=>"/", "prefix"=>"", "secure"=>false];
 	        set_cookie($setValue);
@@ -78,11 +67,7 @@ class Admin extends CI_Controller {
     
 	    $query = $this->userModel->admin_login_verify([
 	        "user_id" => getPost("user_id", ""),
-	        "user_pw" => md5(getPost("user_pw", "")),
-	        "log_type" => 'login',
-	        "user_device" => $userDevice,
-	        "device_info" => $deviceInfo,
-	        "connect_ip" => $connectIp
+	        "user_pw" => md5(getPost("user_pw", ""))
 	    ]);
 
 	    
@@ -101,10 +86,7 @@ class Admin extends CI_Controller {
 	            
 	            $this->userModel->record_user_log([
 	                "user_id" => getPost("user_id", ""),
-	                "log_type" => 'login',
-	                "user_device" => $userDevice,
-	                "device_info" => $deviceInfo,
-	                "connect_ip" => $connectIp
+	                "log_type" => 'login'
 	            ]);
 	            
 	            echo json_encode(['result' => "ok", "msg"=>"로그인 성공."]);
@@ -115,27 +97,13 @@ class Admin extends CI_Controller {
 	    }
 	}
 	
-	function logout(){
+	public function logout(){
 	    
-	    if(!empty($this->session->userdata["user_id"])){
-	    
-    	    $mobileDevice = ["iPhone", "iPod", "IEMobile", "Mobile", "lgtelecom", "PPC", "BlackBerry", "SCH-", "SPH-", "LG-", "CANU", "IM-" ,"EV-","Nokia"];
-    	    $deviceInfo = $_SERVER['HTTP_USER_AGENT'];
-    	    $userDevice = "PC";
-    	    $connectIp = getRealClientIp();
-    	    
-    	    for ($i=0; $i <= count($mobileDevice)-1; $i++ ) {
-    	        if ( strrpos($deviceInfo, $mobileDevice[$i]) > -1 ) {
-    	            $userDevice = "MOBILE";
-    	        }
-    	    }
+	    if(!empty($this->session->userdata["user_id"])){    
     	    
     	    $this->userModel->record_user_log([
     	        "user_id" => $this->session->userdata["user_id"],
-    	        "log_type" => 'logout',
-    	        "user_device" => $userDevice,
-    	        "device_info" => $deviceInfo,
-    	        "connect_ip" => $connectIp
+    	        "log_type" => 'logout'
     	    ]);
     	    
     	    $this->session->sess_destroy();

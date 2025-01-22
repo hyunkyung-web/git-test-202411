@@ -188,8 +188,20 @@ class User_model extends CI_Model {
     }
     
     public function record_user_log($opt){
+        
+        $mobileDevice = ["iPhone", "iPod", "IEMobile", "Mobile", "lgtelecom", "PPC", "BlackBerry", "SCH-", "SPH-", "LG-", "CANU", "IM-" ,"EV-","Nokia"];
+        $deviceInfo = $_SERVER['HTTP_USER_AGENT'];
+        $userDevice = "PC";
+        $connectIp = getRealClientIp();
+        
+        for ($i=0; $i <= count($mobileDevice)-1; $i++ ) {
+            if ( strrpos($deviceInfo, $mobileDevice[$i]) > -1 ) {
+                $userDevice = "MOBILE";
+            }
+        }
+        
         $sql = "insert into tb_user_log (log_type, user_id, user_device, device_info, connect_ip, wdate) values ( ";
-        $sql.= "'".$opt["log_type"]."', '".$opt["user_id"]."', '".$opt["user_device"]."', '".$opt["device_info"]."', '".$opt["connect_ip"]."', now() )";
+        $sql.= "'".$opt["log_type"]."', '".$opt["user_id"]."', '".$userDevice."', '".$deviceInfo."', '".$connectIp."', now() )";
         $this->db->query($sql);
     }
     

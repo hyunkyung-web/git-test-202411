@@ -34,6 +34,8 @@ class Home extends CI_Controller {
 	}
 	
 	public function main(){
+	    
+	    print_r($_SESSION);
 // 	    $this->session_chk();
 	    $this->load->view('/main');
 	}
