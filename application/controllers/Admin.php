@@ -43,6 +43,7 @@ class Admin extends CI_Controller {
     }
 	
 	public function login(){
+	    
 	    if(isset($this->session->userdata["user_id"])){
 	        header('Location:/admin/main');
 	    } else {
@@ -99,14 +100,18 @@ class Admin extends CI_Controller {
 	
 	public function logout(){
 	    
-	    if(!empty($this->session->userdata["user_id"])){    
+	    
+	    if(isset($this->session->userdata["user_id"])){    
+	        
     	    
     	    $this->userModel->record_user_log([
     	        "user_id" => $this->session->userdata["user_id"],
     	        "log_type" => 'logout'
     	    ]);
     	    
-    	    $this->session->sess_destroy();
+    	    $this->session->unset_userdata(["user_idx", "user_id", "user_nm", "user_email", "user_type"]);
+    	    
+//     	    $this->session->sess_destroy();
 	    }
     	    
 	    header('Location:/admin/login');

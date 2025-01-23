@@ -19,11 +19,8 @@ class Member extends CI_Controller {
 	
 	public function verify(){
 	    
-	    $kakao_state = md5(mt_rand(111111, 999999));
-	    
+	    $kakao_state = md5(mt_rand(111111, 999999));	    
 	    setcookie('state', $kakao_state, time()+600);
-// 	    set_cookie(["name"=>"state", "value"=>$kakao_state, "expire"=>600]);
-	    
 	    
 	    $kakao=[
 	        "client_id"=>'2549f043e46bbd82676b804343560ca2', 
@@ -43,7 +40,7 @@ class Member extends CI_Controller {
 	}
 	
 	// 함수: 카카오 curl 통신
-	public function curl_kakao($url,$headers = array()){
+	private function curl_kakao($url,$headers = array()){
 	    
 	    if(empty($url)){ return false ; }
 	    
@@ -137,7 +134,8 @@ class Member extends CI_Controller {
 	                    "member_id"=>$is_member[0]["idx"],
 	                    "member_nm"=>$is_member[0]["member_nm"],
 	                    "member_cellphone"=>$is_member[0]["cellphone"],
-	                    "member_email"=>$is_member[0]["member_email"]
+	                    "member_email"=>$is_member[0]["member_email"],
+	                    "sess_id"=>session_id()
 	                ]);
 	                
 	                $this->memberModel->record_member_log([
@@ -227,16 +225,15 @@ class Member extends CI_Controller {
 	
 	public function logout(){
 	    
-	    print_r($_SESSION);
-	    
-	    if(!empty($this->session->userdata["member_id"])){	        
+	    if(isset($this->session->userdata["member_id"])){	        
 	        
 	        $this->memberModel->record_member_log([
 	            "member_id" => $this->session->userdata["member_id"],
 	            "log_type" => 'logout'
 	        ]);
 	        
-	        $this->session->sess_destroy();
+	        $this->session->unset_userdata(["member_id", "member_nm", "member_cellphone", "member_email", "sess_id"]);
+// 	        $this->session->sess_destroy();
 	    }
 	    
 	    header('Location:/');

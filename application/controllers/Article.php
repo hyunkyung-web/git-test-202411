@@ -17,7 +17,7 @@ class Article extends CI_Controller {
     }
     
     private function session_chk(){
-        if(!isset($this->session->userdata["member_id"])&&!isset($this->session->userdata["user_id"])){
+        if(!isset($this->session->userdata["member_id"]) && !isset($this->session->userdata["user_id"])){
             
             setcookie("target_url", $_SERVER['REQUEST_URI'], time()+3600, "/");
             
