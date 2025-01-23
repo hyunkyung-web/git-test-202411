@@ -549,6 +549,25 @@ class Admin extends CI_Controller {
 	    $this->load->view('/admin/member_list', $viewData);
 	}
 	
+	public function ajax_member_list(){
+	    
+	    $this->session_chk();
+	    
+	    // 	    $page = getRequest("page", 1);
+	    $schType = getRequest("sch_1", "");
+	    $keyword = getRequest("sch_2", "");
+	    $fixTarget = getRequest("target_cellphone", "");
+	    
+	    $query = $this->memberModel->member_list([
+	        "keyword"=>$keyword
+	    ]);
+	    
+	    $viewData = ["data"=>$query["list"], "totalRecord"=>$query["listCount"], "fix_target"=>$fixTarget];
+	    
+	    // 	    $pageData = ["listFnc"=>"eventList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "page"=>$page];
+	    $this->load->view('/admin/ajax_member_list', $viewData);
+	}
+	
 	public function member_form($idx=-1){
 	    
 	    $this->session_chk();

@@ -676,7 +676,7 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	padding: 8px 0;
 }
 
-#item-list {
+#item_list {
 	margin-bottom: 20px;
 }
 .no_overflow {
@@ -947,10 +947,10 @@ input[type="checkbox"]:checked + .custom-checkbox:after {
 	border: 1px solid #ddd;
 	overflow: overlay;
 }
-p.address_selected {
+p.address_selected, p.address_selected_tmp {
 	text-align: left;
 }
-.address_selected span {
+.address_selected span, .address_selected_tmp span {
 	border: 1px solid red;
 	padding: 5px;
 	margin: 5px;

@@ -8,6 +8,42 @@ class Member extends CI_Controller {
         
         $this->load->model('member_model', 'memberModel');
     }
+    
+    // 함수: 카카오 curl 통신
+    private function curl_kakao($url,$headers = array()){
+        
+        if(empty($url)){ return false ; }
+        
+        // URL에서 데이터를 추출하여 쿼리문 생성
+        $purl = parse_url($url);
+        $postfields = array();
+        
+        if( !empty($purl['query']) && trim($purl['query']) != ''){
+            $postfields = explode("&",$purl['query']);
+        }
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
+        if( count($headers) > 0){
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        }
+        
+        ob_start(); // prevent any output
+        $data = curl_exec($ch);
+        ob_end_clean(); // stop preventing output
+        
+        if (curl_error($ch)){ return false;}
+        
+        curl_close($ch);
+        return $data;
+    }
+    
 
 	
 	public function index(){
@@ -26,6 +62,7 @@ class Member extends CI_Controller {
 	        "client_id"=>'2549f043e46bbd82676b804343560ca2', 
 	        "client_secret"=>'6wttiSwgMRVFTQL4MrxhtXEiTXs3i4En',
 	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
+// 	        "redirect_uri"=>'https://kakao.dr-wave.co.kr/member/kakao_result',
 	        "state"=>$kakao_state
 	    ];
 	    
@@ -39,40 +76,6 @@ class Member extends CI_Controller {
 	    $this->load->view('/member/verify', $viewData);
 	}
 	
-	// 함수: 카카오 curl 통신
-	private function curl_kakao($url,$headers = array()){
-	    
-	    if(empty($url)){ return false ; }
-	    
-	    // URL에서 데이터를 추출하여 쿼리문 생성
-	    $purl = parse_url($url);
-	    $postfields = array();
-	    
-	    if( !empty($purl['query']) && trim($purl['query']) != ''){
-	        $postfields = explode("&",$purl['query']);
-	    }
-	    
-	    $ch = curl_init();
-	    curl_setopt($ch, CURLOPT_URL, $url);
-	    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-	    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-	    curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	    curl_setopt($ch, CURLOPT_POST, 1);
-	    curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
-	    if( count($headers) > 0){
-	        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-	    }
-	    
-	    ob_start(); // prevent any output
-	    $data = curl_exec($ch);
-	    ob_end_clean(); // stop preventing output
-	    
-	    if (curl_error($ch)){ return false;}
-	    
-	    curl_close($ch);
-	    return $data;
-	}
 	
 	public function kakao_result(){
 	    
@@ -80,6 +83,7 @@ class Member extends CI_Controller {
 	        "client_id"=>'2549f043e46bbd82676b804343560ca2',
 	        "client_secret"=>'6wttiSwgMRVFTQL4MrxhtXEiTXs3i4En',
 	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
+// 	        "redirect_uri"=>'https://kakao.dr-wave.co.kr/member/kakao_result',
 	        "token_url"=>'https://kauth.kakao.com/oauth/token?grant_type=authorization_code',
 	        "profile_url"=>'https://kapi.kakao.com/v2/user/me'
 	    ];

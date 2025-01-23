@@ -17,18 +17,22 @@ $(function () {
 	$(".btn-login").click(function () {
 		loginVerify();
 	});
+	
 
-	$("input[name=chk_all]").click(updateAllCheck);
-	$("input[name=chk_address]").click(updateEachCheck);
+	
+	
 
-	// 탭화면 - 각 라벨 클릭 시 업데이트진행
-	$(".address_selected_wrap").on("click", ".label_added", deleteMsgLabel);
-
-	// 탭화면 - 전체 라벨 삭제
-	$(".address_selected_wrap").on("click", "#delete_labelAll", function () {
-		$(".address_selected").empty();
-		resetAllCheck();
-	});
+//	$("input[name=chk_all]").click(updateAllCheck);
+//	$("input[name=chk_address]").click(updateEachCheck);
+//
+//	// 탭화면 - 각 라벨 클릭 시 업데이트진행
+//	$(".address_selected_wrap").on("click", ".label_added", deleteMsgLabel);
+//
+//	// 탭화면 - 전체 라벨 삭제
+//	$(".address_selected_wrap").on("click", "#delete_labelAll", function () {
+//		$(".address_selected").empty();
+//		resetAllCheck();
+//	});
 
 	if ($("#smarteditor").length) {
 		nhn.husky.EZCreator.createInIFrame({
@@ -86,8 +90,6 @@ function openAddressBook(send_type) {
 	$("input[name=chk_address]:checked").each(function () {
 		savedCheckedState.push(this.id);
 	});
-
-	console.log(savedCheckedState);
 }
 
 // 최소 버튼 클릭 -- 이전 상태로 돌리기
@@ -173,8 +175,6 @@ function updateMsgTarget() {
 			emailInfo.push(email);
 		}
 	});
-
-	console.log(emailInfo);
 
 	if (TARGET_TYPE === "kakao" || TARGET_TYPE === "lms") {
 		$("#kakao_target").val(phoneInfo.join(","));
@@ -536,8 +536,29 @@ function messageList(page = 1) {
 	$("#frmSearch").attr("action", postUrl).submit();
 }
 
+
+function targetSearch(){
+	
+	var postData = $("#frmSearch").serialize();
+	
+	$.ajax({
+		type: "POST",
+		url: "/admin/ajax_member_list",
+		data: postData,
+		dataType: "html",
+		success: function(data){
+			$('#item_list').html(data);
+			return;
+		},
+		error: function(request, status, err){
+			console.log(err);
+			return;
+		}
+	});
+}
+
 function sendKakaoTalk(msgType) {
-	$("#msg_target").val($("#kakako_target").val());
+	$("#msg_target").val($("#kakao_target").val());
 
 	let postData = new FormData($("#frm1")[0]);
 

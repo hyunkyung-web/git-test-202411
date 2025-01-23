@@ -154,18 +154,16 @@
 							<div class="flex_row flex_between">
 								<!-- 발송 버튼 2개 -->
 								<div class="btn_send_message flex_row">
-									<button class="red">선택 발송</button>
-									<button class="red"">전체 발송</button>
+									<button class="red" onclick="javascript: sendKakaoTalk('ft');">선택 발송</button>
+									<button class="red">전체 발송</button>
 								</div>
 
 								<!-- 주소록 popup -->
-								<button class="open_pop mint" onclick="openAddressBook('kakao')">수신자 선택</button>
+								<button class="open_pop mint" onclick="javascript: openPopup('.mobile_screen_pop');targetSearch();">수신자 선택</button>
 							</div>
 							<!-- 최종 발송 타겟 -->
 							<div class="address_selected_wrap">
-								<p class="address_selected">
-									<!-- <label for="chk_address_1"><span>고현경 X</span></label> -->
-								</p>
+								<p class="address_selected"></p>
 							</div>
 
 							<div><?php
@@ -191,16 +189,14 @@
 								<!-- 발송 버튼 2개 -->
 								<div class="btn_send_message flex_row">
 									<button class="red">선택 발송</button>
-									<button class="red"">전체 발송</button>
+									<button class="red">전체 발송</button>
 								</div>
 
 								<button class="open_pop mint" onclick="openAddressBook('email')">수신자 선택</button>
 							</div>
 							<!-- 최종 발송 타겟 -->
 							<div class="address_selected_wrap">
-								<p class="address_selected">
-									<!-- <label for="chk_address_1"><span>고현경 X</span></label> -->
-								</p>
+								<p class="address_selected"></p>
 							</div>
 
     						<div><?php echo nl2br($info["title"]); ?></div>
@@ -227,16 +223,14 @@
 								<!-- 발송 버튼 2개 -->
 								<div class="btn_send_message flex_row">
 									<button class="red">선택 발송</button>
-									<button class="red"">전체 발송</button>
+									<button class="red">전체 발송</button>
 								</div>
 
 								<button class="open_pop mint" onclick="openAddressBook('lms')">수신자 선택</button>
 							</div>
 							<!-- 최종 발송 타겟 -->
 							<div class="address_selected_wrap">
-								<p class="address_selected">
-									<!-- <label for="chk_address_1"><span>홍길동 X</span></label> -->
-								</p>
+								<p class="address_selected"></p>
 							</div>
 
     						<div><?php echo nl2br($info["title"]); ?></div>
@@ -255,20 +249,21 @@
 
 					<!-- 주소록 popup -->
 					<div class="mobile_screen_pop popup">
-						<!-- hidden  -->
-						<input type="text" name="kakao_target" id="kakao_target" placeholder="카카오 target" class="target kakao" />
-						<input type="text" name="email_target" id="email_target" placeholder="email target" class="target email" />
-						<input type="text" name="lms_target" id="lms_target" placeholder="LMS target" class="target lms" />
-
-
 						<div class="address_list">
 							<!-- 하위 div 3개 구성 -->
 							<div>
-								<form name="frmSearch" id="frmSearch" class="flex_row flex_between">
+								<form name="frmSearch" id="frmSearch" class="flex_row flex_between" onsubmit="return false">
+									<div style="clear: both;">
+										<input type="text" name="tmp_cellphone" id="tmp_cellphone" class="target kakao" />
+                						<input type="text" name="tmp_email" id="tmp_email" class="target email" />
+                						<input type="text" name="target_cellphone" id="target_cellphone" class="target kakao" style="background: yellow;"/>
+                						<input type="text" name="target_email" id="target_email" class="target email" style="background: yellow;"/>
+                					</div>
 									<div class="search-bar">
 										<input type="hidden" name="sch_1">
-										<input type="text" name="sch_2" placeholder="성명, 이메일, 연락처, 소속/부서" class="search-input" autocomplet="off" value="<?php echo $schData["sch_2"];?>" />
-										<button type="button" class="search-button" onclick="javascript: noticeList(1);">Search</button>
+										<input type="text" name="sch_2" placeholder="성명, 이메일, 연락처, 소속/부서" class="search-input" />
+										<button type="button" class="search-button" onclick="javascript: targetSearch();">Search</button>
+										<input type="hidden" value=""/>										
 									</div>
 
 									<!-- 하위 삭제버튼 이용할 경우, search-bar -- width: 60% 로 조정 필요 -->
@@ -285,85 +280,34 @@
 										<tr>
 											<th>
 												<label>
-													<input type="checkbox" class="display-none"
-													name="chk_all" id="chk_all" >
-													<span class="custom-checkbox"></span>
+													<input type="checkbox" class="display-none" name="chk_all" id="chk_all" ><span class="custom-checkbox"></span>
 												</label>
 											</th>
 											<th>성명(이메일, 연락처, 소속/부서)</th>
-
 										</tr>
 									</thead>
-									<tbody id="item-list">
+									<tbody id="item_list">
 										<tr>
 											<td>
 												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_1" data-email="kkk_1.kho@d-wave.co.kr" data-phone="01077672992" title="고현경">
+													<input type="checkbox" class="display-none" name="chk_address" id="chk_01011112222" data-email="gildong.hong@dr-wave.co.kr" data-phone="01011112222" title="홍길동">
 													<span class="custom-checkbox"></span>
 												</label>
 											</td>
-											<td class="left"><label for="chk_address_1">고현경(test@ddd.com)</label></td>
+											<td class="left"><label for="chk_01011112222">홍길동(gildong.hong@dr-wave.co.kr)</label></td>
 										</tr>
-										<tr>
-											<td >
-												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_2" data-email="kkk_2.kkk@d-wave.co.kr" data-phone="01012345678"" title="홍길동">
-													<span class="custom-checkbox"></span>
-												</label>
-											</td>
-											<td class="left"><label for="chk_address_2">홍길동(test@ddd.com)</label></td>
-										</tr>
-										<tr>
-											<td>
-												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_3" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01048586666" title="김성언">
-													<span class="custom-checkbox"></span>
-												</label>
-											</td>
-											<td class="left"><label for="chk_address_3">김성언(test@ddd.com)</label></td>
-										</tr>
-										<tr>
-											<td>
-												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_4" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01098986666" title="조장운">
-													<span class="custom-checkbox"></span>
-												</label>
-											</td>
-											<td class="left"><label for="chk_address_4">조장운(test@ddd.com)</label></td>
-										</tr>
-										<tr>
-											<td>
-												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_5" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01033336565" title="황지니">
-													<span class="custom-checkbox"></span>
-												</label>
-											</td>
-											<td class="left"><label for="chk_address_5">황지니(test@ddd.com)</label></td>
-										</tr>
-										<tr>
-											<td>
-												<label>
-													<input type="checkbox" class="display-none" name="chk_address" id="chk_address_6" data-email="hyunkyung.kho@d-wave.co.kr" data-phone="01099990000" title="aaa">
-													<span class="custom-checkbox"></span>
-												</label>
-											</td>
-											<td class="left"><label for="chk_address_6">홍길동(test@ddd.com)</label></td>
-										</tr>
-
-
 									</tbody>
 								</table>
 							</div>
-							<!-- <div class="address_selected_wrap">
-								<p class="address_selected">
-									<label for="chk_address_1" class="label_added"><span>고현경 X</span></label>
-								</p>
-							</div> -->
+							
+							<div class="address_selected_wrap">
+								<p class="address_selected_tmp" id="tmp_label"></p>
+							</div>
 
 							<!-- 버튼 2개  : 취소, 확인 -->
 							<div class="btn_confirm flex_row flex_end">
-								<button onclick="javascript: restoreCheckedState();" class="white">취소</button>
-								<button onclick="javascript: updateMsgTarget();" class="mint""> 확인</button>
+								<button onclick="javascript: clear_target();" class="white">취소</button>
+								<button onclick="javascript: fix_target();" class="mint"> 확인</button>
 							</div>
 
 
@@ -390,18 +334,125 @@
             	</div>
 
             </main>
-
-            <script>
-            	$(window).on("load", function(){
-            		adjustHeight('#template_msg');
-            	});
-            </script>
-
         </div>
         <!-- //main-content-wrap -->
     </div>
     <!-- <?php include_once APPPATH.'views/admin/inc_footer.php'; ?> -->
 
+<script>
+
+$(window).on("load", function(){
+	adjustHeight('#template_msg');
+});
+
+let cellphone_info = [];
+let email_info = [];
+
+let fix_cellphone_info = [];
+let fix_email_info = [];
+
+
+
+
+
+//전체 선택.해제
+$("input[name=chk_all]").click(function(){
+
+	var addStr='';
+
+	//전체선택이든 해제든 배열 값과 라벨은 무조건 초기화
+	cellphone_info = [];
+	email_info = [];
+	//라벨 일괄제거
+	$(".address_selected label").remove();
+	
+	if($(this).is(":checked")){
+		$("input[name=chk_address]").prop("checked", true);
+
+		$("input[name=chk_address]:checked").each(function(idx, e){			
+			cellphone_info.push(e.dataset.cellphone);
+			email_info.push(e.dataset.email);
+			addStr += '<label for="'+e.id+'" id="label_'+e.id+'" class="label_added"><span>'+e.title+' X</span></label>';
+		});
+		
+		//최종 타켓 배열 값을 텍스트박스로 전달 
+		$("#tmp_cellphone").val(cellphone_info);
+		$("#tmp_email").val(email_info);
+		//라벨 추가
+		$(".address_selected").append(addStr);
+		
+	}else {
+		$("input[name=chk_address]").prop("checked", false);
+		//최종 타켓 배열 값을 텍스트박스로 전달 
+		$("#target_cellphone").val(cellphone_info);
+		$("#target_email").val(email_info);
+	}
+});
+
+//개별 추가
+function clickChkbox(e){
+
+	if($(e).is(":checked")){
+    	cellphone_info.push(e.dataset.cellphone);
+    	email_info.push(e.dataset.email);
+    	
+    	//최종 타켓 배열 값을 텍스트박스로 전달 
+    	$("#tmp_cellphone").val(cellphone_info);
+    	$("#tmp_email").val(email_info);
+    		
+    	addStr = '<label for="'+e.id+'" class="label_added '+e.id+'"><span>'+e.title+' X</span></label>';
+    	//라벨 추가
+    	$("#tmp_label").append(addStr);
+	} else {
+		//배열에서 제거 할 값의 index를 찾는다
+		var find_1 = cellphone_info.indexOf(e.dataset.cellphone);
+		var find_2 = email_info.indexOf(e.dataset.email);
+
+		//index값을 근거로 배열에서 행을 삭제한다
+		cellphone_info.splice(find_1, 1);
+		email_info.splice(find_2, 1);
+
+		//최종 타켓 배열 값을 텍스트박스로 전달 
+		$("#tmp_cellphone").val(cellphone_info);
+		$("#tmp_email").val(email_info);
+		//라벨 제거
+		$("#tmp_label .label_added."+e.id).remove();		
+	}	
+
+
+	console.log('tmp==>'+cellphone_info);
+	console.log('fix==>'+fix_cellphone_info);
+}
+
+function fix_target(){
+
+	$("#target_cellphone").val($("#tmp_cellphone").val());
+	$("#target_email").val($("#tmp_email").val());
+
+	$(".address_selected label").remove();
+	$("#tmp_label label").clone().appendTo(".address_selected");
+
+	//확정 배열을 임시 배열값으로 대체
+	fix_cellphone_info = cellphone_info.slice();
+	fix_email_info = email_info.slice();
+	
+	closePopup();
+}
+
+function clear_target(){
+	$("#tmp_cellphone").val($("#target_cellphone").val());
+	$("#tmp_email").val($("#target_email").val());
+		
+	$("#tmp_label label").remove();
+	$(".address_selected:first label").clone().appendTo("#tmp_label");	
+	//임시 배열을 확정 배열값으로 대체
+	cellphone_info = fix_cellphone_info.slice();
+	email_info = fix_email_info.slice();
+	
+	closePopup();
+}
+
+</script>
 
 
 </body>
