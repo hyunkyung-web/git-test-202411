@@ -61,8 +61,8 @@ class Member extends CI_Controller {
 	    $kakao=[
 	        "client_id"=>'2549f043e46bbd82676b804343560ca2', 
 	        "client_secret"=>'6wttiSwgMRVFTQL4MrxhtXEiTXs3i4En',
-	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
-// 	        "redirect_uri"=>'https://kakao.dr-wave.co.kr/member/kakao_result',
+// 	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
+	        "redirect_uri"=>'https://kakao.dr-wave.co.kr/member/kakao_result',
 	        "state"=>$kakao_state
 	    ];
 	    
@@ -82,8 +82,8 @@ class Member extends CI_Controller {
 	    $kakao=[
 	        "client_id"=>'2549f043e46bbd82676b804343560ca2',
 	        "client_secret"=>'6wttiSwgMRVFTQL4MrxhtXEiTXs3i4En',
-	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
-// 	        "redirect_uri"=>'https://kakao.dr-wave.co.kr/member/kakao_result',
+// 	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
+	        "redirect_uri"=>'https://kakao.dr-wave.co.kr/member/kakao_result',
 	        "token_url"=>'https://kauth.kakao.com/oauth/token?grant_type=authorization_code',
 	        "profile_url"=>'https://kapi.kakao.com/v2/user/me'
 	    ];

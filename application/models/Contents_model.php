@@ -80,7 +80,7 @@ class Contents_model extends CI_Model {
             
             $sql = "insert into tb_contents (";
             $sql.= "contents_type, title, description, body_text, attach_file, wdate, wuser) values (";
-            $sql.= "'".$opt["contents_type"]."', '".$opt["description"]."', '".$opt["title"]."', '".$opt["body_text"]."', '".$opt["attach_file"]."', ";
+            $sql.= "'".$opt["contents_type"]."', '".$opt["title"]."', '".$opt["description"]."', '".$opt["body_text"]."', '".$opt["attach_file"]."', ";
             $sql.= "now(), '".$session_id."') ";
             
             $data = $this->db->query($sql);

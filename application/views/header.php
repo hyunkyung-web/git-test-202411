@@ -10,6 +10,7 @@
                     <li onclick="callData(12)">Sign Up</li>
                 </ul> -->
                 <ul class="nav-links">
+                	<li onclick="callData(99)">채널바로가기</li>
                     <li onclick="callData(11)">Verify</li>
                     <li onclick="callData(12)">Sign Up</li>
                     <li onclick="callData(2)">Article</li>

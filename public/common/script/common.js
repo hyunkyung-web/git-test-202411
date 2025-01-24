@@ -115,3 +115,31 @@ function chkCookie() {
 	}
 	
 }
+
+function cmmShowMsg(msgStr, runTime=1000){
+
+	$(".system_msg > span").text(msgStr).show();
+	
+	setTimeout(function(){
+		$(".system_msg").show();	
+	}, 0);
+	setTimeout(function(){
+		$(".system_msg").hide();	
+	}, runTime);
+	
+}
+
+//텍스트를 클립보드에 복사하기
+function copyToClipboard(e) {
+	
+	var copy_text =  $(e).data("copy");
+		
+    navigator.clipboard.writeText(copy_text) // 복사하기
+        .then(() => {
+        	cmmShowMsg('클립보드에 복사되었습니다.');
+//            console.log('클립보드에 복사되었습니다.');
+        })
+        .catch(err => {
+            console.error('클립보드 복사에 실패했습니다:', err);
+        });
+}

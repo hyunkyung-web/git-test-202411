@@ -62,27 +62,19 @@
     <?php include_once APPPATH.'views/header.php'; ?>
     
     <section id="article" class="flex_SB_center padd60">
-        <h1>Articles</h1>
-        <p>Sed ut perspiciatis unde omnis iste<br />natus error sit voluptatem</p>
-        <div id="article-each" class="flex_SB_center">
+        <h1>학술정보</h1>
+        <p>최신 학술정보를 만나보실 수 있습니다.</p>
+        <div id="article-each" class="flex_SB_center"><?php 
+        foreach($data as $row){?>
             <div class="contents-list article-each">
-                <a href="/article/node/1"><img src="/public/images/work_sign_thumb.png" alt="article 1" class="cont-thumb article-thumb"/></a>
+                <a href="<?php echo '/article/node/'.$row["idx"];?>"><img src="/public/images/work_sign_thumb.png" alt="article 1" class="cont-thumb article-thumb"/></a>
                 <div class="cont_descript article_descript">
-                    <a href="/article/node/1"><p class="name">Node1</p></a>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                    <a href="<?php echo '/article/node/'.$row["idx"];?>"><p class="name"><?php echo $row["title"];?></p></a>
+                    <p>L<?php echo $row["description"];?></p>
                 </div>
                 
-            </div>
-
-            <div class="contents-list article-each">
-                <a href="/article/node/1"><img src="/public/images/icon/icon_file.png" alt="article 2" class="cont-thumb article-thumb"/></a>
-                <div class="cont_descript article_descript">
-                    <a href="/article/node/1"><p class="name">Node2</p></a>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
-                </div>
-            </div>
-
-            
+            </div><?php 
+        }?>
         </div>
     </section>
     

@@ -96,8 +96,9 @@
                     	<colgroup>
                     		<col width="5%"/>
                     		<col width="5%"/>
-                    		<col width="20%"/>
+                    		<col width="15%"/>
                     		<col width="50%"/>
+                    		<col width="5%"/>
                     		<col width="10%"/>
                     		<col width="10%"/>
                     	</colgroup>
@@ -112,6 +113,7 @@
                                 <th>No</th>
                                 <th>구분</th>
                                 <th>제목</th>
+                                <th></th>
                                 <th>작성자</th>
                                 <th>작성일</th>
                             </tr>
@@ -129,6 +131,7 @@
                                 <td><?php echo $row["idx"];?></td>
                                 <td><?php echo $row["contents_type"];?></td>
                                 <td class="txt_left"><a href="/admin/contents_form/<?php echo $row["idx"];?>"><?php echo $row["title"];?></a></td>
+                                <td><a onclick="javascript: copyToClipboard(this);" data-copy="<?php echo 'https://kakao.dr-wave.co.kr/article/node/'.$row["idx"];?>">URL</a></td>
                                 <td><?php echo $row["wuser"];?></td>
                                 <td><?php echo date('Y-m-d', strtotime($row["wdate"]));?></td>
                             </tr><?php

@@ -58,17 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
 //스마트 에디터 오브젝트
 var oEditor = [];
 
-// 팝업
-function openTab(event, currentTab) {
-	resetAllCheck();
-	$(".popup").removeClass("active");
-
-	$(".tab_content").removeClass("active");
-	$(".btn_tab").removeClass("active");
-
-	$(`#${currentTab}`).addClass("active");
-	$(event.currentTarget).addClass("active");
-}
 
 function openPopup(obj) {
 	$(obj).addClass("active");
@@ -78,139 +67,7 @@ function closePopup() {
 	$(".popup").removeClass("active");
 }
 
-// 주소록
-var TARGET_TYPE;
-var savedCheckedState = [];
-function openAddressBook(send_type) {
-	TARGET_TYPE = send_type;
-	openPopup(".mobile_screen_pop");
 
-	// 현재 체크상태를 저장
-	savedCheckedState = [];
-	$("input[name=chk_address]:checked").each(function () {
-		savedCheckedState.push(this.id);
-	});
-}
-
-// 최소 버튼 클릭 -- 이전 상태로 돌리기
-function restoreCheckedState() {
-	$("input[name=chk_address]").each(function () {
-		if (savedCheckedState.includes(this.id)) {
-			$(this).prop("checked", true);
-		} else {
-			$(this).prop("checked", false);
-		}
-	});
-
-	updateEachCheck();
-	closePopup();
-}
-
-// 체크박스
-function updateAllCheck() {
-	const isChecked = $("input[name=chk_all]").is(":checked");
-	$("input[name=chk_address]").prop("checked", isChecked);
-	updateEachCheck();
-}
-
-function updateEachCheck() {
-	const allChecked =
-		$("input[name=chk_address]").length ===
-		$("input[name=chk_address]:checked").length;
-	$("#chk_all").prop("checked", allChecked);
-}
-
-function resetAllCheck() {
-	$("input[name=chk_address]").prop("checked", false);
-	$("input[name=chk_all]").prop("checked", false);
-	$(".address_selected").empty();
-	$("input.target").val("");
-}
-
-// 탭 라벨 선택시 - 업데이트
-function deleteMsgLabel() {
-	const thisCheckId = $(this).attr("for");
-	const thisCheckbox = $(`#${thisCheckId}`);
-	const thisPhone = thisCheckbox.data("phone");
-	const thisEmail = thisCheckbox.data("email");
-
-	// 체크박스 해제
-	thisCheckbox.prop("checked", false);
-
-	let targetType =
-		TARGET_TYPE === "kakao"
-			? "kakao"
-			: TARGET_TYPE === "email"
-			? "email"
-			: "lms";
-	let targetValue =
-		TARGET_TYPE === "kakao" || TARGET_TYPE === "lms" ? thisPhone : thisEmail;
-
-	updateMsgTarget(targetType, targetValue);
-
-	// 라벨 오류 관련, label 삭제
-	$(this).remove();
-	updateEachCheck();
-}
-
-// 수신자 라벨생서, 수신자 주소 업데이트
-function updateMsgTarget() {
-	console.log(TARGET_TYPE);
-	let addStr = "";
-	let phoneInfo = [];
-	let emailInfo = [];
-
-	// 라벨 생성 및 수신자 주소 정보 추출
-	$("input[name=chk_address]:checked").each(function () {
-		const phone = $(this).data("phone");
-		const email = $(this).data("email");
-		const name = this.title;
-
-		addStr += `<label for="${this.id}" class="label_added"><span>${name} X</span></label>`;
-
-		if (phone) {
-			phoneInfo.push(phone);
-		}
-		if (email) {
-			emailInfo.push(email);
-		}
-	});
-
-	if (TARGET_TYPE === "kakao" || TARGET_TYPE === "lms") {
-		$("#kakao_target").val(phoneInfo.join(","));
-		$("#lms_target").val(phoneInfo.join(","));
-	} else if (TARGET_TYPE === "email") {
-		$("#email_target").val(emailInfo.join(","));
-	}
-
-	// 내용 추가 - 라벨 + 버튼
-	$(".address_selected").empty().append(addStr);
-	$(".address_selected").prepend(
-		`<button id="delete_labelAll" class="white">reset</button>`
-	);
-
-	closePopup();
-}
-
-// function sendData() {
-// 	let phoneInfo = [];
-// 	let emailInfo = [];
-// 	$('input[name="chk_address"]:checked').each(function () {
-// 		let phone = $(this).data("phone");
-// 		let email = $(this).data("email");
-
-// 		if (phone) {
-// 			phoneInfo.push(phone);
-// 		}
-// 		if (email) {
-// 			emailInfo.push(email);
-// 		}
-// 	});
-
-// 	$("#kakao_target").val(phoneInfo.join(","));
-// 	$("#lms_target").val(phoneInfo.join(","));
-// 	$("#email_target").val(emailInfo.join(","));
-// }
 
 function loginVerify() {
 	if ($.trim($("#user_id").val()).length == 0) {
@@ -331,9 +188,6 @@ function msgBtnRemove(e) {
 	return;
 }
 
-function returnList() {
-	history.go(-1);
-}
 
 function noticeList(page = 1) {
 	let postUrl = "/admin/notice_list/" + page;
@@ -536,6 +390,18 @@ function messageList(page = 1) {
 	$("#frmSearch").attr("action", postUrl).submit();
 }
 
+//메세지폼 - 탭전환
+function messageOpenTab(e) {
+	
+	$(".popup").removeClass("active");
+
+	$(".tab_content").removeClass("active");
+	$(".btn_tab").removeClass("active");
+
+	$("#"+e.dataset.tab).addClass("active");
+	$(e).addClass("active");
+}
+
 
 function targetSearch(){
 	
@@ -558,7 +424,7 @@ function targetSearch(){
 }
 
 function sendKakaoTalk(msgType) {
-	$("#msg_target").val($("#kakao_target").val());
+	$("#msg_target").val($("#target_cellphone").val());
 
 	let postData = new FormData($("#frm1")[0]);
 

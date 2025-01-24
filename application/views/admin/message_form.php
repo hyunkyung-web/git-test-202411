@@ -72,10 +72,10 @@
             <!-- flex 2 -->
             <main class="main-content">
 				<ul class="tabs flex_row">
-					<li><button class="btn_tab active" onclick="openTab(event,'tab_1')">메세지정보</button></li>
-					<li><button class="btn_tab" onclick="openTab(event,'tab_2')">KAKAO TALK</button></li>
-					<li><button class="btn_tab" onclick="openTab(event,'tab_3')">E-MAIL</button></li>
-					<li><button class="btn_tab" onclick="openTab(event,'tab_4')">LMS</button></li>
+					<li><button class="btn_tab active" data-tab="tab_1" onclick="messageOpenTab(this)">메세지정보</button></li>
+					<li><button class="btn_tab" data-tab="tab_2" onclick="messageOpenTab(this)">KAKAO TALK</button></li>
+					<li><button class="btn_tab" data-tab="tab_3" onclick="messageOpenTab(this)">E-MAIL</button></li>
+					<li><button class="btn_tab" data-tab="tab_4" onclick="messageOpenTab(this)">LMS</button></li>
 				</ul>
 
 				<!-- tab_content_wrap =  tab_content + popup -->
@@ -159,11 +159,12 @@
 								</div>
 
 								<!-- 주소록 popup -->
-								<button class="open_pop mint" onclick="javascript: openPopup('.mobile_screen_pop');targetSearch();">수신자 선택</button>
+								<button class="open_pop mint" onclick="javascript: viewAddressBook('tab_2');">수신자 선택</button>
 							</div>
 							<!-- 최종 발송 타겟 -->
 							<div class="address_selected_wrap">
-								<p class="address_selected"></p>
+								<p class="address_selected fix"></p>
+								<p class="address_selected tmp" style="display: none;"></p>
 							</div>
 
 							<div><?php
@@ -192,11 +193,12 @@
 									<button class="red">전체 발송</button>
 								</div>
 
-								<button class="open_pop mint" onclick="openAddressBook('email')">수신자 선택</button>
+								<button class="open_pop mint" onclick="viewAddressBook('tab_3')">수신자 선택</button>
 							</div>
 							<!-- 최종 발송 타겟 -->
 							<div class="address_selected_wrap">
-								<p class="address_selected"></p>
+								<p class="address_selected fix"></p>
+								<p class="address_selected tmp" style="display: none;"></p>
 							</div>
 
     						<div><?php echo nl2br($info["title"]); ?></div>
@@ -226,11 +228,12 @@
 									<button class="red">전체 발송</button>
 								</div>
 
-								<button class="open_pop mint" onclick="openAddressBook('lms')">수신자 선택</button>
+								<button class="open_pop mint" onclick="viewAddressBook('tab_4')">수신자 선택</button>
 							</div>
 							<!-- 최종 발송 타겟 -->
 							<div class="address_selected_wrap">
-								<p class="address_selected"></p>
+								<p class="address_selected fix"></p>
+								<p class="address_selected tmp" style="display: none;"></p>
 							</div>
 
     						<div><?php echo nl2br($info["title"]); ?></div>
@@ -254,14 +257,14 @@
 							<div>
 								<form name="frmSearch" id="frmSearch" class="flex_row flex_between" onsubmit="return false">
 									<div style="clear: both;">
-										<input type="text" name="tmp_cellphone" id="tmp_cellphone" class="target kakao" />
-                						<input type="text" name="tmp_email" id="tmp_email" class="target email" />
-                						<input type="text" name="target_cellphone" id="target_cellphone" class="target kakao" style="background: yellow;"/>
-                						<input type="text" name="target_email" id="target_email" class="target email" style="background: yellow;"/>
+										<input type="hidden" name="tmp_cellphone" id="tmp_cellphone" class="target kakao" />
+                						<input type="hidden" name="tmp_email" id="tmp_email" class="target email" />
+                						<input type="hidden" name="target_cellphone" id="target_cellphone" class="target kakao" style="background: yellow;"/>
+                						<input type="hidden" name="target_email" id="target_email" class="target email" style="background: yellow;"/>
                 					</div>
 									<div class="search-bar">
-										<input type="hidden" name="sch_1">
-										<input type="text" name="sch_2" placeholder="성명, 이메일, 연락처, 소속/부서" class="search-input" />
+										<input type="hidden" name="sch_1" id="sch_1">
+										<input type="text" name="sch_2" id="sch_2" placeholder="성명, 이메일, 연락처, 소속/부서" class="search-input" />
 										<button type="button" class="search-button" onclick="javascript: targetSearch();">Search</button>
 										<input type="hidden" value=""/>										
 									</div>
@@ -280,7 +283,7 @@
 										<tr>
 											<th>
 												<label>
-													<input type="checkbox" class="display-none" name="chk_all" id="chk_all" ><span class="custom-checkbox"></span>
+													<input type="checkbox" class="display-none" name="chk_all" id="chk_all" onclick="javascript: clickCheckAll(this);"><span class="custom-checkbox"></span>
 												</label>
 											</th>
 											<th>성명(이메일, 연락처, 소속/부서)</th>
@@ -302,6 +305,7 @@
 							
 							<div class="address_selected_wrap">
 								<p class="address_selected_tmp" id="tmp_label"></p>
+								<p class="address_selected_tmp" id="fix_label" style="display: none;"></p>
 							</div>
 
 							<!-- 버튼 2개  : 취소, 확인 -->
@@ -345,64 +349,112 @@ $(window).on("load", function(){
 	adjustHeight('#template_msg');
 });
 
+let view_tab;
 let cellphone_info = [];
 let email_info = [];
 
 let fix_cellphone_info = [];
 let fix_email_info = [];
 
-
-
-
-
-//전체 선택.해제
-$("input[name=chk_all]").click(function(){
-
-	var addStr='';
-
-	//전체선택이든 해제든 배열 값과 라벨은 무조건 초기화
-	cellphone_info = [];
-	email_info = [];
-	//라벨 일괄제거
-	$(".address_selected label").remove();
+function viewAddressBook(tab_val){
+	view_tab = tab_val;
 	
-	if($(this).is(":checked")){
+	$("#sch_2").val('');
+	openPopup('.mobile_screen_pop'); 
+	targetSearch();
+}
+
+function clickCheckAll(e){
+
+	var addStr = '';
+	var fixStr = '';
+
+	if($(e).is(":checked")){
+
+		$("input[name=chk_address]:checked").each(function(idx, e){			
+			//배열에서 제거 할 값의 index를 찾는다
+			var find_1 = cellphone_info.indexOf(e.dataset.cellphone);
+			var find_2 = email_info.indexOf(e.dataset.email);
+
+			//index값을 근거로 배열에서 행을 삭제한다
+			cellphone_info.splice(find_1, 1);
+			email_info.splice(find_2, 1);
+
+			//라벨 제거
+			$("#tmp_label .label_added."+e.dataset.chk_id).remove();
+			$("#fix_label .label_added."+e.dataset.chk_id).remove();
+			
+		});
+
+		
 		$("input[name=chk_address]").prop("checked", true);
 
 		$("input[name=chk_address]:checked").each(function(idx, e){			
 			cellphone_info.push(e.dataset.cellphone);
 			email_info.push(e.dataset.email);
-			addStr += '<label for="'+e.id+'" id="label_'+e.id+'" class="label_added"><span>'+e.title+' X</span></label>';
+			addStr += '<label class="label_added '+e.dataset.chk_id+'" onclick="javascript: tmpRemove(this);" data-chk_id="'+e.dataset.chk_id+'" data-cellphone="'+e.dataset.cellphone+'" data-email="'+e.dataset.email+'"><span>'+e.title+' X</span></label>';
+	    	fixStr += '<label class="label_added '+e.dataset.chk_id+'" onclick="javascript: fixRemove(this);" data-chk_id="'+e.dataset.chk_id+'" data-cellphone="'+e.dataset.cellphone+'" data-email="'+e.dataset.email+'"><span>'+e.title+' X</span></label>';
 		});
 		
-		//최종 타켓 배열 값을 텍스트박스로 전달 
+		//최종 타켓 배열 값을 임시로 전달 
 		$("#tmp_cellphone").val(cellphone_info);
 		$("#tmp_email").val(email_info);
 		//라벨 추가
-		$(".address_selected").append(addStr);
+		$("#tmp_label").append(addStr);
+		$("#fix_label").append(fixStr);
 		
 	}else {
 		$("input[name=chk_address]").prop("checked", false);
-		//최종 타켓 배열 값을 텍스트박스로 전달 
-		$("#target_cellphone").val(cellphone_info);
-		$("#target_email").val(email_info);
+
+		$("input[name=chk_address]:not(:checked)").each(function(idx, e){			
+			//배열에서 제거 할 값의 index를 찾는다
+			var find_1 = cellphone_info.indexOf(e.dataset.cellphone);
+			var find_2 = email_info.indexOf(e.dataset.email);
+
+			//index값을 근거로 배열에서 행을 삭제한다
+			cellphone_info.splice(find_1, 1);
+			email_info.splice(find_2, 1);
+
+			//라벨 제거
+			$("#tmp_label .label_added."+e.dataset.chk_id).remove();	
+			$("#fix_label .label_added."+e.dataset.chk_id).remove();	
+		});		
+		
+		//최종 타켓 배열 값을 임시로 전달 
+		$("#tmp_cellphone").val(cellphone_info);
+		$("#tmp_email").val(email_info);		
 	}
-});
+	
+}
 
 //개별 추가
 function clickChkbox(e){
 
+	var addStr;
+	var fixStr;
+	var totalCnt = $("#total_cnt").val();
+	var chkCnt = $("input[name=chk_address]:checked").length;
+
+	if(totalCnt != chkCnt){
+		$("#chk_all").prop("checked", false);
+	}else {
+		$("#chk_all").prop("checked", true);
+	}
+
 	if($(e).is(":checked")){
+
     	cellphone_info.push(e.dataset.cellphone);
     	email_info.push(e.dataset.email);
     	
-    	//최종 타켓 배열 값을 텍스트박스로 전달 
+    	//최종 타켓 배열 값을 임시 텍스트박스로 전달 
     	$("#tmp_cellphone").val(cellphone_info);
     	$("#tmp_email").val(email_info);
     		
-    	addStr = '<label for="'+e.id+'" class="label_added '+e.id+'"><span>'+e.title+' X</span></label>';
+    	addStr = '<label class="label_added '+e.dataset.chk_id+'" onclick="javascript: tmpRemove(this);" data-chk_id="'+e.dataset.chk_id+'" data-cellphone="'+e.dataset.cellphone+'" data-email="'+e.dataset.email+'"><span>'+e.title+' X</span></label>';
+    	fixStr = '<label class="label_added '+e.dataset.chk_id+'" onclick="javascript: fixRemove(this);" data-chk_id="'+e.dataset.chk_id+'" data-cellphone="'+e.dataset.cellphone+'" data-email="'+e.dataset.email+'"><span>'+e.title+' X</span></label>';
     	//라벨 추가
     	$("#tmp_label").append(addStr);
+    	$("#fix_label").append(fixStr);
 	} else {
 		//배열에서 제거 할 값의 index를 찾는다
 		var find_1 = cellphone_info.indexOf(e.dataset.cellphone);
@@ -412,16 +464,54 @@ function clickChkbox(e){
 		cellphone_info.splice(find_1, 1);
 		email_info.splice(find_2, 1);
 
-		//최종 타켓 배열 값을 텍스트박스로 전달 
+		//최종 타켓 배열 값을 임시 텍스트박스로 전달 
 		$("#tmp_cellphone").val(cellphone_info);
 		$("#tmp_email").val(email_info);
 		//라벨 제거
-		$("#tmp_label .label_added."+e.id).remove();		
+		$("#tmp_label .label_added."+e.dataset.chk_id).remove();
+		$("#fix_label .label_added."+e.dataset.chk_id).remove();		
 	}	
+}
+
+function tmpRemove(e){
+	//배열에서 제거 할 값의 index를 찾는다
+	var find_1 = cellphone_info.indexOf(e.dataset.cellphone);
+	var find_2 = email_info.indexOf(e.dataset.email);
+
+	//index값을 근거로 배열에서 행을 삭제한다
+	cellphone_info.splice(find_1, 1);
+	email_info.splice(find_2, 1);
+
+	//최종 타켓 배열 값을 임시 텍스트박스로 전달 
+	$("#tmp_cellphone").val(cellphone_info);
+	$("#tmp_email").val(email_info);
+	//라벨 제거
+	$("#tmp_label .label_added."+e.dataset.chk_id).remove();
+	$("#fix_label .label_added."+e.dataset.chk_id).remove();
+	//체크박스 해제
+	if($("#"+e.dataset.chk_id)){
+		$("#"+e.dataset.chk_id).prop("checked", false);
+	}
+}
 
 
-	console.log('tmp==>'+cellphone_info);
-	console.log('fix==>'+fix_cellphone_info);
+function fixRemove(e){
+	//배열에서 제거 할 값의 index를 찾는다
+	var find_1 = cellphone_info.indexOf(e.dataset.cellphone);
+	var find_2 = email_info.indexOf(e.dataset.email);
+
+	//index값을 근거로 배열에서 행을 삭제한다
+	cellphone_info.splice(find_1, 1);
+	email_info.splice(find_2, 1);
+
+	//최종 타켓 배열 값을 임시 텍스트박스로 전달 
+	$("#tmp_cellphone").val(cellphone_info);
+	$("#tmp_email").val(email_info);
+	//라벨 제거
+	$("#tmp_label .label_added."+e.dataset.chk_id).remove();
+	$("#fix_label .label_added."+e.dataset.chk_id).remove();
+
+	fix_target();
 }
 
 function fix_target(){
@@ -429,26 +519,34 @@ function fix_target(){
 	$("#target_cellphone").val($("#tmp_cellphone").val());
 	$("#target_email").val($("#tmp_email").val());
 
-	$(".address_selected label").remove();
-	$("#tmp_label label").clone().appendTo(".address_selected");
+	//확정라벨을 모두 제거하고 선택라벨로 대체한다
+	$("#"+view_tab+" .address_selected label").remove();
+	$("#fix_label label").clone().appendTo("#"+view_tab+" .address_selected.fix");
+	$("#tmp_label label").clone().appendTo("#"+view_tab+" .address_selected.tmp");
 
 	//확정 배열을 임시 배열값으로 대체
 	fix_cellphone_info = cellphone_info.slice();
 	fix_email_info = email_info.slice();
-	
+
+	$("#chk_all").prop("checked", false);
 	closePopup();
 }
 
 function clear_target(){
 	$("#tmp_cellphone").val($("#target_cellphone").val());
 	$("#tmp_email").val($("#target_email").val());
-		
+
+	//선택라벨을 모두 제거하고 확정 라벨로 대체한다
 	$("#tmp_label label").remove();
-	$(".address_selected:first label").clone().appendTo("#tmp_label");	
+	$("#fix_label label").remove();
+	
+	$("#"+view_tab+" .address_selected.fix label").clone().appendTo("#fix_label");
+	$("#"+view_tab+" .address_selected.tmp label").clone().appendTo("#tmp_label");
 	//임시 배열을 확정 배열값으로 대체
 	cellphone_info = fix_cellphone_info.slice();
 	email_info = fix_email_info.slice();
-	
+
+	$("#chk_all").prop("checked", false);
 	closePopup();
 }
 

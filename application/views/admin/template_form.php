@@ -78,11 +78,11 @@
             <!-- flex 2 -->
             <main class="main-content">
 				<ul class="tabs flex_row">
-					<li><button class="btn_tab active" onclick="openTab(event,'tab_1')">템플릿설정</button></li>
-					<li><button class="btn_tab" onclick="openTab(event,'tab_2')">미리보기</button></li>
-					<li><button class="btn_tab" onclick="openTab(event,'tab_3')">친구톡발송</button></li>
-					<li><button class="btn_tab" onclick="openTab(event,'tab_4')">E-MAIL발송</button></li>
-					<li><button class="btn_tab" onclick="openTab(event,'tab_5')">LMS발송</button></li>
+					<li><button class="btn_tab active" data-tab="tab_1" onclick="messageOpenTab(this)">템플릿설정</button></li>
+					<li><button class="btn_tab" data-tab="tab_2" onclick="messageOpenTab(this)">미리보기</button></li>
+					<li><button class="btn_tab" data-tab="tab_3" onclick="messageOpenTab(this)">친구톡발송</button></li>
+					<li><button class="btn_tab" data-tab="tab_4" onclick="messageOpenTab(this)">E-MAIL발송</button></li>
+					<li><button class="btn_tab" data-tab="tab_5" onclick="messageOpenTab(this)">LMS발송</button></li>
 				</ul>
 
 				<!-- tab_content_wrap =  tab_content + popup -->

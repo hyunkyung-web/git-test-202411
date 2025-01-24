@@ -557,12 +557,13 @@ class Admin extends CI_Controller {
 	    $schType = getRequest("sch_1", "");
 	    $keyword = getRequest("sch_2", "");
 	    $fixTarget = getRequest("target_cellphone", "");
+	    $tmpTarget = getRequest("tmp_cellphone", "");
 	    
 	    $query = $this->memberModel->member_list([
 	        "keyword"=>$keyword
 	    ]);
 	    
-	    $viewData = ["data"=>$query["list"], "totalRecord"=>$query["listCount"], "fix_target"=>$fixTarget];
+	    $viewData = ["data"=>$query["list"], "total_count"=>$query["listCount"], "fix_target"=>$fixTarget, "tmp_target"=>$tmpTarget];
 	    
 	    // 	    $pageData = ["listFnc"=>"eventList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "page"=>$page];
 	    $this->load->view('/admin/ajax_member_list', $viewData);

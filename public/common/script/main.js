@@ -131,6 +131,9 @@ function callData(pageNum) {
         case 3:
             callUrl = "/support/call";
             break;
+        case 99:
+        	callUrl = "http://pf.kakao.com/_DxbUSb";
+        	break;
     }
 
     window.location.href = callUrl;

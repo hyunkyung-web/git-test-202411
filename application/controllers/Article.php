@@ -39,7 +39,15 @@ class Article extends CI_Controller {
 	    
 	    $this->session_chk();
 	    
-	    $this->load->view('/article/list');
+	    $keyword = "";
+	    
+	    $query = $this->contentsModel->contents_list([
+	        "contents_type"=>"article", "keyword"=>$keyword
+	    ]);	    
+	    
+	    $viewData = ["data"=>$query["list"], "total_count"=>$query["listCount"]];	    
+	    
+	    $this->load->view('/article/list', $viewData);
 	}
 	
 	public function node($idx=-1){
