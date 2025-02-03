@@ -634,7 +634,6 @@ class Admin extends CI_Controller {
 	    } else {
 	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"]]);
 	    }
-	    
 	}
 	
 	public function user_list($page=1){

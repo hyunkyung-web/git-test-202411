@@ -163,10 +163,10 @@ class Member extends CI_Controller {
 	            }	            
 	        } else{
 	            $form_str = '<form name="frm1" id="frm1" action="/member/signup" method="post">';
-	            $form_str.= '<input type="text" name="uuid" value="'.$profile_info["uuid"].'" />';
-	            $form_str.= '<input type="text" name="name" value="'.$profile_info["name"].'" />';
-	            $form_str.= '<input type="text" name="cellphone" value="'.$profile_info["cellphone"].'" />';
-	            $form_str.= '<input type="text" name="email" value="'.$profile_info["email"].'" />';
+	            $form_str.= '<input type="hidden" name="uuid" value="'.$profile_info["uuid"].'" />';
+	            $form_str.= '<input type="hidden" name="name" value="'.$profile_info["name"].'" />';
+	            $form_str.= '<input type="hidden" name="cellphone" value="'.$profile_info["cellphone"].'" />';
+	            $form_str.= '<input type="hidden" name="email" value="'.$profile_info["email"].'" />';
 	            $form_str.= '</form><br/>';
 	            echo $form_str;
 	            
