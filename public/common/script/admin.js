@@ -492,8 +492,11 @@ function memberSave(editMode) {
 		dataType: "json",
 		beforeSend: function () {},
 		success: function (data) {
-			alert(data.msg);
-
+			cmmShowMsg(data.msg);
+			if(data.template_code){
+				console.log(data.template_code);
+				pushSystemMsg(data.idx, data.template_code);
+			}
 			if (data.result == "ok") {
 				location.replace("/admin/member_form/" + data.idx);
 			}
@@ -502,6 +505,24 @@ function memberSave(editMode) {
 			console.log(err);
 			return;
 		},
+	});
+}
+
+function pushSystemMsg(member_id, template_code){
+	$.ajax({
+		type: "POST",
+		url: "/bizmsg/push_system_msg/",
+		data: {member_id:member_id, template_code:template_code},
+		dataType: "json",
+		beforeSend:function(){
+		},
+		success: function(data){			
+			console.log(data);
+		},
+		error: function(request, status, err){
+			console.log(err);
+			return;
+		}
 	});
 }
 

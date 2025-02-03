@@ -61,8 +61,8 @@ class Member extends CI_Controller {
 	    $kakao=[
 	        "client_id"=>'2549f043e46bbd82676b804343560ca2', 
 	        "client_secret"=>'6wttiSwgMRVFTQL4MrxhtXEiTXs3i4En',
-// 	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
-	        "redirect_uri"=>'https://kakao.dr-wave.co.kr/member/kakao_result',
+	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
+// 	        "redirect_uri"=>'https://kakao.dr-wave.co.kr/member/kakao_result',
 	        "state"=>$kakao_state
 	    ];
 	    
@@ -82,8 +82,8 @@ class Member extends CI_Controller {
 	    $kakao=[
 	        "client_id"=>'2549f043e46bbd82676b804343560ca2',
 	        "client_secret"=>'6wttiSwgMRVFTQL4MrxhtXEiTXs3i4En',
-// 	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
-	        "redirect_uri"=>'https://kakao.dr-wave.co.kr/member/kakao_result',
+	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
+// 	        "redirect_uri"=>'https://kakao.dr-wave.co.kr/member/kakao_result',
 	        "token_url"=>'https://kauth.kakao.com/oauth/token?grant_type=authorization_code',
 	        "profile_url"=>'https://kapi.kakao.com/v2/user/me'
 	    ];
@@ -163,10 +163,10 @@ class Member extends CI_Controller {
 	            }	            
 	        } else{
 	            $form_str = '<form name="frm1" id="frm1" action="/member/signup" method="post">';
-	            $form_str.= '<input type="text" name="uuid" value="'.$profile_info["uuid"].'" />';
-	            $form_str.= '<input type="text" name="name" value="'.$profile_info["name"].'" />';
-	            $form_str.= '<input type="text" name="cellphone" value="'.$profile_info["cellphone"].'" />';
-	            $form_str.= '<input type="text" name="email" value="'.$profile_info["email"].'" />';
+	            $form_str.= '<input type="hidden" name="uuid" value="'.$profile_info["uuid"].'" />';
+	            $form_str.= '<input type="hidden" name="name" value="'.$profile_info["name"].'" />';
+	            $form_str.= '<input type="hidden" name="cellphone" value="'.$profile_info["cellphone"].'" />';
+	            $form_str.= '<input type="hidden" name="email" value="'.$profile_info["email"].'" />';
 	            $form_str.= '</form><br/>';
 	            echo $form_str;
 	            

@@ -624,17 +624,16 @@ class Admin extends CI_Controller {
 	    ]);
 	    
 	    if(($before_status=="hold" || $before_status=="expire") && getPost("member_status", "hold")=="active"){
-	        $alarm_type = "member_active";
+	        $template_code = "member_status_active";
 	    }elseif($before_status=="active" && getPost("member_status", "hold")=="expire"){
-	        $alarm_type = "member_expire";
+	        $template_code = "member_status_expire";
 	    }
 	    
 	    if ( $query["result"] == "ok") {
-	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"], 'push_msg_type'=>$alarm_type, 'idx' => $query["idx"]]);
+	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"], 'template_code'=>$template_code, 'idx' => $query["idx"]]);
 	    } else {
 	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"]]);
 	    }
-	    
 	}
 	
 	public function user_list($page=1){

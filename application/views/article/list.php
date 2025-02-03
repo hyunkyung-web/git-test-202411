@@ -76,15 +76,27 @@ gtag('event', 'screen_view', {
     <section id="article" class="flex_SB_center padd60">
         <h1>학술정보</h1>
         <p>최신 학술정보를 만나보실 수 있습니다.</p>
-        <div id="article-each" class="flex_SB_center"><?php 
-        foreach($data as $row){?>
+        <div id="article-each" class="flex_SB_center"><?php
+        
+        foreach($data as $row){
+            $find_src = preg_match("/<img\s[^>]*>/", $row["body_text"], $match);
+            if(count($match)>0){
+                $thumb_img = $match[0];
+            } else {
+                $thumb_img = '<img src="/public/images/icon/icon_file.png" alt="article 1" class="cont-thumb article-thumb"/>';
+            }?>
             <div class="contents-list article-each">
+<<<<<<< HEAD
                 <a href="<?php echo '/article/node/'.$row["idx"];?>"><img src="/public/images/work_sign_thumb.png" alt="article 1" class="cont-thumb article-thumb" /></a>
+=======
+                <a href="<?php echo '/article/node/'.$row["idx"];?>"><?php echo $thumb_img;?></a>
+>>>>>>> origin/main
                 <div class="cont_descript article_descript">
                     <a href="<?php echo '/article/node/'.$row["idx"];?>">
                         <p class="name"><?php echo $row["title"];?></p>
                     </a>
                     <p>L<?php echo $row["description"];?></p>
+                    <p><?php echo count($match);?></p>
                 </div>
 
             </div><?php 

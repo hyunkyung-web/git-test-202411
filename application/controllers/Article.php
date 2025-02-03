@@ -45,7 +45,7 @@ class Article extends CI_Controller {
 	        "contents_type"=>"article", "keyword"=>$keyword
 	    ]);	    
 	    
-	    $viewData = ["data"=>$query["list"], "total_count"=>$query["listCount"]];	    
+	    $viewData = ["data"=>$query["list"], "total_count"=>$query["listCount"]];
 	    
 	    $this->load->view('/article/list', $viewData);
 	}
