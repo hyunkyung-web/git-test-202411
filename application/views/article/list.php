@@ -71,7 +71,7 @@
             if(count($match)>0){
                 $thumb_img = $match[0];
             } else {
-                $thumb_img = '<img src="/public/images/work_sign_thumb.png" alt="article 1" class="cont-thumb article-thumb"/>';
+                $thumb_img = '<img src="/public/images/icon/icon_file.png" alt="article 1" class="cont-thumb article-thumb"/>';
             }?>
             <div class="contents-list article-each">
                 <a href="<?php echo '/article/node/'.$row["idx"];?>"><?php echo $thumb_img;?></a>
