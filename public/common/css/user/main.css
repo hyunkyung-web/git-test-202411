@@ -181,12 +181,14 @@ main
 }
 
 /* 콘텐츠 썸네일 스타일 */
+.contents-list a img,
 .cont-thumb {
     width: 150px;
     height: 150px;
     border-radius: 5px;
     /* margin-bottom: 10px; */
     object-fit: cover;
+    object-position: top;
     border: 1px solid #ddd;
 }
 
