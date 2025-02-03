@@ -69,11 +69,11 @@ $(function () {
     });
 
     // 검색 버튼 클릭 시 검색 수행
-    // $(".searchButton").click(function () {
-    //     var query = $("#searchInput").val();
-    //     console.log("검색어: " + query);
-    //     // 실제 검색 로직을 추가할 수 있습니다.
-    // });
+    $(".searchButton").click(function () {
+        var query = $("#searchInput").val();
+        console.log("검색어: " + query);
+        // 실제 검색 로직을 추가할 수 있습니다.
+    });
 
     // 담당자 검색 -> 다음
     $(".btn_select").click(function () {
@@ -84,9 +84,6 @@ $(function () {
     $("input[name=type]").click(function () {
         toggleFields();
     });
-
-    // 오늘 날짜를 input[type="date"]에 설정
-    $("#date").val(getTodayDate());
 
     // 요청하기 버튼 클릭
     $(".requestButton").click(function () {
@@ -135,8 +132,8 @@ function callData(pageNum) {
             callUrl = "/support/call";
             break;
         case 99:
-            callUrl = "http://pf.kakao.com/_DxbUSb";
-            break;
+        	callUrl = "http://pf.kakao.com/_DxbUSb";
+        	break;
     }
 
     window.location.href = callUrl;
@@ -220,7 +217,7 @@ function addComment(text) {
 }
 
 // 고객지원 페이지 탭 메뉴
-function switchTab(e) {
+function swithchTab(e) {
     $(".index, .container").removeClass("active");
     $(e).addClass("active");
 
@@ -293,10 +290,10 @@ function selectAssignee() {
             var td = tr.children();
 
             var p_name = td.eq(1).text();
-            var p_dept = td.eq(2).text();
+            var p_email = td.eq(2).text();
 
             // assigneeList += p_name + " / ";
-            assigneeList += p_name + "(" + p_dept + ") / ";
+            assigneeList += p_name + "(" + p_email + ") / ";
         });
 
         // 마지막 "/ " 제거
@@ -326,16 +323,6 @@ function toggleFields() {
         // 자료요청, 기타 선택 시 해당 박스 show
         $(".doc_box").show();
     }
-}
-
-// 오늘 날짜를 yyyy-mm-dd 형식으로 반환하는 함수
-function getTodayDate() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, "0"); // 월은 0부터 시작하므로 +1
-    const day = String(today.getDate()).padStart(2, "0"); // 날짜 두 자릿수로 맞추기
-
-    return `${year}-${month}-${day}`; // yyyy-mm-dd 형식으로 반환
 }
 
 // 요청하기 버튼 클릭 시 입력사항 체크
@@ -399,9 +386,8 @@ function validateRequest() {
     // 모든 입력값 입력 완료 -> alert창 띄우기 + 원래 상태로 돌아가기
     if (chkPartner == false && chkType == true && chkDate == false && chkCallDetail == false && chkDocDetail == false) {
         alert("요청 완료되었습니다.");
-        $("input, textarea").removeClass("warn");
         $("input, textarea").val("");
-        $("#date").val(getTodayDate());
+        $("input, textarea").removeClass("warn");
         $("input[type=radio], input[type=checkbox]").prop("checked", false);
         $(".inform_box").hide();
     }
@@ -413,31 +399,7 @@ function hasRequest() {
     return $(".tableBody.user .rowItem").length > 0;
 }
 
-function memberSave() {
-    //	var reqArr = ["userId", "userPw", "userNm"];
-    //	var chkReq = false;
-    //
-    //	if(editMode=="N"){
-    //		$.each(reqArr, function(idx, item){
-    //			if($.trim($("#"+item).val()).length == 0){
-    //				cmmShowMsg ($("#"+item).prop("placeholder")+' 필수입력 누락입니다.');
-    //				$("#"+item).focus();
-    //				chkReq = true;
-    //				return false;
-    //			}
-    //		});
-    //
-    //		if(chkReq){
-    //			console.log('필수입력 누락');
-    //			return;
-    //		}
-    //		if($.trim($("#userPw").val()) != $.trim($("#userPw_2").val())){
-    //			cmmShowMsg('비밀번호가 일치하지 않습니다.');
-    //			return;
-    //		}
-    //	}
 
-<<<<<<< HEAD
 /******************************************************************
  *	함수명: memberSave()
  *	기능: 회원가입 저장
@@ -465,25 +427,24 @@ function memberSave(){
 	//			return;
 	//		}
 	//	}
-=======
-    var postData = $("#frm1").serialize();
->>>>>>> branch 'main' of https://github.com/hyunkyung-web/git-test-202411.git
 
-    $.ajax({
-        type: "POST",
-        url: "/member/member_save/",
-        data: postData,
-        dataType: "json",
-        beforeSend: function () {},
-        success: function (data) {
-            alert(data.msg);
-            location.replace("/");
-        },
-        error: function (request, status, err) {
-            console.log(err);
-            return;
-        }
-    });
+	var postData = $("#frm1").serialize();
+
+	$.ajax({
+		type: "POST",
+		url: "/member/member_save/",
+		data: postData,
+		dataType: "json",
+		beforeSend: function () {},
+		success: function (data) {
+			alert(data.msg);
+			location.replace("/");
+		},
+		error: function (request, status, err) {
+			console.log(err);
+			return;
+		},
+	});
 }
 
 /******************************************************************
