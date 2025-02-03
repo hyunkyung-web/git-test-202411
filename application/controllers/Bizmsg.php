@@ -114,6 +114,84 @@ class Bizmsg extends CI_Controller {
         
     }
     
+    public function push_auth_token(){
+        
+        $access_token = $this->get_access_token();
+        $msg_type = "sms";
+        $from_phone = "025402256";
+        $query = $this->memberModel->get_member_cellphone(getPost("member_id", -1));
+        $to_phone = getPost("cellphone", "");
+        $ref_key = $msg_type."_".time();
+        $auth_token = mt_rand(000000, 999999);
+        $talk_msg = '안녕하세요. 인증번호  ['.$auth_token.']입니다.';
+        
+        $make_token = $this->msgModel->make_auth_token([
+            "cellphone"=>$to_phone, "auth_token"=>$auth_token, "sess_id"=>session_id()
+        ]);
+        
+        exit;
+        
+        $content_data = [
+            "sms"=>[
+                "message"=>$talk_msg
+            ]
+        ];
+        
+        $postData = [
+            "account"=>"dwave2014", "type"=>$msg_type, "from"=>$from_phone, "to"=>$to_phone,
+            "country"=>"", "refkey"=>$ref_key, 
+            "content"=>$content_data
+        ];        
+        
+        $restUrl = "https://api.bizppurio.com/v3/message";
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $restUrl,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_HTTPHEADER => [
+                "Content-Type: application/json; charset=utf-8",
+                "Authorization: Bearer ".$access_token.""
+            ],
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => false,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_POSTFIELDS => json_encode($postData),
+            //             CURLOPT_POSTFIELDS => json_encode($postData),
+        ));
+        
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        
+        if($err) {
+            //                 echo json_encode(["result"=>"fail", "msg"=>$err]);
+            $save_log = $this->msgModel->save_biztalk_log([
+                "template_idx"=>-1, "template_type"=>$msg_type, "cellphone"=>$to_phone, "member_id"=>getPost("member_id", -1), "ref_key"=>"", "message_key"=>"",
+                "result_code"=>'curl error',"result_desc"=>$err
+            ]);
+            
+            echo json_encode(["result"=>"fail", "msg"=>$err]);
+            
+        } else {
+            //json 결과 값을 디코딩 후에 액세스토큰 정보를 생성하고 리턴
+            $result = json_decode($response);
+            
+            //             $result->code; $result->description; $result->refkey; $result->messagekey; <== 전송결과 인덱스키와 비교해서 최종 전송결과 매칭가능
+            
+            $save_log = $this->msgModel->save_biztalk_log([
+                "template_idx"=>-1, "template_type"=>$msg_type, "cellphone"=>$to_phone, "member_nm"=>"", "member_id"=>getPost("member_id", -1), "ref_key"=>$result->refkey, "message_key"=>$result->messagekey,
+                "result_code"=>$result->code,"result_desc"=>$result->description
+            ]);
+            
+            echo json_encode(["result"=>"ok", "msg"=>$result->description]);
+            
+        }
+        
+    }
+    
     public function push_system_msg(){
         
         $this->session_chk();
@@ -190,7 +268,7 @@ class Bizmsg extends CI_Controller {
         if($err) {
             //                 echo json_encode(["result"=>"fail", "msg"=>$err]);
             $save_log = $this->msgModel->save_biztalk_log([
-                "template_type"=>'at', "cellphone"=>$to_phone, "member_id"=>getPost("member_id", -1), "ref_key"=>"", "message_key"=>"",
+                "template_idx"=>-1, "template_type"=>$msg_type, "cellphone"=>$to_phone, "member_id"=>getPost("member_id", -1), "ref_key"=>"", "message_key"=>"",
                 "result_code"=>'curl error',"result_desc"=>$err
             ]);
             
@@ -203,7 +281,7 @@ class Bizmsg extends CI_Controller {
             //             $result->code; $result->description; $result->refkey; $result->messagekey; <== 전송결과 인덱스키와 비교해서 최종 전송결과 매칭가능
             
             $save_log = $this->msgModel->save_biztalk_log([
-                "template_type"=>'at', "cellphone"=>$to_phone, "member_nm"=>"", "member_id"=>getPost("member_id", -1), "ref_key"=>$result->refkey, "message_key"=>$result->messagekey,
+                "template_idx"=>-1, "template_type"=>'at', "cellphone"=>$to_phone, "member_nm"=>"", "member_id"=>getPost("member_id", -1), "ref_key"=>$result->refkey, "message_key"=>$result->messagekey,
                 "result_code"=>$result->code,"result_desc"=>$result->description
             ]);
             

@@ -191,34 +191,7 @@ class Msg_model extends CI_Model {
         
         exit;
         
-    }
-    
-    
-    
-    public function save_sms_log($opt){
-        
-        $this->db->trans_begin();
-        
-        $session_id = $this->session->userdata["user_id"];
-        $session_nm = $this->session->userdata["user_nm"];
-        
-        $sql = "insert into tb_sms_log (";
-        $sql.= "sms_type, event_idx, to_mobile, subject, mail_body, result, remain_cnt, wdate) values (";
-        $sql.= "'".$opt["sms_type"]."', ".$opt["event_idx"].", '".$opt["to_mobile"]."', '".$opt["subject"]."', '".$opt["mail_body"]."', ";
-        $sql.= "'".$opt["result"]."', ".$opt["remain_cnt"].", now() )";
-        $data = $this->db->query($sql);
-        
-        if (!$data) {
-            $errorMsg = $this->db->error();
-            $this->db->trans_rollback();
-            return ["result"=>"db_error", "msg"=>$errorMsg];
-        } else {
-            $this->db->trans_commit();
-            return ["result"=>"ok", "msg"=>"save ok"];
-        }
-        
-        exit;
-    }
+    }    
 
         
     public function biztalk_log($opt){
@@ -261,6 +234,28 @@ class Msg_model extends CI_Model {
         $sql = "insert into tb_biztalk_log (template_idx, template_type, cellphone, member_nm, member_id, ref_key, message_key, result_code, result_desc, wdate) values (";
         $sql.= "'".$opt["template_idx"]."', '".$opt["template_type"]."', '".$opt["cellphone"]."', '".$opt["member_nm"]."', '".$opt["member_id"]."', ";
         $sql.= "'".$opt["ref_key"]."', '".$opt["message_key"]."', '".$opt["result_code"]."', '".$opt["result_desc"]."', now() ) ";
+        
+        $data = $this->db->query($sql);
+        
+        if (!$data) {
+            $errorMsg = $this->db->error();
+            $this->db->trans_rollback();
+            return ["result"=>"db_error", "msg"=>$errorMsg];
+        } else {
+            $this->db->trans_commit();
+            return ["result"=>"ok", "msg"=>"save ok"];
+        }
+        
+        exit;
+        
+    }
+    
+    public function make_auth_token($opt){
+        
+        $this->db->trans_begin();
+        
+        $sql = "insert into tb_auth_token (cellphone, auth_token, sess_id, wdate) values (";
+        $sql.= "'".$opt["cellphone"]."', '".$opt["auth_token"]."', '".$opt["sess_id"]."', now() ) ";
         
         $data = $this->db->query($sql);
         

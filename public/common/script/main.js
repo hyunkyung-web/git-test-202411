@@ -400,6 +400,10 @@ function hasRequest() {
 }
 
 
+/******************************************************************
+ *	함수명: memberSave()
+ *	기능: 회원가입 저장
+ ******************************************************************/
 function memberSave(){
 //	var reqArr = ["userId", "userPw", "userNm"];
 	//	var chkReq = false;
@@ -435,6 +439,63 @@ function memberSave(){
 		success: function (data) {
 			alert(data.msg);
 			location.replace("/");
+		},
+		error: function (request, status, err) {
+			console.log(err);
+			return;
+		},
+	});
+}
+
+/******************************************************************
+ *	함수명: requestMemberValid()
+ *	기능: 인증요청_회원상태 확인
+ ******************************************************************/
+function requestMemberValid(){
+
+	var postData = $("#frm1").serialize();
+
+	$.ajax({
+		type: "POST",
+		url: "/member/cellphone_valid",
+		data: postData,
+		dataType: "json",
+		beforeSend: function () {},
+		success: function (data) {
+			if(data.result=="ok"){
+				requestAuthToken();
+			}
+			else if(data.result=="error"){
+				alert(data.msg);
+				return;
+			}else if(data.result=="no_member"){
+				alert(data.msg);
+				$("#frm1").attr("method", "post").attr("action", "/member/signup").submit();				
+			}
+		},
+		error: function (request, status, err) {
+			console.log(err);
+			return;
+		},
+	});
+}
+
+/******************************************************************
+ *	함수명: requestAuthToken()
+ *	기능: 인증번호 요청
+ ******************************************************************/
+function requestAuthToken(){
+	
+	var postData = $("#frm1").serialize();
+	
+	$.ajax({
+		type: "POST",
+		url: "/bizmsg/push_auth_token",
+		data: postData,
+		dataType: "json",
+		beforeSend: function () {},
+		success: function (data) {
+			console.log(data);
 		},
 		error: function (request, status, err) {
 			console.log(err);

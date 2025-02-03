@@ -23,7 +23,8 @@
     <script type="text/javascript" src="/public/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/public/common/js/jquery.ui.touch-punch.min.js"></script>    
     <script src="/public/common/script/fontawesome.all.min.js"></script>
-    <script type="text/javascript" src="/public/common/script/main.js"></script>                
+    <script type="text/javascript" src="/public/common/script/main.js"></script>
+    <script type="text/javascript" src="/public/common/script/common.js"></script>
 
 	<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -71,14 +72,18 @@
             </div>
             
             <div class="member-container">
-                <form action="#">
+                <form id="frm1">
 <!--                     <div class="form_item user" id="divName"> -->
 <!--                         <input type="text" id="name" name="name" placeholder="이름" class="input" value="" maxlength="10"/> -->
 <!--                     </div> -->
                     <div class="form_item phone" id="divPhoneNo">
-                        <input type="tel" id="phoneNo" name="phoneNo" placeholder="휴대전화번호(숫자만 입력하세요)" class="input" maxlength="16" onkeyup="javascript: cmmOnNumber(this);"/>
+                        <input type="tel" id="cellphone" name="cellphone" placeholder="휴대전화번호(숫자만 입력하세요)" class="input" maxlength="16" onkeyup="javascript: cmmOnNumber(this);"/>
                     </div>
-                    <button type="button">인증하기</button>
+                    <div class="form_item phone" id="divPhoneNo">
+                        <input type="tel" id="auth_code" name="auth_code" placeholder="인증번호" class="input" maxlength="6" onkeyup="javascript: cmmOnNumber(this);"/>
+                    </div>
+                    <button type="button" id="btnRequest" onclick="javascript: requestMemberValid();">인증요청</button>
+                    <button type="button" id="btnValid">인증하기</button>
                     <a href="<?php echo $login_auth_url;?>"><button type="button"></button></a>
                 </form>
             </div>

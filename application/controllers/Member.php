@@ -9,6 +9,23 @@ class Member extends CI_Controller {
         $this->load->model('member_model', 'memberModel');
     }
     
+    private function session_chk(){
+        if(!isset($this->session->userdata["member_id"])){
+            
+            setcookie("target_url", $_SERVER['REQUEST_URI'], time()+3600, "/");
+            
+            $errMsg = '<script>alert("회원인증이 필요합니다.");';
+            $errMsg.= 'location.href="/member/verify";</script>';
+            echo $errMsg;
+        }
+    }
+    
+    private function invalid_process(){
+        $errMsg = '<script>alert("잘못 된 접근입니다.");';
+        $errMsg.= 'location.href="/";</script>';
+        echo $errMsg;
+    }
+    
     // 함수: 카카오 curl 통신
     private function curl_kakao($url,$headers = array()){
         
@@ -55,6 +72,13 @@ class Member extends CI_Controller {
 	
 	public function verify(){
 	    
+	    if(isset($this->session->userdata["member_id"])){
+	        header('Location:/');
+	    } else {
+	        // 	        $cookieData = ["remId"=>get_cookie("user_id"),  "remPw"=>get_cookie("user_pw")];
+	        $this->load->view('/member/verify');
+	    }
+	    
 	    $kakao_state = md5(mt_rand(111111, 999999));	    
 	    setcookie('state', $kakao_state, time()+600);
 	    
@@ -74,6 +98,28 @@ class Member extends CI_Controller {
 	    ];
 	    
 	    $this->load->view('/member/verify', $viewData);
+	}
+	
+	public function cellphone_valid(){
+	    
+	    $is_member = $this->memberModel->get_idx(getPost("cellphone", ""));
+	    
+	    //회원 정보에 등록 된 번호일 경우 메세지를 리턴한다.
+	    if(count($is_member)>0){
+	        if($is_member[0]["member_status"]=='active'){
+	            echo json_encode(['result' => "ok", 'msg'=>"활동회원"]);
+	            
+	        } else{
+	            if($is_member[0]["member_status"]=='expire'){
+	                echo json_encode(['result' => "error", 'msg'=>"활동이 정지 된 회원입니다. 고객센터에 문의바랍니다."]);
+	            }else {
+	                echo json_encode(['result' => "error", 'msg'=>"승인 대기 중인 회원입니다. 승인이 완료되면 가입하신 핸드폰으로 메세지가 발송됩니다."]);
+	            }	            
+	        }
+	    } else{
+	        echo json_encode(['result' => "no_member", 'msg'=>"일치하는 회원정보가 없습니다. 회원가입으로 이동합니다."]);
+	    }
+	    
 	}
 	
 	
@@ -183,6 +229,11 @@ class Member extends CI_Controller {
 	    
 	    $before_status = "";
 	    $alarm_type = 'welcome';
+	    
+	    if(strlen(getPost("cellphone", ""))!=11){
+	        echo json_encode(['result' => 'error', 'msg'=>'필수 입력 누락입니다.']);
+	        exit;
+	    }
 	    
 	    $query = $this->memberModel->member_save([
 	        "editMode"=> 'C',
