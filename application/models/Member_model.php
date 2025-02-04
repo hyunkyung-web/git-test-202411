@@ -190,7 +190,7 @@ class member_model extends CI_Model {
         exit;
     }
     
-    public function get_idx($cellphone) {
+    public function get_info_by_cellphone($cellphone) {
         
         $sql = "select * from tb_member ";
         $sql.= "where member_status <> 'expire' and cellphone='".$cellphone."' ";
@@ -200,6 +200,71 @@ class member_model extends CI_Model {
         
         return $list;
         exit;
+    }
+    
+    private function chk_make_auth_token($cellphone, $sess_id){
+        
+        $strWhere = "where timestampdiff(minute, wdate, now())<=5 ";
+        $strWhere.= "and cellphone='".$cellphone."' and sess_id='".$sess_id."' ";
+        $strWhere.= "order by wdate desc limit 1 ";
+        
+        $sql = "select * from tb_auth_token ";
+        $sql.= $strWhere;
+        $dataCnt = $this->db->query($sql)->num_rows();
+        
+        if($dataCnt==0){
+            return "ok";
+        }else {
+            return "fail";
+        }
+        
+    }
+    
+    public function make_auth_token($opt){
+        
+        $make_valid = $this->chk_make_auth_token($opt["cellphone"], $opt["sess_id"]);
+        
+        if($make_valid != "ok"){
+            return ["result"=>"fail", "msg"=>'인증번호를 이미 발송했습니다. 인증번호 발급은 5분에 1회 발송됩니다.'];
+            exit;
+        }
+        
+        $this->db->trans_begin();
+        
+        $sql = "insert into tb_auth_token (cellphone, auth_token, sess_id, wdate) values (";
+        $sql.= "'".$opt["cellphone"]."', '".$opt["auth_token"]."', '".$opt["sess_id"]."', now() ) ";
+        
+        $data = $this->db->query($sql);
+        
+        if (!$data) {
+            $errorMsg = $this->db->error();
+            $this->db->trans_rollback();
+            return ["result"=>"db_error", "msg"=>$errorMsg];
+        } else {
+            $this->db->trans_commit();
+            return ["result"=>"ok", "msg"=>"save ok"];
+        }
+        
+        exit;
+        
+    }
+    
+    public function verify_auth_token($opt){
+        
+        $strWhere = "where timestampdiff(minute, wdate, now())<=5 ";
+        $strWhere.= "and cellphone='".$opt["cellphone"]."' and auth_token='".$opt["auth_token"]."' and sess_id='".$opt["sess_id"]."' ";
+        $strWhere.= "order by wdate desc limit 1 ";
+        
+        $sql = "select * from tb_auth_token ";
+        $sql.= $strWhere;
+        $dataCnt = $this->db->query($sql)->num_rows();
+        
+        if($dataCnt==1){
+            return ["result"=>"ok", "msg"=>"인증번호 확인 통과"];
+        }else {
+            return ["result"=>"fail", "msg"=>"인증번호 확인 실패"];
+        }
+        
     }
     
     public function record_member_log($opt){

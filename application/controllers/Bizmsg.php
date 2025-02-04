@@ -104,14 +104,12 @@ class Bizmsg extends CI_Controller {
     
     private function get_member_id($cell_phone){        
         
-        $result = $this->memberModel->get_idx($cell_phone);
+        $result = $this->memberModel->get_info_by_cellphone($cell_phone);
         if(count($result)>0){
             return($result[0]["idx"]);
         }else {
             return("no_member");
         }
-        
-        
     }
     
     public function push_auth_token(){
@@ -124,9 +122,15 @@ class Bizmsg extends CI_Controller {
         $auth_token = mt_rand(000000, 999999);
         $talk_msg = '안녕하세요. 인증번호  ['.$auth_token.']입니다.';
         
-        $make_token = $this->msgModel->make_auth_token([
+        $make_token = $this->memberModel->make_auth_token([
             "cellphone"=>$to_phone, "auth_token"=>$auth_token, "sess_id"=>session_id()
         ]);
+        
+        if($make_token["result"]!="ok"){
+            echo json_encode(["result"=>"error", "msg"=>$make_token["msg"]]);
+            exit;
+        }
+        
         
         $content_data = [
             "sms"=>[
@@ -317,14 +321,14 @@ class Bizmsg extends CI_Controller {
         $exec_cnt = 0;
         $ok_cnt = 0;
         
-        foreach($final_target as $row){
+        foreach($final_target as $cellphone){
             
             $img_data = [];
             $btn_data = [];
             $member_id = "";
             $add_utm="";
             
-            $member_id = $this->get_member_id($row);
+            $member_id = $this->get_member_id($cellphone);
 
             $add_utm = 'utm_source='.$member_id.'&utm_medium='.$template_type.'&utm_campaign='.$template_idx;
             
@@ -367,7 +371,7 @@ class Bizmsg extends CI_Controller {
             ];
             
             $postData = [
-                "account"=>"dwave2014", "refkey"=>$ref_key, "type"=>$template_type, "from"=>$from_phone, "to"=>$row,
+                "account"=>"dwave2014", "refkey"=>$ref_key, "type"=>$template_type, "from"=>$from_phone, "to"=>$cellphone,
                 "content"=>$content_data
             ];
             
@@ -399,7 +403,7 @@ class Bizmsg extends CI_Controller {
             if($err) {
 //                 echo json_encode(["result"=>"fail", "msg"=>$err]);
                 $save_log = $this->msgModel->save_biztalk_log([
-                    "template_idx"=>$template_idx, "template_type"=>$template_type, "cellphone"=>$row, "member_id"=>$member_id, "ref_key"=>"", "message_key"=>"",
+                    "template_idx"=>$template_idx, "template_type"=>$template_type, "cellphone"=>$cellphone, "member_id"=>$member_id, "ref_key"=>"", "message_key"=>"",
                     "result_code"=>'curl error',"result_desc"=>$err
                 ]);
             } else {
@@ -411,7 +415,7 @@ class Bizmsg extends CI_Controller {
                 //             $result->code; $result->description; $result->refkey; $result->messagekey; <== 전송결과 인덱스키와 비교해서 최종 전송결과 매칭가능
                 
                 $save_log = $this->msgModel->save_biztalk_log([
-                    "template_idx"=>$template_idx, "template_type"=>$template_type, "cellphone"=>$row, "member_nm"=>"", "member_id"=>$member_id, "ref_key"=>$result->refkey, "message_key"=>$result->messagekey,
+                    "template_idx"=>$template_idx, "template_type"=>$template_type, "cellphone"=>$cellphone, "member_nm"=>"", "member_id"=>$member_id, "ref_key"=>$result->refkey, "message_key"=>$result->messagekey,
                     "result_code"=>$result->code,"result_desc"=>$result->description
                 ]);
             }

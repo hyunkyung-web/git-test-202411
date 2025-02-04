@@ -99,7 +99,7 @@ class Member extends CI_Controller {
 	
 	public function cellphone_valid(){
 	    
-	    $is_member = $this->memberModel->get_idx(getPost("cellphone", ""));
+	    $is_member = $this->memberModel->get_info_by_cellphone(getPost("cellphone", ""));
 	    
 	    //회원 정보에 등록 된 번호일 경우 메세지를 리턴한다.
 	    if(count($is_member)>0){
@@ -116,6 +116,38 @@ class Member extends CI_Controller {
 	    } else{
 	        echo json_encode(['result' => "no_member", 'msg'=>"일치하는 회원정보가 없습니다. 회원가입으로 이동합니다."]);
 	    }
+	    
+	}
+	
+	public function verify_auth_token(){
+	    
+	    $valid_result = $this->memberModel->verify_auth_token([
+	        "cellphone"=>getPost("cellphone", ""),
+	        "auth_token"=>getPost("auth_code", ""),
+	        "sess_id"=>session_id()
+	    ]);
+	    
+	    if($valid_result["result"]=="ok"){
+	        $is_member = $this->memberModel->get_info_by_cellphone(getPost("cellphone", ""));
+	        $this->session->set_userdata([
+	            "member_id"=>$is_member[0]["idx"],
+	            "member_nm"=>$is_member[0]["member_nm"],
+	            "member_cellphone"=>$is_member[0]["cellphone"],
+	            "member_email"=>$is_member[0]["member_email"],
+	            "sess_id"=>session_id()
+	        ]);
+	        
+	        $this->memberModel->record_member_log([
+	            "member_id"=> $is_member[0]["idx"],
+	            "log_type"=> 'login'
+	        ]);
+	        
+	        echo json_encode(['result' => $valid_result["result"], 'msg'=>$valid_result["msg"], 'url'=>getExist(get_cookie("target_url"), "/")]);
+	        
+	    }else {
+	        echo json_encode(['result' => $valid_result["result"], 'msg'=>$valid_result["msg"]]);
+	    }
+	    
 	    
 	}
 	
@@ -172,7 +204,7 @@ class Member extends CI_Controller {
 	            
 	        ];
 	        
-	        $is_member = $this->memberModel->get_idx($profile_info["cellphone"]);
+	        $is_member = $this->memberModel->get_info_by_cellphone($profile_info["cellphone"]);
 	        
 	        //회원인 경우 세션 설정하고 이동
 	        if(count($is_member)>0){

@@ -250,27 +250,7 @@ class Msg_model extends CI_Model {
         
     }
     
-    public function make_auth_token($opt){
-        
-        $this->db->trans_begin();
-        
-        $sql = "insert into tb_auth_token (cellphone, auth_token, sess_id, wdate) values (";
-        $sql.= "'".$opt["cellphone"]."', '".$opt["auth_token"]."', '".$opt["sess_id"]."', now() ) ";
-        
-        $data = $this->db->query($sql);
-        
-        if (!$data) {
-            $errorMsg = $this->db->error();
-            $this->db->trans_rollback();
-            return ["result"=>"db_error", "msg"=>$errorMsg];
-        } else {
-            $this->db->trans_commit();
-            return ["result"=>"ok", "msg"=>"save ok"];
-        }
-        
-        exit;
-        
-    }
+    
     
     
     

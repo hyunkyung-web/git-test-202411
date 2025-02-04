@@ -143,3 +143,29 @@ function copyToClipboard(e) {
             console.error('클립보드 복사에 실패했습니다:', err);
         });
 }
+
+/******************************************************************
+ *	함수명: validOk()
+ *	기능: 인증번호 확인
+ ******************************************************************/
+function validOk(){
+	
+	var postData = $("#frm1").serialize();
+	
+	$.ajax({
+		type: "POST",
+		url: "/member/verify_auth_token",
+		data: postData,
+		dataType: "json",
+		beforeSend: function() {},
+		success: function(data) {
+			if(data.result=="ok"){
+				location.replace(data.url);
+			}
+		},
+		error: function (request, status, err) {
+			console.log(err);
+			return;
+		},
+	});
+}
