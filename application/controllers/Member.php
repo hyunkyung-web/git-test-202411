@@ -74,9 +74,6 @@ class Member extends CI_Controller {
 	    
 	    if(isset($this->session->userdata["member_id"])){
 	        header('Location:/');
-	    } else {
-	        // 	        $cookieData = ["remId"=>get_cookie("user_id"),  "remPw"=>get_cookie("user_pw")];
-	        $this->load->view('/member/verify');
 	    }
 	    
 	    $kakao_state = md5(mt_rand(111111, 999999));	    

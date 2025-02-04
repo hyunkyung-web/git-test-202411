@@ -62,7 +62,7 @@ class Bizmsg extends CI_Controller {
     
     public function get_access_token(){
         
-        $this->session_chk();
+//         $this->session_chk();
         
         $restUrl = "https://api.bizppurio.com/v1/token";
         
@@ -118,8 +118,7 @@ class Bizmsg extends CI_Controller {
         
         $access_token = $this->get_access_token();
         $msg_type = "sms";
-        $from_phone = "025402256";
-        $query = $this->memberModel->get_member_cellphone(getPost("member_id", -1));
+        $from_phone = "025402256";        
         $to_phone = getPost("cellphone", "");
         $ref_key = $msg_type."_".time();
         $auth_token = mt_rand(000000, 999999);
@@ -128,8 +127,6 @@ class Bizmsg extends CI_Controller {
         $make_token = $this->msgModel->make_auth_token([
             "cellphone"=>$to_phone, "auth_token"=>$auth_token, "sess_id"=>session_id()
         ]);
-        
-        exit;
         
         $content_data = [
             "sms"=>[
@@ -198,9 +195,8 @@ class Bizmsg extends CI_Controller {
         
         $access_token = $this->get_access_token();
         $msg_type = "at";
-        $from_phone = "025402256";
-        $query = $this->memberModel->get_member_cellphone(getPost("member_id", -1));
-        $to_phone = $query[0]["cellphone"];        
+        $from_phone = "025402256";        
+        $to_phone = "";
         $ref_key = $msg_type."_".time();        
         $talk_msg = "";        
         $template_code = getPost("template_code", "");

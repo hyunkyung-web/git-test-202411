@@ -73,9 +73,6 @@
             
             <div class="member-container"> 
                 <form id="frm1">
-<!--                     <div class="form_item user" id="divName"> -->
-<!--                         <input type="text" id="name" name="name" placeholder="이름" class="input" value="" maxlength="10"/> -->
-<!--                     </div> -->
                     <div class="form_item phone" id="divPhoneNo">
                         <input type="tel" id="cellphone" name="cellphone" placeholder="휴대전화번호(숫자만 입력하세요)" class="input" maxlength="16" onkeyup="javascript: cmmOnNumber(this);"/>
                     </div>

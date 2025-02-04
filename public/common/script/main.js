@@ -493,8 +493,8 @@ function requestAuthToken(){
 		url: "/bizmsg/push_auth_token",
 		data: postData,
 		dataType: "json",
-		beforeSend: function () {},
-		success: function (data) {
+		beforeSend: function() {},
+		success: function(data) {
 			console.log(data);
 		},
 		error: function (request, status, err) {
