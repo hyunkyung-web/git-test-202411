@@ -132,8 +132,8 @@ function callData(pageNum) {
             callUrl = "/support/call";
             break;
         case 99:
-        	callUrl = "http://pf.kakao.com/_DxbUSb";
-        	break;
+            callUrl = "http://pf.kakao.com/_DxbUSb";
+            break;
     }
 
     window.location.href = callUrl;
@@ -399,113 +399,128 @@ function hasRequest() {
     return $(".tableBody.user .rowItem").length > 0;
 }
 
-
 /******************************************************************
  *	함수명: memberSave()
  *	기능: 회원가입 저장
  ******************************************************************/
-function memberSave(){
-//	var reqArr = ["userId", "userPw", "userNm"];
-	//	var chkReq = false;
-	//
-	//	if(editMode=="N"){
-	//		$.each(reqArr, function(idx, item){
-	//			if($.trim($("#"+item).val()).length == 0){
-	//				cmmShowMsg ($("#"+item).prop("placeholder")+' 필수입력 누락입니다.');
-	//				$("#"+item).focus();
-	//				chkReq = true;
-	//				return false;
-	//			}
-	//		});
-	//
-	//		if(chkReq){
-	//			console.log('필수입력 누락');
-	//			return;
-	//		}
-	//		if($.trim($("#userPw").val()) != $.trim($("#userPw_2").val())){
-	//			cmmShowMsg('비밀번호가 일치하지 않습니다.');
-	//			return;
-	//		}
-	//	}
+function memberSave() {
+    //	var reqArr = ["userId", "userPw", "userNm"];
+    //	var chkReq = false;
+    //
+    //	if(editMode=="N"){
+    //		$.each(reqArr, function(idx, item){
+    //			if($.trim($("#"+item).val()).length == 0){
+    //				cmmShowMsg ($("#"+item).prop("placeholder")+' 필수입력 누락입니다.');
+    //				$("#"+item).focus();
+    //				chkReq = true;
+    //				return false;
+    //			}
+    //		});
+    //
+    //		if(chkReq){
+    //			console.log('필수입력 누락');
+    //			return;
+    //		}
+    //		if($.trim($("#userPw").val()) != $.trim($("#userPw_2").val())){
+    //			cmmShowMsg('비밀번호가 일치하지 않습니다.');
+    //			return;
+    //		}
+    //	}
 
-	var postData = $("#frm1").serialize();
+    var postData = $("#frm1").serialize();
 
-	$.ajax({
-		type: "POST",
-		url: "/member/member_save/",
-		data: postData,
-		dataType: "json",
-		beforeSend: function () {},
-		success: function (data) {
-			alert(data.msg);
-			location.replace("/");
-		},
-		error: function (request, status, err) {
-			console.log(err);
-			return;
-		},
-	});
+    $.ajax({
+        type: "POST",
+        url: "/member/member_save/",
+        data: postData,
+        dataType: "json",
+        beforeSend: function () {},
+        success: function (data) {
+            alert(data.msg);
+            location.replace("/");
+        },
+        error: function (request, status, err) {
+            console.log(err);
+            return;
+        }
+    });
 }
 
 /******************************************************************
  *	함수명: requestMemberValid()
  *	기능: 인증요청_회원상태 확인
  ******************************************************************/
-function requestMemberValid(){
+function requestMemberValid() {
+    var postData = $("#frm1").serialize();
 
-	var postData = $("#frm1").serialize();
-
-	$.ajax({
-		type: "POST",
-		url: "/member/cellphone_valid",
-		data: postData,
-		dataType: "json",
-		beforeSend: function () {},
-		success: function (data) {
-			if(data.result=="ok"){
-				requestAuthToken();
-			}
-			else if(data.result=="error"){
-				alert(data.msg);
-				return;
-			}else if(data.result=="no_member"){
-				alert(data.msg);
-				$("#frm1").attr("method", "post").attr("action", "/member/signup").submit();				
-			}
-		},
-		error: function (request, status, err) {
-			console.log(err);
-			return;
-		},
-	});
+    $.ajax({
+        type: "POST",
+        url: "/member/cellphone_valid",
+        data: postData,
+        dataType: "json",
+        beforeSend: function () {},
+        success: function (data) {
+            if (data.result == "ok") {
+                requestAuthToken();
+            } else if (data.result == "error") {
+                alert(data.msg);
+                return;
+            } else if (data.result == "no_member") {
+                alert(data.msg);
+                $("#frm1").attr("method", "post").attr("action", "/member/signup").submit();
+            }
+        },
+        error: function (request, status, err) {
+            console.log(err);
+            return;
+        }
+    });
 }
 
 /******************************************************************
  *	함수명: requestAuthToken()
  *	기능: 인증번호 요청
  ******************************************************************/
-function requestAuthToken(){
-	
-	var postData = $("#frm1").serialize();
-	
-	$.ajax({
-		type: "POST",
-		url: "/bizmsg/push_auth_token",
-		data: postData,
-		dataType: "json",
-		beforeSend: function() {},
-		success: function(data) {
-			if(data.result=="ok"){
-				viewRemainTime();
-			}
-		},
-		error: function (request, status, err) {
-			console.log(err);
-			return;
-		},
-	});
+function requestAuthToken() {
+    var postData = $("#frm1").serialize();
+
+    $.ajax({
+        type: "POST",
+        url: "/bizmsg/push_auth_token",
+        data: postData,
+        dataType: "json",
+        beforeSend: function () {},
+        success: function (data) {
+            if (data.result == "ok") {
+                viewRemainTime();
+            }
+        },
+        error: function (request, status, err) {
+            console.log(err);
+            return;
+        }
+    });
 }
 
-function viewRemainTime(){
-	
+function viewRemainTime() {
+    let countdownTimer;
+    let timeLeft = 300;
+    const timeBox = $(".remain-time");
+    const btnRequest = $("#btnRequest");
+    const btnValid = $("#btnValid");
+
+    clearInterval(countdownTimer);
+
+    countdownTimer = setInterval(function () {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+
+        timeBox.text("0" + minutes + ":" + seconds);
+        timeLeft--;
+
+        if (timeLeft < 0) {
+            clearInterval(countdownTimer);
+            $("#auth_code").attr("placeholder", "인증 시간이 만료되었습니다.").addClass("warn");
+        }
+    }, 1000);
 }
