@@ -495,11 +495,17 @@ function requestAuthToken(){
 		dataType: "json",
 		beforeSend: function() {},
 		success: function(data) {
-			console.log(data);
+			if(data.result=="ok"){
+				viewRemainTime();
+			}
 		},
 		error: function (request, status, err) {
 			console.log(err);
 			return;
 		},
 	});
+}
+
+function viewRemainTime(){
+	
 }
