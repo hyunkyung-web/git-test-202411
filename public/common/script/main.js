@@ -493,6 +493,8 @@ function requestAuthToken() {
         success: function (data) {
             if (data.result == "ok") {
                 viewRemainTime();
+            }else {
+            	alert(data.msg);
             }
         },
         error: function (request, status, err) {
@@ -500,6 +502,32 @@ function requestAuthToken() {
             return;
         }
     });
+}
+
+/******************************************************************
+ *	함수명: verifyAuthToken()
+ *	기능: 인증번호 확인
+ ******************************************************************/
+function verifyAuthToken(){
+	
+	var postData = $("#frm1").serialize();
+	
+	$.ajax({
+		type: "POST",
+		url: "/member/verify_auth_token",
+		data: postData,
+		dataType: "json",
+		beforeSend: function() {},
+		success: function(data) {
+			if(data.result=="ok"){
+				location.replace(data.url);
+			}
+		},
+		error: function (request, status, err) {
+			console.log(err);
+			return;
+		},
+	});
 }
 
 function viewRemainTime() {

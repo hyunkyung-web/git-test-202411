@@ -93,7 +93,7 @@ gtag('event', 'screen_view', {
                         <span class="remain-time"></span>
                     </div>
                     <button type="button" id="btnRequest" onclick="javascript: requestMemberValid();">인증요청</button>
-                    <button type="button" id="btnValid" onclick="javascript: validOk();">인증하기</button>
+                    <button type="button" id="btnValid" onclick="javascript: verifyAuthToken();">인증하기</button>
                     <a href="<?php echo $login_auth_url;?>"><button type="button"></button></a>
                 </form>
             </div>
