@@ -74,8 +74,8 @@ class Member extends CI_Controller {
 	    
 	    if(isset($this->session->userdata["member_id"])){
 	        header('Location:/');
-	    }
-	    
+	    }	    
+	    	    
 	    $kakao_state = md5(mt_rand(111111, 999999));	    
 	    setcookie('state', $kakao_state, time()+600);
 	    
