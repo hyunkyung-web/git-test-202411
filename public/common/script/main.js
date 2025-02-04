@@ -217,7 +217,7 @@ function addComment(text) {
 }
 
 // 고객지원 페이지 탭 메뉴
-function swithchTab(e) {
+function switchTab(e) {
     $(".index, .container").removeClass("active");
     $(e).addClass("active");
 
@@ -504,23 +504,41 @@ function requestAuthToken() {
 
 function viewRemainTime() {
     let countdownTimer;
-    let timeLeft = 300;
+    let timeLeft = 300; // 5분 = 300초
     const timeBox = $(".remain-time");
     const btnRequest = $("#btnRequest");
     const btnValid = $("#btnValid");
+    const codeBox = $(".form_item.auth_code");
 
+    // 타이머 시작 전 타이머 리셋
     clearInterval(countdownTimer);
+    // 인증번호 입력창 리셋
+    $("#auth_code").val("");
+    // 인증번호 입력창 보이기
+    codeBox.show();
+    // 인증하기 버튼 활성화 & 인증요청 버튼 숨기기
+    btnValid.show();
+    btnRequest.hide();
 
+    // 시간을 두 자릿수로 표시하는 내부 함수
+    function formatTime(time) {
+        return time < 10 ? "0" + time : time;
+    }
+
+    // 카운트다운 타이머 -> 1초마다 실행
     countdownTimer = setInterval(function () {
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
+        const minutes = Math.floor(timeLeft / 60); // 남은 분(minutes)
+        const seconds = timeLeft % 60; // 남은 초(seconds)
 
-        timeBox.text("0" + minutes + ":" + seconds);
-        timeLeft--;
+        timeBox.text(formatTime(minutes) + ":" + formatTime(seconds));
 
-        if (timeLeft < 0) {
-            clearInterval(countdownTimer);
-            $("#auth_code").attr("placeholder", "인증 시간이 만료되었습니다.").addClass("warn");
+        // 시간이 다 되면
+        if (timeLeft <= 0) {
+            clearInterval(countdownTimer); // 타이머 리셋
+            btnRequest.show(); // 인증요청 버튼 보이기
+            btnValid.hide(); // 인증하기 버튼 숨기기
+        } else {
+            timeLeft--; // 시간이 1초씩 감소
         }
     }, 1000);
 }

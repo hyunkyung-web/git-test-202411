@@ -90,6 +90,31 @@ member
     /* background-size: 100%; */
 }
 
+/* 인증요청 - 인증하기 */
+.auth_code {
+    position: relative;
+    display: none;
+}
+
+#auth_code.warn::placeholder {
+    color: #f44d5f;
+}
+
+.remain-time {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 38px;
+    text-align: left;
+    color: #f44d5f;
+}
+
+#btnValid {
+    display: none;
+}
+
 /***************************************
 main
 ***************************************/

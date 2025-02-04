@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="Cache-Control" content="no-cache" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
     <title>회원인증</title>
     <meta property="og:author" content="d'wave">
     <meta property="og:type" content="website">
@@ -85,10 +85,10 @@ gtag('event', 'screen_view', {
 
             <div class="member-container">
                 <form id="frm1">
-                    <div class="form_item phone" id="divPhoneNo">
+                    <div class="form_item phone">
                         <input type="tel" id="cellphone" name="cellphone" placeholder="휴대전화번호(숫자만 입력하세요)" class="input" maxlength="16" onkeyup="javascript: cmmOnNumber(this);" />
                     </div>
-                    <div class="form_item phone auth_code" id="divPhoneNo">
+                    <div class="form_item phone auth_code">
                         <input type="tel" id="auth_code" name="auth_code" placeholder="인증번호" class="input" maxlength="6" onkeyup="javascript: cmmOnNumber(this);" />
                         <span class="remain-time"></span>
                     </div>
