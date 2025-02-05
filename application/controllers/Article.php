@@ -99,11 +99,14 @@ class Article extends CI_Controller {
 	    
 	    $this->session_chk();
 	    
-	    $query = $this->contentsModel->ajax_reply_list([
+	    $data = $this->contentsModel->ajax_reply_like_list([
 	        "contents_idx"=>getPost("contents_idx", -1)
 	    ]);
 	    
-	    $viewData = ["data"=>$query["list"], "total_count"=>$query["listCount"]];
+	    $viewData = [
+	        "reply_list"=>$data["reply_list"], "reply_cnt"=>$data["reply_cnt"],
+	        "like_list"=>$data["like_list"], "like_cnt"=>$data["like_cnt"], "my_like_cnt"=>$data["my_like_cnt"]
+	    ];
 	    
 	    $this->load->view('/article/ajax_reply_list', $viewData);
 	}

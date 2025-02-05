@@ -145,7 +145,7 @@ gtag('event', 'screen_view', {
     
     <script>
 
-//     	getReplyList();
+    	getReplyList();
     	
     </script>
 

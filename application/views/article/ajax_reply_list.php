@@ -1,12 +1,12 @@
 <div class="react_area">
-    <img src="/public/images/icon/icon_heart.png" alt="icon_heart" class="icon_heart">
-    <span>좋아요 <span class="coountLike">4</span>개</span>
+    <img src="<?php echo $my_like_cnt>0 ? '/public/images/icon/icon_heart_full.png' : '/public/images/icon/icon_heart.png';?>" alt="icon_heart" class="icon_heart">
+    <span>좋아요 <span class="coountLike"><?php echo $like_cnt;?></span>개</span>
     <img src="/public/images/icon/icon_comment.png" alt="icon_comment" class="icon_comment">
-    <span>댓글 <span class="countComment">3</span>개</span>
+    <span>댓글 <span class="countComment"><?php echo $reply_cnt;?></span>개</span>
 </div>   
 
 <div class="comments_area padd10"><?php 
-foreach($data as $row){?>
+foreach($reply_list as $row){?>
     <div class="comment_box">
         <span class="c_name"><?php echo $row["member_nm"];?></span>        
         <span class="delete"><i class="fa-solid fa-minus"></i></span>
