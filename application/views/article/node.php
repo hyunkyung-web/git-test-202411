@@ -126,7 +126,7 @@ gtag('event', 'screen_view', {
                     </div>
                 </div>
                 
-            </div>
+            </div> 
             
             
             <button type="button" class="btn_more">더보기 +</button>

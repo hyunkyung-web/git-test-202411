@@ -422,7 +422,7 @@ span.countComment {
 }
 
 .comment_box {
-    display: flex;
+    display: none;
     margin-bottom: 10px;
 }
 
