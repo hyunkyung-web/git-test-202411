@@ -569,18 +569,18 @@ class Admin extends CI_Controller {
 	    $this->load->view('/admin/ajax_member_list', $viewData);
 	}
 	
-	public function member_form($idx=-1){
+	public function member_form($member_id=-1){
 	    
 	    $this->session_chk();
 	    
-	    $editMode = $idx==-1 ? "N" : "U";
+	    $editMode = $member_id==-1 ? "N" : "U";
 
 	    
-	    $query = $this->memberModel->member_info(["idx"=>$idx]);
+	    $query = $this->memberModel->member_info(["member_id"=>$member_id]);
 	 
 	    $info = [];
 	    $keyVal = [
-	        "idx", "member_nm", "member_type", "member_email", "cellphone", "biz_nm", "specialty", "uuid", "member_status", "signup_dt"
+	        "member_id", "member_nm", "member_type", "member_email", "cellphone", "biz_nm", "specialty", "uuid", "member_status", "signup_dt"
 	    ];
 	    
 	    if($query){
@@ -593,7 +593,7 @@ class Admin extends CI_Controller {
 	        foreach($keyVal as $col){
 	            $info+= [$col => ''];
 	        }
-	        $info["idx"] = -1;
+	        $info["member_id"] = -1;
 	        $info["member_type"] = "hcp";
 	        $info["member_status"] = "hold";
 	    }
@@ -613,7 +613,7 @@ class Admin extends CI_Controller {
 	    
 	    $query = $this->memberModel->member_save([
 	        "editMode"=> getPost("editMode", "C"),
-	        "idx"=> getPost("idx", -1),
+	        "member_id"=> getPost("member_id", -1),
 	        "member_nm" => getPost("member_nm", "Unknown"),
 	        "member_type" => getPost("member_type", "hcp"),
 	        "cellphone" => getPost("cellphone", ""),
@@ -631,7 +631,7 @@ class Admin extends CI_Controller {
 	    }
 	    
 	    if ( $query["result"] == "ok") {
-	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"], 'member_id'=>getPost("idx", -1), 'msg_type'=>$msg_type, 'cellphone' => getPost("cellphone", "")]);
+	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"], 'member_id'=>$query["member_id"], 'msg_type'=>$msg_type, 'cellphone' => getPost("cellphone", "")]);
 	    } else {
 	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"]]);
 	    }

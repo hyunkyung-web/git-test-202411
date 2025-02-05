@@ -82,8 +82,8 @@ class Member extends CI_Controller {
 	    $kakao=[
 	        "client_id"=>'2549f043e46bbd82676b804343560ca2', 
 	        "client_secret"=>'6wttiSwgMRVFTQL4MrxhtXEiTXs3i4En',
-// 	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
-	        "redirect_uri"=>'https://kakao.dr-wave.co.kr/member/kakao_result',
+	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
+// 	        "redirect_uri"=>'https://kakao.dr-wave.co.kr/member/kakao_result',
 	        "state"=>$kakao_state
 	    ];
 	    
@@ -130,7 +130,7 @@ class Member extends CI_Controller {
 	    if($valid_result["result"]=="ok"){
 	        $is_member = $this->memberModel->get_info_by_cellphone(getPost("cellphone", ""));
 	        $this->session->set_userdata([
-	            "member_id"=>$is_member[0]["idx"],
+	            "member_id"=>$is_member[0]["member_id"],
 	            "member_nm"=>$is_member[0]["member_nm"],
 	            "member_cellphone"=>$is_member[0]["cellphone"],
 	            "member_email"=>$is_member[0]["member_email"],
@@ -138,7 +138,7 @@ class Member extends CI_Controller {
 	        ]);
 	        
 	        $this->memberModel->record_member_log([
-	            "member_id"=> $is_member[0]["idx"],
+	            "member_id"=> $is_member[0]["member_id"],
 	            "log_type"=> 'login'
 	        ]);
 	        
@@ -157,8 +157,8 @@ class Member extends CI_Controller {
 	    $kakao=[
 	        "client_id"=>'2549f043e46bbd82676b804343560ca2',
 	        "client_secret"=>'6wttiSwgMRVFTQL4MrxhtXEiTXs3i4En',
-// 	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
-	        "redirect_uri"=>'https://kakao.dr-wave.co.kr/member/kakao_result',
+	        "redirect_uri"=>'http://localhost:9090/member/kakao_result',
+// 	        "redirect_uri"=>'https://kakao.dr-wave.co.kr/member/kakao_result',
 	        "token_url"=>'https://kauth.kakao.com/oauth/token?grant_type=authorization_code',
 	        "profile_url"=>'https://kapi.kakao.com/v2/user/me'
 	    ];
@@ -210,7 +210,7 @@ class Member extends CI_Controller {
 	        if(count($is_member)>0){
 	            if($is_member[0]["member_status"]=='active'){
 	                $this->session->set_userdata([
-	                    "member_id"=>$is_member[0]["idx"],
+	                    "member_id"=>$is_member[0]["member_id"],
 	                    "member_nm"=>$is_member[0]["member_nm"],
 	                    "member_cellphone"=>$is_member[0]["cellphone"],
 	                    "member_email"=>$is_member[0]["member_email"],
@@ -218,7 +218,7 @@ class Member extends CI_Controller {
 	                ]);
 	                
 	                $this->memberModel->record_member_log([
-	                    "member_id"=> $is_member[0]["idx"],
+	                    "member_id"=> $is_member[0]["member_id"],
 	                    "log_type"=> 'login'
 	                ]);
 	                
@@ -254,10 +254,10 @@ class Member extends CI_Controller {
 	    }
 	}
 	
+// 	회원가입 정보저장
 	public function member_save(){
 	    
-	    $before_status = "";
-	    $alarm_type = 'welcome';
+	    $msg_type = 'welcome';
 	    
 	    if(strlen(getPost("cellphone", ""))!=11){
 	        echo json_encode(['result' => 'error', 'msg'=>'필수 입력 누락입니다.']);
@@ -266,7 +266,7 @@ class Member extends CI_Controller {
 	    
 	    $query = $this->memberModel->member_save([
 	        "editMode"=> 'C',
-	        "idx"=> getPost("idx", -1),
+	        "member_id"=> getPost("member_id", -1),
 	        "member_nm" => getPost("member_nm", "Unknown"),
 	        "member_type" => getPost("member_type", "hcp"),
 	        "cellphone" => getPost("cellphone", ""),
@@ -277,14 +277,8 @@ class Member extends CI_Controller {
 	        "uuid" => getPost("uuid", "")
 	    ]);
 	    
-	    if(($before_status=="hold" || $before_status=="expire") && getPost("member_status", "hold")=="active"){
-	        $alarm_type = "member_active";
-	    }elseif($before_status=="active" && getPost("member_status", "hold")=="expire"){
-	        $alarm_type = "member_expire";
-	    }
-	    
 	    if ( $query["result"] == "ok") {
-	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"], 'push_msg_type'=>$alarm_type, 'idx' => $query["idx"]]);
+	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"], 'msg_type'=>$msg_type, 'member_id' => $query["member_id"]]);
 	    } else {
 	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"]]);
 	    }

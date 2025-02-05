@@ -130,9 +130,11 @@ header .header-container {
     height: 100%;
 }
 
+/*
 header + section {
     min-height: 81vh;
 }
+*/
 
 /* logo */
 .logo {

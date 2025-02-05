@@ -45,9 +45,11 @@ class Contents_model extends CI_Model {
         $sql = "select * ";
         $sql.= "from tb_contents ";
         $sql.= $strWhere;
-        $listSql = "order by idx desc limit ?, ?";
+        $sql.= "order by idx desc";
+        $listSql = "limit ?, ?";
         
         $listCount = $this->db->query($sql)->num_rows();
+        
         if(isset($opt["start"])){
             $list = $this->db->query($sql.$listSql, [$opt["start"], $opt["end"]])->result_array();
         }else {

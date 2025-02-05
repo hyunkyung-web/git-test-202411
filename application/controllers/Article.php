@@ -16,6 +16,10 @@ class Article extends CI_Controller {
     
     }
     
+    private function set_callback_url(){
+        setcookie("callback_url", $_SERVER['REQUEST_URI'], time()+3600, "/");
+    }
+    
     private function session_chk(){
         if(!isset($this->session->userdata["member_id"])){
             
@@ -73,6 +77,43 @@ class Article extends CI_Controller {
 	    
 	    $viewData = ["info"=>$info];
 	    $this->load->view('/article/node', $viewData);
+	}
+	
+	public function download(){
+	    $attach_path = getRequest("file", "");
+	    $file_loc = $_SERVER['DOCUMENT_ROOT'].$attach_path;
+	    $file_name = str_replace("/public/data/attach/", "", $attach_path);
+        
+        if($file_name && file_exists($file_loc)){
+        
+            Header("Content-type: application/octet-stream");
+            Header("Content-Length: ".(string)(filesize($file_loc))); //다운로드 게이지를 나타냅니다.
+            Header("Content-Disposition: attachment; filename=$file_name"); //파일을 무조건 다운로드 합니다.
+            Header("Content-Transfer-Encoding: binary");
+            Header("Pragma: no-cache");
+            Header("Cache-Control: cache, must-revalidate"); //다운로드 확인창에서 다운로드 하지 않고 바로 열 수 있습니다.
+            Header("Expires: 0");
+            
+            
+            $fp = fopen($file_loc, "rb");
+            while(!feof($fp)) {
+                echo fread($fp, filesize($file_loc));
+                flush();
+            }
+            fclose ($fp);
+            exit;
+            
+        }
+        else {
+            
+            $msgStr = '<script language="JavaScript">';
+            $msgStr.= 'alert("File not found.");';
+            $msgStr.= '</script>';
+            
+            echo $msgStr;
+            exit;
+        }
+	    
 	}
 	
 	

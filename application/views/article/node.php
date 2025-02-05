@@ -92,12 +92,14 @@ gtag('event', 'screen_view', {
             <div class="cont_description"><?php echo $info["body_text"];?></div>
         </div>
         <!-- cont_right END -->
-        <!-- 첨부파일 박스 -->
+        <!-- 첨부파일 박스 --><?php 
+        if($info["attach_file"]!=""){?>
         <div class="file_box flex_SB_center">
             <img src="/public/images/icon/icon_folder.png" alt="icon_folder" class="icon_folder">
-            <a href="attached_file.file" download="">attached_file.file</a>
-            <button type="button" class="btn_down"><img src="/public/images/icon/icon_down.png" alt="icon_down" class="icon_down"></button>
-        </div>
+            <a href="/article/download?file=<?php echo $info["attach_file"];?>" target="_blank"><?php echo str_replace("/public/data/attach/", "", $info["attach_file"]);?></a>
+            <a href="/article/download?file=<?php echo $info["attach_file"];?>" target="_blank"><button type="button" class="btn_down"><img src="/public/images/icon/icon_down.png" alt="icon_down" class="icon_down"></button></a>
+        </div><?php 
+        }?>
         <button type="button" class="return_list list_bottom">목록</button>
     </section>
 

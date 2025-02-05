@@ -9,7 +9,7 @@ class member_model extends CI_Model {
     
     public function member_list($opt) {
         
-        $strWhere = "where idx > -1 ";
+        $strWhere = "where member_id > -1 ";
         
         if(trim($opt["keyword"]) != ""){
             if(mb_strpos(trim($opt["keyword"]), '+')){
@@ -44,7 +44,8 @@ class member_model extends CI_Model {
         $sql = "select * ";
         $sql.= "from tb_member ";
         $sql.= $strWhere;
-        $listSql = "order by idx desc limit ?, ?";
+        $sql.= "order by member_id desc ";
+        $listSql = "limit ?, ? ";
         
         $listCount = $this->db->query($sql)->num_rows();
         
@@ -62,8 +63,8 @@ class member_model extends CI_Model {
     public function member_info($opt) {
         
         $sql = "select * from tb_member ";
-        $sql.= "where idx=?";
-        $list = $this->db->query($sql, [$opt["idx"]])->result_array();
+        $sql.= "where member_id=?";
+        $list = $this->db->query($sql, [$opt["member_id"]])->result_array();
         
         return $list;
         exit;
@@ -85,7 +86,7 @@ class member_model extends CI_Model {
             }
         }
         
-        $idx = $opt["idx"];
+        $member_id = $opt["member_id"];
         
         if($opt["editMode"] == "N" || $opt["editMode"] == "C") {
             
@@ -97,7 +98,7 @@ class member_model extends CI_Model {
             $sql.= "'hold', '".$session_id."', now() ) "; 
             
             $data = $this->db->query($sql);                
-            $idx = $this->db->insert_id();
+            $member_id = $this->db->insert_id();
             
         } elseif($opt["editMode"]=="U"){
             $sql = "update tb_member set ";
@@ -111,7 +112,7 @@ class member_model extends CI_Model {
             $sql.= "member_status = '".$opt["member_status"]."', ";
             $sql.= "udate = now(), ";
             $sql.= "uuser = '".$session_id."' ";
-            $sql.= "where idx=".$idx." ";
+            $sql.= "where member_id=".$member_id." ";
             $data = $this->db->query($sql);
             
         } elseif($opt["editMode"]=="D"){
@@ -119,7 +120,7 @@ class member_model extends CI_Model {
             $sql.= "member_status = 'expire', ";
             $sql.= "udate = now(), ";
             $sql.= "uuser = '".$session_id."' ";
-            $sql.= "where idx=".$idx." ";
+            $sql.= "where member_id=".$member_id." ";
             $data = $this->db->query($sql);
         }
         
@@ -148,7 +149,7 @@ class member_model extends CI_Model {
                     $msg = "삭제 완료";
                     break;
             }
-            return ["result"=>"ok", "msg"=>$msg, "idx"=>$idx];
+            return ["result"=>"ok", "msg"=>$msg, "member_id"=>$member_id];
         }
         
         exit;
@@ -183,7 +184,7 @@ class member_model extends CI_Model {
     public function get_member_cellphone($opt) {
         
         $sql = "select * from tb_member ";
-        $sql.= "where idx=?";
+        $sql.= "where member_id=?";
         $list = $this->db->query($sql, $opt)->result_array();
         
         return $list;
@@ -194,7 +195,7 @@ class member_model extends CI_Model {
         
         $sql = "select * from tb_member ";
         $sql.= "where member_status <> 'expire' and cellphone='".$cellphone."' ";
-        $sql.= "order by idx desc limit 1 ";
+        $sql.= "order by member_id desc limit 1 ";
         
         $list = $this->db->query($sql)->result_array();
         

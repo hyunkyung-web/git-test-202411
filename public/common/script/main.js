@@ -436,8 +436,11 @@ function memberSave() {
         dataType: "json",
         beforeSend: function () {},
         success: function (data) {
+        	if(data.result=="ok"){
+        		$("#frm1")[0].reset();
+        	}
             alert(data.msg);
-            location.replace("/");
+//            location.replace("/");
         },
         error: function (request, status, err) {
             console.log(err);

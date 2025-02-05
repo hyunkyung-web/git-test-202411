@@ -106,7 +106,7 @@ class Bizmsg extends CI_Controller {
         
         $result = $this->memberModel->get_info_by_cellphone($cell_phone);
         if(count($result)>0){
-            return($result[0]["idx"]);
+            return($result[0]["member_id"]);
         }else {
             return("no_member");
         }
