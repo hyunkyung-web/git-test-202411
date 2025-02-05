@@ -91,8 +91,7 @@ gtag('event', 'screen_view', {
                     <a href="<?php echo '/article/node/'.$row["idx"];?>">
                         <p class="name"><?php echo $row["title"];?></p>
                     </a>
-                    <p>L<?php echo $row["description"];?></p>
-                    <p><?php echo count($match);?></p>
+                    <p><?php echo $row["description"];?></p>
                 </div>
 
             </div><?php 

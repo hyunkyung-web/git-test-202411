@@ -605,10 +605,11 @@ class Admin extends CI_Controller {
 	
 	public function member_save(){
 	    
+	    $msg_type = "";
+	    
 	    $this->session_chk();
 	    
 	    $before_status = getPost("before_status", "");
-	    $alarm_type = getPost("editMode", "C")=="C" ? 'welcome' : '';
 	    
 	    $query = $this->memberModel->member_save([
 	        "editMode"=> getPost("editMode", "C"),
@@ -624,13 +625,13 @@ class Admin extends CI_Controller {
 	    ]);
 	    
 	    if(($before_status=="hold" || $before_status=="expire") && getPost("member_status", "hold")=="active"){
-	        $template_code = "member_status_active";
+	        $msg_type = "member_status_active";
 	    }elseif($before_status=="active" && getPost("member_status", "hold")=="expire"){
-	        $template_code = "member_status_expire";
+	        $msg_type = "member_status_expire";
 	    }
 	    
 	    if ( $query["result"] == "ok") {
-	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"], 'template_code'=>$template_code, 'idx' => $query["idx"]]);
+	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"], 'member_id'=>getPost("idx", -1), 'msg_type'=>$msg_type, 'cellphone' => getPost("cellphone", "")]);
 	    } else {
 	        echo json_encode(['result' => $query["result"], 'msg'=>$query["msg"]]);
 	    }

@@ -493,12 +493,12 @@ function memberSave(editMode) {
 		beforeSend: function () {},
 		success: function (data) {
 			cmmShowMsg(data.msg);
-			if(data.template_code){
-				console.log(data.template_code);
-				pushSystemMsg(data.idx, data.template_code);
+			if(data.msg_type!=""){
+				pushSystemMsg(data.msg_type, data.cellphone, data.member_id);	
 			}
 			if (data.result == "ok") {
-				location.replace("/admin/member_form/" + data.idx);
+				location.replace("/admin/member_form/"+data.member_id);
+//				console.log('data save ok');
 			}
 		},
 		error: function (request, status, err) {
@@ -508,11 +508,11 @@ function memberSave(editMode) {
 	});
 }
 
-function pushSystemMsg(member_id, template_code){
+function pushSystemMsg(msg_type, cellphone, member_id){
 	$.ajax({
 		type: "POST",
 		url: "/bizmsg/push_system_msg/",
-		data: {member_id:member_id, template_code:template_code},
+		data: {msg_type:msg_type, cellphone:cellphone, member_id:member_id},
 		dataType: "json",
 		beforeSend:function(){
 		},
