@@ -164,19 +164,27 @@ class Contents_model extends CI_Model {
         exit;
     }
     
-    public function ajax_reply_list($opt){
+    public function ajax_reply_like_list($opt){
         
         $strWhere = "where contents_idx=".$opt["contents_idx"]." ";
         
         $sql = "select * from tb_contents_reply ";
         $sql.= $strWhere;
         $sql.= "order by wdate asc ";
-        $list = $this->db->query($sql)->result_array();        
-        $listCount = $this->db->query($sql)->num_rows();
+        $reply_list = $this->db->query($sql)->result_array();        
+        $reply_cnt = $this->db->query($sql)->num_rows();
         
-        return ["list"=>$list, "listCount" => $listCount];
+        $sql = "select * from tb_contents_like ";
+        $sql.= $strWhere;
+        $like_list = $this->db->query($sql)->result_array();
+        $like_cnt = $this->db->query($sql)->num_rows();
         
-        return $list;
+        $sql = "select * from tb_contents_like ";
+        $sql.= $strWhere;
+        $sql.= "and member_id=".$this->session->userdata["member_id"]." ";        
+        $my_like_cnt = $this->db->query($sql)->num_rows();
+        
+        return ["reply_list"=>$reply_list, "reply_cnt" => $reply_cnt, "like_list"=>$like_list, "like_cnt" => $like_cnt, "my_like_cnt"=>$my_like_cnt];
         exit;
         
     }

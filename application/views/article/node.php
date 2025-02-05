@@ -110,22 +110,16 @@ gtag('event', 'screen_view', {
                 <img src="/public/images/icon/icon_comment.png" alt="icon_comment" class="icon_comment">
                 <span>댓글 <span class="countComment">3</span>개</span>
             </div>
-            <div class="comments_area padd10">
-                <div class="comment_box">
-                    <span class="c_name">dwave_it</span>
-                    <span class="delete"><i class="fa-solid fa-minus"></i></span>
-                    <span class="c_text">우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와~</span>
+
+            <div id="ajax_reply_list">
+                <div class="comments_area padd10" id="ajax_reply_list">
+                    <div class="comment_box">
+                        <span class="c_name">dwave_it</span>
+                        <span class="delete"><i class="fa-solid fa-minus"></i></span>
+                        <span class="c_text">안녕하세요. 좋은 정보입니다.</span>
+                    </div>
                 </div>
-                <div class="comment_box">
-                    <span class="c_name">dwave_it</span>
-                    <span class="delete"><i class="fa-solid fa-minus"></i></span>
-                    <span class="c_text">우와~</span>
-                </div>
-                <div class="comment_box">
-                    <span class="c_name">dwave_itdwave_it</span>
-                    <span class="delete"><i class="fa-solid fa-minus"></i></span>
-                    <span class="c_text">우와~</span>
-                </div>
+
             </div>
             <button type="button" class="btn_more">더보기 +</button>
             <button type="button" class="btn_fold">댓글 접기 ↑</button>
@@ -140,6 +134,10 @@ gtag('event', 'screen_view', {
     <!-- contentBox END -->
 
     <?php include_once APPPATH.'views/footer.php'; ?>
+
+    <script>
+    //     	getReplyList();
+    </script>
 
 </body>
 
