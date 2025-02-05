@@ -107,14 +107,17 @@ gtag('event', 'screen_view', {
     <section id="reaction-area" class="padd60">
         <div class="cont_right padd20">
             <!-- <div class="cont_description"> -->
-            <div class="react_area">
-                <img src="/public/images/icon/icon_heart.png" alt="icon_heart" class="icon_heart">
-                <span>좋아요 <span class="coountLike">4</span>개</span>
-                <img src="/public/images/icon/icon_comment.png" alt="icon_comment" class="icon_comment">
-                <span>댓글 <span class="countComment">3</span>개</span>
-            </div>
             
-            <div id="ajax_reply_list">            
+            
+            <div id="ajax_reply_list"> 
+            
+                <div class="react_area">
+                    <img src="/public/images/icon/icon_heart.png" alt="icon_heart" class="icon_heart">
+                    <span>좋아요 <span class="coountLike">4</span>개</span>
+                    <img src="/public/images/icon/icon_comment.png" alt="icon_comment" class="icon_comment">
+                    <span>댓글 <span class="countComment">3</span>개</span>
+                </div>   
+                        
                 <div class="comments_area padd10" id="ajax_reply_list">
                     <div class="comment_box">
                         <span class="c_name">dwave_it</span>
@@ -122,6 +125,7 @@ gtag('event', 'screen_view', {
                         <span class="c_text">안녕하세요. 좋은 정보입니다.</span>
                     </div>
                 </div>
+                
             </div>
             
             
