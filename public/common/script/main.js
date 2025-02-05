@@ -25,30 +25,7 @@ $(function () {
         } else if (img_src == icon_full) {
             $(".icon_heart").attr("src", icon_like);
         }
-    });
-
-    // 댓글 달기 + 삭제
-    $(".btn_chat").click(function () {
-        // 댓글 입력값 가져오기
-        var commentText = $("#c_box").val();
-
-        // 댓글 내용이 비어 있으면 입력을 막고 알림
-        if (commentText === "") {
-            alert("댓글을 입력해주세요!");
-            return;
-        }
-
-        // 댓글 항목 추가
-        addComment(commentText);
-
-        // 댓글 입력창 초기화
-        $("#c_box").val("");
-        $("#c_box").css("height", "auto"); // 입력창 크기 초기화
-    });
-
-    $(".comments_area").on("click", ".delete", function () {
-        $(this).parent(".comment_box").remove();
-    });
+    });    
 
     // support
 
@@ -139,6 +116,49 @@ function callData(pageNum) {
     window.location.href = callUrl;
 }
 
+function nodeSaveReply(editMode="N", idx=-1){
+	
+	let reply_text = $("#reply_text").val();
+	let contents_idx = $("#contents_idx").val();
+
+	$.ajax({
+		type: "POST",
+		url: "/article/save_reply/",
+		data: {editMode:editMode, idx:idx, contents_idx:contents_idx, reply_text:reply_text},
+		dataType: "json",
+		beforeSend: function () {},
+		success: function (data) {
+			console.log(data);
+			getReplyList();
+		},
+		error: function (request, status, err) {
+			console.log(err);
+			return;
+		},
+	});
+}
+
+function getReplyList(){
+	
+	let contents_idx = $("#contents_idx").val();
+	
+	$.ajax({
+		type: "POST",
+		url: "/article/ajax_reply_list",
+		data: {contents_idx:contents_idx},
+		dataType: "html",
+		success: function(data){
+			$('#ajax_reply_list').html(data);
+			return;
+		},
+		error: function(request, status, err){
+			console.log(err);
+			return;
+		}
+	});
+	
+}
+
 // 댓글 더보기
 function showMore(button, contentBox) {
     // 댓글 갯수 5이하 더보기 버튼 안보이기
@@ -187,34 +207,7 @@ function resize(obj) {
     }
 }
 
-// 댓글 달기
-var commentCount = 0; // 댓글 개수를 추적하는 변수
-function addComment(text) {
-    // 기존 댓글 개수 추적
-    commentCount = $(".comment_box").length;
-    // 댓글 HTML 생성
-    var newComment = $('<div class="comment_box show"></div>');
 
-    // 댓글 작성자 이름, 텍스트 및 삭제 버튼 추가
-    var name = $('<span class="c_name"></span>').text("홍길동"); // 작성자 이름 임의 설정함.
-    var deleteButton = $('<span class="delete"><i class="fa-solid fa-minus"></i></span>');
-    var commentText = $('<span class="c_text"></span>').text(text);
-
-    // 댓글 요소에 name, deleteButton, text 추가
-    newComment.append(name).append(deleteButton).append(commentText);
-
-    console.log(commentCount);
-    // 댓글 목록에 추가
-    $(".comments_area").prepend(newComment);
-    commentCount++; // 댓글 개수 증가
-    console.log(commentCount);
-
-    // 댓글이 5개 이상이면 더보기 버튼 보이기
-    if (commentCount > 5) {
-        $(".btn_more").show();
-        $(".comment_box").slice(5).removeClass("show"); // 6번째 댓글부터 숨기기
-    }
-}
 
 // 고객지원 페이지 탭 메뉴
 function switchTab(e) {

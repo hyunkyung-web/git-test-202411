@@ -137,6 +137,50 @@ class Contents_model extends CI_Model {
         
     }
     
+    public function save_reply($opt){        
+       
+        $this->db->trans_begin();  
+        
+        if($opt["editMode"]=="N"){
+            $sql = "insert into tb_contents_reply (contents_idx, member_id, member_nm, reply_text, wdate) values (";
+            $sql.= "".$opt["contents_idx"].", ".$this->session->userdata["member_id"].", '".$this->session->userdata["member_nm"]."', ";
+            $sql.= "'".$opt["reply_text"]."', now()) ";
+            $data = $this->db->query($sql);
+        }elseif($opt["editMode"]=="D"){
+            $sql = "delete from tb_contents_reply ";
+            $sql.= "where idx=".$opt["idx"];
+            $data = $this->db->query($sql);
+        }        
+        
+        if (!$data) {
+            $errorMsg = $this->db->error();
+            $this->db->trans_rollback();
+            return ["result"=>"error", "msg"=>$errorMsg];
+        } else {
+            $this->db->trans_commit();            
+            return ["result"=>"ok", "msg"=>"ok"];
+        }
+        
+        exit;
+    }
+    
+    public function ajax_reply_list($opt){
+        
+        $strWhere = "where contents_idx=".$opt["contents_idx"]." ";
+        
+        $sql = "select * from tb_contents_reply ";
+        $sql.= $strWhere;
+        $sql.= "order by wdate asc ";
+        $list = $this->db->query($sql)->result_array();        
+        $listCount = $this->db->query($sql)->num_rows();
+        
+        return ["list"=>$list, "listCount" => $listCount];
+        
+        return $list;
+        exit;
+        
+    }
+    
     
     
     

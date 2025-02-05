@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="Cache-Control" content="no-cache" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"" />
-    <title>KAKAO 컨텐트 상세보기</title>
+    <title><?php echo $info["title"];?></title>
     <meta property=" og:author" content="d'wave">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="닥터웨이브" />
-    <meta property="og:description" content="닥터웨이브" />
+    <meta property="og:title" content="<?php echo $info["title"];?>" />
+    <meta property="og:description" content="<?php echo $info["description"];?>" />
     <meta property="og:image" content="https://dr-wave.co.kr/public/images/logo.png" />
     <meta property="og:url" content="" />
     <link rel="icon" type="image/png" href="/public/common/css/logo_ics.png" />
@@ -90,6 +90,7 @@ gtag('event', 'screen_view', {
         <div class="cont_right padd20">
             <h1><?php echo $info["title"];?></h1>
             <div class="cont_description"><?php echo $info["body_text"];?></div>
+            <input type="text" id="contents_idx" value="<?php echo $info["idx"];?>"/>
         </div>
         <!-- cont_right END -->
         <!-- 첨부파일 박스 --><?php 
@@ -112,28 +113,23 @@ gtag('event', 'screen_view', {
                 <img src="/public/images/icon/icon_comment.png" alt="icon_comment" class="icon_comment">
                 <span>댓글 <span class="countComment">3</span>개</span>
             </div>
-            <div class="comments_area padd10">
-                <div class="comment_box">
-                    <span class="c_name">dwave_it</span>
-                    <span class="delete"><i class="fa-solid fa-minus"></i></span>
-                    <span class="c_text">우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와우와~</span>
-                </div>
-                <div class="comment_box">
-                    <span class="c_name">dwave_it</span>
-                    <span class="delete"><i class="fa-solid fa-minus"></i></span>
-                    <span class="c_text">우와~</span>
-                </div>
-                <div class="comment_box">
-                    <span class="c_name">dwave_itdwave_it</span>
-                    <span class="delete"><i class="fa-solid fa-minus"></i></span>
-                    <span class="c_text">우와~</span>
+            
+            <div id="ajax_reply_list">            
+                <div class="comments_area padd10" id="ajax_reply_list">
+                    <div class="comment_box">
+                        <span class="c_name">dwave_it</span>
+                        <span class="delete"><i class="fa-solid fa-minus"></i></span>
+                        <span class="c_text">안녕하세요. 좋은 정보입니다.</span>
+                    </div>
                 </div>
             </div>
+            
+            
             <button type="button" class="btn_more">더보기 +</button>
             <button type="button" class="btn_fold">댓글 접기 ↑</button>
             <div class="enter_c_box flex_SB_center">
-                <textarea name="c_box" id="c_box" placeholder="댓글 달기..." class="c_box" rows="1" onkeyup="resize(this)" onkeydown="resize(this)"></textarea>
-                <button type="button" class="btn_chat">입력</button>
+                <textarea name="c_box" id="reply_text" placeholder="댓글을 남겨보세요" class="c_box" rows="1" onkeyup="resize(this)" onkeydown="resize(this)"></textarea>
+                <button type="button" class="btn_chat" onclick="javascript: nodeSaveReply();">입력</button>
             </div>
             <!-- </div> -->
         </div>
@@ -142,6 +138,12 @@ gtag('event', 'screen_view', {
     <!-- contentBox END -->
 
     <?php include_once APPPATH.'views/footer.php'; ?>
+    
+    <script>
+
+//     	getReplyList();
+    	
+    </script>
 
 </body>
 

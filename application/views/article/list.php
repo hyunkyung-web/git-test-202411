@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="Cache-Control" content="no-cache" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"" />
-    <title>KAKAO 컨텐트 리스트</title>
+    <title>Article(학회정보)</title>
     <meta property=" og:author" content="d'wave">
     <meta property="og:type" content="website">
     <meta property="og:title" content="닥터웨이브" />

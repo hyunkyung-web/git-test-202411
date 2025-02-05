@@ -79,6 +79,37 @@ class Article extends CI_Controller {
 	    $this->load->view('/article/node', $viewData);
 	}
 	
+	public function save_reply(){
+	    
+	    $editMode = getPost("editMode", "N");
+	    $idx = getPost("idx", -1);
+	    $contents_idx = getPost("contents_idx", -1);
+	    $reply_text = getPost("reply_text", "");
+	    
+	    $query = $this->contentsModel->save_reply([
+	        "editMode"=>$editMode, "idx"=>$idx, "contents_idx"=>$contents_idx, "reply_text"=>$reply_text
+	    ]);
+	    
+	    
+	    echo json_encode(['result' => $query["result"], "msg"=>$query["msg"]]);
+	    
+	}
+	
+	public function ajax_reply_list(){
+	    
+	    $this->session_chk();
+	    
+	    $query = $this->contentsModel->ajax_reply_list([
+	        "contents_idx"=>getPost("contents_idx", -1)
+	    ]);
+	    
+	    $viewData = ["data"=>$query["list"], "total_count"=>$query["listCount"]];
+	    
+	    $this->load->view('/article/ajax_reply_list', $viewData);
+	}
+	
+	
+	
 	public function download(){
 	    $attach_path = getRequest("file", "");
 	    $file_loc = $_SERVER['DOCUMENT_ROOT'].$attach_path;
