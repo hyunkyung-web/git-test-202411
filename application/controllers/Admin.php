@@ -212,9 +212,11 @@ class Admin extends CI_Controller {
 	    $startPage = ($page-1) * $pageSize;
 	    $endPage = $pageSize;
 	    
+
 	    $query = $this->contentsModel->contents_list([
 	        "contents_type"=>"article", "keyword"=>$keyword, "start"=>$startPage, "end"=>$endPage
 	    ]);
+
 	    
 	    $totalRecord = $query["listCount"];
 	    $totalPage = ceil($totalRecord/$pageSize);
