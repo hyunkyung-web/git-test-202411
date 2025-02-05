@@ -90,7 +90,7 @@ gtag('event', 'screen_view', {
         <div class="cont_right padd20">
             <h1><?php echo $info["title"];?></h1>
             <div class="cont_description"><?php echo $info["body_text"];?></div>
-            <input type="text" id="contents_idx" value="<?php echo $info["idx"];?>"/>
+            <input type="text" id="contents_idx" value="<?php echo $info["idx"];?>" />
         </div>
         <!-- cont_right END -->
         <!-- 첨부파일 박스 --><?php 
@@ -107,28 +107,29 @@ gtag('event', 'screen_view', {
     <section id="reaction-area" class="padd60">
         <div class="cont_right padd20">
             <!-- <div class="cont_description"> -->
-            
-            
-            <div id="ajax_reply_list"> 
-            
+
+
+            <div id="ajax_reply_list">
+
                 <div class="react_area">
                     <img src="/public/images/icon/icon_heart.png" alt="icon_heart" class="icon_heart">
                     <span>좋아요 <span class="coountLike">4</span>개</span>
                     <img src="/public/images/icon/icon_comment.png" alt="icon_comment" class="icon_comment">
                     <span>댓글 <span class="countComment">3</span>개</span>
                 </div>
-                        
+
                 <div class="comments_area padd10" id="ajax_reply_list">
                     <div class="comment_box">
                         <span class="c_name">dwave_it</span>
                         <span class="delete"><i class="fa-solid fa-minus"></i></span>
                         <span class="c_text">안녕하세요. 좋은 정보입니다.</span>
+                        <span class="c_date">25-02-05 17:09</span>
                     </div>
                 </div>
-                
-            </div> 
-            
-            
+
+            </div>
+
+
             <button type="button" class="btn_more">더보기 +</button>
             <button type="button" class="btn_fold">댓글 접기 ↑</button>
             <div class="enter_c_box flex_SB_center">
@@ -142,11 +143,9 @@ gtag('event', 'screen_view', {
     <!-- contentBox END -->
 
     <?php include_once APPPATH.'views/footer.php'; ?>
-    
-    <script>
 
-    	getReplyList();
-    	
+    <script>
+    getReplyList();
     </script>
 
 </body>
