@@ -45,9 +45,8 @@ class Notice extends CI_Controller {
 	}
 	
 	
-	public function list(){
+	public function list(){	    
 	    
-	    $this->session_chk();
 	    
 	    $keyword = "";
 	    
@@ -61,8 +60,6 @@ class Notice extends CI_Controller {
 	}
 	
 	public function node($idx=-1){
-	    
-	    $this->session_chk();
 	    
 	    $info = [];
 	    $keyVal = [
