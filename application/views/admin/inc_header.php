@@ -9,6 +9,5 @@
         </ul>
     </nav>
 </div>
-
 <div class="system_msg"><span>dwdwdwd</span></div>
-<div class="blind"></div>
+<!-- <div class="blind"></div> -->

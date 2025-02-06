@@ -17,22 +17,18 @@ $(function () {
 	$(".btn-login").click(function () {
 		loginVerify();
 	});
-	
 
-	
-	
-
-//	$("input[name=chk_all]").click(updateAllCheck);
-//	$("input[name=chk_address]").click(updateEachCheck);
-//
-//	// 탭화면 - 각 라벨 클릭 시 업데이트진행
-//	$(".address_selected_wrap").on("click", ".label_added", deleteMsgLabel);
-//
-//	// 탭화면 - 전체 라벨 삭제
-//	$(".address_selected_wrap").on("click", "#delete_labelAll", function () {
-//		$(".address_selected").empty();
-//		resetAllCheck();
-//	});
+	//	$("input[name=chk_all]").click(updateAllCheck);
+	//	$("input[name=chk_address]").click(updateEachCheck);
+	//
+	//	// 탭화면 - 각 라벨 클릭 시 업데이트진행
+	//	$(".address_selected_wrap").on("click", ".label_added", deleteMsgLabel);
+	//
+	//	// 탭화면 - 전체 라벨 삭제
+	//	$(".address_selected_wrap").on("click", "#delete_labelAll", function () {
+	//		$(".address_selected").empty();
+	//		resetAllCheck();
+	//	});
 
 	if ($("#smarteditor").length) {
 		nhn.husky.EZCreator.createInIFrame({
@@ -42,7 +38,35 @@ $(function () {
 			fCreator: "createSEditor2",
 		});
 	}
+
+	$(".img_list img")
+		.on("mouseover", function () {
+			showBigImg(this);
+		})
+		.on("mouseout", function () {
+			hideBigImg();
+		});
 });
+
+function showBigImg(imgEl) {
+	// console.log(imgEl.src);
+	const popBig = $(".pop_img_big");
+	const popBigImg = $(".pop_img_big img");
+
+	popBigImg.attr("src", $(imgEl).attr("src"));
+	popBig.show();
+
+	// 팝업 위치
+	const rect = $(imgEl).offset();
+	popBig.css({
+		top: rect.top + $(imgEl).outerHeight(),
+		left: rect.left,
+	});
+}
+
+function hideBigImg() {
+	$(".pop_img_big").css("display", "none");
+}
 
 // Mobile burger
 document.addEventListener("DOMContentLoaded", function () {
@@ -58,7 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
 //스마트 에디터 오브젝트
 var oEditor = [];
 
-
 function openPopup(obj) {
 	$(obj).addClass("active");
 }
@@ -66,8 +89,6 @@ function openPopup(obj) {
 function closePopup() {
 	$(".popup").removeClass("active");
 }
-
-
 
 function loginVerify() {
 	if ($.trim($("#user_id").val()).length == 0) {
@@ -187,7 +208,6 @@ function msgBtnRemove(e) {
 	prTr.remove();
 	return;
 }
-
 
 function noticeList(page = 1) {
 	let postUrl = "/admin/notice_list/" + page;
@@ -392,34 +412,31 @@ function messageList(page = 1) {
 
 //메세지폼 - 탭전환
 function messageOpenTab(e) {
-	
 	$(".popup").removeClass("active");
 
 	$(".tab_content").removeClass("active");
 	$(".btn_tab").removeClass("active");
 
-	$("#"+e.dataset.tab).addClass("active");
+	$("#" + e.dataset.tab).addClass("active");
 	$(e).addClass("active");
 }
 
-
-function targetSearch(){
-	
+function targetSearch() {
 	var postData = $("#frmSearch").serialize();
-	
+
 	$.ajax({
 		type: "POST",
 		url: "/admin/ajax_member_list",
 		data: postData,
 		dataType: "html",
-		success: function(data){
-			$('#item_list').html(data);
+		success: function (data) {
+			$("#item_list").html(data);
 			return;
 		},
-		error: function(request, status, err){
+		error: function (request, status, err) {
 			console.log(err);
 			return;
-		}
+		},
 	});
 }
 
@@ -493,12 +510,12 @@ function memberSave(editMode) {
 		beforeSend: function () {},
 		success: function (data) {
 			cmmShowMsg(data.msg);
-			if(data.msg_type!=""){
-				pushSystemMsg(data.msg_type, data.cellphone, data.member_id);	
+			if (data.msg_type != "") {
+				pushSystemMsg(data.msg_type, data.cellphone, data.member_id);
 			}
 			if (data.result == "ok") {
-				location.replace("/admin/member_form/"+data.member_id);
-//				console.log('data save ok');
+				location.replace("/admin/member_form/" + data.member_id);
+				//				console.log('data save ok');
 			}
 		},
 		error: function (request, status, err) {
@@ -508,21 +525,20 @@ function memberSave(editMode) {
 	});
 }
 
-function pushSystemMsg(msg_type, cellphone, member_id){
+function pushSystemMsg(msg_type, cellphone, member_id) {
 	$.ajax({
 		type: "POST",
 		url: "/bizmsg/push_system_msg/",
-		data: {msg_type:msg_type, cellphone:cellphone, member_id:member_id},
+		data: { msg_type: msg_type, cellphone: cellphone, member_id: member_id },
 		dataType: "json",
-		beforeSend:function(){
-		},
-		success: function(data){			
+		beforeSend: function () {},
+		success: function (data) {
 			console.log(data);
 		},
-		error: function(request, status, err){
+		error: function (request, status, err) {
 			console.log(err);
 			return;
-		}
+		},
 	});
 }
 
