@@ -57,7 +57,7 @@ class Notice extends CI_Controller {
 	    
 	    $viewData = ["data"=>$query["list"], "total_count"=>$query["listCount"]];
 	    
-	    $this->load->view('/article/list', $viewData);
+	    $this->load->view('/notice/list', $viewData);
 	}
 	
 	public function node($idx=-1){
@@ -78,11 +78,11 @@ class Notice extends CI_Controller {
 	            }
 	        }
 	    }else {
-	        header('Location:/article/list');
+	        header('Location:/notice/list');
 	    }
 	    
 	    $viewData = ["info"=>$info];
-	    $this->load->view('/article/node', $viewData);
+	    $this->load->view('/notice/node', $viewData);
 	}
 	
 	public function save_reply(){
