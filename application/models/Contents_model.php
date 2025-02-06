@@ -164,6 +164,37 @@ class Contents_model extends CI_Model {
         exit;
     }
     
+    public function save_like($opt){
+        
+        $this->db->trans_begin();
+        
+        $sql = "select * from tb_contents_like ";
+        $sql.= "where contents_idx=".$opt["contents_idx"]." ";
+        $sql.= "and member_id='".$this->session->userdata["member_id"]."' ";
+        $my_like = $this->db->query($sql)->result_array();
+      
+        if(count($my_like)==0){
+            $sql = "insert into tb_contents_like (contents_idx, member_id, member_nm, wdate) values (";
+            $sql.= "".$opt["contents_idx"].", '".$this->session->userdata["member_id"]."', '".$this->session->userdata["member_nm"]."', now() )";
+            $data = $this->db->query($sql);            
+        }else {
+            $sql = "delete from tb_contents_like ";
+            $sql.= "where contents_idx=".$opt["contents_idx"]." and member_id='".$this->session->userdata["member_id"]."' ";
+            $data = $this->db->query($sql);
+        }
+        
+        if (!$data) {
+            $errorMsg = $this->db->error();
+            $this->db->trans_rollback();
+            return ["result"=>"error", "msg"=>$errorMsg];
+        } else {
+            $this->db->trans_commit();
+            return ["result"=>"ok", "msg"=>"ok"];
+        }
+        
+        exit;
+    }
+    
     public function ajax_reply_like_list($opt){
         
         $strWhere = "where contents_idx=".$opt["contents_idx"]." ";

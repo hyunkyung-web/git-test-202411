@@ -8,25 +8,6 @@ $(function () {
         callData(2);
     });
 
-    // 댓글 버튼 눌렀을때 입력창 활성화
-    $(".icon_comment").click(function () {
-        $("#c_box").focus();
-    });
-    // 댓글 더보기
-    showMore(".btn_more", ".comment_box");
-    // 좋아요 버튼
-    $(".icon_heart").click(function () {
-        const img_src = $(".icon_heart").attr("src");
-        const icon_like = "/public/images/icon/icon_heart.png";
-        const icon_full = "/public/images/icon/icon_heart_full.png";
-
-        if (img_src == icon_like) {
-            $(".icon_heart").attr("src", icon_full);
-        } else if (img_src == icon_full) {
-            $(".icon_heart").attr("src", icon_like);
-        }
-    });    
-
     // support
 
     // 담당자 검색 - 닫기
@@ -128,8 +109,9 @@ function nodeSaveReply(editMode="N", idx=-1){
 		dataType: "json",
 		beforeSend: function () {},
 		success: function (data) {
-			console.log(data);
-			getReplyList();
+//			console.log(data);
+			$("#reply_text").val('');
+			nodeReplyLikeList();
 		},
 		error: function (request, status, err) {
 			console.log(err);
@@ -138,17 +120,40 @@ function nodeSaveReply(editMode="N", idx=-1){
 	});
 }
 
-function getReplyList(){
+function nodeSaveLike(){
+
+	let contents_idx = $("#contents_idx").val();
+
+	$.ajax({
+		type: "POST",
+		url: "/article/save_like/",
+		data: {contents_idx:contents_idx},
+		dataType: "json",
+		beforeSend: function () {},
+		success: function (data) {
+//			console.log(data);
+			$("#reply_text").val('');
+			nodeReplyLikeList();
+		},
+		error: function (request, status, err) {
+			console.log(err);
+			return;
+		},
+	});
+}
+
+function nodeReplyLikeList(){
 	
 	let contents_idx = $("#contents_idx").val();
 	
 	$.ajax({
 		type: "POST",
-		url: "/article/ajax_reply_list",
+		url: "/article/ajax_reply_like_list",
 		data: {contents_idx:contents_idx},
 		dataType: "html",
 		success: function(data){
-			$('#ajax_reply_list').html(data);
+			$('#ajax_reply_list').html(data);			
+//			showMore(".btn_more", ".comment_box");    
 			return;
 		},
 		error: function(request, status, err){
@@ -161,20 +166,24 @@ function getReplyList(){
 
 // 댓글 더보기
 function showMore(button, contentBox) {
+	
+	let limitCnt = 2;
+	
     // 댓글 갯수 5이하 더보기 버튼 안보이기
-    if ($(contentBox).length <= 5) {
+    if ($(contentBox).length <= limitCnt) {
         $(button).hide(); // 더보기 버튼 숨기기
         $(contentBox).addClass("show"); // 모든 댓글 표시
     } else {
+    	console.log($(contentBox).length);
         // 댓글 갯수 5개 이상일 때, 처음 5개만 표시
-        $(contentBox).slice(0, 5).addClass("show");
+        $(contentBox).slice(0, limitCnt).addClass("show");
 
         // 더보기 버튼 클릭 시 동작
         $(button).click(function (e) {
             e.preventDefault();
             // 숨겨진 댓글 중 5개를 표시
             $(contentBox + ":hidden'")
-                .slice(0, 5)
+                .slice(0, limitCnt)
                 .addClass("show");
 
             // 더 이상 숨겨진 댓글이 없으면 더보기 버튼 숨기기
@@ -188,7 +197,7 @@ function showMore(button, contentBox) {
     // 댓글 접기 버튼
     $(".btn_fold").click(function () {
         $(contentBox).removeClass("show");
-        $(contentBox).slice(0, 5).addClass("show");
+        $(contentBox).slice(0, limitCnt).addClass("show");
         $(this).hide(); // 댓글 접기 버튼 사라짐
         $(button).show(); // 더보기 버튼 활성화
     });

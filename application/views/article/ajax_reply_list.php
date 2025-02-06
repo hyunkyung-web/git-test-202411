@@ -12,8 +12,25 @@ foreach($reply_list as $row){?>
         <span class="delete"><i class="fa-solid fa-minus"></i></span>
         <span class="c_text"><?php echo $row["reply_text"];?></span>
         <span class="c_date"><?php echo date('y-m-d H:i', strtotime($row["wdate"]));?></span>        
-    </div><?php 
+    </div><?php
 }?>
+	
 </div>
+<!-- 
+<button type="button" class="btn_more">더보기 +</button>
+<button type="button" class="btn_fold">댓글 접기 ↑</button>
+ -->
 
+<script>
+
+// 댓글 버튼 눌렀을때 입력창 활성화
+    $(".icon_comment").click(function () {
+        $("#reply_text").focus();
+    });
+
+    $(".icon_heart").click(function(){
+    	nodeSaveLike();
+    });
+     
+</script>
 

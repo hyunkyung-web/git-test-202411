@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Article extends CI_Controller {
+class Notice extends CI_Controller {
     
     public function __construct(){
         parent::__construct();
@@ -52,7 +52,7 @@ class Article extends CI_Controller {
 	    $keyword = "";
 	    
 	    $query = $this->contentsModel->contents_list([
-	        "contents_type"=>"article", "keyword"=>$keyword
+	        "contents_type"=>"notice", "keyword"=>$keyword
 	    ]);	    
 	    
 	    $viewData = ["data"=>$query["list"], "total_count"=>$query["listCount"]];

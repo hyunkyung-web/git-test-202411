@@ -426,6 +426,12 @@ span.countComment {
     flex-wrap: wrap;
     margin-bottom: 10px;
 }
+/*
+.comment_box.show{
+    display: flex;
+    flex-wrap: wrap;
+}
+*/
 
 .comment_box span {
     margin-right: 10px;
