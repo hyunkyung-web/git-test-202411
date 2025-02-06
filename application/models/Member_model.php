@@ -67,10 +67,22 @@ class member_model extends CI_Model {
         $list = $this->db->query($sql, [$opt["member_id"]])->result_array();
         
         return $list;
-        exit;
+    }
+    
+    private function compare_trust_member($opt){
+        
+        $strWhere = "where cellphone='".$opt["cellphone"]."' ";
+        $sql = "select * from tb_trust_member_list ";
+        $sql.= $strWhere;
+        $data_cnt = $this->db->query($sql)->num_rows();
+        
+        return $data_cnt;
     }
     
     public function member_save($opt){
+        
+        $verifyMember = $this->compare_trust_member($opt);
+        $memberStatus = $verifyMember>0 ? 'active' : 'hold';
 
         $this->db->trans_begin();
         
@@ -95,7 +107,7 @@ class member_model extends CI_Model {
             $sql.= "'".$opt["member_nm"]."', '".$opt["member_type"]."', '".$opt["cellphone"]."', ";
             $sql.= "'".$opt["member_email"]."', '".$opt["biz_nm"]."', '".$opt["specialty"]."', '".$opt["uuid"]."', ";
             $sql.= " now(), 'Y', now(), ";
-            $sql.= "'hold', '".$session_id."', now() ) "; 
+            $sql.= "'".$memberStatus."', '".$session_id."', now() ) "; 
             
             $data = $this->db->query($sql);                
             $member_id = $this->db->insert_id();
@@ -136,11 +148,12 @@ class member_model extends CI_Model {
         } else {
             $this->db->trans_commit();
             switch ($opt["editMode"]) {
-                case "N":
-                    $msg = "회원가입 완료. 가입이 승인되면 가입하신 핸드폰으로 메세지가 발송됩니다.";
-                    break;
-                case "C":
-                    $msg = "회원가입 완료. 가입이 승인되면 가입하신 핸드폰으로 메세지가 발송됩니다.";
+                case ($opt["editMode"]=="N" || $opt["editMode"]=="C"):
+                    if($memberStatus=="active"){
+                        $msg = "회원가입 완료. 가입이 승인되었습니다. 지금 바로 서비스를 이용하실 수 있습니다.";
+                    }else {
+                        $msg = "회원가입 완료. 가입이 승인되면 가입하신 핸드폰으로 메세지가 발송됩니다.";
+                    }
                     break;
                 case "U":
                     $msg = "업데이트 완료";

@@ -431,6 +431,7 @@ function memberSave() {
         success: function (data) {
         	if(data.result=="ok"){
         		$("#frm1")[0].reset();
+        		location.replace("/member/verify");
         	}
             alert(data.msg);
 //            location.replace("/");

@@ -13,6 +13,8 @@ class Home extends CI_Controller {
 //             header('Location:'.$rtnUri);
 //             exit;
 //         }
+
+        ban_ip();
     
     }
     

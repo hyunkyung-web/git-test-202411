@@ -13,8 +13,14 @@ class Article extends CI_Controller {
 //             header('Location:'.$rtnUri);
 //             exit;
 //         }
+
+        ban_ip();
+
+        
     
     }
+    
+    
     
     private function set_callback_url(){
         setcookie("callback_url", $_SERVER['REQUEST_URI'], time()+3600, "/");

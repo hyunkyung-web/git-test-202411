@@ -19,6 +19,8 @@ class Admin extends CI_Controller {
 //             exit;
 //         }
 
+        ban_ip();
+
     }
     
     private function session_chk(){

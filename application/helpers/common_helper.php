@@ -293,4 +293,22 @@ function get_sms_remain(){
     
 }
 
+
+function ban_ip(){
+    
+    $ban_list = ["218.234.149.5", "23.27.202.161"];
+    $connect_ip = getRealClientIp();
+    
+    if(in_array($connect_ip, $ban_list)){
+        $msgStr = '<script>';
+        $msgStr.= 'alert("You are blocked");';
+        $msgStr.= 'location.replace("https://google.com");';
+        $msgStr.= '</script>';
+        
+        echo $msgStr;
+    }
+    
+    
+}
+
 ?>
