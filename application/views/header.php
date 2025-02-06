@@ -12,9 +12,10 @@
             <ul class="nav-links">
                 <li onclick="callData(99)">채널바로가기</li>
                 <li onclick="callData(11)">Verify</li>
-                <li onclick="callData(12)">Sign Up</li>
+                <li onclick="callData(12)">SignUp</li>
                 <li onclick="callData(2)">Article</li>
                 <li onclick="callData(3)">Support</li>
+                <li onclick="callData(4)">Notice</li>
             </ul>
         </nav>
 
@@ -30,13 +31,13 @@
             <div class="signup">
                 <span onclick="callData(99)">채널바로가기</span>
                 <span onclick="callData(11)">Verify</span>
-                <span onclick="callData(12)">Sign Up</span>
+                <span onclick="callData(12)">SignUp</span>
             </div>
             <ul>
                 <!-- <li onclick="callData(12)">Sign Up</li> -->
                 <li onclick="callData(2)">Article</li>
                 <li onclick="callData(3)">Support</li>
-
+                <li onclick="callData(4)">Notice</li>
             </ul>
         </div>
     </div>

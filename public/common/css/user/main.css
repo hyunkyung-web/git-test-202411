@@ -10,8 +10,8 @@ member
     font-family: "Noto Sans KR", sans-serif;
 
     width: 100%;
-    min-height: 70vh;
-    padding: 20px 0;
+    min-height: 75vh;
+    padding: 40px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -510,7 +510,64 @@ textarea:focus {
     color: black;
 }
 
-/* Support - call */
+/***************************************
+Notice
+***************************************/
+/* list */
+#article-each.notice-each {
+    width: 70%;
+    margin-top: 1em;
+}
+
+.notice-list {
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.notice_descript {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.notice_descript span {
+    /* display: inline-block;
+    vertical-align: middle; */
+    width: 5%;
+    text-align: left;
+}
+.notice_descript a {
+    width: 75%;
+    color: #000;
+    text-decoration: none;
+    padding: 0 1em;
+}
+.notice_descript a p {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.notice_descript p.notice-date {
+    margin-left: auto;
+    width: fit-content;
+    font-size: 1em;
+    text-align: right;
+}
+
+/***************************************
+Support
+***************************************/
+/* call */
 .support-wrap {
     justify-content: flex-start;
     /* min-height: unset; */
@@ -1096,6 +1153,35 @@ button.btn_select {
 
     textarea {
         width: 80%;
+    }
+
+    /* notice */
+    #article-each.notice-each {
+        width: 100%;
+    }
+
+    .notice_descript {
+        flex-wrap: wrap;
+    }
+    .cont_descript.notice_descript {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .notice_descript span {
+        width: 1em;
+    }
+
+    .notice_descript a {
+        width: 90%;
+    }
+
+    .notice_descript p.notice-date {
+        margin-left: 2em;
+        width: fit-content;
+        /* font-size: 0.9em; */
+        text-align: left;
+        color: #7e869e;
     }
 
     /* support - call */

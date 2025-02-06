@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="Cache-Control" content="no-cache" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"" />
-    <title>Article(학회정보)</title>
+    <title>Notice(공지사항)</title>
     <meta property=" og:author" content="d'wave">
     <meta property="og:type" content="website">
     <meta property="og:title" content="닥터웨이브" />
@@ -74,28 +74,32 @@ gtag('event', 'screen_view', {
     <?php include_once APPPATH.'views/header.php'; ?>
 
     <section id="article" class="flex_SB_center padd60">
-        <h1>학술정보</h1>
-        <p>최신 학술정보를 만나보실 수 있습니다.</p>
-        <div id="article-each" class="flex_SB_center"><?php
-        
-        foreach($data as $row){
-            $find_src = preg_match("/<img\s[^>]*>/", $row["body_text"], $match);
-            if(count($match)>0){
-                $thumb_img = $match[0];
-            } else {
-                $thumb_img = '<img src="/public/images/icon/icon_no_image.png" alt="article 1" class="cont-thumb article-thumb"/>';
-            }?>
-            <div class="contents-list article-each">
-                <a href="<?php echo '/article/node/'.$row["idx"];?>"><?php echo $thumb_img;?></a>
-                <div class="cont_descript article_descript">
-                    <a href="<?php echo '/article/node/'.$row["idx"];?>">
-                        <p class="name"><?php echo $row["title"];?></p>
+        <h1>공지사항</h1>
+        <!-- <p>공지사항을 확인하세요.</p> -->
+        <div id="article-each" class="flex_SB_center notice-each">
+            <div class="notice-list">
+                <div class="cont_descript notice_descript">
+                    <span>1</span>
+                    <a href="/notice/node/">
+                        <p class="name">250206 공지사항</p>
                     </a>
-                    <p><?php echo $row["description"];?></p>
+                    <p class="notice-date">25-02-06</p>
                 </div>
-
-            </div><?php 
-        }?>
+                <div class="cont_descript notice_descript">
+                    <span>2</span>
+                    <a href="/notice/node/">
+                        <p class="name">250206 공지사항</p>
+                    </a>
+                    <p class="notice-date">25-02-06</p>
+                </div>
+                <div class="cont_descript notice_descript">
+                    <span>3</span>
+                    <a href="/notice/node/">
+                        <p class="name">250206 공지사항입니다. 내용을 확인하세요.</p>
+                    </a>
+                    <p class="notice-date">25-02-06</p>
+                </div>
+            </div>
         </div>
     </section>
 

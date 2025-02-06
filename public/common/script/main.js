@@ -89,6 +89,10 @@ function callData(pageNum) {
         case 3:
             callUrl = "/support/call";
             break;
+        // notice
+        case 4:
+            callUrl = "/notice/list";
+            break;
         case 99:
             callUrl = "http://pf.kakao.com/_DxbUSb";
             break;
@@ -97,84 +101,79 @@ function callData(pageNum) {
     window.location.href = callUrl;
 }
 
-function nodeSaveReply(editMode="N", idx=-1){
-	
-	let reply_text = $("#reply_text").val();
-	let contents_idx = $("#contents_idx").val();
+function nodeSaveReply(editMode = "N", idx = -1) {
+    let reply_text = $("#reply_text").val();
+    let contents_idx = $("#contents_idx").val();
 
-	$.ajax({
-		type: "POST",
-		url: "/article/save_reply/",
-		data: {editMode:editMode, idx:idx, contents_idx:contents_idx, reply_text:reply_text},
-		dataType: "json",
-		beforeSend: function () {},
-		success: function (data) {
-//			console.log(data);
-			$("#reply_text").val('');
-			nodeReplyLikeList();
-		},
-		error: function (request, status, err) {
-			console.log(err);
-			return;
-		},
-	});
+    $.ajax({
+        type: "POST",
+        url: "/article/save_reply/",
+        data: { editMode: editMode, idx: idx, contents_idx: contents_idx, reply_text: reply_text },
+        dataType: "json",
+        beforeSend: function () {},
+        success: function (data) {
+            //			console.log(data);
+            $("#reply_text").val("");
+            nodeReplyLikeList();
+        },
+        error: function (request, status, err) {
+            console.log(err);
+            return;
+        }
+    });
 }
 
-function nodeSaveLike(){
+function nodeSaveLike() {
+    let contents_idx = $("#contents_idx").val();
 
-	let contents_idx = $("#contents_idx").val();
-
-	$.ajax({
-		type: "POST",
-		url: "/article/save_like/",
-		data: {contents_idx:contents_idx},
-		dataType: "json",
-		beforeSend: function () {},
-		success: function (data) {
-//			console.log(data);
-			$("#reply_text").val('');
-			nodeReplyLikeList();
-		},
-		error: function (request, status, err) {
-			console.log(err);
-			return;
-		},
-	});
+    $.ajax({
+        type: "POST",
+        url: "/article/save_like/",
+        data: { contents_idx: contents_idx },
+        dataType: "json",
+        beforeSend: function () {},
+        success: function (data) {
+            //			console.log(data);
+            $("#reply_text").val("");
+            nodeReplyLikeList();
+        },
+        error: function (request, status, err) {
+            console.log(err);
+            return;
+        }
+    });
 }
 
-function nodeReplyLikeList(){
-	
-	let contents_idx = $("#contents_idx").val();
-	
-	$.ajax({
-		type: "POST",
-		url: "/article/ajax_reply_like_list",
-		data: {contents_idx:contents_idx},
-		dataType: "html",
-		success: function(data){
-			$('#ajax_reply_list').html(data);			
-//			showMore(".btn_more", ".comment_box");    
-			return;
-		},
-		error: function(request, status, err){
-			console.log(err);
-			return;
-		}
-	});
-	
+function nodeReplyLikeList() {
+    let contents_idx = $("#contents_idx").val();
+
+    $.ajax({
+        type: "POST",
+        url: "/article/ajax_reply_like_list",
+        data: { contents_idx: contents_idx },
+        dataType: "html",
+        success: function (data) {
+            $("#ajax_reply_list").html(data);
+            //			showMore(".btn_more", ".comment_box");
+            return;
+        },
+        error: function (request, status, err) {
+            console.log(err);
+            return;
+        }
+    });
 }
 
 // 댓글 더보기
 function showMore(button, contentBox) {
-	
-	let limitCnt = 2;
-	
+    let limitCnt = 2;
+
     // 댓글 갯수 5이하 더보기 버튼 안보이기
     if ($(contentBox).length <= limitCnt) {
         $(button).hide(); // 더보기 버튼 숨기기
         $(contentBox).addClass("show"); // 모든 댓글 표시
     } else {
-    	console.log($(contentBox).length);
+        console.log($(contentBox).length);
         // 댓글 갯수 5개 이상일 때, 처음 5개만 표시
         $(contentBox).slice(0, limitCnt).addClass("show");
 
@@ -215,8 +214,6 @@ function resize(obj) {
         $(".btn_chat").removeClass("on");
     }
 }
-
-
 
 // 고객지원 페이지 탭 메뉴
 function switchTab(e) {
@@ -438,12 +435,12 @@ function memberSave() {
         dataType: "json",
         beforeSend: function () {},
         success: function (data) {
-        	if(data.result=="ok"){
-        		$("#frm1")[0].reset();
-        		location.replace("/member/verify");
-        	}
+            if (data.result == "ok") {
+                $("#frm1")[0].reset();
+                location.replace("/member/verify");
+            }
             alert(data.msg);
-//            location.replace("/");
+            //            location.replace("/");
         },
         error: function (request, status, err) {
             console.log(err);
@@ -499,8 +496,8 @@ function requestAuthToken() {
         success: function (data) {
             if (data.result == "ok") {
                 viewRemainTime();
-            }else {
-            	alert(data.msg);
+            } else {
+                alert(data.msg);
             }
         },
         error: function (request, status, err) {
@@ -514,26 +511,25 @@ function requestAuthToken() {
  *	함수명: verifyAuthToken()
  *	기능: 인증번호 확인
  ******************************************************************/
-function verifyAuthToken(){
-	
-	var postData = $("#frm1").serialize();
-	
-	$.ajax({
-		type: "POST",
-		url: "/member/verify_auth_token",
-		data: postData,
-		dataType: "json",
-		beforeSend: function() {},
-		success: function(data) {
-			if(data.result=="ok"){
-				location.replace(data.url);
-			}
-		},
-		error: function (request, status, err) {
-			console.log(err);
-			return;
-		},
-	});
+function verifyAuthToken() {
+    var postData = $("#frm1").serialize();
+
+    $.ajax({
+        type: "POST",
+        url: "/member/verify_auth_token",
+        data: postData,
+        dataType: "json",
+        beforeSend: function () {},
+        success: function (data) {
+            if (data.result == "ok") {
+                location.replace(data.url);
+            }
+        },
+        error: function (request, status, err) {
+            console.log(err);
+            return;
+        }
+    });
 }
 
 function viewRemainTime() {
