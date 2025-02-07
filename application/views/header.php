@@ -15,7 +15,7 @@
             <div class="user-info logged-out">
                 <img src="/public/images/icon/icon-user.png" alt="icon-user">
                 <span class="greeting">회원 인증을 진행해 주세요.</span>
-                <a class="auth-btn" href="javascript:callData(12)">회원인증</a>
+                <a class="auth-btn" href="javascript:callData(11)">회원인증</a>
             </div><?php 
         }?>
 
@@ -50,7 +50,7 @@
             <div class="user-info logged-out">
                 <img src="/public/images/icon/icon-user.png" alt="icon-user">
                 <span class="greeting">회원 인증을 해주세요.</span>
-                <a class="auth-btn" href="javascript:callData(12)">회원인증</a>
+                <a class="auth-btn" href="javascript:callData(11)">회원인증</a>
             </div><?php 
         }?>
 
