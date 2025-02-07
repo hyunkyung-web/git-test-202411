@@ -119,12 +119,12 @@ gtag('event', 'screen_view', {
                 </div>
 
                 <div class="comments_area padd10" id="ajax_reply_list">
-                    <div class="comment_box">
-                        <span class="c_name">dwave_it</span>
-                        <span class="delete"><i class="fa-solid fa-minus"></i></span>
-                        <span class="c_text">안녕하세요. 좋은 정보입니다.</span>
-                        <span class="c_date">25-02-05 17:09</span>
-                    </div>
+<!--                     <div class="comment_box"> -->
+<!--                         <span class="c_name">dwave_it</span> -->
+<!--                         <span class="delete"><i class="fa-solid fa-minus"></i></span> -->
+<!--                         <span class="c_text">안녕하세요. 좋은 정보입니다.</span> -->
+<!--                         <span class="c_date">25-02-05 17:09</span> -->
+<!--                     </div> -->
                 </div>
 
                 <!-- <button type="button" class="btn_more">더보기 +</button>

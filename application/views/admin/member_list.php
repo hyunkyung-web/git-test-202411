@@ -95,10 +95,11 @@
                     <table class="list-table">
                     	<colgroup>
                     		<col width="5%"/>
-                    		<col width="25%"/>
+                    		<col width="10%"/>
                     		<col width="20%"/>
                     		<col width="25%"/>
                     		<col width="25%"/>
+                    		<col width="15%"/>
                     	</colgroup>
                         <thead>
                             <tr>
@@ -112,6 +113,7 @@
                                 <th>이메일</th>
                                 <th>연락처</th>
                                 <th>소속/부서</th>
+                                <th>상태</th>
                             </tr>
                         </thead>
                         <tbody id="item-list"><?php
@@ -128,6 +130,7 @@
                                     <td class="txt_left"><a href="/admin/member_form/<?php echo $row["member_id"];?>"><?php echo $row["member_email"];?></a></td>
                                     <td><?php echo $row["cellphone"];?></td>
                                     <td style="text-align: left;"><?php echo $row["biz_nm"].'('.$row["specialty"].')';?></td>
+                                    <td><?php echo $row["member_status"];?></td>
                                 </tr><?php
                             }
                         } else {

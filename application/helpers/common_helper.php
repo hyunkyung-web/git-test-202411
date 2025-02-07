@@ -310,7 +310,12 @@ function ban_ip(){
 }
 
 function cookie_return_url(){
-    setcookie("return_url", $_SERVER['REQUEST_URI'], time()+3600, "/");
+    setcookie("return_url", $_SERVER['REQUEST_URI'], time()+300, "/");
 }
+
+function cookie_admin_url(){
+    setcookie("admin_return_url", $_SERVER['REQUEST_URI'], time()+300, "/");
+}
+
 
 ?>

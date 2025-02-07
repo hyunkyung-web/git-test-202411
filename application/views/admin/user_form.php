@@ -157,7 +157,7 @@
 
                     <div class="btn-wrap">
                             <button type="button" class="save-user form-btn" onclick="javascript:userSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
-                            <a href="<?php echo get_cookie("return_url");?>"><button type="button" class="cancel-user form-btn"><i class="fa-solid fa-circle-minus"></i> cancel</button></a>
+                            <a href="<?php echo get_cookie("admin_return_url");?>"><button type="button" class="cancel-user form-btn"><i class="fa-solid fa-circle-minus"></i> cancel</button></a>
                         </div>
                 </div>
             </main>

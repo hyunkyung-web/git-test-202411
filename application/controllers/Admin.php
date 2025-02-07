@@ -128,7 +128,7 @@ class Admin extends CI_Controller {
 	    
 	    $this->session_chk();
 	    
-	    cookie_return_url();
+	    cookie_admin_url();
 	    
 	    $schType = getRequest("sch_1", "");
 	    $keyword = getRequest("sch_2", "");
@@ -196,7 +196,7 @@ class Admin extends CI_Controller {
 	    
 	    $this->session_chk();
 	    
-	    cookie_return_url();
+	    cookie_admin_url();
 	    
 	    $schType = getRequest("sch_1", "");
 	    $keyword = getRequest("sch_2", "");
@@ -328,7 +328,7 @@ class Admin extends CI_Controller {
 	    
 	    $this->session_chk();
 	    
-	    cookie_return_url();
+	    cookie_admin_url();
 	    
 	    // 	    $page = getRequest("page", 1);
 	    $template_type = getRequest("sch_1", "");
@@ -443,7 +443,7 @@ class Admin extends CI_Controller {
 	    
 	    $this->session_chk();
 	    
-	    cookie_return_url();
+	    cookie_admin_url();
 	    
 	    // 	    $page = getRequest("page", 1);
 	    $template_type = getRequest("sch_1", "");
@@ -524,7 +524,7 @@ class Admin extends CI_Controller {
 	    
 	    $this->session_chk();
 	    
-	    cookie_return_url();
+	    cookie_admin_url();
 	    
 	    // 	    $page = getRequest("page", 1);
 	    $schType = getRequest("sch_1", "");
@@ -646,7 +646,7 @@ class Admin extends CI_Controller {
 	    
 	    $this->session_chk();
 	    
-	    cookie_return_url();
+	    cookie_admin_url();
 	    
 	    // 	    $page = getRequest("page", 1);
 	    $template_type = getRequest("sch_1", "");

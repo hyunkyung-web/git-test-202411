@@ -16,7 +16,7 @@ class Member extends CI_Controller {
         if(!isset($this->session->userdata["member_id"])){
             
             setcookie("target_url", $_SERVER['REQUEST_URI'], time()+3600, "/");
-            
+//             cookie_return_url();
             $errMsg = '<script>alert("회원인증이 필요합니다.");';
             $errMsg.= 'location.href="/member/verify";</script>';
             echo $errMsg;
