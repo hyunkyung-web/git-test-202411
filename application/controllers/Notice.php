@@ -20,12 +20,7 @@ class Notice extends CI_Controller {
     
     }
     
-    
-    
-    private function set_callback_url(){
-        setcookie("callback_url", $_SERVER['REQUEST_URI'], time()+3600, "/");
-    }
-    
+   
     private function session_chk(){
         if(!isset($this->session->userdata["member_id"])){
             
@@ -47,7 +42,7 @@ class Notice extends CI_Controller {
 	
 	public function list(){	    
 	    
-	    
+	    cookie_return_url();
 	    $keyword = "";
 	    
 	    $query = $this->contentsModel->contents_list([

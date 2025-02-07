@@ -307,8 +307,10 @@ function ban_ip(){
         
         echo $msgStr;
     }
-    
-    
+}
+
+function cookie_return_url(){
+    setcookie("return_url", $_SERVER['REQUEST_URI'], time()+3600, "/");
 }
 
 ?>

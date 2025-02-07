@@ -31,10 +31,6 @@ class Admin extends CI_Controller {
             exit;
         }
     }
-    
-    private function set_callback_url(){
-        setcookie("callback_url", $_SERVER['REQUEST_URI'], time()+3600, "/");
-    }
 
     public function index(){
         if(isset($this->session->userdata["user_id"])){
@@ -132,7 +128,7 @@ class Admin extends CI_Controller {
 	    
 	    $this->session_chk();
 	    
-	    $this->set_callback_url();
+	    cookie_return_url();
 	    
 	    $schType = getRequest("sch_1", "");
 	    $keyword = getRequest("sch_2", "");
@@ -200,7 +196,7 @@ class Admin extends CI_Controller {
 	    
 	    $this->session_chk();
 	    
-	    $this->set_callback_url();
+	    cookie_return_url();
 	    
 	    $schType = getRequest("sch_1", "");
 	    $keyword = getRequest("sch_2", "");
@@ -331,7 +327,7 @@ class Admin extends CI_Controller {
 	    
 	    $this->session_chk();
 	    
-	    $this->set_callback_url();
+	    cookie_return_url();
 	    
 	    // 	    $page = getRequest("page", 1);
 	    $template_type = getRequest("sch_1", "");
@@ -444,7 +440,7 @@ class Admin extends CI_Controller {
 	    
 	    $this->session_chk();
 	    
-	    $this->set_callback_url();
+	    cookie_return_url();
 	    
 	    // 	    $page = getRequest("page", 1);
 	    $template_type = getRequest("sch_1", "");
@@ -523,7 +519,7 @@ class Admin extends CI_Controller {
 	    
 	    $this->session_chk();
 	    
-	    $this->set_callback_url();
+	    cookie_return_url();
 	    
 	    // 	    $page = getRequest("page", 1);
 	    $schType = getRequest("sch_1", "");
@@ -645,7 +641,7 @@ class Admin extends CI_Controller {
 	    
 	    $this->session_chk();
 	    
-	    $this->set_callback_url();
+	    cookie_return_url();
 	    
 	    // 	    $page = getRequest("page", 1);
 	    $template_type = getRequest("sch_1", "");

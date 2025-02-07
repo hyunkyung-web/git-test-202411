@@ -47,6 +47,8 @@ class Article extends CI_Controller {
 	
 	public function list(){
 	    
+	    cookie_return_url();
+	    
 	    $this->session_chk();
 	    
 	    $keyword = "";

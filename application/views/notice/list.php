@@ -77,28 +77,16 @@ gtag('event', 'screen_view', {
         <h1>공지사항</h1>
         <!-- <p>공지사항을 확인하세요.</p> -->
         <div id="article-each" class="flex_SB_center notice-each">
-            <div class="notice-list">
+            <div class="notice-list"><?php 
+            $rowNum=1;
+            foreach($data as $row){?>
                 <div class="cont_descript notice_descript">
-                    <span>1</span>
-                    <a href="/notice/node/">
-                        <p class="name">250206 공지사항</p>
-                    </a>
-                    <p class="notice-date">25-02-06</p>
-                </div>
-                <div class="cont_descript notice_descript">
-                    <span>2</span>
-                    <a href="/notice/node/">
-                        <p class="name">250206 공지사항</p>
-                    </a>
-                    <p class="notice-date">25-02-06</p>
-                </div>
-                <div class="cont_descript notice_descript">
-                    <span>3</span>
-                    <a href="/notice/node/">
-                        <p class="name">250206 공지사항입니다. 내용을 확인하세요.</p>
-                    </a>
-                    <p class="notice-date">25-02-06</p>
-                </div>
+                    <span><?php echo $rowNum;?></span>                    
+                    <p class="name"><a href="/notice/node/<?php echo $row["idx"];?>"><?php echo $row["title"];?></a></p>                    
+                    <p class="notice-date"><?php echo date('Y-m-d', strtotime($row["wdate"]));?></p>                    
+                </div><?php 
+                $rowNum++;
+            }?>
             </div>
         </div>
     </section>
