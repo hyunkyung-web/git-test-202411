@@ -43,7 +43,7 @@
         if(!empty($this->session->userdata["member_id"])){?>
             <div class="user-info logged-in">
                 <img src="/public/images/icon/icon-user.png" alt="icon-user">
-                <span class="greeting"><?php echo $this->sesssion->userdata["member_nm"];?>님 안녕하세요.</span>
+                <span class="greeting"><?php echo $this->session->userdata["member_nm"];?>님 안녕하세요.</span>
                 <a class="logout-btn" href="/member/logout">로그아웃</a>
             </div><?php
         }else {?>
