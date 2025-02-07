@@ -4,20 +4,30 @@
             <img src="/public/images/main/logo01.png" alt="logo_main">
         </div>
 
-        <nav>
-            <!-- <ul class="signup">
+        <div class="header-nav">
+            <div class="user-info">
+                <img src="/public/images/icon/icon-user.png" alt="icon-user">
+                <span class="greeting">XXX님 안녕하세요.</span>
+                <button class="logout-btn">logout</button>
+            </div>
+
+            <nav>
+                <!-- <ul class="signup">
                     <li onclick="callData(11)">Verify</li>
                     <li onclick="callData(12)">Sign Up</li>
                 </ul> -->
-            <ul class="nav-links">
-                <li onclick="callData(99)">채널바로가기</li>
-                <li onclick="callData(11)">Verify</li>
-                <li onclick="callData(12)">SignUp</li>
-                <li onclick="callData(2)">Article</li>
-                <li onclick="callData(3)">Support</li>
-                <li onclick="callData(4)">Notice</li>
-            </ul>
-        </nav>
+                <ul class="nav-links">
+                    <li onclick="callData(99)">채널바로가기</li>
+                    <li onclick="callData(11)">Verify</li>
+                    <li onclick="callData(12)">SignUp</li>
+                    <li onclick="callData(2)">Article</li>
+                    <li onclick="callData(3)">Support</li>
+                    <li onclick="callData(4)">Notice</li>
+                </ul>
+            </nav>
+        </div>
+
+
 
         <!-- mobile -->
 
@@ -30,15 +40,20 @@
         <div class="hamburger-menu">
             <div class="signup">
                 <div class="user-info">
-                    <span class="greeting">접속자님 안녕하세요.</span>
-                    <button class="logout-btn">로그아웃</button>
+                    <img src="/public/images/icon/icon-user.png" alt="icon-user">
+                    <span class="greeting">XXX님 안녕하세요.</span>
+                    <button class="logout-btn">logout</button>
                 </div>
-                <span onclick="callData(99)">채널바로가기</span>
-                <span onclick="callData(11)">Verify</span>
-                <span onclick="callData(12)">SignUp</span>
+                <!-- <div class="signup-nav">
+
+                </div> -->
+
             </div>
             <ul>
                 <!-- <li onclick="callData(12)">Sign Up</li> -->
+                <li onclick="callData(99)">채널바로가기</li>
+                <li onclick="callData(11)">Verify</li>
+                <li onclick="callData(12)">SignUp</li>
                 <li onclick="callData(2)">Article</li>
                 <li onclick="callData(3)">Support</li>
                 <li onclick="callData(4)">Notice</li>
