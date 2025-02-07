@@ -5,26 +5,24 @@
         </div>
 
         <div class="header-nav">
-            <div class="user-info">
+            <div class="user-info logged-in">
                 <img src="/public/images/icon/icon-user.png" alt="icon-user">
                 <span class="greeting">XXX님 안녕하세요.</span>
-                <button class="logout-btn">logout</button>
+                <a class="logout-btn">로그아웃</a>
+            </div>
+            <div class="user-info logged-out">
+                <img src="/public/images/icon/icon-user.png" alt="icon-user">
+                <span class="greeting">회원 인증을 진행해 주세요.</span>
+                <a class="logout-btn" onclick="callData(12)">회원인증</a>
             </div>
 
-            <nav>
-                <!-- <ul class="signup">
-                    <li onclick="callData(11)">Verify</li>
-                    <li onclick="callData(12)">Sign Up</li>
-                </ul> -->
-                <ul class="nav-links">
-                    <li onclick="callData(99)">채널바로가기</li>
-                    <li onclick="callData(11)">Verify</li>
-                    <li onclick="callData(12)">SignUp</li>
-                    <li onclick="callData(2)">Article</li>
-                    <li onclick="callData(3)">Support</li>
-                    <li onclick="callData(4)">Notice</li>
-                </ul>
-            </nav>
+            <ul class="nav-links">
+                <li onclick="callData(99)">채널바로가기</li>
+                <li onclick="callData(12)" class="signup">회원가입</li>
+                <li onclick="callData(4)">공지사항</li>
+                <li onclick="callData(2)">학술정보</li>
+                <li onclick="callData(3)">고객지원</li>
+            </ul>
         </div>
 
 
@@ -37,26 +35,25 @@
             <span></span>
             <span></span>
         </div>
+
         <div class="hamburger-menu">
-            <div class="signup">
-                <div class="user-info">
-                    <img src="/public/images/icon/icon-user.png" alt="icon-user">
-                    <span class="greeting">XXX님 안녕하세요.</span>
-                    <button class="logout-btn">logout</button>
-                </div>
-                <!-- <div class="signup-nav">
-
-                </div> -->
-
+            <div class="user-info logged-in">
+                <img src="/public/images/icon/icon-user.png" alt="icon-user">
+                <span class="greeting">XXX님 안녕하세요.</span>
+                <a class="logout-btn">로그아웃</a>
             </div>
+            <div class="user-info logged-out">
+                <img src="/public/images/icon/icon-user.png" alt="icon-user">
+                <span class="greeting">회원 인증을 해주세요.</span>
+                <a class="logout-btn" onclick="callData(12)">회원인증</a>
+            </div>
+
             <ul>
-                <!-- <li onclick="callData(12)">Sign Up</li> -->
                 <li onclick="callData(99)">채널바로가기</li>
-                <li onclick="callData(11)">Verify</li>
-                <li onclick="callData(12)">SignUp</li>
-                <li onclick="callData(2)">Article</li>
-                <li onclick="callData(3)">Support</li>
-                <li onclick="callData(4)">Notice</li>
+                <li onclick="callData(12)" class="signup">회원가입</li>
+                <li onclick="callData(4)">공지사항</li>
+                <li onclick="callData(2)">학술정보</li>
+                <li onclick="callData(3)">고객지원</li>
             </ul>
         </div>
     </div>
