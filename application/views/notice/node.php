@@ -75,7 +75,7 @@ gtag('event', 'screen_view', {
     <?php include_once APPPATH.'views/header.php'; ?>
 
     <section id="article-node" class="padd60">
-        <button type="button" class="return_list">← Article로 돌아가기</button>
+        <a href="<?php echo get_cookie("return_url");?>"><button type="button" class="return_list">← 공지사항으로 돌아가기</button></a>
         <!-- <div class="cont_right padd20">
             <h1>CONTENT NAME</h1>
             <div class="cont_description">
@@ -101,7 +101,7 @@ gtag('event', 'screen_view', {
             <a href="/article/download?file=<?php echo $info["attach_file"];?>" target="_blank"><button type="button" class="btn_down"><img src="/public/images/icon/icon_down.png" alt="icon_down" class="icon_down"></button></a>
         </div><?php 
         }?>
-        <button type="button" class="return_list list_bottom">목록</button>
+        <a href="<?php echo get_cookie("return_url");?>"><button type="button" class="return_list list_bottom">목록</button></a>
     </section>
 
     <section id="reaction-area" class="padd60">

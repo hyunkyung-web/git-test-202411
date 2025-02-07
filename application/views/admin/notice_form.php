@@ -128,7 +128,7 @@
 
                     <div class="btn-wrap">
                         <button type="button" class="save-user form-btn" onclick="javasctipt: noticeSave('<?php echo $editMode;?>');"><i class="fa-solid fa-circle-plus"></i> save</button>
-                        <a href="<?php echo get_cookie("callback_url");?>"><button type="button" class="cancel-user form-btn"><i class="fa-solid fa-circle-minus"></i> cancel</button></a>
+                        <a href="<?php echo get_cookie("return_url");?>"><button type="button" class="cancel-user form-btn"><i class="fa-solid fa-circle-minus"></i> cancel</button></a>
                     </div>
                 </div>
 
