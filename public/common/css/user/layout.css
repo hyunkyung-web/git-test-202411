@@ -156,10 +156,6 @@ header + section:not(#article-node) {
     align-items: center;
 }
 
-.logged-in {
-    display: none;
-}
-
 .user-info img {
     width: 1.5em;
     height: 1.5em;
@@ -170,12 +166,14 @@ header + section:not(#article-node) {
     margin-right: 1em;
 }
 
-.logout-btn {
+.logout-btn,
+.auth-btn {
     color: #fff;
     border: 1px solid #fff;
     border-radius: 5px;
     padding: 0.5em 1em;
     font-size: 0.9em;
+    text-decoration: none;
 }
 
 /* menu */
@@ -361,7 +359,8 @@ footer a {
         padding: 0 10px;
     }
 
-    .logout-btn {
+    .logout-btn,
+    .auth-btn {
         padding: 0.4em 1em;
     }
     /* .signup-nav span {

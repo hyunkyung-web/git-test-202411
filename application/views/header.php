@@ -9,13 +9,13 @@
             <div class="user-info logged-in">
                 <img src="/public/images/icon/icon-user.png" alt="icon-user">
                 <span class="greeting"><?php echo $this->session->userdata["member_nm"];?>님 안녕하세요.</span>
-                <a class="logout-btn" href="/member/logount">로그아웃</a>
+                <a class="logout-btn" href="/member/logout">로그아웃</a>
             </div><?php 
         }else {?>
             <div class="user-info logged-out">
                 <img src="/public/images/icon/icon-user.png" alt="icon-user">
                 <span class="greeting">회원 인증을 진행해 주세요.</span>
-                <a class="logout-btn" onclick="callData(12)">회원인증</a>
+                <a class="auth-btn" href="javascript:callData(12)">회원인증</a>
             </div><?php 
         }?>
 
@@ -50,7 +50,7 @@
             <div class="user-info logged-out">
                 <img src="/public/images/icon/icon-user.png" alt="icon-user">
                 <span class="greeting">회원 인증을 해주세요.</span>
-                <a class="logout-btn" onclick="callData(12)">회원인증</a>
+                <a class="auth-btn" href="javascript:callData(12)">회원인증</a>
             </div><?php 
         }?>
 
