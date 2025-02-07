@@ -549,19 +549,21 @@ Notice
     width: 2em;
     text-align: center;
 }
-.notice_descript a {
+.notice_descript .name {
     width: 75%;
-    color: #000;
-    text-decoration: none;
+
     padding: 0 1em;
     /* margin-left: 1em; */
-}
-.notice_descript a p {
-    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.notice_descript a {
+    color: #000;
+    text-decoration: none;
+}
+
 .notice_descript p.notice-date {
     margin-left: auto;
     width: fit-content;
