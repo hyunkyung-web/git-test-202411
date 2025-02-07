@@ -93,7 +93,7 @@ gtag('event', 'screen_view', {
                     <p class="notice-date">25-02-06</p>
                 </div>
                 <div class="cont_descript notice_descript">
-                    <span>3</span>
+                    <span>333</span>
                     <a href="/notice/node/">
                         <p class="name">250206 공지사항입니다. 내용을 확인하세요.</p>
                     </a>

@@ -29,6 +29,10 @@
         </div>
         <div class="hamburger-menu">
             <div class="signup">
+                <div class="user-info">
+                    <span class="greeting">접속자님 안녕하세요.</span>
+                    <button class="logout-btn">로그아웃</button>
+                </div>
                 <span onclick="callData(99)">채널바로가기</span>
                 <span onclick="callData(11)">Verify</span>
                 <span onclick="callData(12)">SignUp</span>

@@ -522,7 +522,7 @@ Notice
 .notice-list {
     width: 100%;
     background-color: #ffffff;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     border-radius: 10px;
     text-align: center;
     display: flex;
@@ -539,17 +539,22 @@ Notice
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
+.notice_descript:first-child {
+    border-top: 1px solid #ddd;
+}
+
 .notice_descript span {
     /* display: inline-block;
     vertical-align: middle; */
-    width: 5%;
-    text-align: left;
+    width: 2em;
+    text-align: center;
 }
 .notice_descript a {
     width: 75%;
     color: #000;
     text-decoration: none;
     padding: 0 1em;
+    /* margin-left: 1em; */
 }
 .notice_descript a p {
     width: 100%;
@@ -1159,27 +1164,35 @@ button.btn_select {
     #article-each.notice-each {
         width: 100%;
     }
+    .notice-list {
+        padding: 20px 0;
+    }
 
     .notice_descript {
         flex-wrap: wrap;
     }
     .cont_descript.notice_descript {
+        padding: unset;
         padding-top: 10px;
         padding-bottom: 10px;
     }
 
     .notice_descript span {
-        width: 1em;
+        /* width: 1em; */
+        /* text-align: center; */
     }
 
     .notice_descript a {
-        width: 90%;
+        width: 85%;
+        margin-right: auto;
+        /* margin-left: 0.5em; */
     }
 
     .notice_descript p.notice-date {
-        margin-left: 2em;
+        margin-left: 2rem;
+        padding-left: 1rem;
         width: fit-content;
-        /* font-size: 0.9em; */
+        font-size: 0.9em;
         text-align: left;
         color: #7e869e;
     }
