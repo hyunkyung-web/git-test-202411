@@ -49,7 +49,7 @@ class Notice extends CI_Controller {
 	        "contents_type"=>"notice", "keyword"=>$keyword
 	    ]);	    
 	    
-	    $viewData = ["data"=>$query["list"], "total_count"=>$query["listCount"]];
+	    $viewData = ["data"=>$query["list"], "total_cnt"=>$query["listCount"]];
 	    
 	    $this->load->view('/notice/list', $viewData);
 	}

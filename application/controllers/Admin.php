@@ -146,13 +146,13 @@ class Admin extends CI_Controller {
 	        "contents_type"=>"notice", "keyword"=>$keyword, "start"=>$startPage, "end"=>$endPage
 	    ]);
 	    
-	    
-	    
 	    $totalRecord = $query["listCount"];
 	    $totalPage = ceil($totalRecord/$pageSize);
 	    
-	    $viewData = ["menu_num"=>302, "menu_title"=>"Notice List", "schData"=>$schData, "data"=>$query["list"], "totalRecord"=>$totalRecord, "page"=>$page,
-	        "listFnc"=>"contentsList", "blockSize"=>$blockSize, "totalPage"=>$totalPage
+	    $rowNum = $totalRecord-$startPage;
+	    
+	    $viewData = ["menu_num"=>302, "menu_title"=>"Notice List", "schData"=>$schData, "data"=>$query["list"], "totalCount"=>$totalRecord, "page"=>$page,
+	        "listFnc"=>"contentsList", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "rowNum"=>$rowNum
 	    ];
 	    
 	    // 	    $pageData = ["listFnc"=>"eventList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "page"=>$page];
@@ -209,7 +209,6 @@ class Admin extends CI_Controller {
 	    //쿼리로 조회 할 DB의 주소 시작번호(start) 가져올 갯수(end)
 	    $startPage = ($page-1) * $pageSize;
 	    $endPage = $pageSize;
-	    
 
 	    $query = $this->contentsModel->contents_list([
 	        "contents_type"=>"article", "keyword"=>$keyword, "start"=>$startPage, "end"=>$endPage
@@ -219,8 +218,10 @@ class Admin extends CI_Controller {
 	    $totalRecord = $query["listCount"];
 	    $totalPage = ceil($totalRecord/$pageSize);
 	    
-	    $viewData = ["menu_num"=>102, "menu_title"=>"Contents List", "schData"=>$schData, "data"=>$query["list"], "totalRecord"=>$totalRecord, "page"=>$page,
-	        "listFnc"=>"contentsList", "blockSize"=>$blockSize, "totalPage"=>$totalPage
+	    $rowNum = $totalRecord-$startPage;
+	    
+	    $viewData = ["menu_num"=>102, "menu_title"=>"Contents List", "schData"=>$schData, "data"=>$query["list"], "totalCount"=>$totalRecord, "page"=>$page,
+	        "listFnc"=>"contentsList", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "rowNum"=>$rowNum
 	    ];
 	    
 	    // 	    $pageData = ["listFnc"=>"eventList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "page"=>$page];
@@ -350,8 +351,10 @@ class Admin extends CI_Controller {
 	    $totalRecord = $query["listCount"];
 	    $totalPage = ceil($totalRecord/$pageSize);
 	    
-	    $viewData = ["menu_num"=>202, "menu_title"=>"Template List", "schData"=>$schData, "data"=>$query["list"], "totalRecord"=>$totalRecord, "page"=>$page,
-	        "listFnc"=>"templateList", "blockSize"=>$blockSize, "totalPage"=>$totalPage
+	    $rowNum = $totalRecord-$startPage;
+	    
+	    $viewData = ["menu_num"=>202, "menu_title"=>"Template List", "schData"=>$schData, "data"=>$query["list"], "totalCount"=>$totalRecord, "page"=>$page,
+	        "listFnc"=>"templateList", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "rowNum"=>$rowNum
 	    ];
 	    
 	    // 	    $pageData = ["listFnc"=>"eventList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "page"=>$page];
@@ -463,8 +466,10 @@ class Admin extends CI_Controller {
 	    $totalRecord = $query["listCount"];
 	    $totalPage = ceil($totalRecord/$pageSize);
 	    
-	    $viewData = ["menu_num"=>210, "menu_title"=>"Message List", "schData"=>$schData, "data"=>$query["list"], "totalRecord"=>$totalRecord, "page"=>$page,
-	        "listFnc"=>"messageList", "blockSize"=>$blockSize, "totalPage"=>$totalPage
+	    $rowNum = $totalRecord-$startPage;
+	    
+	    $viewData = ["menu_num"=>210, "menu_title"=>"Message List", "schData"=>$schData, "data"=>$query["list"], "totalCount"=>$totalRecord, "page"=>$page,
+	        "listFnc"=>"messageList", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "rowNum"=>$rowNum
 	    ];
 	    
 	    // 	    $pageData = ["listFnc"=>"eventList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "page"=>$page];
@@ -664,8 +669,10 @@ class Admin extends CI_Controller {
 	    $totalRecord = $query["listCount"];
 	    $totalPage = ceil($totalRecord/$pageSize);
 	    
-	    $viewData = ["menu_num"=>602, "menu_title"=>"Internal User List", "schData"=>$schData, "data"=>$query["list"], "totalRecord"=>$totalRecord, "page"=>$page,
-	        "listFnc"=>"userList", "blockSize"=>$blockSize, "totalPage"=>$totalPage
+	    $rowNum = $totalRecord-$startPage;
+	    
+	    $viewData = ["menu_num"=>602, "menu_title"=>"Internal User List", "schData"=>$schData, "data"=>$query["list"], "totalCount"=>$totalRecord, "page"=>$page,
+	        "listFnc"=>"userList", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "rowNum"=>$rowNum
 	    ];
 	    
 	    // 	    $pageData = ["listFnc"=>"eventList()", "blockSize"=>$blockSize, "totalPage"=>$totalPage, "page"=>$page];	    

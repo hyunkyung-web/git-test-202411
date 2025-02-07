@@ -77,7 +77,6 @@ gtag('event', 'screen_view', {
         <h1>학술정보</h1>
         <p>최신 학술정보를 만나보실 수 있습니다.</p>
         <div id="article-each" class="flex_SB_center"><?php
-        
         foreach($data as $row){
             $find_src = preg_match("/<img\s[^>]*>/", $row["body_text"], $match);
             if(count($match)>0){
@@ -88,13 +87,10 @@ gtag('event', 'screen_view', {
             <div class="contents-list article-each">
                 <a href="<?php echo '/article/node/'.$row["idx"];?>"><?php echo $thumb_img;?></a>
                 <div class="cont_descript article_descript">
-                    <a href="<?php echo '/article/node/'.$row["idx"];?>">
-                        <p class="name"><?php echo $row["title"];?></p>
-                    </a>
+                	<p class="name"><a href="<?php echo '/article/node/'.$row["idx"];?>"><?php echo $row["title"];?></a></p>
                     <p><?php echo $row["description"];?></p>
                 </div>
-
-            </div><?php 
+            </div><?php
         }?>
         </div>
     </section>

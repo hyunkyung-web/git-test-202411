@@ -128,13 +128,14 @@
                                         <span class="custom-checkbox"></span>
                                     </label>
                                 </td>
-                                <td><?php echo $row["idx"];?></td>
+                                <td><?php echo $rowNum;?></td>
                                 <td><?php echo $row["contents_type"];?></td>
                                 <td class="txt_left"><a href="/admin/contents_form/<?php echo $row["idx"];?>"><?php echo $row["title"];?></a></td>
                                 <td><a onclick="javascript: copyToClipboard(this);" data-copy="<?php echo 'https://kakao.dr-wave.co.kr/article/node/'.$row["idx"];?>">URL</a></td>
                                 <td><?php echo $row["wuser"];?></td>
                                 <td><?php echo date('Y-m-d', strtotime($row["wdate"]));?></td>
                             </tr><?php
+                            $rowNum--;
                             }
                         } else {
                             echo '<tr><td align="center" style="height: 5em; border: none;" colspan="20">검색결과가 없습니다.</td></tr>';
