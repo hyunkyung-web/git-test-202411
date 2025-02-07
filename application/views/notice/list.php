@@ -80,27 +80,28 @@ gtag('event', 'screen_view', {
             <div class="notice-list"><?php 
             $rowNum=1;
             foreach($data as $row){?>
+                <!-- <div class="cont_descript notice_descript">
+                        <span>1</span>
+                        <a href="/notice/node/">
+                            <p class="name">250206 공지사항</p>
+                        </a>
+                        <p class="notice-date">25-02-06</p>
+                    </div>
+                    <div class="cont_descript notice_descript">
+                        <span>2</span>
+                        <a href="/notice/node/">
+                            <p class="name">250206 공지사항</p>
+                        </a>
+                        <p class="notice-date">25-02-06</p>
+                    </div>
+                    <div class="cont_descript notice_descript">
+                        <span>333</span>
+                        <a href="/notice/node/">
+                            <p class="name">250206 공지사항입니다. 내용을 확인하세요.</p>
+                        </a>
+                        <p class="notice-date">25-02-06</p>
+                    </div> -->
                 <div class="cont_descript notice_descript">
-                    <!-- <span>1</span>
-                    <a href="/notice/node/">
-                        <p class="name">250206 공지사항</p>
-                    </a>
-                    <p class="notice-date">25-02-06</p>
-                </div>
-                <div class="cont_descript notice_descript">
-                    <span>2</span>
-                    <a href="/notice/node/">
-                        <p class="name">250206 공지사항</p>
-                    </a>
-                    <p class="notice-date">25-02-06</p>
-                </div>
-                <div class="cont_descript notice_descript">
-                    <span>333</span>
-                    <a href="/notice/node/">
-                        <p class="name">250206 공지사항입니다. 내용을 확인하세요.</p>
-                    </a>
-                    <p class="notice-date">25-02-06</p>
-                </div> -->
                     <span><?php echo $rowNum;?></span>
                     <p class="name"><a href="/notice/node/<?php echo $row["idx"];?>"><?php echo $row["title"];?></a></p>
                     <p class="notice-date"><?php echo date('Y-m-d', strtotime($row["wdate"]));?></p>

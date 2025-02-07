@@ -126,16 +126,16 @@ gtag('event', 'screen_view', {
                         <span class="c_date">25-02-05 17:09</span>
                     </div>
                 </div>
-                
-                <button type="button" class="btn_more">더보기 +</button>
-   				<button type="button" class="btn_fold">댓글 접기 ↑</button>
+
+                <!-- <button type="button" class="btn_more">더보기 +</button>
+   				<button type="button" class="btn_fold">댓글 접기 ↑</button> -->
 
             </div>
-            
-            
 
 
-            
+
+
+
             <div class="enter_c_box flex_SB_center">
                 <textarea name="c_box" id="reply_text" placeholder="댓글을 남겨보세요" class="c_box" rows="1" onkeyup="resize(this)" onkeydown="resize(this)"></textarea>
                 <button type="button" class="btn_chat" onclick="javascript: nodeSaveReply();">입력</button>
@@ -149,9 +149,7 @@ gtag('event', 'screen_view', {
     <?php include_once APPPATH.'views/footer.php'; ?>
 
     <script>
-    	
-    	nodeReplyLikeList();
-    	
+    nodeReplyLikeList();
     </script>
 
 </body>

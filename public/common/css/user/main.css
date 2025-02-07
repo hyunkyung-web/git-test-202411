@@ -307,21 +307,26 @@ article
 .cont_left img {
     width: 70%;
 } */
-
-.return_list {
+a:has(.return_list) {
     align-self: flex-start;
     padding: 20px;
     color: #aaa;
+    text-decoration: none;
 }
-.return_list:hover {
-    text-decoration: underline;
-}
-.return_list.list_bottom {
+a:has(.return_list.list_bottom) {
     align-self: flex-end;
     padding: 10px 15px;
     margin-right: 20px;
     background: #eee;
     border-radius: 5px;
+}
+
+.return_list {
+    color: #aaa;
+}
+
+.return_list:hover {
+    text-decoration: underline;
 }
 
 .cont_right {
@@ -567,6 +572,7 @@ Notice
 .notice_descript p.notice-date {
     margin-left: auto;
     width: fit-content;
+    min-width: 80px;
     font-size: 1em;
     text-align: right;
 }
@@ -1116,7 +1122,7 @@ button.btn_select {
     }
 
     /* node */
-    .return_list.list_bottom {
+    a:has(.return_list.list_bottom) {
         margin-top: 20px;
     }
 
